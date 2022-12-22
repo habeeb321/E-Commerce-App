@@ -9,7 +9,6 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Obx() => splashController.onInit();
     return const Scaffold(
       body: Center(
         child: CircleAvatar(
