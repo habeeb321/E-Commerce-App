@@ -43,29 +43,32 @@ class ScotchGetStarted extends StatelessWidget {
               style: TextStyle(fontSize: 17),
             ),
           ),
-          Container(
-            height: size.height * 0.07,
-            width: size.width * 0.5,
-            decoration: BoxDecoration(
-              color: Colors.purple,
-              borderRadius: BorderRadius.circular(30),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.only(left: 20),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: const [
-                  Text(
-                    'Get started for free',
-                    style: TextStyle(color: kWhitecolor),
-                  ),
-                  Icon(
-                    Icons.keyboard_arrow_right,
-                    color: kWhitecolor,
-                  )
-                ],
+          GestureDetector(
+            child: Container(
+              height: size.height * 0.07,
+              width: size.width * 0.5,
+              decoration: BoxDecoration(
+                color: Colors.purple,
+                borderRadius: BorderRadius.circular(30),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.only(left: 20),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: const [
+                    Text(
+                      'Get started for free',
+                      style: TextStyle(color: kWhitecolor),
+                    ),
+                    Icon(
+                      Icons.keyboard_arrow_right,
+                      color: kWhitecolor,
+                    )
+                  ],
+                ),
               ),
             ),
+            onTap: () {},
           ),
         ],
       ),

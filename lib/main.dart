@@ -1,7 +1,7 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:scotch/view/startingscreen/view/login_screen.dart';
+import 'package:scotch/view/splashscreen/view/splash_screen.dart';
 
 void main() {
   runApp(DevicePreview(
@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const StartingScreen(),
+      home: const SplashScreen(),
     );
   }
 }
