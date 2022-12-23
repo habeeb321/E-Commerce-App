@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:scotch/core/const.dart';
+import 'package:scotch/view/loginscreen/view/login_screen.dart';
 import 'package:scotch/view/loginscreen/view/widgets/wave.dart';
-import 'package:scotch/view/registerscreen/view/register_screen.dart';
 
-class LoginScreen extends StatelessWidget {
-  LoginScreen({super.key});
+class RegisterScreen extends StatelessWidget {
+  RegisterScreen({super.key});
 
+  TextEditingController userNameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passController = TextEditingController();
+  TextEditingController confirmPassController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +32,7 @@ class LoginScreen extends StatelessWidget {
                           child: Container(
                             padding: const EdgeInsets.only(bottom: 50),
                             color: themeColor,
-                            height: size.height * 0.42,
+                            height: size.height * 0.38,
                             alignment: Alignment.center,
                           ),
                         ),
@@ -40,9 +42,9 @@ class LoginScreen extends StatelessWidget {
                               radius: 50,
                               backgroundImage: AssetImage(logo),
                             ),
-                            kHeight20,
+                            kHeight10,
                             Text(
-                              'Login',
+                              'Sign Up',
                               style: TextStyle(
                                   fontSize: 30,
                                   fontWeight: FontWeight.bold,
@@ -53,46 +55,33 @@ class LoginScreen extends StatelessWidget {
                       ],
                     ),
                   ),
-                  SizedBox(height: size.height * 0.05),
+                  SizedBox(height: size.height * 0.03),
                   Column(
                     children: [
-                      TextFormField(
-                        controller: emailController,
-                        decoration: InputDecoration(
-                          labelStyle: const TextStyle(color: themeColor),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: const BorderSide(color: themeColor),
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          labelText: 'Enter your E-mail',
-                        ),
-                      ),
-                      kHeight20,
-                      TextFormField(
-                        controller: passController,
-                        decoration: InputDecoration(
+                      SignUpField(
+                          controller: userNameController,
+                          label: 'Enter Your Username'),
+                      kHeight10,
+                      SignUpField(
+                          controller: emailController,
+                          label: 'Enter Your E-mail'),
+                      kHeight10,
+                      SignUpField(
+                          controller: passController,
                           suffixIcon: const Icon(Icons.visibility_off),
-                          labelStyle: const TextStyle(color: themeColor),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: const BorderSide(color: themeColor),
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          labelText: 'Enter your Password',
-                        ),
-                      ),
+                          label: 'Enter Your Password'),
+                      kHeight10,
+                      SignUpField(
+                          controller: passController,
+                          suffixIcon: const Icon(Icons.visibility_off),
+                          label: 'Confirm Your Password'),
                       kHeight10,
                       const Align(
                           alignment: Alignment.topRight,
                           child: Text('Forget Password?')),
                     ],
                   ),
-                  kHeight20,
+                  kHeight10,
                   SizedBox(
                     width: double.infinity,
                     height: 50,
@@ -104,45 +93,21 @@ class LoginScreen extends StatelessWidget {
                             borderRadius: BorderRadius.circular(20))),
                       ),
                       child: const Text(
-                        'Sign In',
+                        'Sign Up',
                         style: TextStyle(fontSize: 20),
                       ),
                     ),
                   ),
-                  kHeight20,
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      InkWell(
-                        child: const CircleAvatar(
-                          radius: 20,
-                          backgroundImage: AssetImage('assets/logo/GOOGLE.png'),
-                          backgroundColor: kWhitecolor,
-                        ),
-                        onTap: () {},
-                      ),
-                      InkWell(
-                        child: const CircleAvatar(
-                          radius: 20,
-                          backgroundImage:
-                              AssetImage('assets/logo/Facebook.png'),
-                          backgroundColor: kWhitecolor,
-                        ),
-                        onTap: () {},
-                      ),
-                    ],
-                  ),
                   kHeight10,
-                  const Text('Or'),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Text("Don't have an account yet?"),
+                      const Text("Already have an account?"),
                       TextButton(
                         onPressed: () {
-                          Get.to(RegisterScreen());
+                          Get.to(LoginScreen());
                         },
-                        child: const Text('Sign up'),
+                        child: const Text('Login'),
                       ),
                     ],
                   ),
@@ -151,6 +116,38 @@ class LoginScreen extends StatelessWidget {
             ),
           ),
         ),
+      ),
+    );
+  }
+}
+
+class SignUpField extends StatelessWidget {
+  const SignUpField({
+    Key? key,
+    required this.controller,
+    required this.label,
+    this.suffixIcon,
+  }) : super(key: key);
+
+  final TextEditingController controller;
+  final String label;
+  final Icon? suffixIcon;
+
+  @override
+  Widget build(BuildContext context) {
+    return TextFormField(
+      controller: controller,
+      decoration: InputDecoration(
+        suffixIcon: suffixIcon,
+        labelStyle: const TextStyle(color: themeColor),
+        focusedBorder: OutlineInputBorder(
+          borderSide: const BorderSide(color: themeColor),
+          borderRadius: BorderRadius.circular(20),
+        ),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(20),
+        ),
+        labelText: label,
       ),
     );
   }
