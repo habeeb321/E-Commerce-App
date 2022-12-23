@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:scotch/core/const.dart';
+import 'package:scotch/view/loginscreen/view/login_screen.dart';
 
 class StartingScreen extends StatelessWidget {
   const StartingScreen({super.key});
@@ -43,12 +45,12 @@ class ScotchGetStarted extends StatelessWidget {
               style: TextStyle(fontSize: 17),
             ),
           ),
-          GestureDetector(
+          InkWell(
             child: Container(
               height: size.height * 0.07,
               width: size.width * 0.5,
               decoration: BoxDecoration(
-                color: Colors.purple,
+                color: themeColor,
                 borderRadius: BorderRadius.circular(30),
               ),
               child: Padding(
@@ -68,7 +70,7 @@ class ScotchGetStarted extends StatelessWidget {
                 ),
               ),
             ),
-            onTap: () {},
+            onTap: () => Get.to(LoginScreen()),
           ),
         ],
       ),
@@ -90,7 +92,7 @@ class LogingStackImage extends StatelessWidget {
           height: stackSize.height * 0.5,
           width: stackSize.width,
           decoration: const BoxDecoration(
-            color: Colors.purple,
+            color: themeColor,
             borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(140),
               bottomRight: Radius.circular(140),
@@ -106,7 +108,7 @@ class LogingStackImage extends StatelessWidget {
             child: CircleAvatar(
               radius: 50,
               backgroundColor: kWhitecolor,
-              backgroundImage: AssetImage('assets/logo/scotch.png'),
+              backgroundImage: AssetImage(logo),
             ),
           ),
         ),

@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:get/get.dart';
-import 'package:scotch/view/startingscreen/view/login_screen.dart';
+import 'package:scotch/view/startingscreen/view/starting_screen.dart';
 
 class SplashController extends GetxController {
   @override

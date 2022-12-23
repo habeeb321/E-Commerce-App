@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:scotch/core/const.dart';
 import 'package:scotch/view/splashscreen/controller/splash_controller.dart';
 
 class SplashScreen extends StatelessWidget {
@@ -13,7 +14,7 @@ class SplashScreen extends StatelessWidget {
       body: Center(
         child: CircleAvatar(
           radius: 100,
-          backgroundImage: AssetImage('assets/logo/scotch.png'),
+          backgroundImage: AssetImage(logo),
         ),
       ),
     );
