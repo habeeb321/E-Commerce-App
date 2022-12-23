@@ -1,18 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:scotch/core/const.dart';
-import 'package:scotch/view/loginscreen/view/login_screen.dart';
 import 'package:scotch/view/widgets/auth_elev_button.dart';
 import 'package:scotch/view/widgets/auth_textfields.dart';
 import 'package:scotch/view/widgets/wave.dart';
 
-class RegisterScreen extends StatelessWidget {
-  RegisterScreen({super.key});
+class ResetPasswordScreen extends StatelessWidget {
+  ResetPasswordScreen({super.key});
 
-  TextEditingController userNameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
-  TextEditingController passController = TextEditingController();
-  TextEditingController confirmPassController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +29,7 @@ class RegisterScreen extends StatelessWidget {
                           clipper: WaveClipper(),
                           child: Container(
                             color: themeColor,
-                            height: size.height * 0.40,
+                            height: size.height * 0.46,
                           ),
                         ),
                       ),
@@ -43,7 +38,7 @@ class RegisterScreen extends StatelessWidget {
                         child: Container(
                           padding: const EdgeInsets.only(bottom: 50),
                           color: themeColor,
-                          height: size.height * 0.36,
+                          height: size.height * 0.42,
                           alignment: Alignment.center,
                         ),
                       ),
@@ -53,59 +48,42 @@ class RegisterScreen extends StatelessWidget {
                             radius: 50,
                             backgroundImage: AssetImage(logo),
                           ),
-                          kHeight10,
+                          kHeight20,
                           Text(
-                            'Sign Up',
+                            'Reset Password',
                             style: TextStyle(
                                 fontSize: 30,
                                 fontWeight: FontWeight.bold,
                                 color: kWhitecolor),
-                          )
+                          ),
                         ],
                       ),
                     ],
                   ),
                 ),
-                SizedBox(height: size.height * 0.03),
+                SizedBox(height: size.height * 0.05),
                 Column(
                   children: [
+                    const Text(
+                        'Set the new password for your account so you can login and access all the features.'),
+                    kHeight20,
                     AuthTextField(
-                        controller: userNameController,
-                        label: 'Enter Your Username'),
-                    kHeight10,
+                      controller: emailController,
+                      suffixIcon: const Icon(Icons.visibility_off),
+                      label: 'Enter Your Password',
+                    ),
+                    kHeight20,
                     AuthTextField(
-                        controller: emailController,
-                        label: 'Enter Your E-mail'),
-                    kHeight10,
-                    AuthTextField(
-                        controller: passController,
-                        suffixIcon: const Icon(Icons.visibility_off),
-                        label: 'Enter Your Password'),
-                    kHeight10,
-                    AuthTextField(
-                        controller: passController,
-                        suffixIcon: const Icon(Icons.visibility_off),
-                        label: 'Confirm Your Password'),
+                      controller: emailController,
+                      suffixIcon: const Icon(Icons.visibility_off),
+                      label: 'Confirm Your Password',
+                    ),
                   ],
                 ),
                 kHeight20,
-                const SizedBox(
-                  width: double.infinity,
-                  height: 50,
-                  child: AuthElevatedButton(label: 'Sign Up'),
-                ),
-                kHeight10,
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Text("Already have an account?"),
-                    TextButton(
-                      onPressed: () {
-                        Get.to(LoginScreen());
-                      },
-                      child: const Text('Login'),
-                    ),
-                  ],
+                AuthElevatedButton(
+                  label: 'Reset Password',
+                  onPressed: () {},
                 ),
               ],
             ),
