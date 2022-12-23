@@ -51,7 +51,7 @@ class LoginScreen extends StatelessWidget {
                       ],
                     ),
                   ),
-                  SizedBox(height: size.height * 0.06),
+                  SizedBox(height: size.height * 0.05),
                   Column(
                     children: [
                       TextFormField(
@@ -108,24 +108,13 @@ class LoginScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Text("Don't have an account yet?"),
-                      TextButton(
-                        onPressed: () {},
-                        child: const Text('Sign up'),
-                      ),
-                    ],
-                  ),
-                  const Text('Or'),
-                  kHeight10,
+                  kHeight20,
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       InkWell(
                         child: const CircleAvatar(
-                          radius: 25,
+                          radius: 20,
                           backgroundImage: AssetImage('assets/logo/GOOGLE.png'),
                           backgroundColor: kWhitecolor,
                         ),
@@ -133,12 +122,24 @@ class LoginScreen extends StatelessWidget {
                       ),
                       InkWell(
                         child: const CircleAvatar(
-                          radius: 25,
+                          radius: 20,
                           backgroundImage:
                               AssetImage('assets/logo/Facebook.png'),
                           backgroundColor: kWhitecolor,
                         ),
                         onTap: () {},
+                      ),
+                    ],
+                  ),
+                  kHeight10,
+                  const Text('Or'),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text("Don't have an account yet?"),
+                      TextButton(
+                        onPressed: () {},
+                        child: const Text('Sign up'),
                       ),
                     ],
                   ),
