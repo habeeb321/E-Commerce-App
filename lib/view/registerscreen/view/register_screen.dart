@@ -11,6 +11,7 @@ class RegisterScreen extends StatelessWidget {
 
   TextEditingController userNameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
+  TextEditingController mobileController = TextEditingController();
   TextEditingController passController = TextEditingController();
   TextEditingController confirmPassController = TextEditingController();
 
@@ -71,11 +72,16 @@ class RegisterScreen extends StatelessWidget {
                   children: [
                     AuthTextField(
                         controller: userNameController,
-                        label: 'Enter Your Username'),
+                        label: 'Enter Your FullName'),
                     kHeight10,
                     AuthTextField(
                         controller: emailController,
                         label: 'Enter Your E-mail'),
+                    kHeight10,
+                    AuthTextField(
+                        controller: mobileController,
+                        inputType: TextInputType.number,
+                        label: 'Enter Your Mobile Number'),
                     kHeight10,
                     AuthTextField(
                         controller: passController,

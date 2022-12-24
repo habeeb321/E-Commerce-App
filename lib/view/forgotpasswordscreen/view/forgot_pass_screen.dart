@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:scotch/core/const.dart';
-import 'package:scotch/view/forgotpasswordscreen/view/otp_verify_screen.dart';
+import 'package:scotch/view/forgotpasswordscreen/view/reset_password.dart';
 import 'package:scotch/view/widgets/auth_elev_button.dart';
 import 'package:scotch/view/widgets/auth_textfields.dart';
 import 'package:scotch/view/widgets/wave.dart';
@@ -78,7 +78,7 @@ class ForgotPassScreen extends StatelessWidget {
                 kHeight20,
                 AuthElevatedButton(
                   label: 'Continue',
-                  onPressed: () => Get.to(OtpVerifyScreen()),
+                  onPressed: () => Get.to(ResetPasswordScreen()),
                 ),
               ],
             ),
