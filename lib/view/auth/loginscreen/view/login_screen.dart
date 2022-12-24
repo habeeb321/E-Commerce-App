@@ -1,19 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:scotch/core/const.dart';
-import 'package:scotch/view/loginscreen/view/login_screen.dart';
+import 'package:scotch/view/auth/forgotpasswordscreen/view/forgot_pass_screen.dart';
+import 'package:scotch/view/auth/registerscreen/view/register_screen.dart';
 import 'package:scotch/view/widgets/auth_elev_button.dart';
 import 'package:scotch/view/widgets/auth_textfields.dart';
 import 'package:scotch/view/widgets/wave.dart';
 
-class RegisterScreen extends StatelessWidget {
-  RegisterScreen({super.key});
+class LoginScreen extends StatelessWidget {
+  LoginScreen({super.key});
 
-  TextEditingController userNameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
-  TextEditingController mobileController = TextEditingController();
   TextEditingController passController = TextEditingController();
-  TextEditingController confirmPassController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +33,7 @@ class RegisterScreen extends StatelessWidget {
                           clipper: WaveClipper(),
                           child: Container(
                             color: themeColor,
-                            height: size.height * 0.40,
+                            height: size.height * 0.42,
                           ),
                         ),
                       ),
@@ -44,7 +42,7 @@ class RegisterScreen extends StatelessWidget {
                         child: Container(
                           padding: const EdgeInsets.only(bottom: 50),
                           color: themeColor,
-                          height: size.height * 0.36,
+                          height: size.height * 0.38,
                           alignment: Alignment.center,
                         ),
                       ),
@@ -54,9 +52,9 @@ class RegisterScreen extends StatelessWidget {
                             radius: 50,
                             backgroundImage: AssetImage(logo),
                           ),
-                          kHeight10,
+                          kHeight20,
                           Text(
-                            'Sign Up',
+                            'Login',
                             style: TextStyle(
                                 fontSize: 30,
                                 fontWeight: FontWeight.bold,
@@ -67,49 +65,64 @@ class RegisterScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                SizedBox(height: size.height * 0.03),
+                SizedBox(height: size.height * 0.05),
                 Column(
                   children: [
                     AuthTextField(
-                        controller: userNameController,
-                        label: 'Enter Your FullName'),
-                    kHeight10,
-                    AuthTextField(
                         controller: emailController,
                         label: 'Enter Your E-mail'),
-                    kHeight10,
+                    kHeight20,
                     AuthTextField(
-                        controller: mobileController,
-                        inputType: TextInputType.number,
-                        label: 'Enter Your Mobile Number'),
-                    kHeight10,
-                    AuthTextField(
-                        controller: passController,
+                        controller: emailController,
                         suffixIcon: const Icon(Icons.visibility_off),
                         label: 'Enter Your Password'),
                     kHeight10,
-                    AuthTextField(
-                        controller: passController,
-                        suffixIcon: const Icon(Icons.visibility_off),
-                        label: 'Confirm Your Password'),
+                    InkWell(
+                      child: const Align(
+                        alignment: Alignment.topRight,
+                        child: Text('Forget Password?'),
+                      ),
+                      onTap: () {
+                        Get.to(ForgotPassScreen());
+                      },
+                    ),
                   ],
                 ),
                 kHeight20,
-                const SizedBox(
-                  width: double.infinity,
-                  height: 50,
-                  child: AuthElevatedButton(label: 'Sign Up'),
+                const AuthElevatedButton(label: 'Sign In'),
+                kHeight20,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    InkWell(
+                      child: const CircleAvatar(
+                        radius: 20,
+                        backgroundImage: AssetImage('assets/logo/GOOGLE.png'),
+                        backgroundColor: kWhitecolor,
+                      ),
+                      onTap: () {},
+                    ),
+                    InkWell(
+                      child: const CircleAvatar(
+                        radius: 20,
+                        backgroundImage: AssetImage('assets/logo/Facebook.png'),
+                        backgroundColor: kWhitecolor,
+                      ),
+                      onTap: () {},
+                    ),
+                  ],
                 ),
                 kHeight10,
+                const Text('Or'),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text("Already have an account?"),
+                    const Text("Don't have an account yet?"),
                     TextButton(
                       onPressed: () {
-                        Get.to(LoginScreen());
+                        Get.to(RegisterScreen());
                       },
-                      child: const Text('Login'),
+                      child: const Text('Sign up'),
                     ),
                   ],
                 ),

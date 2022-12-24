@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:scotch/core/const.dart';
-import 'package:scotch/view/forgotpasswordscreen/view/forgot_pass_screen.dart';
-import 'package:scotch/view/registerscreen/view/register_screen.dart';
+import 'package:scotch/view/auth/forgotpasswordscreen/view/reset_password.dart';
 import 'package:scotch/view/widgets/auth_elev_button.dart';
 import 'package:scotch/view/widgets/auth_textfields.dart';
 import 'package:scotch/view/widgets/wave.dart';
 
-class LoginScreen extends StatelessWidget {
-  LoginScreen({super.key});
+class ForgotPassScreen extends StatelessWidget {
+  ForgotPassScreen({super.key});
 
   TextEditingController emailController = TextEditingController();
-  TextEditingController passController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +31,7 @@ class LoginScreen extends StatelessWidget {
                           clipper: WaveClipper(),
                           child: Container(
                             color: themeColor,
-                            height: size.height * 0.42,
+                            height: size.height * 0.46,
                           ),
                         ),
                       ),
@@ -42,7 +40,7 @@ class LoginScreen extends StatelessWidget {
                         child: Container(
                           padding: const EdgeInsets.only(bottom: 50),
                           color: themeColor,
-                          height: size.height * 0.38,
+                          height: size.height * 0.42,
                           alignment: Alignment.center,
                         ),
                       ),
@@ -54,7 +52,7 @@ class LoginScreen extends StatelessWidget {
                           ),
                           kHeight20,
                           Text(
-                            'Login',
+                            'Reset Password',
                             style: TextStyle(
                                 fontSize: 30,
                                 fontWeight: FontWeight.bold,
@@ -68,63 +66,19 @@ class LoginScreen extends StatelessWidget {
                 SizedBox(height: size.height * 0.05),
                 Column(
                   children: [
-                    AuthTextField(
-                        controller: emailController,
-                        label: 'Enter Your E-mail'),
+                    const Text(
+                        'Enter the E-mail associated with your account and we will send an email with instructions to reset your password.'),
                     kHeight20,
                     AuthTextField(
-                        controller: emailController,
-                        suffixIcon: const Icon(Icons.visibility_off),
-                        label: 'Enter Your Password'),
-                    kHeight10,
-                    InkWell(
-                      child: const Align(
-                        alignment: Alignment.topRight,
-                        child: Text('Forget Password?'),
-                      ),
-                      onTap: () {
-                        Get.to(ForgotPassScreen());
-                      },
+                      controller: emailController,
+                      label: 'Enter Your E-mail',
                     ),
                   ],
                 ),
                 kHeight20,
-                const AuthElevatedButton(label: 'Sign In'),
-                kHeight20,
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    InkWell(
-                      child: const CircleAvatar(
-                        radius: 20,
-                        backgroundImage: AssetImage('assets/logo/GOOGLE.png'),
-                        backgroundColor: kWhitecolor,
-                      ),
-                      onTap: () {},
-                    ),
-                    InkWell(
-                      child: const CircleAvatar(
-                        radius: 20,
-                        backgroundImage: AssetImage('assets/logo/Facebook.png'),
-                        backgroundColor: kWhitecolor,
-                      ),
-                      onTap: () {},
-                    ),
-                  ],
-                ),
-                kHeight10,
-                const Text('Or'),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Text("Don't have an account yet?"),
-                    TextButton(
-                      onPressed: () {
-                        Get.to(RegisterScreen());
-                      },
-                      child: const Text('Sign up'),
-                    ),
-                  ],
+                AuthElevatedButton(
+                  label: 'Continue',
+                  onPressed: () => Get.to(ResetPasswordScreen()),
                 ),
               ],
             ),
