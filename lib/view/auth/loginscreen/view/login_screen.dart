@@ -3,9 +3,9 @@ import 'package:get/get.dart';
 import 'package:scotch/core/const.dart';
 import 'package:scotch/view/auth/forgotpasswordscreen/view/forgot_pass_screen.dart';
 import 'package:scotch/view/auth/registerscreen/view/register_screen.dart';
-import 'package:scotch/view/widgets/auth_elev_button.dart';
-import 'package:scotch/view/widgets/auth_textfields.dart';
-import 'package:scotch/view/widgets/wave.dart';
+import 'package:scotch/view/auth/widgets/auth_elev_button.dart';
+import 'package:scotch/view/auth/widgets/auth_textfields.dart';
+import 'package:scotch/view/auth/widgets/wave.dart';
 
 class LoginScreen extends StatelessWidget {
   LoginScreen({super.key});

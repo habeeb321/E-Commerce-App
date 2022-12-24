@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:scotch/core/const.dart';
-import 'package:scotch/view/widgets/auth_elev_button.dart';
-import 'package:scotch/view/widgets/auth_textfields.dart';
-import 'package:scotch/view/widgets/wave.dart';
+import 'package:scotch/view/auth/widgets/auth_elev_button.dart';
+import 'package:scotch/view/auth/widgets/auth_textfields.dart';
+import 'package:scotch/view/auth/widgets/wave.dart';
 
 class ResetPasswordScreen extends StatelessWidget {
   ResetPasswordScreen({super.key});
