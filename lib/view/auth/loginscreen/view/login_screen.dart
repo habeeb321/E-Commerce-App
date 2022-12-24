@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:scotch/core/const.dart';
 import 'package:scotch/view/auth/forgotpasswordscreen/view/forgot_pass_screen.dart';
+import 'package:scotch/view/auth/loginscreen/controller/login_controller.dart';
 import 'package:scotch/view/auth/registerscreen/view/register_screen.dart';
 import 'package:scotch/view/auth/widgets/auth_elev_button.dart';
 import 'package:scotch/view/auth/widgets/auth_textfields.dart';
@@ -10,8 +11,7 @@ import 'package:scotch/view/auth/widgets/wave.dart';
 class LoginScreen extends StatelessWidget {
   LoginScreen({super.key});
 
-  TextEditingController emailController = TextEditingController();
-  TextEditingController passController = TextEditingController();
+  LoginController loginController = Get.put(LoginController());
 
   @override
   Widget build(BuildContext context) {
@@ -68,14 +68,18 @@ class LoginScreen extends StatelessWidget {
                 SizedBox(height: size.height * 0.05),
                 Column(
                   children: [
-                    AuthTextField(
-                        controller: emailController,
-                        label: 'Enter Your E-mail'),
+                    GetBuilder<LoginController>(builder: (controller) {
+                      return AuthTextField(
+                          controller: loginController.emailController,
+                          label: 'Enter Your E-mail');
+                    }),
                     kHeight20,
-                    AuthTextField(
-                        controller: emailController,
-                        suffixIcon: const Icon(Icons.visibility_off),
-                        label: 'Enter Your Password'),
+                    GetBuilder<LoginController>(builder: (controller) {
+                      return AuthTextField(
+                          controller: loginController.passController,
+                          suffixIcon: const Icon(Icons.visibility_off),
+                          label: 'Enter Your Password');
+                    }),
                     kHeight10,
                     InkWell(
                       child: const Align(
@@ -89,7 +93,14 @@ class LoginScreen extends StatelessWidget {
                   ],
                 ),
                 kHeight20,
-                const AuthElevatedButton(label: 'Sign In'),
+                GetBuilder<LoginController>(builder: (controller) {
+                  return AuthElevatedButton(
+                    label: 'Sign In',
+                    onPressed: () {
+                      loginController.logIn(context);
+                    },
+                  );
+                }),
                 kHeight20,
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
