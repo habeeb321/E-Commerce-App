@@ -6,22 +6,27 @@ class AuthTextField extends StatelessWidget {
     Key? key,
     required this.controller,
     required this.label,
-    this.suffixIcon,
     this.inputType,
+    this.obscureText,
+    this.validator,
+    this.suffix,
   }) : super(key: key);
 
   final TextEditingController controller;
   final String label;
-  final Icon? suffixIcon;
   final TextInputType? inputType;
+  final bool? obscureText;
+  final String? Function(String?)? validator;
+  final Widget? suffix;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       controller: controller,
       keyboardType: inputType,
+      obscureText: obscureText ?? false,
       decoration: InputDecoration(
-        suffixIcon: suffixIcon,
+        suffixIcon: suffix,
         labelStyle: const TextStyle(color: themeColor),
         focusedBorder: OutlineInputBorder(
           borderSide: const BorderSide(color: themeColor),

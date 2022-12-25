@@ -3,7 +3,8 @@ import 'package:get/get.dart';
 import 'package:scotch/core/const.dart';
 import 'package:scotch/view/auth/forgotpasswordscreen/view/forgot_pass_screen.dart';
 import 'package:scotch/view/auth/loginscreen/controller/login_controller.dart';
-import 'package:scotch/view/auth/registerscreen/view/register_screen.dart';
+import 'package:scotch/view/auth/registerscreen/controller/signup_controller.dart';
+import 'package:scotch/view/auth/registerscreen/view/signup_screen.dart';
 import 'package:scotch/view/auth/widgets/auth_elev_button.dart';
 import 'package:scotch/view/auth/widgets/auth_textfields.dart';
 import 'package:scotch/view/auth/widgets/wave.dart';
@@ -12,6 +13,7 @@ class LoginScreen extends StatelessWidget {
   LoginScreen({super.key});
 
   LoginController loginController = Get.put(LoginController());
+  SignUpController signUpController = Get.put(SignUpController());
 
   @override
   Widget build(BuildContext context) {
@@ -77,7 +79,9 @@ class LoginScreen extends StatelessWidget {
                     GetBuilder<LoginController>(builder: (controller) {
                       return AuthTextField(
                           controller: loginController.passController,
-                          suffixIcon: const Icon(Icons.visibility_off),
+                          suffix: IconButton(
+                              onPressed: () => signUpController.visibility(),
+                              icon: signUpController.icon),
                           label: 'Enter Your Password');
                     }),
                     kHeight10,
@@ -131,7 +135,7 @@ class LoginScreen extends StatelessWidget {
                     const Text("Don't have an account yet?"),
                     TextButton(
                       onPressed: () {
-                        Get.to(RegisterScreen());
+                        Get.to(SignUpScreen());
                       },
                       child: const Text('Sign up'),
                     ),
