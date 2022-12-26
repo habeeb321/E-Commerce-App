@@ -1,6 +1,5 @@
 import 'dart:developer';
 import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
 import 'package:scotch/core/const.dart';
@@ -40,11 +39,7 @@ class OtpVerifyController extends GetxController {
               if (value != null) {
                 storage.write(key: 'token', value: value.accessToken);
                 storage.write(key: 'refreshToken', value: value.refreshToken);
-                Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(
-                  builder: (context) {
-                    return const HomeScreen();
-                  },
-                ), (route) => false);
+                Get.offAll(const HomeScreen());
                 isLoading = false;
                 update();
               }

@@ -5,4 +5,5 @@ class ApiEndPoints {
   static String verifyOtp = 'api/v1/auth/otp';
   static String google = 'api/v1/auth/google';
   static String forgotPassword = 'api/v1/auth/password';
+  static String refreshToken = 'api/v1/auth/refresh';
 }

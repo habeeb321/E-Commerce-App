@@ -29,8 +29,8 @@ class SignUpController extends GetxController {
 
     SendOtpServices().sendOtp(model.email, context).then((value) {
       if (value != null) {
-        Get.to(OtpVerifyScreen(model: model));
-        disposeTextfield();
+        Get.to(() => OtpVerifyScreen(model: model));
+        // disposeTextfield();
       } else {
         return;
       }
@@ -49,7 +49,7 @@ class SignUpController extends GetxController {
 
   String? nameValidation(String? value) {
     if (value == null || value.isEmpty) {
-      return 'Please enter the username';
+      return 'Please enter the fullname';
     } else {
       return null;
     }

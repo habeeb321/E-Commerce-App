@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:scotch/core/const.dart';
-import 'package:scotch/view/auth/registerscreen/controller/signup_controller.dart';
+import 'package:scotch/view/auth/signupscreen/controller/signup_controller.dart';
 import 'package:scotch/view/auth/widgets/auth_elev_button.dart';
 import 'package:scotch/view/auth/widgets/auth_textfields.dart';
 import 'package:scotch/view/auth/widgets/wave.dart';

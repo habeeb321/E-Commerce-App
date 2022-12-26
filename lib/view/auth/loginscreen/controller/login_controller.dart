@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:scotch/core/const.dart';
 import 'package:scotch/model/model/loginmodel/login_model.dart';
 import 'package:scotch/model/services/loginservice/login_service.dart';
 import 'package:scotch/view/screens/home_screen.dart';
@@ -24,11 +25,7 @@ class LoginController extends GetxController {
         if (value != null) {
           storage.write(key: 'token', value: value.accessToken);
           storage.write(key: 'refreshToken', value: value.refreshToken);
-          Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(
-            builder: (context) {
-              return const HomeScreen();
-            },
-          ), (route) => false);
+          Get.offAll(const HomeScreen());
           disposeTextfield();
         } else {
           return;
@@ -39,8 +36,55 @@ class LoginController extends GetxController {
     update();
   }
 
+  bool obscureText = true;
+  Icon icon = const Icon(
+    Icons.visibility_off,
+    color: kBlackcolor,
+  );
+
+  void visibility() {
+    if (obscureText == false) {
+      icon = const Icon(
+        Icons.visibility_off,
+        color: kBlackcolor,
+      );
+      obscureText = true;
+      update();
+    } else {
+      icon = const Icon(
+        Icons.visibility,
+        color: kBlackcolor,
+      );
+      obscureText = false;
+      update();
+    }
+  }
+
   void disposeTextfield() {
     emailController.clear();
     passController.clear();
+  }
+
+  String? emailValdation(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'Please enter your email';
+    } else if (!RegExp(
+            r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$')
+        .hasMatch(value)) {
+      return 'Invalid email , please enter correct email';
+    } else {
+      return null;
+    }
+  }
+
+  String? passwordValdation(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'Please enter your password';
+    } else if (value.length < 8) {
+      return 'Password must have atleast 8 character';
+    } else if (value.length > 8) {
+      return 'Password exceeds 8 character';
+    }
+    return null;
   }
 }

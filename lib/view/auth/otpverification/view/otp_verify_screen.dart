@@ -1,12 +1,10 @@
-import 'dart:developer';
 import 'package:flutter/material.dart';
+import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:get/get.dart';
 import 'package:scotch/core/const.dart';
-import 'package:otp_text_field/otp_field.dart';
-import 'package:otp_text_field/style.dart';
 import 'package:scotch/model/model/signupmodel/signup_model.dart';
 import 'package:scotch/view/auth/otpverification/controller/otp_verify_controller.dart';
-import 'package:scotch/view/auth/registerscreen/controller/signup_controller.dart';
+import 'package:scotch/view/auth/signupscreen/controller/signup_controller.dart';
 import 'package:scotch/view/auth/widgets/auth_elev_button.dart';
 import 'package:scotch/view/auth/widgets/wave.dart';
 
@@ -79,29 +77,35 @@ class OtpVerifyScreen extends StatelessWidget {
                           TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                     ),
                     kHeight20,
-                    OTPTextField(
-                      length: 4,
-                      width: MediaQuery.of(context).size.width,
-                      fieldWidth: 50,
-                      style: const TextStyle(fontSize: 17),
-                      textFieldAlignment: MainAxisAlignment.spaceAround,
-                      fieldStyle: FieldStyle.box,
-                      onCompleted: (pin) {
-                        log("Completed: $pin");
+                    GetBuilder<OtpVerifyController>(
+                      builder: (controller) {
+                        return OtpTextField(
+                          textStyle: const TextStyle(color: Colors.black),
+                          numberOfFields: 4,
+                          borderColor: kBlackcolor,
+                          enabledBorderColor: kBlackcolor,
+                          borderRadius: BorderRadius.circular(12),
+                          showFieldAsBox: true,
+                          onSubmit: (String verificationCode) {
+                            otpVerifyController.onSubmitCode(verificationCode);
+                          },
+                        );
                       },
                     ),
                   ],
                 ),
                 kHeight20,
-                GetBuilder<OtpVerifyController>(builder: (controller) {
-                  return AuthElevatedButton(
-                    label: 'Verify',
-                    onPressed: () {
-                      otpVerifyController.submitOtp(
-                          model, otpVerifyController.code, context);
-                    },
-                  );
-                }),
+                GetBuilder<OtpVerifyController>(
+                  builder: (controller) {
+                    return AuthElevatedButton(
+                      label: 'Verify',
+                      onPressed: () {
+                        otpVerifyController.submitOtp(
+                            model, otpVerifyController.code, context);
+                      },
+                    );
+                  },
+                ),
               ],
             ),
           ),
