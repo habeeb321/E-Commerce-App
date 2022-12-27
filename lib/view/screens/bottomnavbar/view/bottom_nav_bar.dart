@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:scotch/core/const.dart';
 import 'package:scotch/view/screens/account/account_screen.dart';
 import 'package:scotch/view/screens/bottomnavbar/controller/bottom_nav_controller.dart';
 import 'package:scotch/view/screens/categoryscreen/category_screen.dart';
@@ -29,27 +31,44 @@ class BottomNavBar extends StatelessWidget {
       ),
       bottomNavigationBar: GetBuilder<BottomNavController>(
         builder: (controller) {
-          return BottomNavigationBar(
-            items: const [
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.home, size: 25), label: 'Home'),
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.category, size: 25), label: 'Category'),
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.shopping_cart, size: 25), label: 'Order'),
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.person, size: 25), label: 'Account'),
-            ],
-            backgroundColor: const Color.fromARGB(255, 76, 104, 244),
-            selectedItemColor: Colors.white,
-            unselectedItemColor: Colors.white70,
-            showUnselectedLabels: true,
-            type: BottomNavigationBarType.fixed,
-            currentIndex: currentIndex,
-            onTap: (index) {
-              currentIndex = index;
-              bottomNavController.currentIndex = index;
-            },
+          return Container(
+            decoration: const BoxDecoration(
+                color: themeColor,
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(15),
+                    topRight: Radius.circular(15))),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+              child: GNav(
+                tabs: const [
+                  GButton(
+                      icon: Icons.home_outlined, iconSize: 30, text: 'Home'),
+                  GButton(
+                      icon: Icons.category_outlined,
+                      iconSize: 30,
+                      text: 'Category'),
+                  GButton(
+                      icon: Icons.shopping_cart_outlined,
+                      iconSize: 30,
+                      text: 'Order'),
+                  GButton(
+                      icon: Icons.person_outline,
+                      iconSize: 30,
+                      text: 'Account'),
+                ],
+                backgroundColor: themeColor,
+                color: kWhitecolor,
+                activeColor: kWhitecolor,
+                tabBackgroundColor: Colors.purpleAccent,
+                padding: const EdgeInsets.all(8),
+                curve: Curves.bounceIn,
+                selectedIndex: currentIndex,
+                onTabChange: (index) {
+                  currentIndex = index;
+                  bottomNavController.currentIndex = index;
+                },
+              ),
+            ),
           );
         },
       ),
