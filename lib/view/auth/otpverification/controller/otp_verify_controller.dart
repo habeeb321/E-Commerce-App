@@ -6,7 +6,7 @@ import 'package:scotch/core/const.dart';
 import 'package:scotch/view/auth/signupscreen/model/signupmodel/signup_model.dart';
 import 'package:scotch/view/auth/otpverification/service/otpservice/verify_otp_service.dart';
 import 'package:scotch/view/auth/signupscreen/service/signupservice/signup_service.dart';
-import 'package:scotch/view/screens/home_screen.dart';
+import 'package:scotch/view/screens/bottomnavbar/view/bottom_nav_bar.dart';
 
 class OtpVerifyController extends GetxController {
   VerifyOtpService verifyOtpService = VerifyOtpService();
@@ -39,7 +39,7 @@ class OtpVerifyController extends GetxController {
               if (value != null) {
                 storage.write(key: 'token', value: value.accessToken);
                 storage.write(key: 'refreshToken', value: value.refreshToken);
-                Get.offAll(const HomeScreen());
+                Get.offAll(BottomNavBar());
                 isLoading = false;
                 update();
               }
