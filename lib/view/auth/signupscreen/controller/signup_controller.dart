@@ -30,7 +30,7 @@ class SignUpController extends GetxController {
     SendOtpServices().sendOtp(model.email, context).then((value) {
       if (value != null) {
         Get.to(() => OtpVerifyScreen(model: model));
-        // disposeTextfield();
+        disposeTextfield();
       } else {
         return;
       }
