@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:scotch/core/const.dart';
@@ -100,7 +102,7 @@ class LoginScreen extends StatelessWidget {
                           child: Text('Forget Password?'),
                         ),
                         onTap: () {
-                          Get.to(ForgotPassScreen());
+                          Get.to(() => ForgotPassScreen());
                         },
                       ),
                     ],
@@ -112,6 +114,7 @@ class LoginScreen extends StatelessWidget {
                         label: 'Sign In',
                         onPressed: () {
                           if (formGlobalKey.currentState!.validate()) {
+                            log('login');
                             formGlobalKey.currentState!.save();
                             loginController.logIn(context);
                           }
@@ -150,7 +153,7 @@ class LoginScreen extends StatelessWidget {
                       const Text("Don't have an account yet?"),
                       TextButton(
                         onPressed: () {
-                          Get.to(SignUpScreen());
+                          Get.to(() => SignUpScreen());
                         },
                         child: const Text('Sign up'),
                       ),

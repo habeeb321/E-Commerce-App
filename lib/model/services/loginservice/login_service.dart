@@ -10,16 +10,15 @@ import 'package:scotch/model/util/dio_exception.dart';
 
 class LoginService {
   Dio dio = Dio();
-
+  LoginModel? loginModel;
   Future<LoginTokenModel?> loginUser(
       LoginModel value, BuildContext context) async {
-    LoginModel? loginModel;
     try {
       Response response = await dio.post(
           ApiBaseUrl().baseUrl + ApiEndPoints.logIn,
           data: jsonEncode(value.toJson()));
 
-      if (response.data == 200 || response.data == 201) {
+      if (response.statusCode == 200 || response.statusCode == 201) {
         final loginModel = LoginTokenModel.fromJson(response.data);
         log(response.data.toString());
         return loginModel;
