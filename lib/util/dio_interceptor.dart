@@ -1,9 +1,9 @@
 import 'dart:developer';
 import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:scotch/model/api/api_baseurl.dart';
-import 'package:scotch/model/api/api_endpoints.dart';
-import 'package:scotch/model/util/dio_exception.dart';
+import 'package:scotch/core/api/api_baseurl.dart';
+import 'package:scotch/core/api/api_endpoints.dart';
+import 'package:scotch/util/dio_exception.dart';
 
 class ApiInterceptor {
   FlutterSecureStorage storage = const FlutterSecureStorage();

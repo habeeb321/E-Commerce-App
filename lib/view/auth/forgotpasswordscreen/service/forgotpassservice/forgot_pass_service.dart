@@ -2,13 +2,13 @@ import 'dart:convert';
 import 'dart:developer';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:scotch/model/api/api_baseurl.dart';
-import 'package:scotch/model/api/api_endpoints.dart';
-import 'package:scotch/model/model/signupmodel/signup_model.dart';
-import 'package:scotch/model/model/signupmodel/signup_token.dart';
-import 'package:scotch/model/util/dio_exception.dart';
+import 'package:scotch/core/api/api_baseurl.dart';
+import 'package:scotch/core/api/api_endpoints.dart';
+import 'package:scotch/view/auth/signupscreen/model/signupmodel/signup_model.dart';
+import 'package:scotch/view/auth/signupscreen/model/signupmodel/signup_token.dart';
+import 'package:scotch/util/dio_exception.dart';
 
-class SignupServices {
+class ForgotPassOtpService {
   Dio dio = Dio();
 
   Future<SignUpTokenModel?> signupUser(

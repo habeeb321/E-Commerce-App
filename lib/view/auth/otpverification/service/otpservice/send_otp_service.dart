@@ -1,8 +1,8 @@
 import 'dart:developer';
 import 'package:dio/dio.dart';
-import 'package:scotch/model/api/api_baseurl.dart';
-import 'package:scotch/model/api/api_endpoints.dart';
-import 'package:scotch/model/util/dio_exception.dart';
+import 'package:scotch/core/api/api_baseurl.dart';
+import 'package:scotch/core/api/api_endpoints.dart';
+import 'package:scotch/util/dio_exception.dart';
 
 class SendOtpServices {
   Dio dio = Dio();

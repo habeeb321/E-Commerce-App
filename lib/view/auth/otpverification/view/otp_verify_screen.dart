@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:get/get.dart';
 import 'package:scotch/core/const.dart';
-import 'package:scotch/model/model/signupmodel/signup_model.dart';
+import 'package:scotch/view/auth/signupscreen/model/signupmodel/signup_model.dart';
 import 'package:scotch/view/auth/otpverification/controller/otp_verify_controller.dart';
 import 'package:scotch/view/auth/signupscreen/controller/signup_controller.dart';
 import 'package:scotch/view/auth/widgets/auth_elev_button.dart';

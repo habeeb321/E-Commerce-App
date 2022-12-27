@@ -2,11 +2,11 @@ import 'dart:convert';
 import 'dart:developer';
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:scotch/model/api/api_baseurl.dart';
-import 'package:scotch/model/api/api_endpoints.dart';
-import 'package:scotch/model/model/loginmodel/login_model.dart';
-import 'package:scotch/model/model/loginmodel/login_token.dart';
-import 'package:scotch/model/util/dio_exception.dart';
+import 'package:scotch/core/api/api_baseurl.dart';
+import 'package:scotch/core/api/api_endpoints.dart';
+import 'package:scotch/view/auth/loginscreen/model/loginmodel/login_model.dart';
+import 'package:scotch/view/auth/loginscreen/model/loginmodel/login_token.dart';
+import 'package:scotch/util/dio_exception.dart';
 
 class LoginService {
   Dio dio = Dio();

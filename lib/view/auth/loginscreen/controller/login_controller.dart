@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:scotch/core/const.dart';
-import 'package:scotch/model/model/loginmodel/login_model.dart';
-import 'package:scotch/model/services/loginservice/login_service.dart';
+import 'package:scotch/view/auth/loginscreen/model/loginmodel/login_model.dart';
+import 'package:scotch/view/auth/loginscreen/service/loginservice/login_service.dart';
 import 'package:scotch/view/screens/home_screen.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 

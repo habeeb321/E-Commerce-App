@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
 import 'package:scotch/core/const.dart';
-import 'package:scotch/model/model/signupmodel/signup_model.dart';
-import 'package:scotch/model/services/otpservice/send_otp_service.dart';
-import 'package:scotch/model/services/signupservice/signup_service.dart';
+import 'package:scotch/view/auth/signupscreen/model/signupmodel/signup_model.dart';
+import 'package:scotch/view/auth/otpverification/service/otpservice/send_otp_service.dart';
+import 'package:scotch/view/auth/signupscreen/service/signupservice/signup_service.dart';
 import 'package:scotch/view/auth/otpverification/view/otp_verify_screen.dart';
 
 class SignUpController extends GetxController {
