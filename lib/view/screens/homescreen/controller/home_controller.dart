@@ -1,7 +1,8 @@
 import 'package:get/get.dart';
 
-class CarouselHomeController extends GetxController {
+class HomeController extends GetxController {
   int activeIndex = 0;
+  bool isLoading = false;
 
   void smoothIndicator(index) {
     activeIndex = index;
