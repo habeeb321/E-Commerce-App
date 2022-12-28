@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:scotch/core/const.dart';
 
 class AllImageGridviewContainer extends StatelessWidget {
   AllImageGridviewContainer({Key? key}) : super(key: key);
@@ -12,6 +13,15 @@ class AllImageGridviewContainer extends StatelessWidget {
     'https://img2.junaroad.com/stories/story_p_63870c45adb8b82d0eece6da-1671739758.jpeg',
   ];
 
+  List<String> names = [
+    'Womens fashion',
+    'Christmas outfits',
+    'Iphone 14 pro',
+    'Accessories',
+    'Shoes',
+    'Mens fashion',
+  ];
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -23,18 +33,33 @@ class AllImageGridviewContainer extends StatelessWidget {
         crossAxisCount: 2,
         mainAxisSpacing: 10,
         crossAxisSpacing: 10,
-        childAspectRatio: 5 / 5,
+        childAspectRatio: 5.1 / 6,
       ),
       itemBuilder: (context, index) {
-        return Container(
-          height: size.height * 0.5,
-          width: size.width * 0.2,
-          decoration: BoxDecoration(
-            color: Colors.black.withOpacity(0.5),
-            borderRadius: BorderRadius.circular(10),
-            image: DecorationImage(
-                image: NetworkImage(items[index]), fit: BoxFit.cover),
-          ),
+        return Column(
+          children: [
+            Container(
+              height: size.height * 0.2,
+              width: size.width * 0.4,
+              decoration: BoxDecoration(
+                color: Colors.black.withOpacity(0.5),
+                borderRadius: BorderRadius.circular(10),
+                image: DecorationImage(
+                    image: NetworkImage(items[index]), fit: BoxFit.cover),
+              ),
+            ),
+            SizedBox(
+              height: 40,
+              width: size.width * 0.4,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(names[index]),
+                  Text('₹${index * 5000 + index + 200}', style: textStyle),
+                ],
+              ),
+            ),
+          ],
         );
       },
       itemCount: items.length,

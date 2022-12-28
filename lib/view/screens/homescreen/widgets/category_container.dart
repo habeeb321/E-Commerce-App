@@ -12,6 +12,15 @@ class CategoryContainer extends StatelessWidget {
     'https://img1.junaroad.com//assets/images/mobileNotif/img-1658918101342.jpg?crsl_pos=0',
   ];
 
+  List<String> names = [
+    'Gents',
+    'T-shirt',
+    'Coat',
+    'Womens',
+    'Shoes',
+    'Shirt',
+  ];
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -36,6 +45,11 @@ class CategoryContainer extends StatelessWidget {
                             fit: BoxFit.cover),
                       ),
                     ),
+                  ),
+                  Row(
+                    children: [
+                      Text(names[index]),
+                    ],
                   ),
                 ],
               ),
