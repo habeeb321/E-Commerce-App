@@ -5,7 +5,7 @@ import 'package:scotch/core/const.dart';
 import 'package:scotch/view/screens/account/account_screen.dart';
 import 'package:scotch/view/screens/bottomnavbar/controller/bottom_nav_controller.dart';
 import 'package:scotch/view/screens/categoryscreen/category_screen.dart';
-import 'package:scotch/view/screens/homescreen/home_screen.dart';
+import 'package:scotch/view/screens/homescreen/view/home_screen.dart';
 import 'package:scotch/view/screens/orderscreen/order_screen.dart';
 
 class BottomNavBar extends StatelessWidget {
@@ -15,7 +15,7 @@ class BottomNavBar extends StatelessWidget {
   int currentIndex = 0;
 
   List pages = [
-    const HomeScreen(),
+    HomeScreen(),
     const CategoryScreen(),
     const OrderScreen(),
     const AccountScreen(),
