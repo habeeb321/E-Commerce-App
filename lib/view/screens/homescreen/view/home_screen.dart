@@ -36,6 +36,7 @@ class HomeScreen extends StatelessWidget {
             const Text('Categories', style: textStyle),
             kHeight10,
             CategoryContainer(),
+            kHeight10,
             const Text('Newly Launched', style: textStyle),
             kHeight10,
             NewlyGridviewContainer(),

@@ -31,6 +31,7 @@ class CategoryContainer extends StatelessWidget {
           return Row(
             children: [
               Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   InkWell(
                     onTap: () {},
