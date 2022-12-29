@@ -32,18 +32,11 @@ class ScotchGetStarted extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           const Text(
             'Scotch',
             style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
-          ),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 10),
-            child: Text(
-              'An E-commerce application used to buying and selling of goods and services, or the transmitting of funds or data.',
-              style: TextStyle(fontSize: 17),
-            ),
           ),
           InkWell(
             child: Container(
@@ -53,21 +46,21 @@ class ScotchGetStarted extends StatelessWidget {
                 color: themeColor,
                 borderRadius: BorderRadius.circular(30),
               ),
-              child: Padding(
-                padding: const EdgeInsets.only(left: 20),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: const [
-                    Text(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: const [
+                  Padding(
+                    padding: EdgeInsets.only(left: 15),
+                    child: Text(
                       'Get started for free',
                       style: TextStyle(color: kWhitecolor),
                     ),
-                    Icon(
-                      Icons.keyboard_arrow_right,
-                      color: kWhitecolor,
-                    )
-                  ],
-                ),
+                  ),
+                  Icon(
+                    Icons.keyboard_arrow_right,
+                    color: kWhitecolor,
+                  )
+                ],
               ),
             ),
             onTap: () => Get.to(LoginScreen()),
