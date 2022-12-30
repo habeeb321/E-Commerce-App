@@ -2,7 +2,7 @@ import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:scotch/core/const.dart';
-import 'package:scotch/view/auth/splashscreen/view/splash_screen.dart';
+import 'package:scotch/view/auth/splash_screen/view/splash_screen.dart';
 
 void main() {
   runApp(DevicePreview(
