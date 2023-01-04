@@ -10,6 +10,11 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback(
+      ((timeStamp) {
+        splashController.splashTimer(context);
+      }),
+    );
     return const Scaffold(
       body: Center(
         child: CircleAvatar(

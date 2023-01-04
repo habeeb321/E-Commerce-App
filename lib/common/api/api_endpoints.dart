@@ -6,4 +6,8 @@ class ApiEndPoints {
   static String google = 'api/v1/auth/google';
   static String forgotPassword = 'api/v1/auth/password';
   static String refreshToken = 'api/v1/auth/refresh';
+
+  // Home page end points
+  static String category = 'api/v1/category';
+  static String product = '/api/v1/products';
 }

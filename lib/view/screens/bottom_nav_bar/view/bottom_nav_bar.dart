@@ -15,7 +15,7 @@ class BottomNavBar extends StatelessWidget {
   int currentIndex = 0;
 
   List pages = [
-    HomeScreen(),
+    const HomeScreen(),
     const CategoryScreen(),
     const OrderScreen(),
     const AccountScreen(),
@@ -38,7 +38,7 @@ class BottomNavBar extends StatelessWidget {
                     topLeft: Radius.circular(15),
                     topRight: Radius.circular(15))),
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 11),
               child: GNav(
                 tabs: const [
                   GButton(

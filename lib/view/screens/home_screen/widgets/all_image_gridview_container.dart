@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:scotch/core/const.dart';
+import 'package:scotch/view/screens/home_screen/controller/home_controller.dart';
 
 class AllImageGridviewContainer extends StatelessWidget {
   AllImageGridviewContainer({Key? key}) : super(key: key);
@@ -24,6 +26,8 @@ class AllImageGridviewContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    HomeController homeController = Get.put(HomeController(context));
+
     Size size = MediaQuery.of(context).size;
     return GridView.builder(
       padding: EdgeInsets.zero,
@@ -45,7 +49,9 @@ class AllImageGridviewContainer extends StatelessWidget {
                 color: Colors.black.withOpacity(0.5),
                 borderRadius: BorderRadius.circular(10),
                 image: DecorationImage(
-                    image: NetworkImage(items[index]), fit: BoxFit.cover),
+                    image: NetworkImage(
+                        'http://172.16.6.168:5000/uploads/products/${homeController.productList[index].image[0]}'),
+                    fit: BoxFit.cover),
               ),
             ),
             SizedBox(
@@ -62,7 +68,7 @@ class AllImageGridviewContainer extends StatelessWidget {
           ],
         );
       },
-      itemCount: items.length,
+      itemCount: homeController.productList.length,
     );
   }
 }

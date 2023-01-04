@@ -8,8 +8,6 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 class Carousel extends StatelessWidget {
   Carousel({Key? key}) : super(key: key);
 
-  HomeController homeController = Get.put(HomeController());
-
   List<String> items = [
     'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROEy6HFi9g3cF8EttxQpGM0juTIVLAhhxAbQ&usqp=CAU',
     'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2ueq9b3-C9p-BzUtfeaE5MCsrwSG1R751zQ&usqp=CAU',
@@ -20,6 +18,8 @@ class Carousel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    HomeController homeController = Get.put(HomeController(context));
+
     Size size = MediaQuery.of(context).size;
     return GetBuilder<HomeController>(
       builder: (controller) {
