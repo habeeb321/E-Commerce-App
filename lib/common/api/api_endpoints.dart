@@ -9,5 +9,6 @@ class ApiEndPoints {
 
   // Home page end points
   static String category = 'api/v1/category';
-  static String product = '/api/v1/products';
+  static String product = 'api/v1/products';
+  static String carousal = 'api/v1/carousal';
 }

@@ -13,7 +13,9 @@ class ProductServices {
       final Response response =
           await dios.get(ApiBaseUrl().baseUrl + ApiEndPoints.product);
       if (response.statusCode == 200 || response.statusCode == 201) {
+        log(response.statusCode.toString());
         log(response.data.toString());
+        log('product');
         final List<ProductModel> productList = (response.data as List)
             .map((e) => ProductModel.fromJson(e))
             .toList();

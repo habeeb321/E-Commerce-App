@@ -1,9 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:scotch/core/const.dart';
-import 'package:scotch/view/screens/home_screen/widgets/all_image_gridview_container.dart';
+import 'package:scotch/view/screens/home_screen/widgets/newly_launched_container.dart';
 import 'package:scotch/view/screens/home_screen/widgets/category_container.dart';
-import 'package:scotch/view/screens/home_screen/widgets/newly_gridview_container.dart';
 import 'package:scotch/view/screens/home_screen/widgets/home_carousel.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -35,15 +34,11 @@ class HomeScreen extends StatelessWidget {
             kHeight10,
             const Text('Categories', style: textStyle),
             kHeight10,
-            CategoryContainer(),
+            const CategoryContainer(),
             kHeight10,
-            const Text('Newly Launched', style: textStyle),
+            const Text('Newly launched', style: textStyle),
             kHeight10,
-            NewlyGridviewContainer(),
-            kHeight10,
-            const Text('All items', style: textStyle),
-            kHeight10,
-            AllImageGridviewContainer(),
+            const NewlyLaunchedContainer(),
           ],
         ),
       ),
