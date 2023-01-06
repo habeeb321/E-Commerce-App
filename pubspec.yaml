@@ -41,6 +41,7 @@ dependencies:
   shimmer: ^2.0.0
   google_nav_bar: ^5.0.6
   smooth_page_indicator: ^1.0.0+2
+  flutter_rating_bar: ^4.0.1
 
 dev_dependencies:
   flutter_lints: ^2.0.0

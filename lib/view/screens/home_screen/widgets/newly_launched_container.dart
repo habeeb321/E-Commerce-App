@@ -9,7 +9,6 @@ class NewlyLaunchedContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     HomeController homeController = Get.put(HomeController(context));
-
     Size size = MediaQuery.of(context).size;
     return GetBuilder<HomeController>(builder: (controller) {
       return homeController.isLoading == true
@@ -25,32 +24,35 @@ class NewlyLaunchedContainer extends StatelessWidget {
                 childAspectRatio: 5.1 / 6,
               ),
               itemBuilder: (context, index) {
-                return Column(
-                  children: [
-                    Container(
-                      height: size.height * 0.2,
-                      width: size.width * 0.4,
-                      decoration: BoxDecoration(
-                        color: Colors.black.withOpacity(0.5),
-                        borderRadius: BorderRadius.circular(10),
-                        image: DecorationImage(
-                          image: NetworkImage(
-                              'http://172.16.6.168:5000/products/${homeController.productList[index].image[4]}'),
+                return InkWell(
+                  onTap: () => homeController.goToProdutScreen(index),
+                  child: Column(
+                    children: [
+                      Container(
+                        height: size.height * 0.2,
+                        width: size.width * 0.4,
+                        decoration: BoxDecoration(
+                          color: Colors.black.withOpacity(0.5),
+                          borderRadius: BorderRadius.circular(10),
+                          image: DecorationImage(
+                            image: NetworkImage(
+                                'http://172.16.6.168:5000/products/${homeController.productList[index].image[4]}'),
+                          ),
                         ),
                       ),
-                    ),
-                    SizedBox(
-                      height: 40,
-                      width: size.width * 0.4,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(homeController.productList[index].name),
-                          Text("₹${homeController.productList[index].price}"),
-                        ],
+                      SizedBox(
+                        height: 40,
+                        width: size.width * 0.4,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(homeController.productList[index].name),
+                            Text("₹${homeController.productList[index].price}"),
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 );
               },
               itemCount: homeController.productList.length,

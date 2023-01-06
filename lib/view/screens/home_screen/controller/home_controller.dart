@@ -7,6 +7,7 @@ import 'package:scotch/view/screens/home_screen/model/product_model.dart';
 import 'package:scotch/view/screens/home_screen/services/carosel_service.dart';
 import 'package:scotch/view/screens/home_screen/services/category_service.dart';
 import 'package:scotch/view/screens/home_screen/services/product_services.dart';
+import 'package:scotch/view/screens/product_screen/view/product_screen.dart';
 
 class HomeController extends GetxController {
   HomeController(context) {
@@ -83,5 +84,13 @@ class HomeController extends GetxController {
         return null;
       }
     });
+  }
+
+  ProductModel findById(String id) {
+    return productList.firstWhere((element) => element.id == id);
+  }
+
+  void goToProdutScreen(index) {
+    Get.toNamed(ProductScreen.routeName, arguments: productList[index].id);
   }
 }
