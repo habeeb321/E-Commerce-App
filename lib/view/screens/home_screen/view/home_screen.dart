@@ -22,8 +22,8 @@ class HomeScreen extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: ListView(
-          children: [
-            const SizedBox(
+          children: const [
+            SizedBox(
               height: 45,
               child: CupertinoSearchTextField(
                 prefixInsets: EdgeInsetsDirectional.fromSTEB(7, 3, 5, 2),
@@ -32,13 +32,13 @@ class HomeScreen extends StatelessWidget {
             kHeight10,
             Carousel(),
             kHeight10,
-            const Text('Categories', style: textStyle),
+            Text('Categories', style: textStyle),
             kHeight10,
-            const CategoryContainer(),
+            CategoryContainer(),
             kHeight10,
-            const Text('Newly launched', style: textStyle),
+            Text('Newly launched', style: textStyle),
             kHeight10,
-            const NewlyLaunchedContainer(),
+            NewlyLaunchedContainer(),
           ],
         ),
       ),

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:scotch/core/const.dart';
 import 'package:scotch/view/screens/home_screen/controller/home_controller.dart';
+import 'package:scotch/view/screens/home_screen/widgets/shimmer_carousel.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class Carousel extends StatelessWidget {
@@ -20,11 +21,7 @@ class Carousel extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               child: homeController.isLoading == true
-                  ? const Center(
-                      child: CircularProgressIndicator(
-                        strokeWidth: 2,
-                      ),
-                    )
+                  ? const CarouselShimmer()
                   : CarouselSlider.builder(
                       options: CarouselOptions(
                         height: size.height * 0.25,

@@ -38,6 +38,7 @@ dependencies:
   flutter_otp_text_field: ^1.1.1
   flutter_secure_storage: ^7.0.1
   get: ^4.6.5
+  shimmer: ^2.0.0
   google_nav_bar: ^5.0.6
   smooth_page_indicator: ^1.0.0+2
 
