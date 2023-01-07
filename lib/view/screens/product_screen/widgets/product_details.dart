@@ -24,9 +24,9 @@ class ProductDetailsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(20),
-      margin: const EdgeInsets.all(10),
+      padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
+        color: kWhitecolor,
         borderRadius: BorderRadius.circular(20),
       ),
       child: Column(
@@ -99,6 +99,95 @@ class ProductDetailsWidget extends StatelessWidget {
           ),
           kHeight10,
           divider,
+          kHeight10,
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Expanded(
+                child: InkWell(
+                  onTap: () {},
+                  child: Container(
+                    height: 50,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(5),
+                      gradient: LinearGradient(
+                        begin: const FractionalOffset(0, 0),
+                        end: const FractionalOffset(0.8, 0),
+                        stops: const [0, 1],
+                        tileMode: TileMode.clamp,
+                        colors: [
+                          Colors.lightBlue.shade900,
+                          Colors.lightBlue,
+                        ],
+                      ),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: const [
+                        Icon(
+                          Icons.shopping_cart_outlined,
+                          color: kWhitecolor,
+                          size: 25,
+                        ),
+                        Text(
+                          'Buy Now',
+                          style: TextStyle(
+                            color: kWhitecolor,
+                            fontFamily: "Manrope",
+                            fontWeight: FontWeight.bold,
+                            letterSpacing: 1,
+                            fontSize: 18,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              kWidth10,
+              Expanded(
+                child: InkWell(
+                  onTap: () {},
+                  child: Container(
+                    height: 50,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(5),
+                      gradient: LinearGradient(
+                        begin: const FractionalOffset(0, 0),
+                        end: const FractionalOffset(0.8, 0),
+                        stops: const [0, 1],
+                        tileMode: TileMode.clamp,
+                        colors: [
+                          Colors.lightBlue,
+                          Colors.lightBlue.shade900,
+                        ],
+                      ),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: const [
+                        Icon(
+                          Icons.shopping_bag_outlined,
+                          color: kWhitecolor,
+                          size: 25,
+                        ),
+                        Text(
+                          'Buy Now',
+                          style: TextStyle(
+                            color: kWhitecolor,
+                            fontFamily: "Manrope",
+                            fontWeight: FontWeight.bold,
+                            letterSpacing: 1,
+                            fontSize: 18,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ],
       ),
     );

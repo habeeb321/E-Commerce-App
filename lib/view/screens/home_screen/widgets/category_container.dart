@@ -12,7 +12,7 @@ class CategoryContainer extends StatelessWidget {
     HomeController homeController = Get.put(HomeController(context));
     Size size = MediaQuery.of(context).size;
     return GetBuilder<HomeController>(builder: (controller) {
-      return homeController.categoryList.isEmpty
+      return homeController.isLoading == true
           ? const CategoryShimmer()
           : Column(
               children: [

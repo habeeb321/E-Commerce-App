@@ -7,7 +7,7 @@ const kWidth20 = SizedBox(width: 20);
 
 const kWhitecolor = Colors.white;
 const kBlackcolor = Colors.black;
-const themeColor = Colors.purple;
+const themeColor = Colors.lightBlue;
 
 const divider = Divider(thickness: 2);
 

@@ -20,6 +20,7 @@ class ProductScreen extends StatelessWidget {
     final productId = ModalRoute.of(context)?.settings.arguments as String;
     final homeCtr = homeController.findById(productId);
     return Scaffold(
+      backgroundColor: Colors.grey.shade200,
       body: SafeArea(
         child: SingleChildScrollView(
           child: GetBuilder<ProductController>(
@@ -76,7 +77,6 @@ class ProductScreen extends StatelessWidget {
                       discountPrice: homeCtr.discountPrice,
                       offer: homeCtr.offer,
                     ),
-                    kHeight10,
                   ],
                 ),
               );
