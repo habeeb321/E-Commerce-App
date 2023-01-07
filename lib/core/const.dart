@@ -9,6 +9,9 @@ const kWhitecolor = Colors.white;
 const kBlackcolor = Colors.black;
 const themeColor = Colors.purple;
 
-const textStyle = TextStyle(fontWeight: FontWeight.bold, fontSize: 17);
+const divider = Divider(thickness: 2);
+
+const TextStyle textStyle =
+    TextStyle(fontWeight: FontWeight.bold, fontSize: 17);
 
 const logo = 'assets/logo/scotch.png';

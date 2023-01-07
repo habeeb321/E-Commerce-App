@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:scotch/core/const.dart';
 import 'package:scotch/view/screens/home_screen/controller/home_controller.dart';
 import 'package:scotch/view/screens/home_screen/widgets/shimmer_newly_launched.dart';
 
@@ -40,14 +41,21 @@ class NewlyLaunchedContainer extends StatelessWidget {
                           ),
                         ),
                       ),
+                      kHeight10,
                       SizedBox(
                         height: 40,
                         width: size.width * 0.4,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        child: Column(
                           children: [
-                            Text(homeController.productList[index].name),
-                            Text("₹${homeController.productList[index].price}"),
+                            Text(
+                              homeController.productList[index].name,
+                              style: const TextStyle(fontSize: 15),
+                            ),
+                            Text(
+                              "₹${homeController.productList[index].price}",
+                              style: const TextStyle(
+                                  fontSize: 19, fontWeight: FontWeight.bold),
+                            ),
                           ],
                         ),
                       ),

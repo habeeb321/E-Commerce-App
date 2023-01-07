@@ -32,6 +32,8 @@ class ProductDetailsWidget extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          divider,
+          kHeight10,
           Text(
             name,
             style: const TextStyle(
@@ -49,7 +51,7 @@ class ProductDetailsWidget extends StatelessWidget {
           kHeight10,
           Text(
             description,
-            style: const TextStyle(wordSpacing: 2),
+            style: const TextStyle(wordSpacing: 3),
           ),
           kHeight10,
           RichText(
@@ -95,6 +97,8 @@ class ProductDetailsWidget extends StatelessWidget {
               ),
             ],
           ),
+          kHeight10,
+          divider,
         ],
       ),
     );
