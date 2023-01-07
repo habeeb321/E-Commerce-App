@@ -23,7 +23,6 @@ class PreviewProductWidget extends StatelessWidget {
               height: 40,
               width: 50,
               decoration: BoxDecoration(
-                border: Border.all(),
                 borderRadius: BorderRadius.circular(10),
                 image: DecorationImage(
                   fit: BoxFit.contain,

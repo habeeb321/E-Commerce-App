@@ -8,17 +8,20 @@ class ProductModel {
   final List<String> image;
   final String category;
   final String rating;
+  final String description;
 
-  ProductModel(
-      {required this.id,
-      required this.name,
-      required this.price,
-      required this.discountPrice,
-      required this.offer,
-      required this.size,
-      required this.image,
-      required this.category,
-      required this.rating});
+  ProductModel({
+    required this.id,
+    required this.name,
+    required this.price,
+    required this.discountPrice,
+    required this.offer,
+    required this.size,
+    required this.image,
+    required this.category,
+    required this.rating,
+    required this.description,
+  });
 
   factory ProductModel.fromJson(Map<String, dynamic> json) {
     return ProductModel(
@@ -31,6 +34,7 @@ class ProductModel {
       image: List<String>.from(json["image"].map((x) => x)),
       category: json['category'],
       rating: json['rating'],
+      description: json['description'],
     );
   }
 }

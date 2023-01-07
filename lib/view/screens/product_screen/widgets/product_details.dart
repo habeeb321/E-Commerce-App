@@ -9,11 +9,17 @@ class ProductDetailsWidget extends StatelessWidget {
     required this.name,
     required this.price,
     required this.rating,
+    required this.description,
+    required this.discountPrice,
+    required this.offer,
   }) : super(key: key);
 
   final String name;
   final int price;
   final String rating;
+  final String description;
+  final dynamic discountPrice;
+  final int offer;
 
   @override
   Widget build(BuildContext context) {
@@ -35,6 +41,17 @@ class ProductDetailsWidget extends StatelessWidget {
               letterSpacing: 1.2,
             ),
           ),
+          kHeight10,
+          const Text(
+            'About This item',
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+          ),
+          kHeight10,
+          Text(
+            description,
+            style: const TextStyle(wordSpacing: 2),
+          ),
+          kHeight10,
           RichText(
             text: TextSpan(
               text: rating,
@@ -51,7 +68,7 @@ class ProductDetailsWidget extends StatelessWidget {
                     ignoreGestures: true,
                     itemBuilder: (context, _) => const Icon(
                       Icons.star,
-                      color: Colors.amber,
+                      color: Colors.orange,
                     ),
                     onRatingUpdate: (startRating) {
                       log(startRating.toString());
@@ -62,13 +79,21 @@ class ProductDetailsWidget extends StatelessWidget {
             ),
           ),
           kHeight10,
-          Text(
-            '₹${price.toString()}',
-            style: const TextStyle(
-              fontSize: 25,
-              color: Colors.red,
-              fontWeight: FontWeight.bold,
-            ),
+          Row(
+            children: [
+              Text(
+                '-${offer.toString()}%',
+                style: const TextStyle(color: Colors.red, fontSize: 20),
+              ),
+              kWidth10,
+              Text(
+                '₹${price.toString()}',
+                style: const TextStyle(
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ],
           ),
         ],
       ),

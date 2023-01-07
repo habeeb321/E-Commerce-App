@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 class ProductController extends GetxController {
@@ -10,7 +9,7 @@ class ProductController extends GetxController {
   }
 
   void goBackHome(context) {
-    Navigator.of(context).pop();
+    Get.back();
     activeIndex = 0;
     update();
   }
