@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:scotch/common/api/api_baseurl.dart';
 import 'package:scotch/core/const.dart';
 
 class PreviewProductWidget extends StatelessWidget {
@@ -27,7 +28,7 @@ class PreviewProductWidget extends StatelessWidget {
                 image: DecorationImage(
                   fit: BoxFit.contain,
                   image: NetworkImage(
-                    'http://172.16.6.168:5000/products/${image[index]}',
+                    'http://${ApiBaseUrl.ip}:5000/products/${image[index]}',
                   ),
                 ),
               ),

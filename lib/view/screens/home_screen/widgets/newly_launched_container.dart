@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:scotch/common/api/api_baseurl.dart';
 import 'package:scotch/core/const.dart';
 import 'package:scotch/view/screens/home_screen/controller/home_controller.dart';
 import 'package:scotch/view/screens/home_screen/widgets/shimmer_newly_launched.dart';
@@ -37,7 +38,7 @@ class NewlyLaunchedContainer extends StatelessWidget {
                           borderRadius: BorderRadius.circular(10),
                           image: DecorationImage(
                             image: NetworkImage(
-                                'http://172.16.6.168:5000/products/${homeController.productList[index].image[4]}'),
+                                'http://${ApiBaseUrl.ip}:5000/products/${homeController.productList[index].image[4]}'),
                           ),
                         ),
                       ),

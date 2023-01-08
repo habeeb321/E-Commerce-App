@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:scotch/common/api/api_baseurl.dart';
 import 'package:scotch/core/const.dart';
 import 'package:scotch/view/screens/home_screen/controller/home_controller.dart';
 import 'package:scotch/view/screens/product_screen/controller/product_controller.dart';
@@ -40,7 +41,7 @@ class ProductScreen extends StatelessWidget {
                               return Center(
                                 child: Image(
                                   image: NetworkImage(
-                                      'http://172.16.6.168:5000/products/${homeCtr.image[index]}'),
+                                      'http://${ApiBaseUrl.ip}:5000/products/${homeCtr.image[index]}'),
                                   fit: BoxFit.cover,
                                 ),
                               );
@@ -51,6 +52,18 @@ class ProductScreen extends StatelessWidget {
                               onPageChanged: (index, reason) {
                                 productController.getProductCarousel(index);
                               },
+                            ),
+                          ),
+                        ),
+                        Positioned(
+                          right: 0,
+                          top: 0,
+                          child: IconButton(
+                            onPressed: () {},
+                            icon: const Icon(
+                              Icons.favorite,
+                              color: Colors.red,
+                              size: 30,
                             ),
                           ),
                         ),

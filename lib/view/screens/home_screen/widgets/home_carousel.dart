@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:scotch/common/api/api_baseurl.dart';
 import 'package:scotch/core/const.dart';
 import 'package:scotch/view/screens/home_screen/controller/home_controller.dart';
 import 'package:scotch/view/screens/home_screen/widgets/shimmer_carousel.dart';
@@ -48,7 +49,7 @@ class Carousel extends StatelessWidget {
                           decoration: BoxDecoration(
                             image: DecorationImage(
                               image: NetworkImage(
-                                  "http://172.16.6.168:5000/carousals/${homeController.carousalList[index].image}"),
+                                  "http://${ApiBaseUrl.ip}:5000/carousals/${homeController.carousalList[index].image}"),
                               fit: BoxFit.cover,
                             ),
                           ),

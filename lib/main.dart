@@ -26,14 +26,14 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Scotch',
       theme: ThemeData(
-        primarySwatch: themeColor,
+        primaryColor: themeColor,
       ),
       home: SplashScreen(),
       unknownRoute: GetPage(
           name: ProductScreen.routeName, page: () => const ProductScreen()),
       getPages: [
         GetPage(
-            name: ProductScreen.routeName, page: () => const ProductScreen())
+            name: ProductScreen.routeName, page: () => const ProductScreen()),
       ],
     );
   }

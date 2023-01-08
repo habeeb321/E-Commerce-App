@@ -59,7 +59,7 @@ class BottomNavBar extends StatelessWidget {
                 backgroundColor: themeColor,
                 color: kWhitecolor,
                 activeColor: kWhitecolor,
-                tabBackgroundColor: Colors.blueAccent,
+                tabBackgroundColor: const Color.fromARGB(255, 118, 163, 241),
                 padding: const EdgeInsets.all(8),
                 curve: Curves.bounceIn,
                 selectedIndex: currentIndex,

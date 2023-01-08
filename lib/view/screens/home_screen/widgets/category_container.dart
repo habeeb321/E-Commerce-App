@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:scotch/common/api/api_baseurl.dart';
 import 'package:scotch/core/const.dart';
 import 'package:scotch/view/screens/home_screen/controller/home_controller.dart';
 import 'package:scotch/view/screens/home_screen/widgets/shimmer_category.dart';
@@ -28,7 +29,7 @@ class CategoryContainer extends StatelessWidget {
                             CircleAvatar(
                               radius: 40,
                               backgroundImage: NetworkImage(
-                                  "http://172.16.6.168:5000/category/${homeController.categoryList[index].image}"),
+                                  "http://${ApiBaseUrl.ip}:5000/category/${homeController.categoryList[index].image}"),
                             ),
                             Row(
                               children: [
