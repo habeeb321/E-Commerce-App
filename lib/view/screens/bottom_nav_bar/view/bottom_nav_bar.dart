@@ -6,7 +6,7 @@ import 'package:scotch/view/screens/account/account_screen.dart';
 import 'package:scotch/view/screens/bottom_nav_bar/controller/bottom_nav_controller.dart';
 import 'package:scotch/view/screens/category_screen/category_screen.dart';
 import 'package:scotch/view/screens/home_screen/view/home_screen.dart';
-import 'package:scotch/view/screens/order_screen/order_screen.dart';
+import 'package:scotch/view/screens/wishlist_screen/wishlist_screen.dart';
 
 class BottomNavBar extends StatelessWidget {
   BottomNavBar({super.key});
@@ -17,7 +17,7 @@ class BottomNavBar extends StatelessWidget {
   List pages = [
     const HomeScreen(),
     const CategoryScreen(),
-    const OrderScreen(),
+    const WishlistScreen(),
     const AccountScreen(),
   ];
 
@@ -48,9 +48,9 @@ class BottomNavBar extends StatelessWidget {
                       iconSize: 30,
                       text: 'Category'),
                   GButton(
-                      icon: Icons.shopping_cart_outlined,
+                      icon: Icons.favorite_border_outlined,
                       iconSize: 30,
-                      text: 'Order'),
+                      text: 'Wishlist'),
                   GButton(
                       icon: Icons.person_outline,
                       iconSize: 30,
@@ -59,7 +59,7 @@ class BottomNavBar extends StatelessWidget {
                 backgroundColor: themeColor,
                 color: kWhitecolor,
                 activeColor: kWhitecolor,
-                tabBackgroundColor: const Color.fromARGB(255, 118, 163, 241),
+                tabBackgroundColor: const Color(0xFFFF5858),
                 padding: const EdgeInsets.all(8),
                 curve: Curves.bounceIn,
                 selectedIndex: currentIndex,

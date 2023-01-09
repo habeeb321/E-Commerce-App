@@ -27,6 +27,7 @@ class MyApp extends StatelessWidget {
       title: 'Scotch',
       theme: ThemeData(
         primaryColor: themeColor,
+        appBarTheme: const AppBarTheme(color: themeColor),
       ),
       home: SplashScreen(),
       unknownRoute: GetPage(

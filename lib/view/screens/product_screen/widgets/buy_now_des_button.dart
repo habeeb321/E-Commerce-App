@@ -14,15 +14,15 @@ class BuyNowDesButton extends StatelessWidget {
         child: Container(
           height: 50,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(5),
-            gradient: LinearGradient(
-              begin: const FractionalOffset(0, 0),
-              end: const FractionalOffset(0.8, 0),
-              stops: const [0, 1],
+            borderRadius: BorderRadius.circular(5), 
+            gradient: const LinearGradient(
+              begin: FractionalOffset(0, 0),
+              end: FractionalOffset(0.8, 0),
+              stops: [0, 1],
               tileMode: TileMode.clamp,
               colors: [
-                Colors.lightBlue,
-                Colors.lightBlue.shade900,
+                Color(0xFFFF97C1),
+                themeColor,
               ],
             ),
           ),
