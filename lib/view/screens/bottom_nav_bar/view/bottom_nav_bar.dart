@@ -6,7 +6,7 @@ import 'package:scotch/view/screens/account/account_screen.dart';
 import 'package:scotch/view/screens/bottom_nav_bar/controller/bottom_nav_controller.dart';
 import 'package:scotch/view/screens/category_screen/category_screen.dart';
 import 'package:scotch/view/screens/home_screen/view/home_screen.dart';
-import 'package:scotch/view/screens/wishlist_screen/wishlist_screen.dart';
+import 'package:scotch/view/screens/wishlist_screen/view/wishlist_screen.dart';
 
 class BottomNavBar extends StatelessWidget {
   BottomNavBar({super.key});

@@ -11,4 +11,8 @@ class ApiEndPoints {
   static String category = 'api/v1/category';
   static String product = 'api/v1/products';
   static String carousal = 'api/v1/carousal';
+
+  // Product page end points
+  static String wishlist = 'api/v1/wishlist';
+
 }
