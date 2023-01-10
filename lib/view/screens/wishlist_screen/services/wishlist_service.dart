@@ -7,7 +7,7 @@ import 'package:scotch/util/dio_interceptor.dart';
 import 'package:scotch/view/screens/wishlist_screen/model/wishlist_model.dart';
 
 class WishlistService {
-  Future<int?> addToWishlist(context, productId) async {
+  Future<int?> addOrRemoveWishlist(context, productId) async {
     Dio dio = await ApiInterceptor().getApiUser(context);
     try {
       final Response response =
