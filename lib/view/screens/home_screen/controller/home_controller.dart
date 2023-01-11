@@ -15,10 +15,10 @@ import 'package:scotch/view/screens/home_screen/services/product_services.dart';
 import 'package:scotch/view/screens/product_screen/view/product_screen.dart';
 
 class HomeController extends GetxController {
-  HomeController(context) {
-    getCategory(context);
-    getProduct(context);
-    getCarousel(context);
+  HomeController() {
+    getCategory();
+    getProduct();
+    getCarousel();
   }
 
   @override
@@ -93,10 +93,10 @@ class HomeController extends GetxController {
     update();
   }
 
-  void getCategory(context) async {
+  void getCategory() async {
     isLoading = true;
     update();
-    await category.categoryUsers(context).then((value) {
+    await category.categoryUsers().then((value) {
       if (value != null) {
         categoryList = value;
         update();
@@ -110,11 +110,11 @@ class HomeController extends GetxController {
     });
   }
 
-  void getProduct(context) async {
+  void getProduct() async {
     log('get');
     isLoading = true;
     update();
-    await product.homeProducts(context).then((value) {
+    await product.homeProducts().then((value) {
       log('product', name: 'product controller');
       if (value != null) {
         log('hai');
@@ -130,10 +130,10 @@ class HomeController extends GetxController {
     });
   }
 
-  void getCarousel(context) async {
+  void getCarousel() async {
     isLoading = true;
     update();
-    await carousal.homeCarousel(context).then((value) {
+    await carousal.homeCarousel().then((value) {
       if (value != null) {
         log('carousal no null');
         carousalList = value;

@@ -19,7 +19,7 @@ class ProductScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     WishlistController wishlistController =
         Get.put(WishlistController(context));
-    HomeController homeController = Get.put(HomeController(context));
+    HomeController homeController = Get.put(HomeController());
     ProductController productController = Get.put(ProductController());
     final productId = ModalRoute.of(context)?.settings.arguments as String;
     final homeCtr = homeController.findById(productId);

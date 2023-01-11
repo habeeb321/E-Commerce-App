@@ -7,8 +7,8 @@ import 'package:scotch/util/dio_interceptor.dart';
 import 'package:scotch/view/screens/home_screen/model/carosel_model.dart';
 
 class CarousalService {
-  Future<List<CarousalModel>?> homeCarousel(context) async {
-    Dio dios = await ApiInterceptor().getApiUser(context);
+  Future<List<CarousalModel>?> homeCarousel() async {
+    Dio dios = await ApiInterceptor().getApiUser();
     log(' entered');
     try {
       log(' try');
@@ -30,7 +30,7 @@ class CarousalService {
       }
     } on DioError catch (e) {
       log(e.message);
-      DioException().dioError(e, context);
+      DioException().dioError(e);
     }
     return null;
   }

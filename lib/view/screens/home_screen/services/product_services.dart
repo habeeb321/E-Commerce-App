@@ -7,8 +7,8 @@ import 'package:scotch/util/dio_interceptor.dart';
 import 'package:scotch/view/screens/home_screen/model/product_model.dart';
 
 class ProductServices {
-  Future<List<ProductModel>?> homeProducts(context) async {
-    Dio dios = await ApiInterceptor().getApiUser(context);
+  Future<List<ProductModel>?> homeProducts() async {
+    Dio dios = await ApiInterceptor().getApiUser();
     try {
       final Response response =
           await dios.get(ApiBaseUrl().baseUrl + ApiEndPoints.product);
@@ -25,7 +25,7 @@ class ProductServices {
       }
     } on DioError catch (e) {
       log(e.message);
-      DioException().dioError(e, context);
+      DioException().dioError(e);
     }
     return null;
   }

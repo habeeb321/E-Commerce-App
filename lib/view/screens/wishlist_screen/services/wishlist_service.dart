@@ -8,7 +8,7 @@ import 'package:scotch/view/screens/wishlist_screen/model/wishlist_model.dart';
 
 class WishlistService {
   Future<int?> addOrRemoveWishlist(context, productId) async {
-    Dio dio = await ApiInterceptor().getApiUser(context);
+    Dio dio = await ApiInterceptor().getApiUser();
     try {
       final Response response =
           await dio.post(ApiBaseUrl().baseUrl + ApiEndPoints.wishlist, data: {
@@ -21,13 +21,13 @@ class WishlistService {
       }
     } on DioError catch (e) {
       log(e.message);
-      DioException().dioError(e, context);
+      DioException().dioError(e);
     }
     return null;
   }
 
   Future<WishListModel?> getWishlist(context) async {
-    Dio dio = await ApiInterceptor().getApiUser(context);
+    Dio dio = await ApiInterceptor().getApiUser();
     try {
       final Response response = await dio.get(
         ApiBaseUrl().baseUrl + ApiEndPoints.wishlist,
@@ -38,7 +38,7 @@ class WishlistService {
       }
     } on DioError catch (e) {
       log(e.message);
-      DioException().dioError(e, context);
+      DioException().dioError(e);
     }
     return null;
   }

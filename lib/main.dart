@@ -25,7 +25,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       initialBinding: AllBindingController(),
-      
       debugShowCheckedModeBanner: false,
       title: 'Scotch',
       theme: ThemeData(

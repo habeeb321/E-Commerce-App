@@ -10,7 +10,7 @@ class NewlyLaunchedContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    HomeController homeController = Get.put(HomeController(context));
+    HomeController homeController = Get.put(HomeController());
     Size size = MediaQuery.of(context).size;
     return GetBuilder<HomeController>(builder: (controller) {
       return homeController.isLoading == true

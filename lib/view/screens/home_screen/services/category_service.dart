@@ -8,8 +8,8 @@ import 'package:scotch/util/dio_interceptor.dart';
 import 'package:scotch/view/screens/home_screen/model/category_model.dart';
 
 class CategoryServices {
-  Future<List<CategoryModel>?> categoryUsers(context) async {
-    Dio dios = await ApiInterceptor().getApiUser(context);
+  Future<List<CategoryModel>?> categoryUsers() async {
+    Dio dios = await ApiInterceptor().getApiUser();
     try {
       final Response response =
           await dios.get(ApiBaseUrl().baseUrl + ApiEndPoints.category);
@@ -25,7 +25,7 @@ class CategoryServices {
       }
     } on DioError catch (e) {
       log(e.message);
-      DioException().dioError(e, context);
+      DioException().dioError(e, );
     }
     return null;
   }

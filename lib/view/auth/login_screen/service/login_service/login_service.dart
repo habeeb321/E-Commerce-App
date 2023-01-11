@@ -24,7 +24,7 @@ class LoginService {
       }
     } on DioError catch (e) {
       log(e.message);
-      DioException().dioError(e, context);
+      DioException().dioError(e, );
     }
     return null;
   }

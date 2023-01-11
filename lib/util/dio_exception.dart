@@ -1,12 +1,11 @@
 import 'dart:async';
 import 'dart:io';
 import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:scotch/core/const.dart';
 
 class DioException {
-  void dioError(Object e, BuildContext context) {
+  void dioError(Object e) {
     if (e is DioError) {
       if (e.response?.statusCode == 401) {
         Get.snackbar('Error', 'Invalid username or password',

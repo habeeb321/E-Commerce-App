@@ -22,7 +22,7 @@ class SendOtpServices {
     } on DioError catch (e) {
       log(e.message);
       log('otp failed');
-      DioException().dioError(e, context);
+      DioException().dioError(e);
     }
     return null;
   }
