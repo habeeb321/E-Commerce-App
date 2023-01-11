@@ -15,7 +15,7 @@ class BottomNavBar extends StatelessWidget {
   int currentIndex = 0;
 
   List pages = [
-    const HomeScreen(),
+    HomeScreen(),
     const CategoryScreen(),
     const WishlistScreen(),
     const AccountScreen(),

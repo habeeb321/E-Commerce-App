@@ -30,18 +30,20 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   carousel_slider: ^4.2.1
+  connectivity_plus: ^3.0.2
   cupertino_icons: ^1.0.2
   device_preview: ^1.1.0
   dio: ^4.0.6
   flutter:
     sdk: flutter
   flutter_otp_text_field: ^1.1.1
+  flutter_rating_bar: ^4.0.1
   flutter_secure_storage: ^7.0.1
   get: ^4.6.5
-  shimmer: ^2.0.0
   google_nav_bar: ^5.0.6
+  internet_connection_checker: ^1.0.0+1
+  shimmer: ^2.0.0
   smooth_page_indicator: ^1.0.0+2
-  flutter_rating_bar: ^4.0.1
 
 dev_dependencies:
   flutter_lints: ^2.0.0
