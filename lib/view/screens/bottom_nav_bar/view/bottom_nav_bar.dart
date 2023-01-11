@@ -8,14 +8,13 @@ import 'package:scotch/view/screens/category_screen/category_screen.dart';
 import 'package:scotch/view/screens/home_screen/view/home_screen.dart';
 import 'package:scotch/view/screens/wishlist_screen/view/wishlist_screen.dart';
 
-class BottomNavBar extends StatelessWidget {
+class BottomNavBar extends GetView<BottomNavController> {
   BottomNavBar({super.key});
 
-  BottomNavController bottomNavController = Get.put(BottomNavController());
   int currentIndex = 0;
 
   List pages = [
-    HomeScreen(),
+    const HomeScreen(),
     const CategoryScreen(),
     const WishlistScreen(),
     const AccountScreen(),
@@ -26,7 +25,7 @@ class BottomNavBar extends StatelessWidget {
     return Scaffold(
       body: GetBuilder<BottomNavController>(
         builder: (controller) {
-          return pages[bottomNavController.currentIndex];
+          return pages[controller.currentIndex];
         },
       ),
       bottomNavigationBar: GetBuilder<BottomNavController>(
@@ -65,7 +64,7 @@ class BottomNavBar extends StatelessWidget {
                 selectedIndex: currentIndex,
                 onTabChange: (index) {
                   currentIndex = index;
-                  bottomNavController.currentIndex = index;
+                  controller.currentIndex = index;
                 },
               ),
             ),
