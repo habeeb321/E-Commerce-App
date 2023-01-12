@@ -16,7 +16,7 @@ const TextStyle textStyle =
     TextStyle(fontWeight: FontWeight.bold, fontSize: 17);
 const kTextstyle = TextStyle(
   fontFamily: "Manrope",
-  fontSize: 16,
+  fontSize: 18,
   letterSpacing: 1,
   fontWeight: FontWeight.bold,
 );

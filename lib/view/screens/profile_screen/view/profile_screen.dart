@@ -37,25 +37,29 @@ class ProfileScreen extends StatelessWidget {
                       ProfileWidget(
                         icon: const Icon(
                           Icons.person,
+                          size: 30,
                         ),
-                        size: 15,
+                        size: 17,
                         text: 'Edit profile',
                         ontap: () {},
                         trailIcon: const Icon(
-                          Icons.arrow_forward_ios_outlined,
+                          Icons.arrow_forward,
+                          size: 25,
                         ),
                       ),
                       kHeight10,
                       ProfileWidget(
                         icon: const Icon(
                           Icons.location_on,
+                          size: 30,
                         ),
                         text: 'Saved Address',
                         ontap: () {},
                         trailIcon: const Icon(
-                          Icons.arrow_forward_ios_outlined,
+                          Icons.arrow_forward,
+                          size: 25,
                         ),
-                        size: 15,
+                        size: 17,
                       ),
                     ],
                   ),
@@ -75,50 +79,58 @@ class ProfileScreen extends StatelessWidget {
                       ProfileWidget(
                         icon: const Icon(
                           Icons.description,
+                          size: 30,
                         ),
                         text: 'Terms & Condition',
                         ontap: () {},
-                        size: 15,
+                        size: 17,
                         trailIcon: const Icon(
-                          Icons.arrow_forward_ios_outlined,
+                          Icons.arrow_forward,
+                          size: 25,
                         ),
                       ),
                       kHeight10,
                       ProfileWidget(
                         icon: const Icon(
                           Icons.privacy_tip,
+                          size: 30,
                         ),
                         text: 'Privacy Policy',
-                        size: 15,
+                        size: 17,
                         ontap: () {},
                         trailIcon: const Icon(
-                          Icons.arrow_forward_ios_outlined,
+                          Icons.arrow_forward,
+                          size: 25,
                         ),
                       ),
                       kHeight10,
                       ProfileWidget(
                         icon: const Icon(
                           Icons.info,
+                          size: 30,
                         ),
                         text: 'About',
                         ontap: () {},
-                        size: 15,
+                        size: 17,
                         trailIcon: const Icon(
-                          Icons.arrow_forward_ios_outlined,
+                          Icons.arrow_forward,
+                          size: 25,
                         ),
                       ),
                       kHeight10,
                       ProfileWidget(
                         icon: const Icon(
                           Icons.logout,
+                          size: 30,
                         ),
                         text: 'Log Out',
                         ontap: () {
                           profileController.logOut(context);
                         },
-                        size: 15,
+                        size: 17,
                         trailIcon: const Icon(
-                          Icons.arrow_forward_ios_outlined,
+                          Icons.arrow_forward,
+                          size: 25,
                         ),
                       ),
                     ],

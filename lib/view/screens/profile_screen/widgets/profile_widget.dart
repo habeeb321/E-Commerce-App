@@ -25,7 +25,6 @@ class ProfileWidget extends StatelessWidget {
         style: TextStyle(
           fontFamily: "Manrope",
           fontSize: size,
-          fontWeight: FontWeight.bold,
         ),
       ),
       onTap: ontap,
