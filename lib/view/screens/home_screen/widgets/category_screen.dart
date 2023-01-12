@@ -61,7 +61,7 @@ class CategoryScreen extends StatelessWidget {
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(10))),
                             child: Text(
-                              "${homeController.productList[index].offer}%Off",
+                              "${homeCtr[index].offer}%Off",
                               style: const TextStyle(
                                 color: kWhitecolor,
                                 fontWeight: FontWeight.bold,
@@ -70,7 +70,7 @@ class CategoryScreen extends StatelessWidget {
                             ),
                           ),
                           Text(
-                            "₹${homeController.productList[index].price}",
+                            "₹${homeCtr[index].price}",
                             style: const TextStyle(
                               color: kBlackcolor,
                               fontWeight: FontWeight.bold,

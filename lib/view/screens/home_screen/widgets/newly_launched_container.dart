@@ -6,7 +6,10 @@ import 'package:scotch/view/screens/home_screen/controller/home_controller.dart'
 import 'package:scotch/view/screens/home_screen/widgets/shimmer_newly_launched.dart';
 
 class NewlyLaunchedContainer extends StatelessWidget {
-  const NewlyLaunchedContainer({Key? key}) : super(key: key);
+  NewlyLaunchedContainer({Key? key}) : super(key: key);
+
+  double rotation = 5.5;
+  Offset position = const Offset(40, 50);
 
   @override
   Widget build(BuildContext context) {
@@ -28,39 +31,63 @@ class NewlyLaunchedContainer extends StatelessWidget {
               itemBuilder: (context, index) {
                 return InkWell(
                   onTap: () => homeController.goToProdutScreen(index),
-                  child: Column(
-                    children: [
-                      Container(
-                        height: size.height * 0.2,
-                        width: size.width * 0.4,
-                        decoration: BoxDecoration(
-                          color: Colors.black.withOpacity(0.5),
-                          borderRadius: BorderRadius.circular(10),
-                          image: DecorationImage(
-                            image: NetworkImage(
-                                'http://${ApiBaseUrl.ip}:5000/products/${homeController.productList[index].image[4]}'),
+                  child: Container(
+                    margin: const EdgeInsets.all(5),
+                    decoration: BoxDecoration(
+                      border: Border.all(width: 1),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Stack(
+                      children: [
+                        Center(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Image(
+                                height: 130,
+                                image: NetworkImage(
+                                    'http://${ApiBaseUrl.ip}:5000/products/${homeController.productList[index].image[4]}'),
+                              ),
+                              Text(
+                                homeController.productList[index].name,
+                                textAlign: TextAlign.center,
+                              ),
+                              Text(
+                                "₹${homeController.productList[index].price}",
+                                style: const TextStyle(
+                                  color: kBlackcolor,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 17,
+                                ),
+                              ),
+                            ],
                           ),
                         ),
-                      ),
-                      kHeight10,
-                      SizedBox(
-                        height: 40,
-                        width: size.width * 0.4,
-                        child: Column(
-                          children: [
-                            Text(
-                              homeController.productList[index].name,
-                              style: const TextStyle(fontSize: 15),
+                        Positioned(
+                          top: 13,
+                          left: -5,
+                          child: Transform.rotate(
+                            angle: rotation,
+                            child: Container(
+                              padding:
+                                  const EdgeInsets.only(left: 10, right: 10),
+                              decoration: const BoxDecoration(
+                                  color: Colors.green,
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10))),
+                              child: Text(
+                                "${homeController.productList[index].offer}%Off",
+                                style: const TextStyle(
+                                  color: kWhitecolor,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 14,
+                                ),
+                              ),
                             ),
-                            Text(
-                              "₹${homeController.productList[index].price}",
-                              style: const TextStyle(
-                                  fontSize: 19, fontWeight: FontWeight.bold),
-                            ),
-                          ],
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 );
               },

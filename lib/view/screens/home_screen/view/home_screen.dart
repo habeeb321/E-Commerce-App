@@ -11,7 +11,6 @@ class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
-  
   Widget build(BuildContext context) {
     HomeController homeController = Get.put(HomeController());
     return Scaffold(
@@ -29,21 +28,21 @@ class HomeScreen extends StatelessWidget {
             return Padding(
               padding: const EdgeInsets.all(16.0),
               child: ListView(
-                children: const [
-                  SizedBox(
+                children: [
+                  const SizedBox(
                     height: 45,
                     child: CupertinoSearchTextField(
                       prefixInsets: EdgeInsetsDirectional.fromSTEB(7, 3, 5, 2),
                     ),
                   ),
                   kHeight10,
-                  Carousel(),
+                  const Carousel(),
                   kHeight10,
-                  Text('Categories', style: textStyle),
+                  const Text('Categories', style: textStyle),
                   kHeight10,
-                  CategoryContainer(),
+                  const CategoryContainer(),
                   kHeight10,
-                  Text('Newly launched', style: textStyle),
+                  const Text('Newly launched', style: textStyle),
                   kHeight10,
                   NewlyLaunchedContainer(),
                 ],
