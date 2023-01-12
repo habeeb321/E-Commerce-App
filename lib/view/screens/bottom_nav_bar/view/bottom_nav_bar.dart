@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:scotch/core/const.dart';
-import 'package:scotch/view/screens/account/account_screen.dart';
+import 'package:scotch/view/screens/profile_screen/view/profile_screen.dart';
 import 'package:scotch/view/screens/bottom_nav_bar/controller/bottom_nav_controller.dart';
 import 'package:scotch/view/screens/cart_screen/view/cart_screen.dart';
 import 'package:scotch/view/screens/home_screen/view/home_screen.dart';
@@ -17,7 +17,7 @@ class BottomNavBar extends GetView<BottomNavController> {
     const HomeScreen(),
     const CartScreen(),
     const WishlistScreen(),
-    const AccountScreen(),
+    const ProfileScreen(),
   ];
 
   @override
