@@ -4,7 +4,7 @@ import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:scotch/core/const.dart';
 import 'package:scotch/view/screens/account/account_screen.dart';
 import 'package:scotch/view/screens/bottom_nav_bar/controller/bottom_nav_controller.dart';
-import 'package:scotch/view/screens/category_screen/category_screen.dart';
+import 'package:scotch/view/screens/cart_screen/view/cart_screen.dart';
 import 'package:scotch/view/screens/home_screen/view/home_screen.dart';
 import 'package:scotch/view/screens/wishlist_screen/view/wishlist_screen.dart';
 
@@ -15,7 +15,7 @@ class BottomNavBar extends GetView<BottomNavController> {
 
   List pages = [
     const HomeScreen(),
-    const CategoryScreen(),
+    const CartScreen(),
     const WishlistScreen(),
     const AccountScreen(),
   ];
@@ -43,9 +43,9 @@ class BottomNavBar extends GetView<BottomNavController> {
                   GButton(
                       icon: Icons.home_outlined, iconSize: 30, text: 'Home'),
                   GButton(
-                      icon: Icons.category_outlined,
+                      icon: Icons.shopping_cart_outlined,
                       iconSize: 30,
-                      text: 'Category'),
+                      text: 'Cart'),
                   GButton(
                       icon: Icons.favorite_border_outlined,
                       iconSize: 30,

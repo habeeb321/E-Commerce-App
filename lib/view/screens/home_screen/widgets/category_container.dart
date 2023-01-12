@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:scotch/common/api/api_baseurl.dart';
 import 'package:scotch/core/const.dart';
 import 'package:scotch/view/screens/home_screen/controller/home_controller.dart';
+import 'package:scotch/view/screens/home_screen/widgets/category_screen.dart';
 import 'package:scotch/view/screens/home_screen/widgets/shimmer_category.dart';
 
 class CategoryContainer extends StatelessWidget {
@@ -22,7 +23,10 @@ class CategoryContainer extends StatelessWidget {
                   child: ListView.separated(
                     itemBuilder: (context, index) {
                       return InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          Get.toNamed(CategoryScreen.routeName,
+                              arguments: homeController.categoryList[index].id);
+                        },
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [

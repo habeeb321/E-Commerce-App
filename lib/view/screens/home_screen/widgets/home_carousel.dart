@@ -45,15 +45,17 @@ class Carousel extends StatelessWidget {
                       ),
                       itemBuilder:
                           (BuildContext context, int index, int realIndex) {
-                        return Container(
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                              image: NetworkImage(
-                                  "http://${ApiBaseUrl.ip}:5000/carousals/${homeController.carousalList[index].image}"),
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        );
+                        return homeController.carousalList.isEmpty
+                            ? const Center(child: CircularProgressIndicator())
+                            : Container(
+                                decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                    image: NetworkImage(
+                                        "http://${ApiBaseUrl.ip}:5000/carousals/${homeController.carousalList[index].image}"),
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                              );
                       },
                       itemCount: homeController.carousalList.length,
                     ),

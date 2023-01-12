@@ -155,4 +155,14 @@ class HomeController extends GetxController {
   void goToProdutScreen(index) {
     Get.toNamed(ProductScreen.routeName, arguments: productList[index].id);
   }
+
+  List<ProductModel> findByCategoryId(String categoryId) {
+    return productList
+        .where((element) => element.category.contains(categoryId))
+        .toList();
+  }
+
+  CategoryModel findByName(String id) {
+    return categoryList.firstWhere((element) => element.id == id);
+  }
 }
