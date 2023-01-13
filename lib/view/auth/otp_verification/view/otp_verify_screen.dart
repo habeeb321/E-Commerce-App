@@ -4,16 +4,13 @@ import 'package:get/get.dart';
 import 'package:scotch/core/const.dart';
 import 'package:scotch/view/auth/signup_screen/model/signupmodel/signup_model.dart';
 import 'package:scotch/view/auth/otp_verification/controller/otp_verify_controller.dart';
-import 'package:scotch/view/auth/signup_screen/controller/signup_controller.dart';
 import 'package:scotch/view/auth/widgets/auth_elev_button.dart';
 import 'package:scotch/view/auth/widgets/wave.dart';
 
-class OtpVerifyScreen extends StatelessWidget {
-  OtpVerifyScreen({super.key, required this.model});
+class OtpVerifyScreen extends GetView<OtpVerifyController> {
+  const OtpVerifyScreen({super.key, required this.model});
 
   final SignUpModel model;
-  OtpVerifyController otpVerifyController = Get.put(OtpVerifyController());
-  SignUpController signUpController = Get.put(SignUpController());
 
   @override
   Widget build(BuildContext context) {
@@ -87,7 +84,7 @@ class OtpVerifyScreen extends StatelessWidget {
                           borderRadius: BorderRadius.circular(12),
                           showFieldAsBox: true,
                           onSubmit: (String verificationCode) {
-                            otpVerifyController.onSubmitCode(verificationCode);
+                            controller.onSubmitCode(verificationCode);
                           },
                         );
                       },
@@ -100,8 +97,7 @@ class OtpVerifyScreen extends StatelessWidget {
                     return AuthElevatedButton(
                       label: 'Verify',
                       onPressed: () {
-                        otpVerifyController.submitOtp(
-                            model, otpVerifyController.code, context);
+                        controller.submitOtp(model, controller.code, context);
                       },
                     );
                   },

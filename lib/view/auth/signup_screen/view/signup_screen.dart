@@ -8,10 +8,9 @@ import 'package:scotch/view/auth/widgets/auth_elev_button.dart';
 import 'package:scotch/view/auth/widgets/auth_textfields.dart';
 import 'package:scotch/view/auth/widgets/wave.dart';
 
-class SignUpScreen extends StatelessWidget {
+class SignUpScreen extends GetView<SignUpController> {
   SignUpScreen({super.key});
 
-  SignUpController signUpController = Get.put(SignUpController());
   final formGlobalKey = GlobalKey<FormState>();
 
   @override
@@ -74,43 +73,43 @@ class SignUpScreen extends StatelessWidget {
                     return Column(
                       children: [
                         AuthTextField(
-                            controller: signUpController.fullNameController,
+                            controller: controller.fullNameController,
                             validator: (value) =>
-                                signUpController.nameValidation(value),
+                                controller.nameValidation(value),
                             label: 'FullName'),
                         kHeight10,
                         AuthTextField(
-                            controller: signUpController.emailController,
+                            controller: controller.emailController,
                             validator: (value) =>
-                                signUpController.emailValdation(value),
+                                controller.emailValdation(value),
                             label: 'E-mail'),
                         kHeight10,
                         AuthTextField(
                             validator: (value) =>
-                                signUpController.mobileValdation(value),
-                            controller: signUpController.mobileController,
+                                controller.mobileValdation(value),
+                            controller: controller.mobileController,
                             inputType: TextInputType.number,
                             label: 'Mobile Number'),
                         kHeight10,
                         AuthTextField(
-                            controller: signUpController.passController,
+                            controller: controller.passController,
                             validator: (value) =>
-                                signUpController.passwordValdation(value),
-                            obscureText: signUpController.obscureText,
+                                controller.passwordValdation(value),
+                            obscureText: controller.obscureText,
                             suffix: IconButton(
-                                onPressed: () => signUpController.visibility(),
-                                icon: signUpController.icon),
+                                onPressed: () => controller.visibility(),
+                                icon: controller.icon),
                             inputType: TextInputType.visiblePassword,
                             label: 'Password'),
                         kHeight10,
                         AuthTextField(
-                            controller: signUpController.confirmPassController,
+                            controller: controller.confirmPassController,
                             validator: (value) =>
-                                signUpController.passwordValdation(value),
-                            obscureText: signUpController.obscureText,
+                                controller.passwordValdation(value),
+                            obscureText: controller.obscureText,
                             suffix: IconButton(
-                                onPressed: () => signUpController.visibility(),
-                                icon: signUpController.icon),
+                                onPressed: () => controller.visibility(),
+                                icon: controller.icon),
                             inputType: TextInputType.visiblePassword,
                             label: 'Confirm Password'),
                       ],
@@ -127,7 +126,7 @@ class SignUpScreen extends StatelessWidget {
                       onPressed: () {
                         if (formGlobalKey.currentState!.validate()) {
                           formGlobalKey.currentState!.save();
-                          signUpController.signupUser(context);
+                          controller.signupUser(context);
                         }
                       },
                     ),

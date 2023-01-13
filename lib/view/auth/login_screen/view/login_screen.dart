@@ -6,7 +6,6 @@ import 'package:get/get.dart';
 import 'package:scotch/core/const.dart';
 import 'package:scotch/view/auth/forgot_password_screen/view/forgot_pass_screen.dart';
 import 'package:scotch/view/auth/login_screen/controller/login_controller.dart';
-import 'package:scotch/view/auth/signup_screen/controller/signup_controller.dart';
 import 'package:scotch/view/auth/signup_screen/view/signup_screen.dart';
 import 'package:scotch/view/auth/widgets/auth_elev_button.dart';
 import 'package:scotch/view/auth/widgets/auth_textfields.dart';
@@ -15,8 +14,6 @@ import 'package:scotch/view/auth/widgets/wave.dart';
 class LoginScreen extends StatelessWidget {
   LoginScreen({super.key});
 
-  LoginController loginController = Get.put(LoginController());
-  SignUpController signUpController = Get.put(SignUpController());
   final formGlobalKey = GlobalKey<FormState>();
 
   @override
@@ -79,21 +76,21 @@ class LoginScreen extends StatelessWidget {
                     children: [
                       GetBuilder<LoginController>(builder: (controller) {
                         return AuthTextField(
-                            controller: loginController.emailController,
+                            controller: controller.emailController,
                             validator: (value) =>
-                                loginController.emailValdation(value),
+                                controller.emailValdation(value),
                             label: 'E-mail');
                       }),
                       kHeight20,
                       GetBuilder<LoginController>(builder: (controller) {
                         return AuthTextField(
-                            controller: loginController.passController,
+                            controller: controller.passController,
                             validator: (value) =>
-                                loginController.passwordValdation(value),
+                                controller.passwordValdation(value),
                             suffix: IconButton(
-                                onPressed: () => loginController.visibility(),
-                                icon: loginController.icon),
-                            obscureText: loginController.obscureText,
+                                onPressed: () => controller.visibility(),
+                                icon: controller.icon),
+                            obscureText: controller.obscureText,
                             label: 'Password');
                       }),
                       kHeight10,
@@ -117,7 +114,7 @@ class LoginScreen extends StatelessWidget {
                           if (formGlobalKey.currentState!.validate()) {
                             log('login');
                             formGlobalKey.currentState!.save();
-                            loginController.logIn(context);
+                            controller.logIn(context);
                           }
                         },
                       );
