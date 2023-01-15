@@ -12,10 +12,8 @@ class CategoryScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     HomeController homeController = Get.put(HomeController());
-    Size size = MediaQuery.of(context).size;
     final productId = ModalRoute.of(context)?.settings.arguments as String;
     final homeCtr = homeController.findByCategoryId(productId);
-    final data = homeController.findByName(productId);
     return Scaffold(
       backgroundColor: Colors.grey.shade200,
       body: SafeArea(

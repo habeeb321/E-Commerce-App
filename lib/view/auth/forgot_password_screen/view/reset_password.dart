@@ -7,13 +7,12 @@ import 'package:scotch/view/auth/widgets/auth_textfields.dart';
 import 'package:scotch/view/auth/widgets/wave.dart';
 
 class ResetPasswordScreen extends StatelessWidget {
-  ResetPasswordScreen({super.key});
-
-  TextEditingController emailController = TextEditingController();
-  SignUpController signUpController = Get.put(SignUpController());
+  const ResetPasswordScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    TextEditingController emailController = TextEditingController();
+    SignUpController signUpController = Get.put(SignUpController());
     final size = MediaQuery.of(context).size;
     return Scaffold(
       body: SafeArea(
@@ -22,47 +21,45 @@ class ResetPasswordScreen extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: Column(
               children: [
-                Container(
-                  child: Stack(
-                    alignment: AlignmentDirectional.center,
-                    children: [
-                      Opacity(
-                        opacity: 0.5,
-                        child: ClipPath(
-                          clipper: WaveClipper(),
-                          child: Container(
-                            color: themeColor,
-                            height: size.height * 0.46,
-                          ),
-                        ),
-                      ),
-                      ClipPath(
+                Stack(
+                  alignment: AlignmentDirectional.center,
+                  children: [
+                    Opacity(
+                      opacity: 0.5,
+                      child: ClipPath(
                         clipper: WaveClipper(),
                         child: Container(
-                          padding: const EdgeInsets.only(bottom: 50),
                           color: themeColor,
-                          height: size.height * 0.42,
-                          alignment: Alignment.center,
+                          height: size.height * 0.46,
                         ),
                       ),
-                      Column(
-                        children: const [
-                          CircleAvatar(
-                            radius: 50,
-                            backgroundImage: AssetImage(logo),
-                          ),
-                          kHeight20,
-                          Text(
-                            'Reset Password',
-                            style: TextStyle(
-                                fontSize: 30,
-                                fontWeight: FontWeight.bold,
-                                color: kWhitecolor),
-                          ),
-                        ],
+                    ),
+                    ClipPath(
+                      clipper: WaveClipper(),
+                      child: Container(
+                        padding: const EdgeInsets.only(bottom: 50),
+                        color: themeColor,
+                        height: size.height * 0.42,
+                        alignment: Alignment.center,
                       ),
-                    ],
-                  ),
+                    ),
+                    Column(
+                      children: const [
+                        CircleAvatar(
+                          radius: 50,
+                          backgroundImage: AssetImage(logo),
+                        ),
+                        kHeight20,
+                        Text(
+                          'Reset Password',
+                          style: TextStyle(
+                              fontSize: 30,
+                              fontWeight: FontWeight.bold,
+                              color: kWhitecolor),
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
                 SizedBox(height: size.height * 0.05),
                 Column(

@@ -6,15 +6,12 @@ import 'package:scotch/view/screens/home_screen/controller/home_controller.dart'
 import 'package:scotch/view/screens/home_screen/widgets/shimmer_newly_launched.dart';
 
 class NewlyLaunchedContainer extends StatelessWidget {
-  NewlyLaunchedContainer({Key? key}) : super(key: key);
-
-  double rotation = 5.5;
-  Offset position = const Offset(40, 50);
+  const NewlyLaunchedContainer({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    double rotation = 5.5;
     HomeController homeController = Get.put(HomeController());
-    Size size = MediaQuery.of(context).size;
     return GetBuilder<HomeController>(builder: (controller) {
       return homeController.isLoading == true
           ? const NewlyLaunchedShimmer()

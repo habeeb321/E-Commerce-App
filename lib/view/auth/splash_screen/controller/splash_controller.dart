@@ -15,7 +15,7 @@ class SplashController extends GetxController {
       signinCheck = await storage.read(key: 'token');
       Get.to(const SplashScreen());
       if (signinCheck != null) {
-        Get.offAll(BottomNavBar());
+        Get.offAll(const BottomNavBar());
       } else {
         if (onboardValue != null) {
           Get.offAll(LoginScreen());

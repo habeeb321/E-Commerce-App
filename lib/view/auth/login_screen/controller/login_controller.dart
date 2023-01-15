@@ -25,7 +25,7 @@ class LoginController extends GetxController {
         if (value != null) {
           storage.write(key: 'token', value: value.accessToken);
           storage.write(key: 'refreshToken', value: value.refreshToken);
-          Get.offAll(BottomNavBar());
+          Get.offAll(const BottomNavBar());
           disposeTextfield();
         } else {
           return;

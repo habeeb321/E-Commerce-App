@@ -26,25 +26,25 @@ class HomeScreen extends StatelessWidget {
           return Padding(
             padding: const EdgeInsets.all(16.0),
             child: ListView(
-              children: [
-                const SizedBox(
+              children: const [
+                SizedBox(
                   height: 45,
                   child: CupertinoSearchTextField(
                     prefixInsets: EdgeInsetsDirectional.fromSTEB(7, 3, 5, 2),
                   ),
                 ),
                 kHeight10,
-                const Carousel(),
+                Carousel(),
                 kHeight20,
-                const Divider(thickness: 2),
+                Divider(thickness: 2),
                 kHeight10,
-                const Text('Categories', style: textStyle),
+                Text('Categories', style: textStyle),
                 kHeight10,
-                const CategoryContainer(),
+                CategoryContainer(),
                 kHeight10,
-                const Divider(thickness: 2),
+                Divider(thickness: 2),
                 kHeight10,
-                const Text('Newly launched', style: textStyle),
+                Text('Newly launched', style: textStyle),
                 kHeight10,
                 NewlyLaunchedContainer(),
               ],

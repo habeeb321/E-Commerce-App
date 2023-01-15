@@ -1,47 +1,47 @@
 import 'package:flutter/material.dart';
 
 class MyWaveClipper extends StatelessWidget {
+  const MyWaveClipper({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
           title: const Text("Wave Clipper Design"),
           backgroundColor: Colors.redAccent),
-      body: Container(
-        child: Stack(
-          children: <Widget>[
-            //stack overlaps widgets
-            Opacity(
-              //semi red clippath with more height and with 0.5 opacity
-              opacity: 0.5,
-              child: ClipPath(
-                clipper: WaveClipper(), //set our custom wave clipper
-                child: Container(
-                  color: Colors.deepOrangeAccent,
-                  height: 200,
-                ),
-              ),
-            ),
-
-            ClipPath(
-              //upper clippath with less height
-              clipper: WaveClipper(), //set our custom wave clipper.
+      body: Stack(
+        children: <Widget>[
+          //stack overlaps widgets
+          Opacity(
+            //semi red clippath with more height and with 0.5 opacity
+            opacity: 0.5,
+            child: ClipPath(
+              clipper: WaveClipper(), //set our custom wave clipper
               child: Container(
-                padding: const EdgeInsets.only(bottom: 50),
-                color: Colors.red,
-                height: 180,
-                alignment: Alignment.center,
-                child: const Text(
-                  "Wave clipper",
-                  style: TextStyle(
-                    fontSize: 18,
-                    color: Colors.white,
-                  ),
+                color: Colors.deepOrangeAccent,
+                height: 200,
+              ),
+            ),
+          ),
+
+          ClipPath(
+            //upper clippath with less height
+            clipper: WaveClipper(), //set our custom wave clipper.
+            child: Container(
+              padding: const EdgeInsets.only(bottom: 50),
+              color: Colors.red,
+              height: 180,
+              alignment: Alignment.center,
+              child: const Text(
+                "Wave clipper",
+                style: TextStyle(
+                  fontSize: 18,
+                  color: Colors.white,
                 ),
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

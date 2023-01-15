@@ -3,9 +3,7 @@ import 'package:scotch/core/const.dart';
 import 'package:scotch/view/screens/widgets/shimmer.dart';
 
 class CategoryShimmer extends StatelessWidget {
-  CategoryShimmer({super.key, required this.child});
-
-  var child = Widget;
+  const CategoryShimmer({super.key});
 
   @override
   Widget build(BuildContext context) {

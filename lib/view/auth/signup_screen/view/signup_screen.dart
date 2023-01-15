@@ -23,47 +23,45 @@ class SignUpScreen extends GetView<SignUpController> {
             padding: const EdgeInsets.all(8.0),
             child: Column(
               children: [
-                Container(
-                  child: Stack(
-                    alignment: AlignmentDirectional.center,
-                    children: [
-                      Opacity(
-                        opacity: 0.5,
-                        child: ClipPath(
-                          clipper: WaveClipper(),
-                          child: Container(
-                            color: themeColor,
-                            height: size.height * 0.40,
-                          ),
-                        ),
-                      ),
-                      ClipPath(
+                Stack(
+                  alignment: AlignmentDirectional.center,
+                  children: [
+                    Opacity(
+                      opacity: 0.5,
+                      child: ClipPath(
                         clipper: WaveClipper(),
                         child: Container(
-                          padding: const EdgeInsets.only(bottom: 50),
                           color: themeColor,
-                          height: size.height * 0.36,
-                          alignment: Alignment.center,
+                          height: size.height * 0.40,
                         ),
                       ),
-                      Column(
-                        children: const [
-                          CircleAvatar(
-                            radius: 50,
-                            backgroundImage: AssetImage(logo),
-                          ),
-                          kHeight10,
-                          Text(
-                            'Sign Up',
-                            style: TextStyle(
-                                fontSize: 30,
-                                fontWeight: FontWeight.bold,
-                                color: kWhitecolor),
-                          )
-                        ],
+                    ),
+                    ClipPath(
+                      clipper: WaveClipper(),
+                      child: Container(
+                        padding: const EdgeInsets.only(bottom: 50),
+                        color: themeColor,
+                        height: size.height * 0.36,
+                        alignment: Alignment.center,
                       ),
-                    ],
-                  ),
+                    ),
+                    Column(
+                      children: const [
+                        CircleAvatar(
+                          radius: 50,
+                          backgroundImage: AssetImage(logo),
+                        ),
+                        kHeight10,
+                        Text(
+                          'Sign Up',
+                          style: TextStyle(
+                              fontSize: 30,
+                              fontWeight: FontWeight.bold,
+                              color: kWhitecolor),
+                        )
+                      ],
+                    ),
+                  ],
                 ),
                 SizedBox(height: size.height * 0.02),
                 Form(

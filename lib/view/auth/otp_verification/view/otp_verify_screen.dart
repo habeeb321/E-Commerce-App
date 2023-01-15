@@ -22,47 +22,45 @@ class OtpVerifyScreen extends GetView<OtpVerifyController> {
             padding: const EdgeInsets.all(8.0),
             child: Column(
               children: [
-                Container(
-                  child: Stack(
-                    alignment: AlignmentDirectional.center,
-                    children: [
-                      Opacity(
-                        opacity: 0.5,
-                        child: ClipPath(
-                          clipper: WaveClipper(),
-                          child: Container(
-                            color: themeColor,
-                            height: size.height * 0.46,
-                          ),
-                        ),
-                      ),
-                      ClipPath(
+                Stack(
+                  alignment: AlignmentDirectional.center,
+                  children: [
+                    Opacity(
+                      opacity: 0.5,
+                      child: ClipPath(
                         clipper: WaveClipper(),
                         child: Container(
-                          padding: const EdgeInsets.only(bottom: 50),
                           color: themeColor,
-                          height: size.height * 0.42,
-                          alignment: Alignment.center,
+                          height: size.height * 0.46,
                         ),
                       ),
-                      Column(
-                        children: const [
-                          CircleAvatar(
-                            radius: 50,
-                            backgroundImage: AssetImage(logo),
-                          ),
-                          kHeight20,
-                          Text(
-                            'OTP Verification',
-                            style: TextStyle(
-                                fontSize: 30,
-                                fontWeight: FontWeight.bold,
-                                color: kWhitecolor),
-                          )
-                        ],
+                    ),
+                    ClipPath(
+                      clipper: WaveClipper(),
+                      child: Container(
+                        padding: const EdgeInsets.only(bottom: 50),
+                        color: themeColor,
+                        height: size.height * 0.42,
+                        alignment: Alignment.center,
                       ),
-                    ],
-                  ),
+                    ),
+                    Column(
+                      children: const [
+                        CircleAvatar(
+                          radius: 50,
+                          backgroundImage: AssetImage(logo),
+                        ),
+                        kHeight20,
+                        Text(
+                          'OTP Verification',
+                          style: TextStyle(
+                              fontSize: 30,
+                              fontWeight: FontWeight.bold,
+                              color: kWhitecolor),
+                        )
+                      ],
+                    ),
+                  ],
                 ),
                 SizedBox(height: size.height * 0.13),
                 Column(

@@ -29,47 +29,45 @@ class LoginScreen extends StatelessWidget {
               autovalidateMode: AutovalidateMode.onUserInteraction,
               child: Column(
                 children: [
-                  Container(
-                    child: Stack(
-                      alignment: AlignmentDirectional.center,
-                      children: [
-                        Opacity(
-                          opacity: 0.5,
-                          child: ClipPath(
-                            clipper: WaveClipper(),
-                            child: Container(
-                              color: themeColor,
-                              height: size.height * 0.42,
-                            ),
-                          ),
-                        ),
-                        ClipPath(
+                  Stack(
+                    alignment: AlignmentDirectional.center,
+                    children: [
+                      Opacity(
+                        opacity: 0.5,
+                        child: ClipPath(
                           clipper: WaveClipper(),
                           child: Container(
-                            padding: const EdgeInsets.only(bottom: 50),
                             color: themeColor,
-                            height: size.height * 0.38,
-                            alignment: Alignment.center,
+                            height: size.height * 0.42,
                           ),
                         ),
-                        Column(
-                          children: const [
-                            CircleAvatar(
-                              radius: 50,
-                              backgroundImage: AssetImage(logo),
-                            ),
-                            kHeight20,
-                            Text(
-                              'Login',
-                              style: TextStyle(
-                                  fontSize: 30,
-                                  fontWeight: FontWeight.bold,
-                                  color: kWhitecolor),
-                            ),
-                          ],
+                      ),
+                      ClipPath(
+                        clipper: WaveClipper(),
+                        child: Container(
+                          padding: const EdgeInsets.only(bottom: 50),
+                          color: themeColor,
+                          height: size.height * 0.38,
+                          alignment: Alignment.center,
                         ),
-                      ],
-                    ),
+                      ),
+                      Column(
+                        children: const [
+                          CircleAvatar(
+                            radius: 50,
+                            backgroundImage: AssetImage(logo),
+                          ),
+                          kHeight20,
+                          Text(
+                            'Login',
+                            style: TextStyle(
+                                fontSize: 30,
+                                fontWeight: FontWeight.bold,
+                                color: kWhitecolor),
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
                   SizedBox(height: size.height * 0.05),
                   Column(
@@ -100,7 +98,7 @@ class LoginScreen extends StatelessWidget {
                           child: Text('Forget Password?'),
                         ),
                         onTap: () {
-                          Get.to(() => ForgotPassScreen());
+                          Get.to(() => const ForgotPassScreen());
                         },
                       ),
                     ],

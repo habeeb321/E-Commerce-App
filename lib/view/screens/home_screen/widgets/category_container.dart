@@ -14,7 +14,7 @@ class CategoryContainer extends StatelessWidget {
     HomeController homeController = Get.put(HomeController());
     return GetBuilder<HomeController>(builder: (controller) {
       return homeController.isLoading == true
-          ? CategoryShimmer(child: CircularProgressIndicator)
+          ? const CategoryShimmer()
           : Column(
               children: [
                 SizedBox(

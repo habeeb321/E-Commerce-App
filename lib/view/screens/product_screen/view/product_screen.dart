@@ -8,7 +8,6 @@ import 'package:scotch/view/screens/product_screen/controller/product_controller
 import 'package:scotch/view/screens/product_screen/widgets/favorite_button.dart';
 import 'package:scotch/view/screens/product_screen/widgets/preview_product.dart';
 import 'package:scotch/view/screens/product_screen/widgets/product_details.dart';
-import 'package:scotch/view/screens/wishlist_screen/controller/wishlist_controller.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class ProductScreen extends StatelessWidget {
@@ -18,8 +17,6 @@ class ProductScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    WishlistController wishlistController =
-        Get.put(WishlistController(context));
     HomeController homeController = Get.put(HomeController());
     ProductController productController = Get.put(ProductController());
     final productId = ModalRoute.of(context)?.settings.arguments as String;
