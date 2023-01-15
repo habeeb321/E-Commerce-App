@@ -9,19 +9,18 @@ import 'package:scotch/view/screens/home_screen/view/home_screen.dart';
 import 'package:scotch/view/screens/wishlist_screen/view/wishlist_screen.dart';
 
 class BottomNavBar extends GetView<BottomNavController> {
-  BottomNavBar({super.key});
-
-  int currentIndex = 0;
-
-  List pages = [
-    const HomeScreen(),
-    const CartScreen(),
-    const WishlistScreen(),
-    const ProfileScreen(),
-  ];
+  const BottomNavBar({super.key});
 
   @override
   Widget build(BuildContext context) {
+    int currentIndex = 0;
+
+    List pages = [
+      const HomeScreen(),
+      const CartScreen(),
+      const WishlistScreen(),
+      const ProfileScreen(),
+    ];
     return Scaffold(
       body: GetBuilder<BottomNavController>(
         builder: (controller) {
@@ -41,7 +40,10 @@ class BottomNavBar extends GetView<BottomNavController> {
               child: GNav(
                 tabs: const [
                   GButton(
-                      icon: Icons.home_outlined, iconSize: 30, text: 'Home'),
+                    icon: Icons.home_outlined,
+                    iconSize: 30,
+                    text: 'Home',
+                  ),
                   GButton(
                       icon: Icons.shopping_cart_outlined,
                       iconSize: 30,
@@ -57,8 +59,8 @@ class BottomNavBar extends GetView<BottomNavController> {
                 ],
                 backgroundColor: themeColor,
                 color: kWhitecolor,
-                activeColor: kWhitecolor,
-                tabBackgroundColor: const Color(0xFFFF5858),
+                activeColor: lightThemeColor,
+                tabBackgroundColor: kWhitecolor,
                 padding: const EdgeInsets.all(8),
                 curve: Curves.bounceIn,
                 selectedIndex: currentIndex,

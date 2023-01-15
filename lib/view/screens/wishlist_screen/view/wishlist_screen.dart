@@ -46,10 +46,13 @@ class WishlistScreen extends StatelessWidget {
                             tileColor: const Color.fromARGB(255, 214, 212, 212),
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10)),
-                            leading: CircleAvatar(
-                              radius: 35,
-                              backgroundImage: NetworkImage(
-                                  '${ApiBaseUrl().baseUrl}/products/${wishlistController.model!.products[index].product.image[0]}'),
+                            leading: Padding(
+                              padding: const EdgeInsets.only(top: 7),
+                              child: CircleAvatar(
+                                radius: 35,
+                                backgroundImage: NetworkImage(
+                                    '${ApiBaseUrl().baseUrl}/products/${wishlistController.model!.products[index].product.image[0]}'),
+                              ),
                             ),
                             title: Text(
                               wishlistController
@@ -91,22 +94,26 @@ class WishlistScreen extends StatelessWidget {
                                   "₹${wishlistController.model!.products[index].product.price}",
                                   style: const TextStyle(
                                     fontWeight: FontWeight.bold,
+                                    fontSize: 18,
                                     fontFamily: "Manrope",
                                   ),
                                 ),
                               ],
                             ),
-                            trailing: IconButton(
-                              onPressed: () {
-                                wishlistController.addOrRemoveFromWishlist(
-                                    context,
-                                    wishlistController
-                                        .model!.products[index].product.id);
-                              },
-                              icon: const Icon(
-                                Icons.favorite,
-                                color: Colors.red,
-                                size: 30,
+                            trailing: Padding(
+                              padding: const EdgeInsets.only(top: 10),
+                              child: IconButton(
+                                onPressed: () {
+                                  wishlistController.addOrRemoveFromWishlist(
+                                      context,
+                                      wishlistController
+                                          .model!.products[index].product.id);
+                                },
+                                icon: const Icon(
+                                  Icons.favorite,
+                                  color: Colors.red,
+                                  size: 30,
+                                ),
                               ),
                             ),
                           );

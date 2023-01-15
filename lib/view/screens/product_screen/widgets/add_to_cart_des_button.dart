@@ -15,14 +15,17 @@ class AddToCartDesButton extends StatelessWidget {
           height: 50,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(5),
-            gradient: const LinearGradient(
-              begin: FractionalOffset(0, 0),
-              end: FractionalOffset(0.8, 0),
-              stops: [0, 1],
+            gradient: LinearGradient(
+              begin: const FractionalOffset(0, 0),
+              end: const FractionalOffset(0.8, 0),
+              stops: const [
+                0,
+                0.6,
+              ],
               tileMode: TileMode.clamp,
               colors: [
                 themeColor,
-                Color(0xFFFF97C1),
+                Colors.blue.shade500,
               ],
             ),
           ),

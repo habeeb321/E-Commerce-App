@@ -5,6 +5,7 @@ import 'package:scotch/common/api/api_baseurl.dart';
 import 'package:scotch/core/const.dart';
 import 'package:scotch/view/screens/home_screen/controller/home_controller.dart';
 import 'package:scotch/view/screens/product_screen/controller/product_controller.dart';
+import 'package:scotch/view/screens/product_screen/widgets/favorite_button.dart';
 import 'package:scotch/view/screens/product_screen/widgets/preview_product.dart';
 import 'package:scotch/view/screens/product_screen/widgets/product_details.dart';
 import 'package:scotch/view/screens/wishlist_screen/controller/wishlist_controller.dart';
@@ -61,25 +62,7 @@ class ProductScreen extends StatelessWidget {
                         Positioned(
                           right: 0,
                           top: 0,
-                          child: IconButton(
-                            onPressed: () {
-                              wishlistController.addOrRemoveFromWishlist(
-                                  context, homeCtr.id);
-                            },
-                            icon: Wrap(
-                              children: [
-                                wishlistController.wishList.contains(homeCtr.id)
-                                    ? const Icon(
-                                        Icons.favorite,
-                                        color: Colors.red,
-                                      )
-                                    : const Icon(
-                                        Icons.favorite_border_outlined,
-                                        color: kBlackcolor,
-                                      ),
-                              ],
-                            ),
-                          ),
+                          child: FavoriteButton(id: homeCtr.id),
                         ),
                       ],
                     ),

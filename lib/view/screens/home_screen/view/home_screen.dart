@@ -12,43 +12,46 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    HomeController homeController = Get.put(HomeController());
     return Scaffold(
       appBar: AppBar(
         title: const Text('Home'),
         centerTitle: true,
-        leading: IconButton(onPressed: () {}, icon: const Icon(Icons.menu)),
         actions: [
-          IconButton(onPressed: () {}, icon: const Icon(Icons.favorite_border))
+          IconButton(onPressed: () {}, icon: const Icon(Icons.notifications))
         ],
       ),
       body: GetBuilder<HomeController>(
-          init: HomeController(),
-          builder: (controller) {
-            return Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: ListView(
-                children: [
-                  const SizedBox(
-                    height: 45,
-                    child: CupertinoSearchTextField(
-                      prefixInsets: EdgeInsetsDirectional.fromSTEB(7, 3, 5, 2),
-                    ),
+        init: HomeController(),
+        builder: (controller) {
+          return Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: ListView(
+              children: [
+                const SizedBox(
+                  height: 45,
+                  child: CupertinoSearchTextField(
+                    prefixInsets: EdgeInsetsDirectional.fromSTEB(7, 3, 5, 2),
                   ),
-                  kHeight10,
-                  const Carousel(),
-                  kHeight10,
-                  const Text('Categories', style: textStyle),
-                  kHeight10,
-                  const CategoryContainer(),
-                  kHeight10,
-                  const Text('Newly launched', style: textStyle),
-                  kHeight10,
-                  NewlyLaunchedContainer(),
-                ],
-              ),
-            );
-          }),
+                ),
+                kHeight10,
+                const Carousel(),
+                kHeight20,
+                const Divider(thickness: 2),
+                kHeight10,
+                const Text('Categories', style: textStyle),
+                kHeight10,
+                const CategoryContainer(),
+                kHeight10,
+                const Divider(thickness: 2),
+                kHeight10,
+                const Text('Newly launched', style: textStyle),
+                kHeight10,
+                NewlyLaunchedContainer(),
+              ],
+            ),
+          );
+        },
+      ),
     );
   }
 }
