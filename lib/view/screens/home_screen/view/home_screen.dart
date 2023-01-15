@@ -12,6 +12,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    HomeController homeController = Get.put(HomeController());
     return Scaffold(
       appBar: AppBar(
         title: const Text('Home'),
@@ -21,7 +22,7 @@ class HomeScreen extends StatelessWidget {
         ],
       ),
       body: GetBuilder<HomeController>(
-        init: HomeController(),
+        init: homeController,
         builder: (controller) {
           return Padding(
             padding: const EdgeInsets.all(16.0),
