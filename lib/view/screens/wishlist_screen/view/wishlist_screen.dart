@@ -43,7 +43,7 @@ class WishlistScreen extends StatelessWidget {
                             minVerticalPadding: 5,
                             onTap: () =>
                                 wishlistController.toProductScreen(index),
-                            tileColor: const Color.fromARGB(255, 214, 212, 212),
+                            tileColor: kTileColor,
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10)),
                             leading: Padding(

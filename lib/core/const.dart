@@ -12,6 +12,7 @@ const kWhitecolor = Colors.white;
 const kBlackcolor = Colors.black;
 const themeColor = Color.fromARGB(255, 61, 28, 249);
 final lightThemeColor = Colors.blue.shade800;
+const kTileColor = Color.fromARGB(255, 166, 212, 250);
 
 const divider = Divider(thickness: 2);
 
