@@ -10,17 +10,22 @@ class CartScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     CartController cartController = Get.put(CartController());
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
+      backgroundColor: Colors.grey.shade200,
       appBar: AppBar(
         title: const Text('My Cart'),
         centerTitle: true,
       ),
       body: SafeArea(
         child: SingleChildScrollView(
-          child: Column(
-            children: const [
-              CartWidget(),
-            ],
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              children: const [
+                CartWidget(),
+              ],
+            ),
           ),
         ),
       ),
@@ -28,13 +33,19 @@ class CartScreen extends StatelessWidget {
         builder: (controller) {
           return cartController.cartList == null ||
                   cartController.cartList!.products.isEmpty
-              ? const SizedBox()
+              ? SizedBox(
+                  height: size.height * 0.78,
+                  child: const Center(
+                    child: Text('Cart is Empty'),
+                  ),
+                )
               : Row(
                   children: [
                     SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.07,
-                        width: MediaQuery.of(context).size.width / 2,
+                        height: size.height * 0.07,
+                        width: size.width / 2,
                         child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             const Text(
                               'Total Price',
@@ -57,12 +68,12 @@ class CartScreen extends StatelessWidget {
                           ],
                         )),
                     SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.07,
-                      width: MediaQuery.of(context).size.width / 2,
+                      height: size.height * 0.07,
+                      width: size.width / 2,
                       child: ElevatedButton(
                         onPressed: () {},
                         style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.orange,
+                            backgroundColor: Colors.blue,
                             elevation: 0,
                             shape: const RoundedRectangleBorder()),
                         child: const Text(

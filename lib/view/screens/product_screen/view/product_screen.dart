@@ -19,11 +19,6 @@ class ProductScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<String> sizes = [
-      '14',
-      '15',
-      '16',
-    ];
     HomeController homeController = Get.put(HomeController());
     ProductController productController = Get.put(ProductController());
     final productId = ModalRoute.of(context)?.settings.arguments as String;
