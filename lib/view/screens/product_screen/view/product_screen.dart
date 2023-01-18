@@ -5,6 +5,8 @@ import 'package:scotch/common/api/api_baseurl.dart';
 import 'package:scotch/core/const.dart';
 import 'package:scotch/view/screens/home_screen/controller/home_controller.dart';
 import 'package:scotch/view/screens/product_screen/controller/product_controller.dart';
+import 'package:scotch/view/screens/product_screen/widgets/add_to_cart_des_button.dart';
+import 'package:scotch/view/screens/product_screen/widgets/buy_now_des_button.dart';
 import 'package:scotch/view/screens/product_screen/widgets/favorite_button.dart';
 import 'package:scotch/view/screens/product_screen/widgets/preview_product.dart';
 import 'package:scotch/view/screens/product_screen/widgets/product_details.dart';
@@ -17,6 +19,11 @@ class ProductScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List<String> sizes = [
+      '14',
+      '15',
+      '16',
+    ];
     HomeController homeController = Get.put(HomeController());
     ProductController productController = Get.put(ProductController());
     final productId = ModalRoute.of(context)?.settings.arguments as String;
@@ -28,7 +35,7 @@ class ProductScreen extends StatelessWidget {
           child: GetBuilder<ProductController>(
             builder: (controller) {
               return Padding(
-                padding: const EdgeInsets.only(left: 5, right: 5),
+                padding: const EdgeInsets.all(16),
                 child: Column(
                   children: [
                     kHeight10,
@@ -76,6 +83,7 @@ class ProductScreen extends StatelessWidget {
                     ),
                     kHeight10,
                     PreviewProductWidget(image: homeCtr.image),
+                    kHeight10,
                     ProductDetailsWidget(
                       name: homeCtr.name,
                       price: homeCtr.price,
@@ -83,6 +91,15 @@ class ProductScreen extends StatelessWidget {
                       description: homeCtr.description,
                       discountPrice: homeCtr.discountPrice,
                       offer: homeCtr.offer,
+                    ),
+                    kHeight20,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        AddToCartDesButton(homeCtr: homeCtr),
+                        kWidth10,
+                        const BuyNowDesButton(),
+                      ],
                     ),
                   ],
                 ),

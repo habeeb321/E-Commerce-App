@@ -2,8 +2,6 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:scotch/core/const.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:scotch/view/screens/product_screen/widgets/add_to_cart_des_button.dart';
-import 'package:scotch/view/screens/product_screen/widgets/buy_now_des_button.dart';
 
 class ProductDetailsWidget extends StatelessWidget {
   const ProductDetailsWidget({
@@ -34,7 +32,6 @@ class ProductDetailsWidget extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          divider,
           kHeight10,
           Text(
             name,
@@ -100,16 +97,6 @@ class ProductDetailsWidget extends StatelessWidget {
             ],
           ),
           kHeight10,
-          divider,
-          kHeight10,
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: const [
-              AddToCartDesButton(),
-              kWidth10,
-              BuyNowDesButton(),
-            ],
-          ),
         ],
       ),
     );

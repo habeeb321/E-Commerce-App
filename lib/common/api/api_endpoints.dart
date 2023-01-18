@@ -14,5 +14,5 @@ class ApiEndPoints {
 
   // Product page end points
   static String wishlist = 'api/v1/wishlist';
-  
+  static String cart = 'api/v1/cart';
 }
