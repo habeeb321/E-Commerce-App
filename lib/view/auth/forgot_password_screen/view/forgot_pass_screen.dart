@@ -12,7 +12,7 @@ class ForgotPassScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     TextEditingController emailController = TextEditingController();
-    final size = MediaQuery.of(context).size;
+    final size = Get.size;
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(

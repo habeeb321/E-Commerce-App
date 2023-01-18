@@ -14,7 +14,7 @@ class WishlistScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     WishlistController wishlistController =
         Get.put(WishlistController(context));
-    Size size = MediaQuery.of(context).size;
+    Size size = Get.size;
     return Scaffold(
       backgroundColor: Colors.grey.shade200,
       appBar: AppBar(

@@ -11,7 +11,7 @@ class ForgotPassOtpScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
+    final size = Get.size;
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(

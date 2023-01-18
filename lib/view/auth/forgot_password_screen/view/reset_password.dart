@@ -13,7 +13,7 @@ class ResetPasswordScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     TextEditingController emailController = TextEditingController();
     SignUpController signUpController = Get.put(SignUpController());
-    final size = MediaQuery.of(context).size;
+    final size = Get.size;
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(

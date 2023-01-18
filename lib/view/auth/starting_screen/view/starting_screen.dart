@@ -8,7 +8,7 @@ class StartingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
+    final size = Get.size;
     return Scaffold(
       body: Column(
         children: [
@@ -78,7 +78,7 @@ class LogingStackImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final stackSize = MediaQuery.of(context).size;
+    final stackSize = Get.size;
     return Stack(
       children: [
         Container(

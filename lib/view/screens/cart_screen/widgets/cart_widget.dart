@@ -25,7 +25,7 @@ class CartWidget extends StatelessWidget {
                   return cartController.cartList == null ||
                           cartController.cartList!.products.isEmpty
                       ? SizedBox(
-                          height: MediaQuery.of(context).size.height / 2,
+                          height: Get.size.height / 2,
                           child: const Center(
                             child: Text('Cart is Empty'),
                           ),
