@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:scotch/view/screens/cart_screen/controller/cart_controller.dart';
 
 class CartAlertWidget extends StatelessWidget {
@@ -36,7 +37,7 @@ class CartAlertWidget extends StatelessWidget {
             children: [
               TextButton(
                 onPressed: () {
-                  Navigator.of(context).pop();
+                  Get.back();
                 },
                 child: const Text(
                   'No',

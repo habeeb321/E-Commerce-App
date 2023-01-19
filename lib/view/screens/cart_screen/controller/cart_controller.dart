@@ -46,7 +46,6 @@ class CartController extends GetxController {
   }
 
   void addToCart(String productId, String size) async {
-    log('here');
     isLoading = true;
     update();
     final AddToCartModel model = AddToCartModel(
@@ -54,11 +53,7 @@ class CartController extends GetxController {
       quantity: quantity,
       productId: productId,
     );
-    await service
-        .addToCart(
-      model,
-    )
-        .then((value) {
+    await service.addToCart(model).then((value) {
       if (value != null) {
         getCart();
         if (value == "product added to cart successfully") {
@@ -77,7 +72,6 @@ class CartController extends GetxController {
   }
 
   void removeCart(productId) {
-    log('get in to remove controller');
     service.removeFromCart(productId).then(
       (value) {
         if (value != null) {

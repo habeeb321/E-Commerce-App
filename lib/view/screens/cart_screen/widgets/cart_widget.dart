@@ -25,7 +25,7 @@ class CartWidget extends StatelessWidget {
                   return cartController.cartList == null ||
                           cartController.cartList!.products.isEmpty
                       ? SizedBox(
-                          height: Get.size.height / 2,
+                          height: MediaQuery.of(context).size.height / 2,
                           child: const Center(
                             child: Text('Cart is Empty'),
                           ),
@@ -45,7 +45,7 @@ class CartWidget extends StatelessWidget {
                                     },
                                     child: Row(
                                       children: [
-                                        kWidth15,
+                                        kWidth10,
                                         Column(
                                           children: [
                                             Container(
@@ -105,8 +105,8 @@ class CartWidget extends StatelessWidget {
                                           ],
                                         ),
                                         Padding(
-                                          padding:
-                                              const EdgeInsets.only(left: 40),
+                                          padding: EdgeInsets.only(
+                                              left: Get.size.width * 0.05),
                                           child: Column(
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
@@ -122,6 +122,9 @@ class CartWidget extends StatelessWidget {
                                                     fontFamily: 'Manrope',
                                                     fontWeight:
                                                         FontWeight.bold),
+                                                softWrap: false,
+                                                maxLines: 1,
+                                                overflow: TextOverflow.ellipsis,
                                               ),
                                               kHeight10,
                                               RatingBar.builder(

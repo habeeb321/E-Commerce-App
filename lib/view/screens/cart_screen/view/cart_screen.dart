@@ -39,56 +39,62 @@ class CartScreen extends StatelessWidget {
                     child: Text('Cart is Empty'),
                   ),
                 )
-              : Row(
-                  children: [
-                    SizedBox(
+              : Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      SizedBox(
+                          height: size.height * 0.07,
+                          width: size.width * 0.4,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              const Text(
+                                'Total Price',
+                                style: TextStyle(
+                                  color: kBlackcolor,
+                                  fontSize: 15,
+                                  fontFamily: "Manrope",
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                '${cartController.totalSave}',
+                                style: const TextStyle(
+                                  color: Colors.red,
+                                  fontFamily: 'Manrope',
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18,
+                                ),
+                              ),
+                            ],
+                          )),
+                      SizedBox(
                         height: size.height * 0.07,
-                        width: size.width / 2,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            const Text(
-                              'Total Price',
-                              style: TextStyle(
-                                color: kBlackcolor,
-                                fontSize: 15,
-                                fontFamily: "Manrope",
-                                fontWeight: FontWeight.bold,
-                              ),
+                        width: size.width * 0.4,
+                        child: ElevatedButton(
+                          onPressed: () {},
+                          style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.blue,
+                              elevation: 0,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10.0),
+                              )),
+                          child: const Text(
+                            'Place Order',
+                            style: TextStyle(
+                              color: kWhitecolor,
+                              fontFamily: 'Manrope',
+                              letterSpacing: 1,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18,
                             ),
-                            Text(
-                              '${cartController.totalSave}',
-                              style: const TextStyle(
-                                color: Colors.red,
-                                fontFamily: 'Manrope',
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18,
-                              ),
-                            ),
-                          ],
-                        )),
-                    SizedBox(
-                      height: size.height * 0.07,
-                      width: size.width / 2,
-                      child: ElevatedButton(
-                        onPressed: () {},
-                        style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.blue,
-                            elevation: 0,
-                            shape: const RoundedRectangleBorder()),
-                        child: const Text(
-                          'Place Order',
-                          style: TextStyle(
-                            color: kWhitecolor,
-                            fontFamily: 'Manrope',
-                            letterSpacing: 1,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 18,
                           ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 );
         },
       ),

@@ -36,7 +36,10 @@ class BottomNavBar extends GetView<BottomNavController> {
                     topLeft: Radius.circular(15),
                     topRight: Radius.circular(15))),
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 11),
+              padding: EdgeInsets.symmetric(
+                horizontal: Get.size.width * 0.05,
+                vertical: Get.size.height * 0.015,
+              ),
               child: GNav(
                 tabs: const [
                   GButton(
@@ -61,7 +64,7 @@ class BottomNavBar extends GetView<BottomNavController> {
                 color: kWhitecolor,
                 activeColor: lightThemeColor,
                 tabBackgroundColor: kWhitecolor,
-                padding: const EdgeInsets.all(8),
+                padding: const EdgeInsets.all(3),
                 curve: Curves.bounceIn,
                 selectedIndex: currentIndex,
                 onTabChange: (index) {

@@ -30,7 +30,7 @@ class CategoryContainer extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             CircleAvatar(
-                              radius: 40,
+                              radius: 35,
                               backgroundImage: NetworkImage(
                                   "http://${ApiBaseUrl.ip}:5000/category/${homeController.categoryList[index].image}"),
                             ),
