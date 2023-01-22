@@ -1,105 +1,94 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:scotch/core/const.dart';
 import 'package:scotch/view/screens/address_screen/controller/address_controller.dart';
-import 'package:scotch/view/screens/profile_screen/widgets/profile_widget.dart';
+import 'package:scotch/view/screens/address_screen/model/enum_address.dart';
+import 'package:scotch/view/screens/address_screen/view/address_form_screen.dart';
+import 'package:scotch/view/screens/address_screen/widgets/popup_address_widget.dart';
 
 class OrderAddressWidget extends StatelessWidget {
   const OrderAddressWidget({
     Key? key,
     required this.index,
-    required this.value,
   }) : super(key: key);
 
   final int index;
-  final AddressController value;
   @override
   Widget build(BuildContext context) {
-    return Card(
-      elevation: 0,
-      color: kWhitecolor,
-      child: Column(
+    AddressController addressController = Get.put(AddressController());
+    return GetBuilder<AddressController>(builder: (controller) {
+      return Column(
         children: [
-          ProfileWidget(
-            text: 'Deliver to :',
-            size: 16,
-            ontap: () {},
-            trailIcon: SizedBox(
-              height: 32,
-              child: ElevatedButton(
-                onPressed: () {},
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: kWhitecolor,
-                  elevation: 0,
-                  shape: RoundedRectangleBorder(
-                    side: const BorderSide(color: kGreyColor),
-                    borderRadius: BorderRadius.circular(5),
-                  ),
-                ),
-                child: const Text(
-                  'Change',
-                  style: TextStyle(
-                    fontFamily: "Manrope",
-                    fontWeight: FontWeight.bold,
-                    fontSize: 13,
-                    letterSpacing: 1,
-                  ),
-                ),
-              ),
-            ),
-          ),
           Container(
             padding: const EdgeInsets.only(left: 15, right: 10),
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
+              color: kWhitecolor,
+              borderRadius: BorderRadius.circular(15),
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 kHeight10,
+                // Row(
+                //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //   children: [
+                //     const Text(
+                //       'Deliver to:',
+                //       style: TextStyle(
+                //         fontFamily: "Manrope",
+                //         fontSize: 18,
+                //         fontWeight: FontWeight.bold,
+                //       ),
+                //     ),
+                //     ElevatedButton.icon(
+                //       onPressed: () {},
+                //       icon: const Icon(Icons.edit),
+                //       label: const Text('Change'),
+                //     ),
+                //   ],
+                // ),
                 Row(
                   children: [
                     Text(
-                      // value.addressModel?.fullName ?? "",
-                      value.addressList[index].fullName.toUpperCase(),
+                      addressController.addressList[index].fullName
+                          .toUpperCase(),
                       style: const TextStyle(
                         fontFamily: "Manrope",
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    kWidth10,
-                    Container(
-                      height: 20,
-                      width: 60,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5),
-                        color: Colors.black.withOpacity(0.3),
-                      ),
-                      child: Text(
-                        value.addressList[index].title.toUpperCase(),
-                        textAlign: TextAlign.center,
-                        style: const TextStyle(
-                          fontFamily: "Manrope",
-                          fontSize: 14,
-                          color: kWhitecolor,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
                     const Spacer(),
                     Row(
                       children: [
                         IconButton(
-                          onPressed: () {},
-                          icon: const Icon(Icons.edit),
+                          onPressed: () {
+                            Get.to(
+                              AddressFormScreen(
+                                addressScreenCheck:
+                                    EnumAddress.editAddressScreen,
+                                addressId:
+                                    addressController.addressList[index].id,
+                              ),
+                            );
+                          },
+                          icon: const Icon(
+                            Icons.edit,
+                            color: Colors.blue,
+                          ),
                         ),
                         IconButton(
                           onPressed: () {
-                            // value.deleteAddress(
-                            //     value.addressList[index].id, context);
+                            showDialog(
+                              context: context,
+                              builder: (context) {
+                                return AddressAlertWidget(index: index);
+                              },
+                            );
                           },
                           icon: const Icon(
                             Icons.delete,
+                            color: kRedColor,
                           ),
                         ),
                       ],
@@ -107,7 +96,7 @@ class OrderAddressWidget extends StatelessWidget {
                   ],
                 ),
                 Text(
-                  value.addressList[index].address,
+                  addressController.addressList[index].address,
                   style: const TextStyle(
                     fontFamily: "Manrope",
                     letterSpacing: 1,
@@ -117,7 +106,7 @@ class OrderAddressWidget extends StatelessWidget {
                 Row(
                   children: [
                     Text(
-                      "PIN :${value.addressList[index].pin}, ",
+                      "PIN :${addressController.addressList[index].pin}, ",
                       style: const TextStyle(
                         fontFamily: "Manrope",
                         letterSpacing: 1,
@@ -125,7 +114,7 @@ class OrderAddressWidget extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      value.addressList[index].state,
+                      addressController.addressList[index].state,
                       style: const TextStyle(
                         fontFamily: "Manrope",
                         letterSpacing: 1,
@@ -135,7 +124,7 @@ class OrderAddressWidget extends StatelessWidget {
                   ],
                 ),
                 Text(
-                  value.addressList[index].place,
+                  addressController.addressList[index].place,
                   style: const TextStyle(
                     fontFamily: "Manrope",
                     fontWeight: FontWeight.bold,
@@ -144,7 +133,7 @@ class OrderAddressWidget extends StatelessWidget {
                 ),
                 kHeight10,
                 Text(
-                  value.addressList[index].phone,
+                  addressController.addressList[index].phone,
                   style: const TextStyle(
                     fontFamily: "Manrope",
                     fontWeight: FontWeight.bold,
@@ -156,7 +145,7 @@ class OrderAddressWidget extends StatelessWidget {
             ),
           ),
         ],
-      ),
-    );
+      );
+    });
   }
 }

@@ -22,7 +22,7 @@ class AddressAlertWidget extends StatelessWidget {
           ),
         ),
         content: const Text(
-          'Are you sure want to delete addressController?',
+          'Are you sure want to delete address?',
           style: TextStyle(
             fontFamily: "Manrope",
             letterSpacing: 1,

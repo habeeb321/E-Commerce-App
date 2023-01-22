@@ -30,165 +30,155 @@ class AddressScreen extends StatelessWidget {
           ),
           body: SafeArea(
             child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  addressController.addressList.isEmpty
-                      ? const Align(
-                          alignment: Alignment.center,
-                          child: Text(
-                            'Add Some Address',
-                          ),
-                        )
-                      : ListView.separated(
-                          shrinkWrap: true,
-                          padding: const EdgeInsets.all(10),
-                          itemBuilder: (context, index) {
-                            return Container(
-                              color: kWhitecolor,
-                              child: Padding(
-                                padding: const EdgeInsets.only(left: 20),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    kHeight10,
-                                    Row(
-                                      children: [
-                                        Text(
-                                          addressController
-                                              .addressList[index].fullName
-                                              .toUpperCase(),
-                                          style: const TextStyle(
-                                            fontFamily: "Manrope",
-                                            fontSize: 18,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                        kWidth10,
-                                        Container(
-                                          height: 20,
-                                          width: 60,
-                                          decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(5),
-                                            color:
-                                                Colors.black.withOpacity(0.2),
-                                          ),
-                                          child: Text(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  children: [
+                    addressController.addressList.isEmpty
+                        ? const Align(
+                            alignment: Alignment.center,
+                            child: Text(
+                              'Add Some Address',
+                            ),
+                          )
+                        : ListView.separated(
+                            shrinkWrap: true,
+                            padding: const EdgeInsets.all(10),
+                            itemBuilder: (context, index) {
+                              return Container(
+                                decoration: BoxDecoration(
+                                  color: kWhitecolor,
+                                  borderRadius: BorderRadius.circular(15),
+                                  boxShadow: const [
+                                    BoxShadow(
+                                      color: Colors.black38,
+                                      blurRadius: 20.0,
+                                    )
+                                  ],
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.only(left: 20),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      kHeight10,
+                                      Row(
+                                        children: [
+                                          Text(
                                             addressController
-                                                .addressList[index].title
+                                                .addressList[index].fullName
                                                 .toUpperCase(),
-                                            textAlign: TextAlign.center,
                                             style: const TextStyle(
                                               fontFamily: "Manrope",
-                                              fontSize: 14,
-                                              color: kWhitecolor,
+                                              fontSize: 18,
                                               fontWeight: FontWeight.bold,
                                             ),
                                           ),
-                                        ),
-                                        const Spacer(),
-                                        Row(
-                                          children: [
-                                            IconButton(
-                                              onPressed: () {
-                                                Navigator.of(context).push(
-                                                  MaterialPageRoute(
-                                                    builder: (context) {
-                                                      return AddressFormScreen(
-                                                        addressScreenCheck:
-                                                            EnumAddress
-                                                                .editAddressScreen,
-                                                        addressId:
-                                                            addressController
-                                                                .addressList[
-                                                                    index]
-                                                                .id,
-                                                      );
-                                                    },
-                                                  ),
-                                                );
-                                              },
-                                              icon: const Icon(Icons.edit),
-                                            ),
-                                            IconButton(
-                                              onPressed: () {
-                                                showDialog(
-                                                  context: context,
-                                                  builder: (context) {
-                                                    return AddressAlertWidget(
-                                                        index: index);
-                                                  },
-                                                );
-                                              },
-                                              icon: const Icon(
-                                                Icons.delete,
+                                          const Spacer(),
+                                          Row(
+                                            children: [
+                                              IconButton(
+                                                onPressed: () {
+                                                  Navigator.of(context).push(
+                                                    MaterialPageRoute(
+                                                      builder: (context) {
+                                                        return AddressFormScreen(
+                                                          addressScreenCheck:
+                                                              EnumAddress
+                                                                  .editAddressScreen,
+                                                          addressId:
+                                                              addressController
+                                                                  .addressList[
+                                                                      index]
+                                                                  .id,
+                                                        );
+                                                      },
+                                                    ),
+                                                  );
+                                                },
+                                                icon: const Icon(Icons.edit),
                                               ),
+                                              IconButton(
+                                                onPressed: () {
+                                                  showDialog(
+                                                    context: context,
+                                                    builder: (context) {
+                                                      return AddressAlertWidget(
+                                                          index: index);
+                                                    },
+                                                  );
+                                                },
+                                                icon: const Icon(
+                                                  Icons.delete,
+                                                ),
+                                              ),
+                                            ],
+                                          )
+                                        ],
+                                      ),
+                                      Text(
+                                        addressController
+                                            .addressList[index].address,
+                                        style: const TextStyle(
+                                          fontFamily: "Manrope",
+                                          letterSpacing: 1,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                      Row(
+                                        children: [
+                                          Text(
+                                            "PIN : ${addressController.addressList[index].pin}, ",
+                                            style: const TextStyle(
+                                              fontFamily: "Manrope",
+                                              letterSpacing: 1,
+                                              fontWeight: FontWeight.bold,
                                             ),
-                                          ],
-                                        )
-                                      ],
-                                    ),
-                                    Text(
-                                      addressController
-                                          .addressList[index].address,
-                                      style: const TextStyle(
-                                        fontFamily: "Manrope",
-                                        letterSpacing: 1,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                    Row(
-                                      children: [
-                                        Text(
-                                          "PIN : ${addressController.addressList[index].pin}, ",
-                                          style: const TextStyle(
-                                            fontFamily: "Manrope",
-                                            letterSpacing: 1,
-                                            fontWeight: FontWeight.bold,
                                           ),
-                                        ),
-                                        Text(
-                                          addressController
-                                              .addressList[index].state,
-                                          style: const TextStyle(
-                                            fontFamily: "Manrope",
-                                            letterSpacing: 1,
-                                            fontWeight: FontWeight.bold,
+                                          Text(
+                                            addressController
+                                                .addressList[index].state,
+                                            style: const TextStyle(
+                                              fontFamily: "Manrope",
+                                              letterSpacing: 1,
+                                              fontWeight: FontWeight.bold,
+                                            ),
                                           ),
+                                        ],
+                                      ),
+                                      Text(
+                                        addressController
+                                            .addressList[index].landMark,
+                                        style: const TextStyle(
+                                          fontFamily: "Manrope",
+                                          fontWeight: FontWeight.bold,
+                                          letterSpacing: 1,
                                         ),
-                                      ],
-                                    ),
-                                    Text(
-                                      addressController
-                                          .addressList[index].landMark,
-                                      style: const TextStyle(
-                                        fontFamily: "Manrope",
-                                        fontWeight: FontWeight.bold,
-                                        letterSpacing: 1,
                                       ),
-                                    ),
-                                    kHeight10,
-                                    Text(
-                                      addressController
-                                          .addressList[index].phone,
-                                      style: const TextStyle(
-                                        fontFamily: "Manrope",
-                                        fontWeight: FontWeight.bold,
-                                        letterSpacing: 1,
+                                      kHeight10,
+                                      Text(
+                                        addressController
+                                            .addressList[index].phone,
+                                        style: const TextStyle(
+                                          fontFamily: "Manrope",
+                                          fontWeight: FontWeight.bold,
+                                          letterSpacing: 1,
+                                        ),
                                       ),
-                                    ),
-                                    kHeight10,
-                                  ],
+                                      kHeight10,
+                                    ],
+                                  ),
                                 ),
-                              ),
-                            );
-                          },
-                          separatorBuilder: (context, index) {
-                            return kHeight10;
-                          },
-                          itemCount: addressController.addressList.length,
-                        ),
-                ],
+                              );
+                            },
+                            separatorBuilder: (context, index) {
+                              return kHeight20;
+                            },
+                            itemCount: addressController.addressList.length,
+                          ),
+                  ],
+                ),
               ),
             ),
           ),

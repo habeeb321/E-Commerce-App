@@ -27,7 +27,6 @@ class RowOrderWidget extends StatelessWidget {
         ),
         Text(
           text2,
-          // "₹${(provider.price - provider.discountPrice).round()}",
           style: TextStyle(
             fontFamily: "Manrope",
             color: color,

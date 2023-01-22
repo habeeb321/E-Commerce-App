@@ -4,6 +4,7 @@ import 'package:scotch/core/const.dart';
 import 'package:scotch/view/screens/address_screen/controller/address_controller.dart';
 import 'package:scotch/view/screens/address_screen/view/address_screen.dart';
 import 'package:scotch/view/screens/home_screen/model/product_model.dart';
+import 'package:scotch/view/screens/payment_screen/view/payment_screen.dart';
 
 class OrderBottomWidget extends StatelessWidget {
   const OrderBottomWidget({
@@ -24,16 +25,9 @@ class OrderBottomWidget extends StatelessWidget {
         child: Row(
           children: [
             SizedBox(
-              height: MediaQuery.of(context).size.height * 0.06,
-              width: MediaQuery.of(context).size.width / 2,
-              child: ElevatedButton(
-                onPressed: () {
-                  // value.gotToCartFromProduct(context);
-                },
-                style: ElevatedButton.styleFrom(
-                  elevation: 0,
-                  shape: const RoundedRectangleBorder(),
-                ),
+              height: Get.size.height * 0.06,
+              width: Get.size.width / 2,
+              child: Center(
                 child: Text(
                   "₹${(homeCtr.price - homeCtr.discountPrice).round()}",
                   style: const TextStyle(
@@ -48,14 +42,17 @@ class OrderBottomWidget extends StatelessWidget {
             ),
             addressController.addressList.isNotEmpty
                 ? SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.06,
-                    width: MediaQuery.of(context).size.width / 2,
+                    height: Get.size.height * 0.06,
+                    width: Get.size.width / 2,
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.to(const PaymentScreen());
+                      },
                       style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.blue,
-                          elevation: 0,
-                          shape: const RoundedRectangleBorder()),
+                        backgroundColor: Colors.blue,
+                        elevation: 0,
+                        shape: const RoundedRectangleBorder(),
+                      ),
                       child: const Text(
                         'Continue',
                         style: TextStyle(
@@ -69,8 +66,8 @@ class OrderBottomWidget extends StatelessWidget {
                     ),
                   )
                 : SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.06,
-                    width: MediaQuery.of(context).size.width / 2,
+                    height: Get.size.height * 0.06,
+                    width: Get.size.width / 2,
                     child: ElevatedButton(
                       onPressed: () {
                         Navigator.of(context).push(
@@ -82,9 +79,10 @@ class OrderBottomWidget extends StatelessWidget {
                         );
                       },
                       style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.blue,
-                          elevation: 0,
-                          shape: const RoundedRectangleBorder()),
+                        backgroundColor: Colors.blue,
+                        elevation: 0,
+                        shape: const RoundedRectangleBorder(),
+                      ),
                       child: const Text(
                         'Add Adrress',
                         style: TextStyle(
