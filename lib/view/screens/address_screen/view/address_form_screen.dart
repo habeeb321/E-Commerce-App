@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:scotch/core/const.dart';
 import 'package:scotch/view/screens/address_screen/controller/address_controller.dart';
 import 'package:scotch/view/screens/address_screen/model/enum_address.dart';
-import 'package:scotch/view/screens/address_screen/widgets/button_type_widget.dart';
 import 'package:scotch/view/screens/address_screen/widgets/custom_form.dart';
 
 class AddressFormScreen extends StatelessWidget {
@@ -136,59 +135,8 @@ class AddressFormScreen extends StatelessWidget {
                         preffix: const Icon(Icons.emoji_flags),
                       ),
                       kHeight10,
-                      Row(
-                        children: const [
-                          Text(
-                            'Type of address',
-                            style: TextStyle(
-                              color: kBlackcolor,
-                              fontFamily: "Manrope",
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ],
-                      ),
-                      kHeight10,
-                      Row(
-                        children: [
-                          AddressTypeButton(
-                            icon: Icons.home,
-                            onPressed: () {
-                              addressController.buttonSelection();
-                            },
-                            text: 'Home',
-                            color: addressController.isSelected == true
-                                ? Colors.blue
-                                : Colors.grey,
-                            textColor: addressController.isSelected == true
-                                ? Colors.blue
-                                : Colors.grey,
-                            borderColor: addressController.isSelected == true
-                                ? Colors.blue
-                                : Colors.grey,
-                          ),
-                          kWidth10,
-                          AddressTypeButton(
-                            icon: Icons.apartment,
-                            onPressed: () {
-                              addressController.buttonSelection();
-                            },
-                            text: 'Office',
-                            color: addressController.isSelected == false
-                                ? Colors.blue
-                                : Colors.grey,
-                            textColor: addressController.isSelected == false
-                                ? Colors.blue
-                                : Colors.grey,
-                            borderColor: addressController.isSelected == false
-                                ? Colors.blue
-                                : Colors.grey,
-                          ),
-                        ],
-                      ),
-                      kHeight10,
                       SizedBox(
-                        width: MediaQuery.of(context).size.width * 0.92,
+                        width: Get.size.width * 0.92,
                         child: ElevatedButton(
                           onPressed: () {
                             if (formGlobalKey.currentState!.validate()) {
