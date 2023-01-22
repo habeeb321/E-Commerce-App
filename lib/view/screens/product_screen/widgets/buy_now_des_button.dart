@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:scotch/core/const.dart';
 
 class BuyNowDesButton extends StatelessWidget {
-  const BuyNowDesButton({
-    Key? key,
-  }) : super(key: key);
+  const BuyNowDesButton({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
