@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:scotch/core/const.dart';
 
 class ProfileWidget extends StatelessWidget {
   const ProfileWidget({
@@ -19,7 +20,7 @@ class ProfileWidget extends StatelessWidget {
     return ListTile(
       minVerticalPadding: 22,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-      tileColor: Colors.grey.shade300,
+      tileColor: kGreyColor.shade300,
       title: Text(
         text,
         style: TextStyle(

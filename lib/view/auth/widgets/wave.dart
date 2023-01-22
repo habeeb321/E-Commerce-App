@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:scotch/core/const.dart';
 
 class MyWaveClipper extends StatelessWidget {
   const MyWaveClipper({super.key});
@@ -29,7 +30,7 @@ class MyWaveClipper extends StatelessWidget {
             clipper: WaveClipper(), //set our custom wave clipper.
             child: Container(
               padding: const EdgeInsets.only(bottom: 50),
-              color: Colors.red,
+              color: kRedColor,
               height: 180,
               alignment: Alignment.center,
               child: const Text(

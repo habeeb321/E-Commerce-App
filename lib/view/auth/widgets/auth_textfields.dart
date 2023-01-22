@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:scotch/core/const.dart';
 
 class AuthTextField extends StatelessWidget {
   const AuthTextField({
@@ -29,21 +30,21 @@ class AuthTextField extends StatelessWidget {
         contentPadding:
             const EdgeInsets.symmetric(vertical: 18, horizontal: 10),
         suffixIcon: suffix,
-        labelStyle: const TextStyle(color: Colors.grey),
+        labelStyle: const TextStyle(color: kGreyColor),
         focusedBorder: OutlineInputBorder(
-            borderSide: const BorderSide(color: Colors.grey),
+            borderSide: const BorderSide(color: kGreyColor),
             borderRadius: BorderRadius.circular(20)),
         enabledBorder: OutlineInputBorder(
-            borderSide: const BorderSide(color: Colors.grey),
+            borderSide: const BorderSide(color: kGreyColor),
             borderRadius: BorderRadius.circular(20)),
         disabledBorder: OutlineInputBorder(
-            borderSide: const BorderSide(color: Colors.grey),
+            borderSide: const BorderSide(color: kGreyColor),
             borderRadius: BorderRadius.circular(20)),
         focusedErrorBorder: OutlineInputBorder(
-            borderSide: const BorderSide(color: Colors.red),
+            borderSide: const BorderSide(color: kRedColor),
             borderRadius: BorderRadius.circular(20)),
         errorBorder: OutlineInputBorder(
-            borderSide: const BorderSide(color: Colors.red),
+            borderSide: const BorderSide(color: kRedColor),
             borderRadius: BorderRadius.circular(20)),
         labelText: label,
       ),

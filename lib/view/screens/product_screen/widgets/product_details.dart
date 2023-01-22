@@ -84,7 +84,7 @@ class ProductDetailsWidget extends StatelessWidget {
             children: [
               Text(
                 '-${offer.toString()}%',
-                style: const TextStyle(color: Colors.red, fontSize: 20),
+                style: const TextStyle(color: kRedColor, fontSize: 20),
               ),
               kWidth10,
               Text(

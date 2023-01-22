@@ -162,7 +162,7 @@ class CartWidget extends StatelessWidget {
                                               Text(
                                                 "₹${cartController.cartList!.products[index].product.price}",
                                                 style: const TextStyle(
-                                                  color: Colors.grey,
+                                                  color: kGreyColor,
                                                   fontWeight: FontWeight.bold,
                                                   decoration: TextDecoration
                                                       .lineThrough,
@@ -173,7 +173,7 @@ class CartWidget extends StatelessWidget {
                                               Text(
                                                 "₹${(cartController.cartList!.products[index].product.price - cartController.cartList!.products[index].product.discountPrice).round()}",
                                                 style: const TextStyle(
-                                                  color: Colors.red,
+                                                  color: kRedColor,
                                                   overflow:
                                                       TextOverflow.ellipsis,
                                                   fontSize: 20,

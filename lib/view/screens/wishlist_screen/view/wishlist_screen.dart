@@ -16,7 +16,7 @@ class WishlistScreen extends StatelessWidget {
         Get.put(WishlistController(context));
     Size size = Get.size;
     return Scaffold(
-      backgroundColor: Colors.grey.shade200,
+      backgroundColor: kGreyColor.shade200,
       appBar: AppBar(
         title: const Text('My Wishlist'),
         centerTitle: true,
@@ -111,7 +111,7 @@ class WishlistScreen extends StatelessWidget {
                                 },
                                 icon: const Icon(
                                   Icons.favorite,
-                                  color: Colors.red,
+                                  color: kRedColor,
                                   size: 30,
                                 ),
                               ),

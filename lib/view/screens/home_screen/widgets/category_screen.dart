@@ -15,7 +15,7 @@ class CategoryScreen extends StatelessWidget {
     final productId = ModalRoute.of(context)?.settings.arguments as String;
     final homeCtr = homeController.findByCategoryId(productId);
     return Scaffold(
-      backgroundColor: Colors.grey.shade200,
+      backgroundColor: kGreyColor.shade200,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(16.0),

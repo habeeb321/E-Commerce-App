@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:scotch/core/const.dart';
 import 'package:shimmer/shimmer.dart';
 
 class ShimmerWidget extends StatelessWidget {
@@ -24,8 +25,8 @@ class ShimmerWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Shimmer.fromColors(
-      baseColor: Colors.grey[400]!,
-      highlightColor: Colors.grey[300]!,
+      baseColor: kGreyColor[400]!,
+      highlightColor: kGreyColor[300]!,
       child: Container(
         height: height,
         width: width,

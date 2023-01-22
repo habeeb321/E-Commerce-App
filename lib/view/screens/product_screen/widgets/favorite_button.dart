@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:scotch/core/const.dart';
 import 'package:scotch/view/screens/wishlist_screen/controller/wishlist_controller.dart';
 
 class FavoriteButton extends StatelessWidget {
@@ -21,7 +22,7 @@ class FavoriteButton extends StatelessWidget {
                 ? Icons.favorite
                 : Icons.favorite_outline_outlined,
             color: wishlistController.wishList.contains(id)
-                ? Colors.red
+                ? kRedColor
                 : Colors.black,
             size: 30,
           ),

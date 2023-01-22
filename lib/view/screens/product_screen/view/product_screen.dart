@@ -24,7 +24,7 @@ class ProductScreen extends StatelessWidget {
     final productId = ModalRoute.of(context)?.settings.arguments as String;
     final homeCtr = homeController.findById(productId);
     return Scaffold(
-      backgroundColor: Colors.grey.shade200,
+      backgroundColor: kGreyColor.shade200,
       body: SafeArea(
         child: SingleChildScrollView(
           child: GetBuilder<ProductController>(
@@ -72,7 +72,7 @@ class ProductScreen extends StatelessWidget {
                       effect: const WormEffect(
                         dotHeight: 10,
                         dotWidth: 10,
-                        dotColor: Colors.grey,
+                        dotColor: kGreyColor,
                         activeDotColor: Colors.orange,
                       ),
                     ),
@@ -93,7 +93,7 @@ class ProductScreen extends StatelessWidget {
                       children: [
                         AddToCartDesButton(homeCtr: homeCtr),
                         kWidth10,
-                        const BuyNowDesButton(),
+                        BuyNowDesButton(id: homeCtr.id, size: homeCtr.size),
                       ],
                     ),
                   ],

@@ -12,7 +12,7 @@ class CartScreen extends StatelessWidget {
     CartController cartController = Get.put(CartController());
     Size size = Get.size;
     return Scaffold(
-      backgroundColor: Colors.grey.shade200,
+      backgroundColor: kGreyColor.shade200,
       appBar: AppBar(
         title: const Text('My Cart'),
         centerTitle: true,
@@ -62,7 +62,7 @@ class CartScreen extends StatelessWidget {
                               Text(
                                 '${cartController.totalSave}',
                                 style: const TextStyle(
-                                  color: Colors.red,
+                                  color: kRedColor,
                                   fontFamily: 'Manrope',
                                   fontWeight: FontWeight.bold,
                                   fontSize: 18,
