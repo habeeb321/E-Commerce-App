@@ -32,7 +32,7 @@ class OrderBottomWidget extends StatelessWidget {
                   "₹${(homeCtr.price - homeCtr.discountPrice).round()}",
                   style: const TextStyle(
                     color: kBlackcolor,
-                    fontFamily: "Manrope",
+                    fontFamily: "Montserrat",
                     fontWeight: FontWeight.bold,
                     letterSpacing: 1,
                     fontSize: 18,
@@ -57,7 +57,7 @@ class OrderBottomWidget extends StatelessWidget {
                         'Continue',
                         style: TextStyle(
                           color: kWhitecolor,
-                          fontFamily: "Manrope",
+                          fontFamily: "Montserrat",
                           fontWeight: FontWeight.bold,
                           letterSpacing: 1,
                           fontSize: 18,
@@ -87,7 +87,7 @@ class OrderBottomWidget extends StatelessWidget {
                         'Add Adrress',
                         style: TextStyle(
                           color: kWhitecolor,
-                          fontFamily: "Manrope",
+                          fontFamily: "Montserrat",
                           fontWeight: FontWeight.bold,
                           letterSpacing: 1,
                           fontSize: 18,

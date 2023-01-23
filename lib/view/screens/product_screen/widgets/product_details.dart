@@ -38,7 +38,7 @@ class ProductDetailsWidget extends StatelessWidget {
             style: const TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
-              fontFamily: 'Manrope',
+              fontFamily: 'Montserrat',
               letterSpacing: 1.2,
             ),
           ),

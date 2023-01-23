@@ -15,7 +15,7 @@ class AddressAlertWidget extends StatelessWidget {
         title: const Text(
           'Remove Item',
           style: TextStyle(
-            fontFamily: "Manrope",
+            fontFamily: "Montserrat",
             letterSpacing: 1,
             fontSize: 22,
             fontWeight: FontWeight.bold,
@@ -24,7 +24,7 @@ class AddressAlertWidget extends StatelessWidget {
         content: const Text(
           'Are you sure want to delete address?',
           style: TextStyle(
-            fontFamily: "Manrope",
+            fontFamily: "Montserrat",
             letterSpacing: 1,
             fontWeight: FontWeight.bold,
           ),
@@ -40,7 +40,7 @@ class AddressAlertWidget extends StatelessWidget {
                   child: const Text(
                     'No',
                     style: TextStyle(
-                      fontFamily: "Manrope",
+                      fontFamily: "Montserrat",
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -63,7 +63,7 @@ class AddressAlertWidget extends StatelessWidget {
                   child: const Text(
                     'Yes',
                     style: TextStyle(
-                      fontFamily: "Manrope",
+                      fontFamily: "Montserrat",
                       fontWeight: FontWeight.bold,
                     ),
                   ),

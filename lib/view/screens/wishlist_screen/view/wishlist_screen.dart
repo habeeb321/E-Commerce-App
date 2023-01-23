@@ -86,7 +86,7 @@ class WishlistScreen extends StatelessWidget {
                                     color: Colors.green,
                                     fontWeight: FontWeight.bold,
                                     fontSize: 16,
-                                    fontFamily: "Manrope",
+                                    fontFamily: "Montserrat",
                                   ),
                                 ),
                                 kHeight5,
@@ -95,7 +95,7 @@ class WishlistScreen extends StatelessWidget {
                                   style: const TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 18,
-                                    fontFamily: "Manrope",
+                                    fontFamily: "Montserrat",
                                   ),
                                 ),
                               ],

@@ -24,7 +24,7 @@ class ProfileWidget extends StatelessWidget {
       title: Text(
         text,
         style: TextStyle(
-          fontFamily: "Manrope",
+          fontFamily: "Montserrat",
           fontSize: size,
         ),
       ),

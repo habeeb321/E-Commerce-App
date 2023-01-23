@@ -51,7 +51,7 @@ class BuyNowDesButton extends StatelessWidget {
                   'Buy Now',
                   style: TextStyle(
                     color: kWhitecolor,
-                    fontFamily: "Manrope",
+                    fontFamily: "Montserrat",
                     fontWeight: FontWeight.bold,
                     letterSpacing: 1,
                     fontSize: 18,

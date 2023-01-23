@@ -137,7 +137,7 @@ class CartWidget extends StatelessWidget {
                                                     .name,
                                                 style: const TextStyle(
                                                     fontSize: 18,
-                                                    fontFamily: 'Manrope',
+                                                    fontFamily: 'Montserrat',
                                                     fontWeight:
                                                         FontWeight.bold),
                                                 softWrap: false,
@@ -173,7 +173,7 @@ class CartWidget extends StatelessWidget {
                                                   color: Colors.green,
                                                   fontWeight: FontWeight.bold,
                                                   fontSize: 16,
-                                                  fontFamily: "Manrope",
+                                                  fontFamily: "Montserrat",
                                                 ),
                                               ),
                                               kHeight10,
@@ -184,7 +184,7 @@ class CartWidget extends StatelessWidget {
                                                   fontWeight: FontWeight.bold,
                                                   decoration: TextDecoration
                                                       .lineThrough,
-                                                  fontFamily: "Manrope",
+                                                  fontFamily: "Montserrat",
                                                 ),
                                               ),
                                               kHeight10,
@@ -196,7 +196,7 @@ class CartWidget extends StatelessWidget {
                                                       TextOverflow.ellipsis,
                                                   fontSize: 20,
                                                   fontWeight: FontWeight.bold,
-                                                  fontFamily: "Manrope",
+                                                  fontFamily: "Montserrat",
                                                 ),
                                               ),
                                               kHeight10,

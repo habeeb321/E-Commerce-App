@@ -53,7 +53,7 @@ class AddToCartDesButton extends StatelessWidget {
                   'Add To Cart',
                   style: TextStyle(
                     color: kWhitecolor,
-                    fontFamily: "Manrope",
+                    fontFamily: "Montserrat",
                     fontWeight: FontWeight.bold,
                     letterSpacing: 1,
                     fontSize: 18,

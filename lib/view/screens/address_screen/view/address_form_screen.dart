@@ -6,7 +6,8 @@ import 'package:scotch/view/screens/address_screen/model/enum_address.dart';
 import 'package:scotch/view/screens/address_screen/widgets/custom_form.dart';
 
 class AddressFormScreen extends StatelessWidget {
-  AddressFormScreen({super.key, required this.addressScreenCheck, required this.addressId});
+  AddressFormScreen(
+      {super.key, required this.addressScreenCheck, required this.addressId});
   final GlobalKey<FormState> formGlobalKey = GlobalKey<FormState>();
   final EnumAddress addressScreenCheck;
   final String addressId;
@@ -20,7 +21,7 @@ class AddressFormScreen extends StatelessWidget {
         title: const Text(
           "Add Addresse",
           style: TextStyle(
-            fontFamily: "Manrope",
+            fontFamily: "Montserrat",
             fontSize: 18,
             letterSpacing: 1,
             fontWeight: FontWeight.bold,
@@ -149,7 +150,7 @@ class AddressFormScreen extends StatelessWidget {
                           child: const Text(
                             'Save Address',
                             style: TextStyle(
-                              fontFamily: "Manrope",
+                              fontFamily: "Montserrat",
                               fontSize: 15,
                               color: kWhitecolor,
                               fontWeight: FontWeight.bold,

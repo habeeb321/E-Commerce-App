@@ -35,7 +35,7 @@ class OrderAddressWidget extends StatelessWidget {
                 //     const Text(
                 //       'Deliver to:',
                 //       style: TextStyle(
-                //         fontFamily: "Manrope",
+                //         fontFamily: "Montserrat",
                 //         fontSize: 18,
                 //         fontWeight: FontWeight.bold,
                 //       ),
@@ -53,7 +53,7 @@ class OrderAddressWidget extends StatelessWidget {
                       addressController.addressList[index].fullName
                           .toUpperCase(),
                       style: const TextStyle(
-                        fontFamily: "Manrope",
+                        fontFamily: "Montserrat",
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
                       ),
@@ -98,7 +98,7 @@ class OrderAddressWidget extends StatelessWidget {
                 Text(
                   addressController.addressList[index].address,
                   style: const TextStyle(
-                    fontFamily: "Manrope",
+                    fontFamily: "Montserrat",
                     letterSpacing: 1,
                     fontWeight: FontWeight.bold,
                   ),
@@ -108,7 +108,7 @@ class OrderAddressWidget extends StatelessWidget {
                     Text(
                       "PIN :${addressController.addressList[index].pin}, ",
                       style: const TextStyle(
-                        fontFamily: "Manrope",
+                        fontFamily: "Montserrat",
                         letterSpacing: 1,
                         fontWeight: FontWeight.bold,
                       ),
@@ -116,7 +116,7 @@ class OrderAddressWidget extends StatelessWidget {
                     Text(
                       addressController.addressList[index].state,
                       style: const TextStyle(
-                        fontFamily: "Manrope",
+                        fontFamily: "Montserrat",
                         letterSpacing: 1,
                         fontWeight: FontWeight.bold,
                       ),
@@ -126,7 +126,7 @@ class OrderAddressWidget extends StatelessWidget {
                 Text(
                   addressController.addressList[index].place,
                   style: const TextStyle(
-                    fontFamily: "Manrope",
+                    fontFamily: "Montserrat",
                     fontWeight: FontWeight.bold,
                     letterSpacing: 1,
                   ),
@@ -135,7 +135,7 @@ class OrderAddressWidget extends StatelessWidget {
                 Text(
                   addressController.addressList[index].phone,
                   style: const TextStyle(
-                    fontFamily: "Manrope",
+                    fontFamily: "Montserrat",
                     fontWeight: FontWeight.bold,
                     letterSpacing: 1,
                   ),

@@ -55,7 +55,7 @@ class CartScreen extends StatelessWidget {
                                 style: TextStyle(
                                   color: kBlackcolor,
                                   fontSize: 15,
-                                  fontFamily: "Manrope",
+                                  fontFamily: "Montserrat",
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
@@ -63,7 +63,7 @@ class CartScreen extends StatelessWidget {
                                 '${cartController.totalSave}',
                                 style: const TextStyle(
                                   color: kRedColor,
-                                  fontFamily: 'Manrope',
+                                  fontFamily: 'Montserrat',
                                   fontWeight: FontWeight.bold,
                                   fontSize: 18,
                                 ),
@@ -85,7 +85,7 @@ class CartScreen extends StatelessWidget {
                             'Place Order',
                             style: TextStyle(
                               color: kWhitecolor,
-                              fontFamily: 'Manrope',
+                              fontFamily: 'Montserrat',
                               letterSpacing: 1,
                               fontWeight: FontWeight.bold,
                               fontSize: 18,

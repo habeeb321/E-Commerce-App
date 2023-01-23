@@ -14,7 +14,7 @@ class CartAlertWidget extends StatelessWidget {
         title: const Text(
           'Remove Item',
           style: TextStyle(
-            fontFamily: "Manrope",
+            fontFamily: "Montserrat",
             letterSpacing: 1,
             fontSize: 22,
             fontWeight: FontWeight.bold,
@@ -23,7 +23,7 @@ class CartAlertWidget extends StatelessWidget {
         content: const Text(
           'Are you sure want to remove \n item from cart?',
           style: TextStyle(
-            fontFamily: "Manrope",
+            fontFamily: "Montserrat",
             letterSpacing: 1,
             fontWeight: FontWeight.bold,
           ),
@@ -39,7 +39,7 @@ class CartAlertWidget extends StatelessWidget {
                   child: const Text(
                     'No',
                     style: TextStyle(
-                      fontFamily: "Manrope",
+                      fontFamily: "Montserrat",
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -52,7 +52,7 @@ class CartAlertWidget extends StatelessWidget {
                   child: const Text(
                     'Yes',
                     style: TextStyle(
-                      fontFamily: "Manrope",
+                      fontFamily: "Montserrat",
                       fontWeight: FontWeight.bold,
                     ),
                   ),

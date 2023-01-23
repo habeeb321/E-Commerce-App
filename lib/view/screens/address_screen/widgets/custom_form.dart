@@ -48,7 +48,7 @@ class CustomFormWidget extends StatelessWidget {
           text,
           style: TextStyle(
               color: Colors.black.withOpacity(0.6),
-              fontFamily: 'Manrope',
+              fontFamily: 'Montserrat',
               fontWeight: FontWeight.bold),
         ),
         contentPadding: contentPadding,

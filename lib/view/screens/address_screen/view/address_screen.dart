@@ -20,7 +20,7 @@ class AddressScreen extends StatelessWidget {
             title: const Text(
               "My Addresses",
               style: TextStyle(
-                fontFamily: "Manrope",
+                fontFamily: "Montserrat",
                 fontSize: 18,
                 letterSpacing: 1,
                 fontWeight: FontWeight.bold,
@@ -70,7 +70,7 @@ class AddressScreen extends StatelessWidget {
                                                 .addressList[index].fullName
                                                 .toUpperCase(),
                                             style: const TextStyle(
-                                              fontFamily: "Manrope",
+                                              fontFamily: "Montserrat",
                                               fontSize: 18,
                                               fontWeight: FontWeight.bold,
                                             ),
@@ -121,7 +121,7 @@ class AddressScreen extends StatelessWidget {
                                         addressController
                                             .addressList[index].address,
                                         style: const TextStyle(
-                                          fontFamily: "Manrope",
+                                          fontFamily: "Montserrat",
                                           letterSpacing: 1,
                                           fontWeight: FontWeight.bold,
                                         ),
@@ -131,7 +131,7 @@ class AddressScreen extends StatelessWidget {
                                           Text(
                                             "PIN : ${addressController.addressList[index].pin}, ",
                                             style: const TextStyle(
-                                              fontFamily: "Manrope",
+                                              fontFamily: "Montserrat",
                                               letterSpacing: 1,
                                               fontWeight: FontWeight.bold,
                                             ),
@@ -140,7 +140,7 @@ class AddressScreen extends StatelessWidget {
                                             addressController
                                                 .addressList[index].state,
                                             style: const TextStyle(
-                                              fontFamily: "Manrope",
+                                              fontFamily: "Montserrat",
                                               letterSpacing: 1,
                                               fontWeight: FontWeight.bold,
                                             ),
@@ -151,7 +151,7 @@ class AddressScreen extends StatelessWidget {
                                         addressController
                                             .addressList[index].landMark,
                                         style: const TextStyle(
-                                          fontFamily: "Manrope",
+                                          fontFamily: "Montserrat",
                                           fontWeight: FontWeight.bold,
                                           letterSpacing: 1,
                                         ),
@@ -161,7 +161,7 @@ class AddressScreen extends StatelessWidget {
                                         addressController
                                             .addressList[index].phone,
                                         style: const TextStyle(
-                                          fontFamily: "Manrope",
+                                          fontFamily: "Montserrat",
                                           fontWeight: FontWeight.bold,
                                           letterSpacing: 1,
                                         ),

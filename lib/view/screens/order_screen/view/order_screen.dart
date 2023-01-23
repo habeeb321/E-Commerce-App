@@ -29,7 +29,7 @@ class OrderScreen extends StatelessWidget {
         title: const Text(
           "Order Summary",
           style: TextStyle(
-            fontFamily: "Manrope",
+            fontFamily: "Montserrat",
             fontWeight: FontWeight.bold,
             fontSize: 18,
             letterSpacing: 1,
@@ -84,7 +84,7 @@ class OrderScreen extends StatelessWidget {
                                         homeCtr.name,
                                         style: const TextStyle(
                                             fontSize: 18,
-                                            fontFamily: 'Manrope',
+                                            fontFamily: 'Montserrat',
                                             fontWeight: FontWeight.bold),
                                       ),
                                       RatingBar.builder(
@@ -111,7 +111,7 @@ class OrderScreen extends StatelessWidget {
                                               color: Colors.green,
                                               fontWeight: FontWeight.bold,
                                               fontSize: 16,
-                                              fontFamily: "Manrope",
+                                              fontFamily: "Montserrat",
                                             ),
                                           ),
                                           kWidth10,
@@ -122,7 +122,7 @@ class OrderScreen extends StatelessWidget {
                                               fontWeight: FontWeight.bold,
                                               decoration:
                                                   TextDecoration.lineThrough,
-                                              fontFamily: "Manrope",
+                                              fontFamily: "Montserrat",
                                             ),
                                           ),
                                           kWidth10,
@@ -133,7 +133,7 @@ class OrderScreen extends StatelessWidget {
                                               overflow: TextOverflow.ellipsis,
                                               fontSize: 20,
                                               fontWeight: FontWeight.bold,
-                                              fontFamily: "Manrope",
+                                              fontFamily: "Montserrat",
                                             ),
                                           ),
                                         ],
@@ -173,7 +173,7 @@ class OrderScreen extends StatelessWidget {
                                         Text(
                                           'Price Details',
                                           style: TextStyle(
-                                            fontFamily: "Manrope",
+                                            fontFamily: "Montserrat",
                                             fontWeight: FontWeight.bold,
                                             fontSize: 18,
                                             letterSpacing: 1,

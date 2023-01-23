@@ -56,7 +56,7 @@ class RemoveBuyButton extends StatelessWidget {
                     'Remove item',
                     style: TextStyle(
                         color: kWhitecolor,
-                        fontFamily: 'Manrope',
+                        fontFamily: 'Montserrat',
                         letterSpacing: 1,
                         fontWeight: FontWeight.bold),
                   ),
@@ -89,7 +89,7 @@ class RemoveBuyButton extends StatelessWidget {
                   'Buy Now',
                   style: TextStyle(
                       color: kWhitecolor,
-                      fontFamily: 'Manrope',
+                      fontFamily: 'Montserrat',
                       letterSpacing: 1,
                       fontWeight: FontWeight.bold),
                 ),

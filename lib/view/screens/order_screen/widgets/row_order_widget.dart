@@ -20,7 +20,7 @@ class RowOrderWidget extends StatelessWidget {
         Text(
           text,
           style: const TextStyle(
-            fontFamily: "Manrope",
+            fontFamily: "Montserrat",
             fontWeight: FontWeight.bold,
             letterSpacing: 1,
           ),
@@ -28,7 +28,7 @@ class RowOrderWidget extends StatelessWidget {
         Text(
           text2,
           style: TextStyle(
-            fontFamily: "Manrope",
+            fontFamily: "Montserrat",
             color: color,
             fontWeight: FontWeight.bold,
             letterSpacing: 1,

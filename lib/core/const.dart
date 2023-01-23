@@ -25,7 +25,7 @@ const divider = Divider(thickness: 2);
 const TextStyle textStyle =
     TextStyle(fontWeight: FontWeight.bold, fontSize: 17);
 const kTextstyle = TextStyle(
-  fontFamily: "Manrope",
+  fontFamily: "Montserrat",
   fontSize: 18,
   letterSpacing: 1,
   fontWeight: FontWeight.bold,
