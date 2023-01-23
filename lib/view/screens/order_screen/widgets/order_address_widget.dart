@@ -29,24 +29,42 @@ class OrderAddressWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 kHeight10,
-                // Row(
-                //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                //   children: [
-                //     const Text(
-                //       'Deliver to:',
-                //       style: TextStyle(
-                //         fontFamily: "Montserrat",
-                //         fontSize: 18,
-                //         fontWeight: FontWeight.bold,
-                //       ),
-                //     ),
-                //     ElevatedButton.icon(
-                //       onPressed: () {},
-                //       icon: const Icon(Icons.edit),
-                //       label: const Text('Change'),
-                //     ),
-                //   ],
-                // ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text(
+                      'Deliver to:',
+                      style: TextStyle(
+                        fontFamily: "Montserrat",
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    ElevatedButton(
+                      onPressed: () {
+                        Get.to(
+                          AddressFormScreen(
+                            addressScreenCheck: EnumAddress.addAddressScreen,
+                            addressId: addressController.addressList[index].id,
+                          ),
+                        );
+                      },
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all(kWhitecolor),
+                        shape: MaterialStateProperty.all(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(5),
+                            side: const BorderSide(color: Colors.blue),
+                          ),
+                        ),
+                      ),
+                      child: const Text(
+                        'Change',
+                        style: TextStyle(color: Colors.blue),
+                      ),
+                    ),
+                  ],
+                ),
                 Row(
                   children: [
                     Text(
