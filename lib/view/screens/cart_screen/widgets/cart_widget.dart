@@ -61,7 +61,25 @@ class CartWidget extends StatelessWidget {
                                             Row(
                                               children: [
                                                 IconButton(
-                                                  onPressed: () {},
+                                                  onPressed: () {
+                                                    cartController
+                                                        .incrementDecrementQty(
+                                                      -1,
+                                                      cartController
+                                                          .cartList!
+                                                          .products[index]
+                                                          .product
+                                                          .id,
+                                                      cartController.cartList!
+                                                          .products[index].qty,
+                                                      cartController
+                                                          .cartList!
+                                                          .products[index]
+                                                          .product
+                                                          .size
+                                                          .toString(),
+                                                    );
+                                                  },
                                                   icon: const Icon(Icons
                                                       .remove_circle_outline),
                                                 ),
@@ -190,7 +208,6 @@ class CartWidget extends StatelessWidget {
                                   ),
                                   kHeight10,
                                   RemoveBuyButton(
-                                    cartController: cartController,
                                     index: index,
                                   ),
                                 ],

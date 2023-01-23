@@ -61,11 +61,7 @@ class AddressController extends GetxController {
       landMark: landmarkController.text,
     );
 
-    await AddressService()
-        .addAddress(
-      model,
-    )
-        .then((value) {
+    await AddressService().addAddress(model).then((value) {
       if (value != null) {
         log('hai');
         clearAllControllers();
@@ -93,9 +89,7 @@ class AddressController extends GetxController {
       addAddress();
       update();
     } else {
-      updateAddress(
-        id,
-      );
+      updateAddress(id);
       Get.back();
       getAllAddress();
       update();
@@ -103,9 +97,7 @@ class AddressController extends GetxController {
   }
 
   void setAddressScreen(
-    EnumAddress addressScreenCheck,
-    String? addressId,
-  ) async {
+      EnumAddress addressScreenCheck, String? addressId) async {
     if (addressScreenCheck == EnumAddress.addAddressScreen) {
       clearAllControllers();
     } else {
@@ -126,9 +118,7 @@ class AddressController extends GetxController {
     }
   }
 
-  void updateAddress(
-    String addressId,
-  ) async {
+  void updateAddress(String addressId) async {
     isLoading2 = true;
     update();
     final CreateAddressModel model = CreateAddressModel(
@@ -141,12 +131,7 @@ class AddressController extends GetxController {
       address: addressController.text,
       landMark: landmarkController.text,
     );
-    await AddressService()
-        .updateAddress(
-      model,
-      addressId,
-    )
-        .then((value) {
+    await AddressService().updateAddress(model, addressId).then((value) {
       if (value != null) {
         clearAllControllers();
         getAllAddress();
@@ -161,17 +146,11 @@ class AddressController extends GetxController {
     return null;
   }
 
-  void deleteAddress(
-    String addressId,
-  ) async {
+  void deleteAddress(String addressId) async {
     isLoading2 = true;
     update();
     log('delete function entered');
-    await AddressService()
-        .deleteAddress(
-      addressId,
-    )
-        .then((value) {
+    await AddressService().deleteAddress(addressId).then((value) {
       if (value != null) {
         isLoading2 = false;
         update();
@@ -228,7 +207,7 @@ class AddressController extends GetxController {
 
   String? placeValidation(String? value) {
     if (value!.isEmpty) {
-      return 'Please enter the state';
+      return 'Please enter the place';
     } else {
       return null;
     }
@@ -236,7 +215,7 @@ class AddressController extends GetxController {
 
   String? addressValidation(String? value) {
     if (value!.isEmpty) {
-      return 'Please enter the state';
+      return 'Please enter the address';
     } else {
       return null;
     }
@@ -244,7 +223,7 @@ class AddressController extends GetxController {
 
   String? landmarkValidation(String? value) {
     if (value!.isEmpty) {
-      return 'Please enter the state';
+      return 'Please enter the landmark';
     } else {
       return null;
     }

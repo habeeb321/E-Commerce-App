@@ -77,7 +77,8 @@ class CartController extends GetxController {
         if (value != null) {
           getCart();
           log(totalSave.toString());
-          pop();
+          Get.back();
+          update();
           Get.snackbar(
             'Cart',
             'Product removed from cart successfully',
@@ -109,12 +110,8 @@ class CartController extends GetxController {
       quantity: quantity,
       productId: productId,
     );
-    if (qty == 1 && productQuantity >= 1) {
-      await CartService()
-          .addToCart(
-        model,
-      )
-          .then(
+    if (qty == 1 && productQuantity >= 1 || qty == -1 && productQuantity > 1) {
+      await CartService().addToCart(model).then(
         (value) async {
           if (value != null) {
             await CartService().getCart().then(
@@ -126,8 +123,8 @@ class CartController extends GetxController {
                   cartItemsId =
                       cartList!.products.map((e) => e.product.id).toList();
                   update();
-                  totalSave = cartList!.totalDiscount.toInt() -
-                      cartList!.totalPrice.toInt();
+                  totalSave =
+                      (cartList!.totalPrice - cartList!.totalDiscount).toInt();
                   update();
                 } else {
                   null;
@@ -139,6 +136,8 @@ class CartController extends GetxController {
           }
         },
       );
+    } else {
+      null;
     }
   }
 
@@ -149,10 +148,5 @@ class CartController extends GetxController {
 
   void toProductScreen(index) {
     Get.toNamed(ProductScreen.routeName, arguments: cartItemsId[index]);
-  }
-
-  void pop() {
-    Get.back();
-    update();
   }
 }

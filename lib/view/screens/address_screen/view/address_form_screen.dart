@@ -6,9 +6,7 @@ import 'package:scotch/view/screens/address_screen/model/enum_address.dart';
 import 'package:scotch/view/screens/address_screen/widgets/custom_form.dart';
 
 class AddressFormScreen extends StatelessWidget {
-  AddressFormScreen(
-      {super.key, required this.addressScreenCheck, required this.addressId});
-
+  AddressFormScreen({super.key, required this.addressScreenCheck, required this.addressId});
   final GlobalKey<FormState> formGlobalKey = GlobalKey<FormState>();
   final EnumAddress addressScreenCheck;
   final String addressId;

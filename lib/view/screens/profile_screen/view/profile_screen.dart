@@ -129,7 +129,7 @@ class ProfileScreen extends StatelessWidget {
                             ),
                             text: 'Log Out',
                             ontap: () {
-                              profileController.logOut(context);
+                              profileController.logOut();
                             },
                             size: 17,
                             trailIcon: const Icon(

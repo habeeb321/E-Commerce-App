@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:scotch/core/const.dart';
-import 'package:scotch/view/screens/cart_screen/controller/cart_controller.dart';
 import 'package:scotch/view/screens/cart_screen/widgets/cart_alert_widget.dart';
 
 class RemoveBuyButton extends StatelessWidget {
   const RemoveBuyButton({
     Key? key,
-    required this.cartController,
     required this.index,
   }) : super(key: key);
 
-  final CartController cartController;
   final int index;
 
   @override
@@ -25,7 +22,6 @@ class RemoveBuyButton extends StatelessWidget {
                 builder: (context) {
                   return CartAlertWidget(
                     index: index,
-                    cart: cartController,
                   );
                 },
               );

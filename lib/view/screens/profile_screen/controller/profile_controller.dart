@@ -16,7 +16,7 @@ class ProfileController extends GetxController {
   SignUpModel? model;
   List<String>? userData;
   FlutterSecureStorage storage = const FlutterSecureStorage();
-  void logOut(context) async {
+  void logOut() async {
     isLoading = true;
     update();
     await storage.delete(key: 'token');
