@@ -25,7 +25,7 @@ class Carousel extends StatelessWidget {
                   ? const CarouselShimmer()
                   : CarouselSlider.builder(
                       options: CarouselOptions(
-                        height: size.height * 0.25,
+                        height: size.height * 0.30,
                         aspectRatio: 16 / 9,
                         viewportFraction: 1,
                         initialPage: 0,
@@ -48,13 +48,11 @@ class Carousel extends StatelessWidget {
                         return homeController.carousalList.isEmpty
                             ? const Center(child: CircularProgressIndicator())
                             : Container(
-                                height: Get.size.height * 04,
-                                width: Get.size.width - 50,
                                 decoration: BoxDecoration(
                                   image: DecorationImage(
                                     image: NetworkImage(
                                         "http://${ApiBaseUrl.ip}:5000/carousals/${homeController.carousalList[index].image}"),
-                                    fit: BoxFit.cover,
+                                    fit: BoxFit.fill,
                                   ),
                                 ),
                               );
