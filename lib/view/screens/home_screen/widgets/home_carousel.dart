@@ -48,6 +48,8 @@ class Carousel extends StatelessWidget {
                         return homeController.carousalList.isEmpty
                             ? const Center(child: CircularProgressIndicator())
                             : Container(
+                                height: Get.size.height * 04,
+                                width: Get.size.width - 50,
                                 decoration: BoxDecoration(
                                   image: DecorationImage(
                                     image: NetworkImage(

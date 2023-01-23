@@ -33,13 +33,14 @@ class AddressFormScreen extends StatelessWidget {
           builder: (controller) {
             return SingleChildScrollView(
               child: Padding(
-                padding: const EdgeInsets.only(left: 20, right: 20),
+                padding: const EdgeInsets.all(20),
                 child: Form(
                   key: formGlobalKey,
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      kHeight10,
+                      Text('Full Name', style: textfieldStyle),
                       CustomFormWidget(
                         contentPadding:
                             const EdgeInsets.symmetric(horizontal: 20),
@@ -48,10 +49,9 @@ class AddressFormScreen extends StatelessWidget {
                           return addressController.fullNameValidation(name);
                         },
                         keyboard: TextInputType.name,
-                        text: "Full Name ",
                         preffix: const Icon(Icons.person),
                       ),
-                      kHeight10,
+                      Text('Phone Number', style: textfieldStyle),
                       CustomFormWidget(
                         contentPadding:
                             const EdgeInsets.symmetric(horizontal: 20),
@@ -61,9 +61,8 @@ class AddressFormScreen extends StatelessWidget {
                         },
                         keyboard: TextInputType.name,
                         preffix: const Icon(Icons.phone),
-                        text: "Phone Number ",
                       ),
-                      kHeight10,
+                      Text('PIN', style: textfieldStyle),
                       Row(
                         children: [
                           Flexible(
@@ -75,7 +74,6 @@ class AddressFormScreen extends StatelessWidget {
                                 return addressController.pincodeValdation(pin);
                               },
                               keyboard: TextInputType.name,
-                              text: "PIN Code",
                               preffix: const Icon(Icons.pin),
                             ),
                           ),
@@ -89,13 +87,12 @@ class AddressFormScreen extends StatelessWidget {
                                 return addressController.stateValidation(state);
                               },
                               keyboard: TextInputType.name,
-                              text: "State",
                               preffix: const Icon(Icons.public),
                             ),
                           ),
                         ],
                       ),
-                      kHeight10,
+                      Text('Place', style: textfieldStyle),
                       CustomFormWidget(
                         contentPadding:
                             const EdgeInsets.symmetric(horizontal: 20),
@@ -104,10 +101,9 @@ class AddressFormScreen extends StatelessWidget {
                           return addressController.placeValidation(place);
                         },
                         keyboard: TextInputType.name,
-                        text: "Place",
                         preffix: const Icon(Icons.location_on),
                       ),
-                      kHeight10,
+                      Text('Address', style: textfieldStyle),
                       CustomFormWidget(
                         contentPadding:
                             const EdgeInsets.symmetric(horizontal: 20),
@@ -116,12 +112,11 @@ class AddressFormScreen extends StatelessWidget {
                           return addressController.addressValidation(address);
                         },
                         keyboard: TextInputType.name,
-                        text: "Address",
                         preffix: const Icon(
                           Icons.contact_mail,
                         ),
                       ),
-                      kHeight10,
+                      Text('Landmark', style: textfieldStyle),
                       CustomFormWidget(
                         contentPadding:
                             const EdgeInsets.symmetric(horizontal: 20),
@@ -130,10 +125,8 @@ class AddressFormScreen extends StatelessWidget {
                           return addressController.landmarkValidation(land);
                         },
                         keyboard: TextInputType.name,
-                        text: "LandMark",
                         preffix: const Icon(Icons.emoji_flags),
                       ),
-                      kHeight10,
                       SizedBox(
                         width: Get.size.width * 0.92,
                         child: ElevatedButton(

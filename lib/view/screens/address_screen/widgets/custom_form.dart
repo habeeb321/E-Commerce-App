@@ -10,7 +10,6 @@ class CustomFormWidget extends StatelessWidget {
     this.obscureText,
     required this.keyboard,
     this.onChanged,
-    required this.text,
     this.contentPadding,
     this.preffix,
     this.hintText,
@@ -24,40 +23,35 @@ class CustomFormWidget extends StatelessWidget {
   final TextEditingController controller;
   final String? Function(String?) validator;
   final bool? obscureText;
-  final String text;
   final TextInputType keyboard;
   final EdgeInsetsGeometry? contentPadding;
   final void Function(String)? onChanged;
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      onChanged: onChanged,
-      obscureText: obscureText ?? false,
-      keyboardType: keyboard,
-      controller: controller,
-      style: const TextStyle(color: kBlackcolor),
-      validator: validator,
-      decoration: InputDecoration(
-        filled: true,
-        fillColor: colorFill,
-        suffixIcon: suffix,
-        hintText: hintText,
-        prefixIcon: preffix,
-        label: Text(
-          text,
-          style: TextStyle(
-              color: Colors.black.withOpacity(0.6),
-              fontFamily: 'Montserrat',
-              fontWeight: FontWeight.bold),
-        ),
-        contentPadding: contentPadding,
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
-        ),
-        enabledBorder: OutlineInputBorder(
-          borderSide: const BorderSide(color: kWhitecolor),
-          borderRadius: BorderRadius.circular(10),
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 6),
+      child: TextFormField(
+        onChanged: onChanged,
+        obscureText: obscureText ?? false,
+        keyboardType: keyboard,
+        controller: controller,
+        style: const TextStyle(color: kBlackcolor),
+        validator: validator,
+        decoration: InputDecoration(
+          filled: true,
+          fillColor: colorFill,
+          suffixIcon: suffix,
+          hintText: hintText,
+          prefixIcon: preffix,
+          contentPadding: contentPadding,
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderSide: const BorderSide(color: kWhitecolor),
+            borderRadius: BorderRadius.circular(10),
+          ),
         ),
       ),
     );

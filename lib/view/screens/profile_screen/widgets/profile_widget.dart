@@ -7,13 +7,13 @@ class ProfileWidget extends StatelessWidget {
     required this.text,
     required this.ontap,
     this.icon,
-    required this.trailIcon,
+    this.trailIcon,
     required this.size,
   }) : super(key: key);
   final String text;
   final Function() ontap;
   final Widget? icon;
-  final Widget trailIcon;
+  final Widget? trailIcon;
   final double size;
   @override
   Widget build(BuildContext context) {

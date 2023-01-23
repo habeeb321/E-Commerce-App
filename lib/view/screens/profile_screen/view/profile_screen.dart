@@ -38,20 +38,6 @@ class ProfileScreen extends StatelessWidget {
                         children: [
                           ProfileWidget(
                             icon: const Icon(
-                              Icons.person,
-                              size: 30,
-                            ),
-                            size: 17,
-                            text: 'Edit profile',
-                            ontap: () {},
-                            trailIcon: const Icon(
-                              Icons.arrow_forward,
-                              size: 25,
-                            ),
-                          ),
-                          kHeight10,
-                          ProfileWidget(
-                            icon: const Icon(
                               Icons.location_on,
                               size: 30,
                             ),
@@ -126,16 +112,13 @@ class ProfileScreen extends StatelessWidget {
                             icon: const Icon(
                               Icons.logout,
                               size: 30,
+                              color: kRedColor,
                             ),
                             text: 'Log Out',
                             ontap: () {
                               profileController.logOut();
                             },
                             size: 17,
-                            trailIcon: const Icon(
-                              Icons.arrow_forward,
-                              size: 25,
-                            ),
                           ),
                         ],
                       ),

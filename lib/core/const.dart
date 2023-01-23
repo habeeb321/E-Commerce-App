@@ -30,6 +30,10 @@ const kTextstyle = TextStyle(
   letterSpacing: 1,
   fontWeight: FontWeight.bold,
 );
+final textfieldStyle = TextStyle(
+    color: Colors.black.withOpacity(0.6),
+    fontFamily: 'Montserrat',
+    fontWeight: FontWeight.bold);
 
 // logo
 const logo = 'assets/logo/scotch.png';

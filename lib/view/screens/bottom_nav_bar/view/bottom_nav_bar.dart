@@ -64,7 +64,7 @@ class BottomNavBar extends GetView<BottomNavController> {
                 color: kWhitecolor,
                 activeColor: lightThemeColor,
                 tabBackgroundColor: kWhitecolor,
-                padding: const EdgeInsets.all(3),
+                padding: const EdgeInsets.all(10),
                 curve: Curves.bounceIn,
                 selectedIndex: currentIndex,
                 onTabChange: (index) {
