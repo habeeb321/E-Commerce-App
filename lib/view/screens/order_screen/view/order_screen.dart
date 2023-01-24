@@ -216,9 +216,10 @@ class OrderScreen extends StatelessWidget {
                       children: [
                         kWidth10,
                         IconButton(
-                            onPressed: () {},
-                            icon: Icon(Icons.verified_user_rounded,
-                                color: Colors.grey.shade700)),
+                          onPressed: () {},
+                          icon: Icon(Icons.verified_user_rounded,
+                              color: Colors.grey.shade700),
+                        ),
                         Text(
                           'Safe and Secure Payments.Easy returns.100% \nAuthentic products',
                           style: TextStyle(

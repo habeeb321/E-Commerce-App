@@ -4,7 +4,7 @@ import 'package:scotch/core/const.dart';
 import 'package:scotch/view/screens/address_screen/controller/address_controller.dart';
 import 'package:scotch/view/screens/address_screen/view/address_screen.dart';
 import 'package:scotch/view/screens/home_screen/model/product_model.dart';
-import 'package:scotch/view/screens/payment_screen/view/payment_screen.dart';
+import 'package:scotch/view/screens/payment_screen/controller/payment_controller.dart';
 
 class OrderBottomWidget extends StatelessWidget {
   const OrderBottomWidget({
@@ -19,6 +19,7 @@ class OrderBottomWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     AddressController addressController = Get.put(AddressController());
+    PaymentController paymentController = Get.put(PaymentController());
     return GetBuilder<AddressController>(builder: (controller) {
       return Material(
         elevation: 10,
@@ -46,7 +47,7 @@ class OrderBottomWidget extends StatelessWidget {
                     width: Get.size.width / 2,
                     child: ElevatedButton(
                       onPressed: () {
-                        Get.to(const PaymentScreen());
+                        paymentController.openCheckout(payableAmount);
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.blue,
@@ -70,13 +71,7 @@ class OrderBottomWidget extends StatelessWidget {
                     width: Get.size.width / 2,
                     child: ElevatedButton(
                       onPressed: () {
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (context) {
-                              return const AddressScreen();
-                            },
-                          ),
-                        );
+                        Get.to(const AddressScreen());
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.blue,
