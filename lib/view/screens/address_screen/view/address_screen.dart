@@ -4,7 +4,7 @@ import 'package:scotch/core/const.dart';
 import 'package:scotch/view/screens/address_screen/controller/address_controller.dart';
 import 'package:scotch/view/screens/address_screen/model/enum_address.dart';
 import 'package:scotch/view/screens/address_screen/view/address_form_screen.dart';
-import 'package:scotch/view/screens/address_screen/widgets/popup_address_widget.dart';
+import 'package:scotch/view/screens/address_screen/view/widgets/popup_address_widget.dart';
 
 class AddressScreen extends StatelessWidget {
   const AddressScreen({super.key});

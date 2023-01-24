@@ -5,8 +5,8 @@ import 'package:get/get.dart';
 import 'package:scotch/common/api/api_baseurl.dart';
 import 'package:scotch/core/const.dart';
 import 'package:scotch/view/screens/cart_screen/controller/cart_controller.dart';
-import 'package:scotch/view/screens/cart_screen/widgets/cart_shimmer.dart';
-import 'package:scotch/view/screens/cart_screen/widgets/remove_buy_button.dart';
+import 'package:scotch/view/screens/cart_screen/view/widgets/cart_shimmer.dart';
+import 'package:scotch/view/screens/cart_screen/view/widgets/remove_buy_button.dart';
 
 class CartWidget extends StatelessWidget {
   const CartWidget({Key? key}) : super(key: key);

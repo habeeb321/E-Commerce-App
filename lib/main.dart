@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:scotch/controller/all_binding_controller.dart';
 import 'package:scotch/core/const.dart';
 import 'package:scotch/view/auth/splash_screen/view/splash_screen.dart';
-import 'package:scotch/view/screens/home_screen/widgets/category_screen.dart';
+import 'package:scotch/view/screens/home_screen/view/widgets/category_screen.dart';
 import 'package:scotch/view/screens/order_screen/view/order_screen.dart';
 import 'package:scotch/view/screens/product_screen/view/product_screen.dart';
 

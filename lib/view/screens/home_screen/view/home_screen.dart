@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:scotch/core/const.dart';
 import 'package:scotch/view/screens/home_screen/controller/home_controller.dart';
-import 'package:scotch/view/screens/home_screen/widgets/newly_launched_container.dart';
-import 'package:scotch/view/screens/home_screen/widgets/category_container.dart';
-import 'package:scotch/view/screens/home_screen/widgets/home_carousel.dart';
+import 'package:scotch/view/screens/home_screen/view/widgets/newly_launched_container.dart';
+import 'package:scotch/view/screens/home_screen/view/widgets/category_container.dart';
+import 'package:scotch/view/screens/home_screen/view/widgets/home_carousel.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});

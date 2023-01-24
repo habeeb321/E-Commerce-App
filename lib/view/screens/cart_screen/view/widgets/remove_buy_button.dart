@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:scotch/core/const.dart';
-import 'package:scotch/view/screens/cart_screen/widgets/cart_alert_widget.dart';
+import 'package:scotch/view/screens/cart_screen/view/widgets/cart_alert_widget.dart';
 
 class RemoveBuyButton extends StatelessWidget {
   const RemoveBuyButton({

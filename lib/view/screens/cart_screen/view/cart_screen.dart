@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:scotch/core/const.dart';
 import 'package:scotch/view/screens/cart_screen/controller/cart_controller.dart';
-import 'package:scotch/view/screens/cart_screen/widgets/cart_widget.dart';
+import 'package:scotch/view/screens/cart_screen/view/widgets/cart_widget.dart';
 
 class CartScreen extends StatelessWidget {
   const CartScreen({super.key});

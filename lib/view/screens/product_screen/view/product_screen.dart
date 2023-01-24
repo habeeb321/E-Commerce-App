@@ -5,11 +5,11 @@ import 'package:scotch/common/api/api_baseurl.dart';
 import 'package:scotch/core/const.dart';
 import 'package:scotch/view/screens/home_screen/controller/home_controller.dart';
 import 'package:scotch/view/screens/product_screen/controller/product_controller.dart';
-import 'package:scotch/view/screens/product_screen/widgets/add_to_cart_des_button.dart';
-import 'package:scotch/view/screens/product_screen/widgets/buy_now_des_button.dart';
-import 'package:scotch/view/screens/product_screen/widgets/favorite_button.dart';
-import 'package:scotch/view/screens/product_screen/widgets/preview_product.dart';
-import 'package:scotch/view/screens/product_screen/widgets/product_details.dart';
+import 'package:scotch/view/screens/product_screen/view/widgets/add_to_cart_des_button.dart';
+import 'package:scotch/view/screens/product_screen/view/widgets/buy_now_des_button.dart';
+import 'package:scotch/view/screens/product_screen/view/widgets/favorite_button.dart';
+import 'package:scotch/view/screens/product_screen/view/widgets/preview_product.dart';
+import 'package:scotch/view/screens/product_screen/view/widgets/product_details.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class ProductScreen extends StatelessWidget {

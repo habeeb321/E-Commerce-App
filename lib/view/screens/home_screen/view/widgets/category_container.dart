@@ -3,8 +3,8 @@ import 'package:get/get.dart';
 import 'package:scotch/common/api/api_baseurl.dart';
 import 'package:scotch/core/const.dart';
 import 'package:scotch/view/screens/home_screen/controller/home_controller.dart';
-import 'package:scotch/view/screens/home_screen/widgets/category_screen.dart';
-import 'package:scotch/view/screens/home_screen/widgets/shimmer_category.dart';
+import 'package:scotch/view/screens/home_screen/view/widgets/category_screen.dart';
+import 'package:scotch/view/screens/home_screen/view/widgets/shimmer_category.dart';
 
 class CategoryContainer extends StatelessWidget {
   const CategoryContainer({Key? key}) : super(key: key);

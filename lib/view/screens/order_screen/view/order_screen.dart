@@ -7,9 +7,9 @@ import 'package:scotch/core/const.dart';
 import 'package:scotch/view/screens/address_screen/controller/address_controller.dart';
 import 'package:scotch/view/screens/cart_screen/controller/cart_controller.dart';
 import 'package:scotch/view/screens/home_screen/controller/home_controller.dart';
-import 'package:scotch/view/screens/order_screen/widgets/order_address_widget.dart';
-import 'package:scotch/view/screens/order_screen/widgets/order_bottom_widget.dart';
-import 'package:scotch/view/screens/order_screen/widgets/row_order_widget.dart';
+import 'package:scotch/view/screens/order_screen/view/widgets/order_address_widget.dart';
+import 'package:scotch/view/screens/order_screen/view/widgets/order_bottom_widget.dart';
+import 'package:scotch/view/screens/order_screen/view/widgets/row_order_widget.dart';
 
 class OrderScreen extends StatelessWidget {
   const OrderScreen({super.key});
