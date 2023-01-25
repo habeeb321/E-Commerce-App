@@ -2,6 +2,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
+import 'package:razorpay_flutter/razorpay_flutter.dart';
 import 'package:scotch/common/api/api_baseurl.dart';
 import 'package:scotch/core/const.dart';
 import 'package:scotch/view/screens/address_screen/controller/address_controller.dart';
@@ -10,11 +11,37 @@ import 'package:scotch/view/screens/home_screen/controller/home_controller.dart'
 import 'package:scotch/view/screens/order_screen/view/widgets/order_address_widget.dart';
 import 'package:scotch/view/screens/order_screen/view/widgets/order_bottom_widget.dart';
 import 'package:scotch/view/screens/order_screen/view/widgets/row_order_widget.dart';
+import 'package:scotch/view/screens/payment_screen/controller/payment_controller.dart';
 
-class OrderScreen extends StatelessWidget {
+class OrderScreen extends StatefulWidget {
   const OrderScreen({super.key});
 
   static const routeName = "/order_screen";
+
+  @override
+  State<OrderScreen> createState() => _OrderScreenState();
+}
+
+class _OrderScreenState extends State<OrderScreen> {
+  PaymentController paymentController = PaymentController();
+
+  @override
+  void initState() {
+    final razorpay = paymentController.razorpay;
+    razorpay.on(Razorpay.EVENT_PAYMENT_SUCCESS,
+        paymentController.handlerPaymentSuccess);
+    razorpay.on(
+        Razorpay.EVENT_PAYMENT_ERROR, paymentController.handlerErrorFailure);
+    razorpay.on(Razorpay.EVENT_EXTERNAL_WALLET,
+        paymentController.handlerExternalWallet);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    paymentController.razorpay.clear();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
