@@ -11,7 +11,7 @@ import 'package:scotch/view/screens/home_screen/controller/home_controller.dart'
 import 'package:scotch/view/screens/order_screen/view/widgets/order_address_widget.dart';
 import 'package:scotch/view/screens/order_screen/view/widgets/order_bottom_widget.dart';
 import 'package:scotch/view/screens/order_screen/view/widgets/row_order_widget.dart';
-import 'package:scotch/view/screens/payment_screen/controller/payment_controller.dart';
+import 'package:scotch/view/screens/payment/controller/payment_controller.dart';
 
 class OrderScreen extends StatefulWidget {
   const OrderScreen({super.key});

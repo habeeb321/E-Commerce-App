@@ -4,7 +4,7 @@ import 'package:scotch/core/const.dart';
 import 'package:scotch/view/screens/address_screen/controller/address_controller.dart';
 import 'package:scotch/view/screens/address_screen/view/address_screen.dart';
 import 'package:scotch/view/screens/home_screen/model/product_model.dart';
-import 'package:scotch/view/screens/payment_screen/controller/payment_controller.dart';
+import 'package:scotch/view/screens/payment/controller/payment_controller.dart';
 
 class OrderBottomWidget extends StatelessWidget {
   const OrderBottomWidget({
