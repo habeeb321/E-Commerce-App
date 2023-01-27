@@ -4,7 +4,7 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
 import 'package:scotch/common/api/api_baseurl.dart';
 import 'package:scotch/core/const.dart';
-import 'package:scotch/view/screens/cart_screen/controller/cart_controller.dart';
+import 'package:scotch/view/screens/cart_and_order_controller/cart_and_order_controller.dart';
 import 'package:scotch/view/screens/cart_screen/view/widgets/cart_shimmer.dart';
 import 'package:scotch/view/screens/cart_screen/view/widgets/remove_buy_button.dart';
 
@@ -13,17 +13,18 @@ class CartWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    CartController cartController = Get.put(CartController());
-    return GetBuilder<CartController>(
+    CartAndOrderController cartAndOrderController =
+        Get.put(CartAndOrderController());
+    return GetBuilder<CartAndOrderController>(
       builder: (controller) {
-        return cartController.isLoading == true
+        return cartAndOrderController.isLoading == true
             ? const CartShimmer()
             : ListView.separated(
                 physics: const ScrollPhysics(),
                 shrinkWrap: true,
                 itemBuilder: (context, index) {
-                  return cartController.cartList == null ||
-                          cartController.cartList!.products.isEmpty
+                  return cartAndOrderController.cartList == null ||
+                          cartAndOrderController.cartList!.products.isEmpty
                       ? SizedBox(
                           height: Get.size.height / 2,
                           child: const Center(
@@ -41,7 +42,8 @@ class CartWidget extends StatelessWidget {
                                 children: [
                                   GestureDetector(
                                     onTap: () {
-                                      cartController.toProductScreen(index);
+                                      cartAndOrderController
+                                          .toProductScreen(index);
                                     },
                                     child: Row(
                                       children: [
@@ -54,7 +56,7 @@ class CartWidget extends StatelessWidget {
                                               decoration: BoxDecoration(
                                                   image: DecorationImage(
                                                 image: NetworkImage(
-                                                  '${ApiBaseUrl().baseUrl}/products/${cartController.cartList!.products[index].product.image[4]}',
+                                                  '${ApiBaseUrl().baseUrl}/products/${cartAndOrderController.cartList!.products[index].product.image[4]}',
                                                 ),
                                               )),
                                             ),
@@ -62,17 +64,19 @@ class CartWidget extends StatelessWidget {
                                               children: [
                                                 IconButton(
                                                   onPressed: () {
-                                                    cartController
+                                                    cartAndOrderController
                                                         .incrementDecrementQty(
                                                       -1,
-                                                      cartController
+                                                      cartAndOrderController
                                                           .cartList!
                                                           .products[index]
                                                           .product
                                                           .id,
-                                                      cartController.cartList!
-                                                          .products[index].qty,
-                                                      cartController
+                                                      cartAndOrderController
+                                                          .cartList!
+                                                          .products[index]
+                                                          .qty,
+                                                      cartAndOrderController
                                                           .cartList!
                                                           .products[index]
                                                           .product
@@ -87,7 +91,7 @@ class CartWidget extends StatelessWidget {
                                                   height: 25,
                                                   width: 40,
                                                   child: Text(
-                                                    "${cartController.cartList!.products[index].qty}",
+                                                    "${cartAndOrderController.cartList!.products[index].qty}",
                                                     textAlign: TextAlign.center,
                                                     style: const TextStyle(
                                                         fontSize: 18,
@@ -97,17 +101,19 @@ class CartWidget extends StatelessWidget {
                                                 ),
                                                 IconButton(
                                                   onPressed: () {
-                                                    cartController
+                                                    cartAndOrderController
                                                         .incrementDecrementQty(
                                                       1,
-                                                      cartController
+                                                      cartAndOrderController
                                                           .cartList!
                                                           .products[index]
                                                           .product
                                                           .id,
-                                                      cartController.cartList!
-                                                          .products[index].qty,
-                                                      cartController
+                                                      cartAndOrderController
+                                                          .cartList!
+                                                          .products[index]
+                                                          .qty,
+                                                      cartAndOrderController
                                                           .cartList!
                                                           .products[index]
                                                           .product
@@ -130,7 +136,7 @@ class CartWidget extends StatelessWidget {
                                                 CrossAxisAlignment.start,
                                             children: [
                                               Text(
-                                                cartController
+                                                cartAndOrderController
                                                     .cartList!
                                                     .products[index]
                                                     .product
@@ -147,7 +153,7 @@ class CartWidget extends StatelessWidget {
                                               kHeight10,
                                               RatingBar.builder(
                                                 initialRating: double.parse(
-                                                    cartController
+                                                    cartAndOrderController
                                                         .cartList!
                                                         .products[index]
                                                         .product
@@ -168,7 +174,7 @@ class CartWidget extends StatelessWidget {
                                               ),
                                               kHeight10,
                                               Text(
-                                                "${cartController.cartList!.products[index].product.offer}%Off",
+                                                "${cartAndOrderController.cartList!.products[index].product.offer}%Off",
                                                 style: const TextStyle(
                                                   color: Colors.green,
                                                   fontWeight: FontWeight.bold,
@@ -178,7 +184,7 @@ class CartWidget extends StatelessWidget {
                                               ),
                                               kHeight10,
                                               Text(
-                                                "₹${cartController.cartList!.products[index].product.price}",
+                                                "₹${cartAndOrderController.cartList!.products[index].product.price}",
                                                 style: const TextStyle(
                                                   color: kGreyColor,
                                                   fontWeight: FontWeight.bold,
@@ -189,7 +195,7 @@ class CartWidget extends StatelessWidget {
                                               ),
                                               kHeight10,
                                               Text(
-                                                "₹${(cartController.cartList!.products[index].product.price - cartController.cartList!.products[index].product.discountPrice).round()}",
+                                                "₹${(cartAndOrderController.cartList!.products[index].product.price - cartAndOrderController.cartList!.products[index].product.discountPrice).round()}",
                                                 style: const TextStyle(
                                                   color: kRedColor,
                                                   overflow:
@@ -216,7 +222,8 @@ class CartWidget extends StatelessWidget {
                           ),
                         );
                 },
-                itemCount: cartController.cartList?.products.length ?? 0,
+                itemCount:
+                    cartAndOrderController.cartList?.products.length ?? 0,
                 separatorBuilder: (context, index) => kHeight20,
               );
       },

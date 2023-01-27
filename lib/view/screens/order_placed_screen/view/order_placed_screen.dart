@@ -5,8 +5,7 @@ import 'package:get/get.dart';
 import 'package:scotch/common/api/api_baseurl.dart';
 import 'package:scotch/core/const.dart';
 import 'package:scotch/view/screens/address_screen/controller/address_controller.dart';
-import 'package:scotch/view/screens/cart_screen/controller/cart_controller.dart';
-import 'package:scotch/view/screens/order_screen/controller/order_controller.dart';
+import 'package:scotch/view/screens/cart_and_order_controller/cart_and_order_controller.dart';
 import 'package:scotch/view/screens/order_screen/model/order_arguments.dart';
 import 'package:scotch/view/screens/order_screen/view/widgets/order_address_widget.dart';
 
@@ -17,15 +16,15 @@ class OrderPlacedScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    OrdersController ordersController = Get.put(OrdersController());
-    CartController cartController = Get.put(CartController());
+    CartAndOrderController cartAndOrderController =
+        Get.put(CartAndOrderController());
     AddressController addressController = Get.put(AddressController());
     return Scaffold(
       appBar: AppBar(
         title: const Text("Order Details"),
       ),
       body: SafeArea(
-        child: ordersController.isLoading == true
+        child: cartAndOrderController.isLoading == true
             ? const Center(child: CircularProgressIndicator())
             : SingleChildScrollView(
                 child: Column(
@@ -51,26 +50,26 @@ class OrderPlacedScreen extends StatelessWidget {
                                 Row(
                                   children: [
                                     kWidth10,
-                                    GetBuilder<OrdersController>(
+                                    GetBuilder<CartAndOrderController>(
                                       builder: (controller) {
                                         return Image(
                                           height: 100,
                                           width: 100,
                                           image: NetworkImage(
-                                            '${ApiBaseUrl().baseUrl}/products/${ordersController.cartModel[0].product.image[0]}',
+                                            '${ApiBaseUrl().baseUrl}/products/${cartAndOrderController.cartModel[0].product.image[0]}',
                                           ),
                                         );
                                       },
                                     ),
                                     kWidth10,
-                                    GetBuilder<CartController>(
+                                    GetBuilder<CartAndOrderController>(
                                         builder: (controller) {
                                       return Column(
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
                                         children: [
                                           Text(
-                                            cartController.cartList!
+                                            cartAndOrderController.cartList!
                                                 .products[index].product.name,
                                             style: const TextStyle(
                                                 fontSize: 18,
@@ -79,7 +78,7 @@ class OrderPlacedScreen extends StatelessWidget {
                                           ),
                                           RatingBar.builder(
                                             initialRating: double.parse(
-                                                cartController
+                                                cartAndOrderController
                                                     .cartList!
                                                     .products[index]
                                                     .product
@@ -101,7 +100,7 @@ class OrderPlacedScreen extends StatelessWidget {
                                           Row(
                                             children: [
                                               Text(
-                                                "${cartController.cartList!.products[index].product.offer}%Off",
+                                                "${cartAndOrderController.cartList!.products[index].product.offer}%Off",
                                                 style: const TextStyle(
                                                   color: Colors.green,
                                                   fontWeight: FontWeight.bold,
@@ -111,7 +110,7 @@ class OrderPlacedScreen extends StatelessWidget {
                                               ),
                                               kWidth10,
                                               Text(
-                                                "₹${cartController.cartList!.products[index].product.price}",
+                                                "₹${cartAndOrderController.cartList!.products[index].product.price}",
                                                 style: const TextStyle(
                                                   color: kGreyColor,
                                                   fontWeight: FontWeight.bold,
@@ -122,7 +121,7 @@ class OrderPlacedScreen extends StatelessWidget {
                                               ),
                                               kWidth10,
                                               Text(
-                                                "₹${(cartController.cartList!.products[index].product.price - cartController.cartList!.products[index].product.discountPrice).round()}",
+                                                "₹${(cartAndOrderController.cartList!.products[index].product.price - cartAndOrderController.cartList!.products[index].product.discountPrice).round()}",
                                                 style: const TextStyle(
                                                   color: kRedColor,
                                                   overflow:
