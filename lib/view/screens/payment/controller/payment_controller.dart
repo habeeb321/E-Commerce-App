@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:scotch/core/const.dart';
 import 'package:scotch/view/screens/cart_screen/model/get_single_cart_model.dart';
-import 'package:scotch/view/screens/order_screen/view/order_screen.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
 
 class PaymentController extends GetxController {
@@ -52,9 +51,5 @@ class PaymentController extends GetxController {
     log("External Wallet");
     Get.snackbar('Payment', 'External Wallet',
         colorText: kWhitecolor, backgroundColor: Colors.green);
-  }
-
-  void findByProduct(model) {
-    Get.toNamed(OrderScreen.routeName, arguments: model);
   }
 }

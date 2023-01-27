@@ -18,4 +18,7 @@ class ApiEndPoints {
 
   // Address
   static String address = 'api/v1/address';
+
+  // order
+  static String orders = 'api/v1/orders';
 }

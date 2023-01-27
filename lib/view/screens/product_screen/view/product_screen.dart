@@ -6,8 +6,7 @@ import 'package:scotch/core/const.dart';
 import 'package:scotch/view/screens/home_screen/controller/home_controller.dart';
 import 'package:scotch/view/screens/product_screen/controller/product_controller.dart';
 import 'package:scotch/view/screens/product_screen/view/widgets/add_to_cart_des_button.dart';
-import 'package:scotch/view/screens/product_screen/view/widgets/buy_now_des_button.dart';
-import 'package:scotch/view/screens/product_screen/view/widgets/favorite_button.dart';
+import 'package:scotch/view/screens/product_screen/view/widgets/wishlist_button.dart';
 import 'package:scotch/view/screens/product_screen/view/widgets/preview_product.dart';
 import 'package:scotch/view/screens/product_screen/view/widgets/product_details.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -58,7 +57,6 @@ class ProductScreen extends StatelessWidget {
                             ),
                           ),
                         ),
-                        
                       ],
                     ),
                     kHeight10,
@@ -89,7 +87,7 @@ class ProductScreen extends StatelessWidget {
                       children: [
                         AddToCartDesButton(homeCtr: homeCtr),
                         kWidth10,
-                        BuyNowDesButton(id: homeCtr.id, size: homeCtr.size),
+                        WishlistButton(id: homeCtr.id, size: homeCtr.size),
                       ],
                     ),
                   ],

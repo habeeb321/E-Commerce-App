@@ -5,8 +5,8 @@ import 'package:scotch/view/screens/product_screen/view/widgets/favorite_button.
 import 'package:scotch/view/screens/wishlist_screen/controller/wishlist_controller.dart';
 import 'package:scotch/view/screens/wishlist_screen/view/wishlist_screen.dart';
 
-class BuyNowDesButton extends StatelessWidget {
-  const BuyNowDesButton({
+class WishlistButton extends StatelessWidget {
+  const WishlistButton({
     Key? key,
     required this.id,
     required this.size,

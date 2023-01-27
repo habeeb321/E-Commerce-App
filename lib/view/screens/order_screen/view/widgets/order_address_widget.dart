@@ -9,7 +9,7 @@ import 'package:scotch/view/screens/address_screen/view/widgets/popup_address_wi
 class OrderAddressWidget extends StatelessWidget {
   const OrderAddressWidget({
     Key? key,
-    required this.index,
+    required this.index, required value,
   }) : super(key: key);
 
   final int index;

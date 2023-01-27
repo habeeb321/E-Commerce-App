@@ -46,7 +46,9 @@ class ApiInterceptor {
                   storage.write(key: 'refreshToken', value: refreshToken);
                 }
               } catch (e) {
-                DioException().dioError(e, );
+                DioException().dioError(
+                  e,
+                );
               }
               try {
                 final token = await storage.read(key: 'token');
@@ -62,7 +64,9 @@ class ApiInterceptor {
                 );
                 return handler.resolve(response);
               } catch (e) {
-                DioException().dioError(e, );
+                DioException().dioError(
+                  e,
+                );
               }
             }
           } else {
