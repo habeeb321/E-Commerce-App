@@ -6,7 +6,7 @@ import 'package:razorpay_flutter/razorpay_flutter.dart';
 import 'package:scotch/common/api/api_baseurl.dart';
 import 'package:scotch/core/const.dart';
 import 'package:scotch/view/screens/address_screen/controller/address_controller.dart';
-import 'package:scotch/view/screens/cart_and_order_controller/cart_and_order_controller.dart';
+import 'package:scotch/view/screens/cart_screen/controller/cart_controller.dart';
 import 'package:scotch/view/screens/order_screen/model/order_enum.dart';
 import 'package:scotch/view/screens/order_screen/view/widgets/order_address_widget.dart';
 import 'package:scotch/view/screens/order_screen/view/widgets/order_bottom_widget.dart';
@@ -54,8 +54,7 @@ class _OrderScreenState extends State<OrderScreen> {
   @override
   Widget build(BuildContext context) {
     AddressController addressController = Get.put(AddressController());
-    CartAndOrderController cartAndOrderController =
-        Get.put(CartAndOrderController());
+    CartController cartAndOrderController = Get.put(CartController());
     // final args = ModalRoute.of(context)?.settings.arguments as String;
     // final homeCtr = homeController.findById(args);
     return Scaffold(
@@ -101,8 +100,7 @@ class _OrderScreenState extends State<OrderScreen> {
                       decoration: BoxDecoration(
                           color: kWhitecolor,
                           borderRadius: BorderRadius.circular(15)),
-                      child: GetBuilder<CartAndOrderController>(
-                          builder: (controller) {
+                      child: GetBuilder<CartController>(builder: (controller) {
                         return Column(
                           children: [
                             kHeight10,

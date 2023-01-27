@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:scotch/core/const.dart';
-import 'package:scotch/view/screens/cart_and_order_controller/cart_and_order_controller.dart';
+import 'package:scotch/view/screens/cart_screen/controller/cart_controller.dart';
 import 'package:scotch/view/screens/home_screen/model/product_model.dart';
 
 class AddToCartDesButton extends StatelessWidget {
@@ -14,15 +14,14 @@ class AddToCartDesButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    CartAndOrderController cartAndOrderController =
-        Get.put(CartAndOrderController());
-    return GetBuilder<CartAndOrderController>(
+    CartController cartController = Get.put(CartController());
+    return GetBuilder<CartController>(
       builder: (context) {
-        return cartAndOrderController.cartItemsId.contains(homeCtr.id)
+        return cartController.cartItemsId.contains(homeCtr.id)
             ? Expanded(
                 child: InkWell(
                   onTap: () {
-                    cartAndOrderController.gotToCartFromProduct();
+                    cartController.gotToCartFromProduct();
                   },
                   child: Container(
                     height: 50,
@@ -68,7 +67,7 @@ class AddToCartDesButton extends StatelessWidget {
             : Expanded(
                 child: InkWell(
                   onTap: () {
-                    cartAndOrderController.addToCart(
+                    cartController.addToCart(
                         homeCtr.id, homeCtr.size.toString());
                   },
                   child: Container(

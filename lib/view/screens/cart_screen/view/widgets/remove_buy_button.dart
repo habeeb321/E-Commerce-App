@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:scotch/core/const.dart';
-import 'package:scotch/view/screens/cart_and_order_controller/cart_and_order_controller.dart';
+import 'package:scotch/view/screens/cart_screen/controller/cart_controller.dart';
 import 'package:scotch/view/screens/cart_screen/view/widgets/cart_alert_widget.dart';
 
 class RemoveBuyButton extends StatelessWidget {
@@ -14,8 +14,7 @@ class RemoveBuyButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    CartAndOrderController cartAndOrderController =
-        Get.put(CartAndOrderController());
+    CartController cartController = Get.put(CartController());
     return Row(
       children: [
         Expanded(
@@ -70,14 +69,14 @@ class RemoveBuyButton extends StatelessWidget {
           ),
         ),
         kWidth20,
-        GetBuilder<CartAndOrderController>(builder: (context) {
+        GetBuilder<CartController>(builder: (context) {
           return Expanded(
             child: InkWell(
               onTap: () {
-                cartAndOrderController.toOrderScreen(
-                    cartAndOrderController.cartList!.products[index].product.id,
-                    cartAndOrderController.cartList!.id);
-                cartAndOrderController.isLoading = true;
+                cartController.toOrderScreen(
+                    cartController.cartList!.products[index].product.id,
+                    cartController.cartList!.id);
+                cartController.isLoading = true;
               },
               child: Container(
                 height: 40,

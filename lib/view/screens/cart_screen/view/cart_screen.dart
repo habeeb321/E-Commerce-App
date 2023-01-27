@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:scotch/core/const.dart';
-import 'package:scotch/view/screens/cart_and_order_controller/cart_and_order_controller.dart';
+import 'package:scotch/view/screens/cart_screen/controller/cart_controller.dart';
 import 'package:scotch/view/screens/cart_screen/view/widgets/cart_widget.dart';
 
 class CartScreen extends StatelessWidget {
@@ -9,8 +9,7 @@ class CartScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    CartAndOrderController cartAndOrderController =
-        Get.put(CartAndOrderController());
+    CartController cartController = Get.put(CartController());
     Size size = Get.size;
     return Scaffold(
       backgroundColor: kGreyColor.shade200,
@@ -30,10 +29,10 @@ class CartScreen extends StatelessWidget {
           ),
         ),
       ),
-      bottomNavigationBar: GetBuilder<CartAndOrderController>(
+      bottomNavigationBar: GetBuilder<CartController>(
         builder: (controller) {
-          return cartAndOrderController.cartList == null ||
-                  cartAndOrderController.cartList!.products.isEmpty
+          return cartController.cartList == null ||
+                  cartController.cartList!.products.isEmpty
               ? SizedBox(
                   height: size.height * 0.78,
                   child: const Center(
@@ -61,7 +60,7 @@ class CartScreen extends StatelessWidget {
                                 ),
                               ),
                               Text(
-                                '${cartAndOrderController.totalSave}',
+                                '${cartController.totalSave}',
                                 style: const TextStyle(
                                   color: kRedColor,
                                   fontFamily: 'Montserrat',

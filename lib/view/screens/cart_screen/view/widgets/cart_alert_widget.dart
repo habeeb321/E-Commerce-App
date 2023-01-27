@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:scotch/view/screens/cart_and_order_controller/cart_and_order_controller.dart';
+import 'package:scotch/view/screens/cart_screen/controller/cart_controller.dart';
 
 class CartAlertWidget extends StatelessWidget {
   const CartAlertWidget({Key? key, required this.index}) : super(key: key);
@@ -8,9 +8,8 @@ class CartAlertWidget extends StatelessWidget {
   final int index;
   @override
   Widget build(BuildContext context) {
-    CartAndOrderController cartAndOrderController =
-        Get.put(CartAndOrderController());
-    return GetBuilder<CartAndOrderController>(builder: (controller) {
+    CartController cartController = Get.put(CartController());
+    return GetBuilder<CartController>(builder: (controller) {
       return AlertDialog(
         title: const Text(
           'Remove Item',
@@ -47,8 +46,8 @@ class CartAlertWidget extends StatelessWidget {
                 ),
                 TextButton(
                   onPressed: () {
-                    cartAndOrderController.removeCart(cartAndOrderController
-                        .cartList!.products[index].product.id);
+                    cartController.removeCart(
+                        cartController.cartList!.products[index].product.id);
                   },
                   child: const Text(
                     'Yes',
