@@ -123,7 +123,20 @@ class ProfileScreen extends StatelessWidget {
                         ],
                       ),
                     ),
-                    kHeight10,
+                    kHeight20,
+                    const Text(
+                      'Version',
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18,
+                          color: Color.fromARGB(255, 176, 175, 175)),
+                    ),
+                    const Text(
+                      '1.0.0',
+                      style: TextStyle(
+                          fontSize: 16,
+                          color: Color.fromARGB(255, 176, 175, 175)),
+                    ),
                   ],
                 );
               },

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:scotch/core/const.dart';
+import 'package:scotch/view/screens/cart_screen/controller/cart_controller.dart';
 import 'package:scotch/view/screens/cart_screen/view/widgets/cart_alert_widget.dart';
+import 'package:scotch/view/screens/order_screen/view/order_screen.dart';
 
 class RemoveBuyButton extends StatelessWidget {
   const RemoveBuyButton({
@@ -12,6 +15,7 @@ class RemoveBuyButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    CartController cartController = Get.put(CartController());
     return Row(
       children: [
         Expanded(
@@ -66,37 +70,42 @@ class RemoveBuyButton extends StatelessWidget {
           ),
         ),
         kWidth20,
-        Expanded(
-          child: InkWell(
-            onTap: () {},
-            child: Container(
-              height: 40,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(5),
-                gradient: LinearGradient(
-                  begin: const FractionalOffset(0, 0),
-                  end: const FractionalOffset(0.8, 0),
-                  stops: const [0.3, 0.9],
-                  tileMode: TileMode.clamp,
-                  colors: [
-                    Colors.blue.shade500,
-                    themeColor,
-                  ],
+        GetBuilder<CartController>(builder: (context) {
+          return Expanded(
+            child: InkWell(
+              onTap: () {
+                Get.toNamed(OrderScreen.routeName,
+                    arguments: cartController.cartItemsId);
+              },
+              child: Container(
+                height: 40,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(5),
+                  gradient: LinearGradient(
+                    begin: const FractionalOffset(0, 0),
+                    end: const FractionalOffset(0.8, 0),
+                    stops: const [0.3, 0.9],
+                    tileMode: TileMode.clamp,
+                    colors: [
+                      Colors.blue.shade500,
+                      themeColor,
+                    ],
+                  ),
                 ),
-              ),
-              child: const Center(
-                child: Text(
-                  'Buy Now',
-                  style: TextStyle(
-                      color: kWhitecolor,
-                      fontFamily: 'Montserrat',
-                      letterSpacing: 1,
-                      fontWeight: FontWeight.bold),
+                child: const Center(
+                  child: Text(
+                    'Buy Now',
+                    style: TextStyle(
+                        color: kWhitecolor,
+                        fontFamily: 'Montserrat',
+                        letterSpacing: 1,
+                        fontWeight: FontWeight.bold),
+                  ),
                 ),
               ),
             ),
-          ),
-        ),
+          );
+        }),
       ],
     );
   }

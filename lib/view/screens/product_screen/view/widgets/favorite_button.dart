@@ -12,22 +12,24 @@ class FavoriteButton extends StatelessWidget {
   Widget build(BuildContext context) {
     WishlistController wishlistController =
         Get.put(WishlistController(context));
-    return GetBuilder<WishlistController>(builder: (context) {
-      return GestureDetector(
-        onTap: () => wishlistController.addOrRemoveFromWishlist(context, id),
-        child: CircleAvatar(
-          backgroundColor: Colors.white,
-          child: Icon(
-            wishlistController.wishList.contains(id)
-                ? Icons.favorite
-                : Icons.favorite_outline_outlined,
-            color: wishlistController.wishList.contains(id)
-                ? kRedColor
-                : Colors.black,
-            size: 30,
+    return GetBuilder<WishlistController>(
+      builder: (context) {
+        return GestureDetector(
+          onTap: () => wishlistController.addOrRemoveFromWishlist(context, id),
+          child: CircleAvatar(
+            backgroundColor: Colors.white,
+            child: Icon(
+              wishlistController.wishList.contains(id)
+                  ? Icons.favorite
+                  : Icons.favorite_outline_outlined,
+              color: wishlistController.wishList.contains(id)
+                  ? kRedColor
+                  : Colors.black,
+              size: 25,
+            ),
           ),
-        ),
-      );
-    });
+        );
+      },
+    );
   }
 }

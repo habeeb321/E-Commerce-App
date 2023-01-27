@@ -58,11 +58,7 @@ class ProductScreen extends StatelessWidget {
                             ),
                           ),
                         ),
-                        Positioned(
-                          right: 0,
-                          top: 0,
-                          child: FavoriteButton(id: homeCtr.id),
-                        ),
+                        
                       ],
                     ),
                     kHeight10,
