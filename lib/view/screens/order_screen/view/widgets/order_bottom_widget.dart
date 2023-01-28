@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:scotch/core/const.dart';
-import 'package:scotch/view/screens/address_screen/controller/address_controller.dart';
 import 'package:scotch/view/screens/address_screen/view/address_screen.dart';
 import 'package:scotch/view/screens/cart_screen/controller/cart_controller.dart';
 import 'package:scotch/view/screens/order_placed_screen/view/order_placed_screen.dart';
@@ -18,7 +17,6 @@ class OrderBottomWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    AddressController addressController = Get.put(AddressController());
     PaymentController paymentController = Get.put(PaymentController());
     CartController cartController = Get.put(CartController());
     return Material(
@@ -30,7 +28,7 @@ class OrderBottomWidget extends StatelessWidget {
               height: Get.size.height * 0.06,
               width: Get.size.width / 2,
               child: Center(
-                child: cartController.isLoading == true
+                child: cartController.isLoadingo == true
                     ? const CircularProgressIndicator()
                     : Text(
                         screenCheck == OrderScreenEnum.normalOrderScreen
@@ -46,7 +44,7 @@ class OrderBottomWidget extends StatelessWidget {
                       ),
               ),
             ),
-            addressController.addressList.isNotEmpty
+            cartController.addressList.isNotEmpty
                 ? SizedBox(
                     height: Get.size.height * 0.06,
                     width: Get.size.width / 2,

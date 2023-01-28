@@ -13,9 +13,9 @@ mixin OrdersController on GetxController {
   // OrdersController() {
   //   startLoading();
   // }
-  bool isLoading = false;
+  bool isLoadingo = false;
   void startLoading() {
-    isLoading = true;
+    isLoadingo = true;
     update();
   }
 
@@ -26,16 +26,16 @@ mixin OrdersController on GetxController {
   int? totalSave;
 
   void getAllOrders() async {
-    isLoading = true;
+    isLoadingo = true;
     update();
     await OrderService().getAllOrders().then((value) {
       if (value != null) {
         orderList = value;
         update();
-        isLoading = false;
+        isLoadingo = false;
         update();
       } else {
-        isLoading = false;
+        isLoadingo = false;
         update();
       }
     });
@@ -43,16 +43,16 @@ mixin OrdersController on GetxController {
   }
 
   void getSingleOrders(String orderId) async {
-    isLoading = true;
+    isLoadingo = true;
     update();
     await OrderService().getSingleOrders(orderId).then((value) {
       if (value != null) {
         getSingleOrder = value;
         update();
-        isLoading = false;
+        isLoadingo = false;
         update();
       } else {
-        isLoading = false;
+        isLoadingo = false;
         update();
       }
     });
@@ -60,14 +60,14 @@ mixin OrdersController on GetxController {
   }
 
   void cancelOrders(String orderId) async {
-    isLoading = true;
+    isLoadingo = true;
     update();
     await OrderService().cancelOrder(orderId).then((value) {
       if (value != null) {
-        isLoading = false;
+        isLoadingo = false;
         update();
       } else {
-        isLoading = false;
+        isLoadingo = false;
         update();
       }
     });
@@ -75,7 +75,7 @@ mixin OrdersController on GetxController {
   }
 
   void getSingleAddress(String addressId) async {
-    isLoading = false;
+    isLoadingo = false;
     update();
     await AddressService().getSingleAddress(addressId).then((value) {
       if (value != null) {
@@ -83,10 +83,10 @@ mixin OrdersController on GetxController {
 
         addressModel = value;
         update();
-        isLoading = false;
+        isLoadingo = false;
         update();
       } else {
-        isLoading = false;
+        isLoadingo = false;
         update();
       }
     });
@@ -99,10 +99,10 @@ mixin OrdersController on GetxController {
         cartModel = value;
         update();
         totalSave = (cartModel[0].price - cartModel[0].discountPrice).round();
-        isLoading = false;
+        isLoadingo = false;
         update();
       } else {
-        isLoading = false;
+        isLoadingo = false;
         update();
       }
     });

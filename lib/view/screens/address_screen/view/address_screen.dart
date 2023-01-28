@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:scotch/core/const.dart';
-import 'package:scotch/view/screens/address_screen/controller/address_controller.dart';
 import 'package:scotch/view/screens/address_screen/model/enum_address.dart';
 import 'package:scotch/view/screens/address_screen/view/address_form_screen.dart';
 import 'package:scotch/view/screens/address_screen/view/widgets/popup_address_widget.dart';
+import 'package:scotch/view/screens/cart_screen/controller/cart_controller.dart';
 
 class AddressScreen extends StatelessWidget {
   const AddressScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    AddressController addressController = Get.put(AddressController());
-    return GetBuilder<AddressController>(
-      init: addressController,
+    CartController cartController = Get.put(CartController());
+    return GetBuilder<CartController>(
+      init: cartController,
       builder: (controller) {
         return Scaffold(
           appBar: AppBar(
@@ -34,7 +34,7 @@ class AddressScreen extends StatelessWidget {
                 padding: const EdgeInsets.all(8.0),
                 child: Column(
                   children: [
-                    addressController.addressList.isEmpty
+                    cartController.addressList.isEmpty
                         ? const Align(
                             alignment: Alignment.center,
                             child: Text(
@@ -66,7 +66,7 @@ class AddressScreen extends StatelessWidget {
                                       Row(
                                         children: [
                                           Text(
-                                            addressController
+                                            cartController
                                                 .addressList[index].fullName
                                                 .toUpperCase(),
                                             style: const TextStyle(
@@ -88,7 +88,7 @@ class AddressScreen extends StatelessWidget {
                                                               EnumAddress
                                                                   .editAddressScreen,
                                                           addressId:
-                                                              addressController
+                                                              cartController
                                                                   .addressList[
                                                                       index]
                                                                   .id,
@@ -118,7 +118,7 @@ class AddressScreen extends StatelessWidget {
                                         ],
                                       ),
                                       Text(
-                                        addressController
+                                        cartController
                                             .addressList[index].address,
                                         style: const TextStyle(
                                           fontFamily: "Montserrat",
@@ -129,7 +129,7 @@ class AddressScreen extends StatelessWidget {
                                       Row(
                                         children: [
                                           Text(
-                                            "PIN : ${addressController.addressList[index].pin}, ",
+                                            "PIN : ${cartController.addressList[index].pin}, ",
                                             style: const TextStyle(
                                               fontFamily: "Montserrat",
                                               letterSpacing: 1,
@@ -137,7 +137,7 @@ class AddressScreen extends StatelessWidget {
                                             ),
                                           ),
                                           Text(
-                                            addressController
+                                            cartController
                                                 .addressList[index].state,
                                             style: const TextStyle(
                                               fontFamily: "Montserrat",
@@ -148,7 +148,7 @@ class AddressScreen extends StatelessWidget {
                                         ],
                                       ),
                                       Text(
-                                        addressController
+                                        cartController
                                             .addressList[index].landMark,
                                         style: const TextStyle(
                                           fontFamily: "Montserrat",
@@ -158,8 +158,7 @@ class AddressScreen extends StatelessWidget {
                                       ),
                                       kHeight10,
                                       Text(
-                                        addressController
-                                            .addressList[index].phone,
+                                        cartController.addressList[index].phone,
                                         style: const TextStyle(
                                           fontFamily: "Montserrat",
                                           fontWeight: FontWeight.bold,
@@ -175,7 +174,7 @@ class AddressScreen extends StatelessWidget {
                             separatorBuilder: (context, index) {
                               return kHeight20;
                             },
-                            itemCount: addressController.addressList.length,
+                            itemCount: cartController.addressList.length,
                           ),
                   ],
                 ),

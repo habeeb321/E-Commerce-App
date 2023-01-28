@@ -6,11 +6,11 @@ import 'package:get/get.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
 import 'package:scotch/common/api/api_baseurl.dart';
 import 'package:scotch/core/const.dart';
-import 'package:scotch/view/screens/address_screen/controller/address_controller.dart';
 import 'package:scotch/view/screens/cart_screen/controller/cart_controller.dart';
 import 'package:scotch/view/screens/order_screen/model/order_enum.dart';
 import 'package:scotch/view/screens/order_screen/view/widgets/order_address_widget.dart';
 import 'package:scotch/view/screens/order_screen/view/widgets/order_bottom_widget.dart';
+import 'package:scotch/view/screens/order_screen/view/widgets/row_order_widget.dart';
 import 'package:scotch/view/screens/payment/controller/payment_controller.dart';
 
 class OrderScreen extends StatefulWidget {
@@ -52,7 +52,6 @@ class _OrderScreenState extends State<OrderScreen> {
 
   @override
   Widget build(BuildContext context) {
-    AddressController addressController = Get.put(AddressController());
     CartController cartController = Get.put(CartController());
     cartController.getSingleCart(widget.productId, widget.cartId);
     return Scaffold(
@@ -70,35 +69,24 @@ class _OrderScreenState extends State<OrderScreen> {
         centerTitle: true,
       ),
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              children: [
-                GetBuilder<AddressController>(builder: (controller) {
-                  return ListView.builder(
-                    shrinkWrap: true,
-                    itemBuilder: (context, index) {
-                      return OrderAddressWidget(
-                        index: addressController.selectIndex,
-                        value: addressController,
-                      );
-                    },
-                    itemCount: addressController.addressList.length,
-                  );
-                }),
-                kHeight10,
-                GetBuilder<CartController>(
-                  builder: (controller) {
-                    return Column(
+        child: GetBuilder<CartController>(
+          builder: (controller) {
+            return cartController.isLoadingo == true
+                ? const Center(child: CircularProgressIndicator())
+                : SingleChildScrollView(
+                    child: Column(
                       children: [
+                        OrderAddressWidget(
+                          index: cartController.selectIndex,
+                          value: cartController,
+                        ),
+                        kHeight10,
                         ListView.builder(
+                          physics: const ScrollPhysics(),
                           shrinkWrap: true,
                           itemBuilder: (context, index) {
                             return Container(
-                              decoration: BoxDecoration(
-                                  color: kWhitecolor,
-                                  borderRadius: BorderRadius.circular(15)),
+                              color: kWhitecolor,
                               child: Column(
                                 children: [
                                   kHeight10,
@@ -112,7 +100,7 @@ class _OrderScreenState extends State<OrderScreen> {
                                           widget.screenCheck ==
                                                   OrderScreenEnum
                                                       .normalOrderScreen
-                                              ? '${ApiBaseUrl().baseUrl}/products/${cartController.cartList!.products[index].product.image[4]}'
+                                              ? '${ApiBaseUrl().baseUrl}/products/${cartController.cartList!.products[index].product.image[0]}'
                                               : '${ApiBaseUrl().baseUrl}/products/${cartController.cartModel[0].product.image[4]}',
                                         ),
                                       ),
@@ -238,6 +226,7 @@ class _OrderScreenState extends State<OrderScreen> {
                                       ),
                                     ],
                                   ),
+                                  kHeight10
                                 ],
                               ),
                             );
@@ -247,76 +236,71 @@ class _OrderScreenState extends State<OrderScreen> {
                               ? cartController.cartList!.products.length
                               : 1,
                         ),
-                        // kHeight10,
-                        // Padding(
-                        //   padding: const EdgeInsets.all(16.0),
-                        //   child: Column(
-                        //     children: [
-                        //       Row(
-                        //         children: const [
-                        //           Text(
-                        //             'Price Details',
-                        //             style: TextStyle(
-                        //               fontFamily: "Montserrat",
-                        //               fontWeight: FontWeight.bold,
-                        //               fontSize: 18,
-                        //               letterSpacing: 1,
-                        //             ),
-                        //           ),
-                        //         ],
-                        //       ),
-                        //       kHeight10,
-                        //       RowOrderWidget(
-                        //         text: 'Price',
-                        //         text2: widget.screenCheck ==
-                        //                 OrderScreenEnum.normalOrderScreen
-                        //             ? "₹${(cartController.cartList!.totalPrice - cartController.cartList!.totalDiscount).round()}"
-                        //             : "₹${(cartController.cartModel[0].product.price - cartController.cartModel[0].product.discountPrice).round()}",
-                        //         color: kRedColor,
-                        //       ),
-                        //       kHeight10,
-                        //       const RowOrderWidget(
-                        //         text: 'Delivery Charges',
-                        //         text2: "Free Delivery",
-                        //         color: Colors.green,
-                        //       ),
-                        //       const Text(
-                        //         '--  --  --  --  --  --  --  --  --  --  --  --  --  --  --  --  --  --  --  --  --  --',
-                        //       ),
-                        //       RowOrderWidget(
-                        //         text: 'Total Amout',
-                        //         text2: widget.screenCheck ==
-                        //                 OrderScreenEnum.normalOrderScreen
-                        //             ? "₹${(cartController.cartList!.totalPrice - cartController.cartList!.totalDiscount).round()}"
-                        //             : "₹${(cartController.cartModel[0].product.price - cartController.cartModel[0].product.discountPrice).round()}",
-                        //       ),
-                        //     ],
-                        //   ),
-                        // ),
-                        // kHeight10,
+                        kHeight10,
+                        Container(
+                          color: kWhitecolor,
+                          padding: const EdgeInsets.only(left: 20, right: 20),
+                          child: Column(
+                            children: [
+                              Row(
+                                children: const [
+                                  Text(
+                                    'Price Details',
+                                    style: TextStyle(
+                                      fontFamily: "Manrope",
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 18,
+                                      letterSpacing: 1,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              kHeight10,
+                              RowOrderWidget(
+                                text: 'Price',
+                                text2: widget.screenCheck ==
+                                        OrderScreenEnum.normalOrderScreen
+                                    ? "₹${(cartController.cartList!.totalPrice - cartController.cartList!.totalDiscount).round()}"
+                                    : "₹${(cartController.cartModel[0].product.price - cartController.cartModel[0].product.discountPrice).round()}",
+                                color: kRedColor,
+                              ),
+                              kHeight10,
+                              const RowOrderWidget(
+                                text: 'Delivery Charges',
+                                text2: "Free Delivery",
+                                color: Colors.green,
+                              ),
+                              const Text(
+                                '-------------------------------------------------------------------------------------',
+                              ),
+                              RowOrderWidget(
+                                text: 'Total Amout',
+                                text2: widget.screenCheck ==
+                                        OrderScreenEnum.normalOrderScreen
+                                    ? "₹${(cartController.cartList!.totalPrice - cartController.cartList!.totalDiscount).round()}"
+                                    : "₹${(cartController.cartModel[0].product.price - cartController.cartModel[0].product.discountPrice).round()}",
+                              ),
+                            ],
+                          ),
+                        ),
+                        kHeight20,
                         Row(
-                          children: [
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: const [
                             kWidth10,
-                            IconButton(
-                              onPressed: () {},
-                              icon: Icon(Icons.verified_user_rounded,
-                                  color: Colors.grey.shade700),
-                            ),
+                            Icon(Icons.verified_user, color: kGreyColor),
                             Text(
                               'Safe and Secure Payments.Easy returns.100% \nAuthentic products',
                               style: TextStyle(
-                                color: Colors.grey.shade700,
+                                color: kGreyColor,
                               ),
                             ),
                           ],
                         ),
                       ],
-                    );
-                  },
-                ),
-              ],
-            ),
-          ),
+                    ),
+                  );
+          },
         ),
       ),
       bottomNavigationBar: OrderBottomWidget(

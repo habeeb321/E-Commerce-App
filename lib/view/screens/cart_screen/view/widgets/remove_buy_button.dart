@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:scotch/core/const.dart';
 import 'package:scotch/view/screens/cart_screen/controller/cart_controller.dart';
 import 'package:scotch/view/screens/cart_screen/view/widgets/cart_alert_widget.dart';
+import 'package:scotch/view/screens/home_screen/controller/home_controller.dart';
 
 class RemoveBuyButton extends StatelessWidget {
   const RemoveBuyButton({
@@ -15,6 +16,7 @@ class RemoveBuyButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     CartController cartController = Get.put(CartController());
+    HomeController homeController = Get.put(HomeController());
     return Row(
       children: [
         Expanded(
@@ -76,7 +78,7 @@ class RemoveBuyButton extends StatelessWidget {
                 cartController.toOrderScreen(
                     cartController.cartList!.products[index].product.id,
                     cartController.cartList!.id);
-                cartController.isLoading = true;
+                cartController.isLoadingo = true;
               },
               child: Container(
                 height: 40,

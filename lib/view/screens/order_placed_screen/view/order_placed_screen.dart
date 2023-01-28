@@ -4,7 +4,6 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
 import 'package:scotch/common/api/api_baseurl.dart';
 import 'package:scotch/core/const.dart';
-import 'package:scotch/view/screens/address_screen/controller/address_controller.dart';
 import 'package:scotch/view/screens/cart_screen/controller/cart_controller.dart';
 import 'package:scotch/view/screens/order_screen/model/order_arguments.dart';
 import 'package:scotch/view/screens/order_screen/view/widgets/order_address_widget.dart';
@@ -17,22 +16,21 @@ class OrderPlacedScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     CartController cartController = Get.put(CartController());
-    AddressController addressController = Get.put(AddressController());
     return Scaffold(
       appBar: AppBar(
         title: const Text("Order Details"),
       ),
       body: SafeArea(
-        child: cartController.isLoading == true
+        child: cartController.isLoadingo == true
             ? const Center(child: CircularProgressIndicator())
             : SingleChildScrollView(
                 child: Column(
                   children: [
-                    GetBuilder<AddressController>(
+                    GetBuilder<CartController>(
                       builder: (controller) {
                         return OrderAddressWidget(
-                          index: addressController.selectIndex,
-                          value: addressController,
+                          index: cartController.selectIndex,
+                          value: cartController,
                         );
                       },
                     ),

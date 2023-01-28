@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 import 'package:scotch/core/const.dart';
 import 'package:scotch/view/screens/cart_screen/controller/cart_controller.dart';
 import 'package:scotch/view/screens/cart_screen/view/widgets/cart_widget.dart';
+import 'package:scotch/view/screens/order_screen/model/order_enum.dart';
+import 'package:scotch/view/screens/order_screen/view/order_screen.dart';
 
 class CartScreen extends StatelessWidget {
   const CartScreen({super.key});
@@ -45,36 +47,45 @@ class CartScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       SizedBox(
-                          height: size.height * 0.07,
-                          width: size.width * 0.4,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              const Text(
-                                'Total Price',
-                                style: TextStyle(
-                                  color: kBlackcolor,
-                                  fontSize: 15,
-                                  fontFamily: "Montserrat",
-                                  fontWeight: FontWeight.bold,
-                                ),
+                        height: size.height * 0.07,
+                        width: size.width * 0.4,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Text(
+                              'Total Price',
+                              style: TextStyle(
+                                color: kBlackcolor,
+                                fontSize: 15,
+                                fontFamily: "Montserrat",
+                                fontWeight: FontWeight.bold,
                               ),
-                              Text(
-                                '${cartController.totalSave}',
-                                style: const TextStyle(
-                                  color: kRedColor,
-                                  fontFamily: 'Montserrat',
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 18,
-                                ),
+                            ),
+                            Text(
+                              '${cartController.totalSave}',
+                              style: const TextStyle(
+                                color: kRedColor,
+                                fontFamily: 'Montserrat',
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18,
                               ),
-                            ],
-                          )),
+                            ),
+                          ],
+                        ),
+                      ),
                       SizedBox(
                         height: size.height * 0.07,
                         width: size.width * 0.4,
                         child: ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Get.to(
+                              const OrderScreen(
+                                  cartId: "",
+                                  productId: "",
+                                  screenCheck:
+                                      OrderScreenEnum.normalOrderScreen),
+                            );
+                          },
                           style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.blue,
                               elevation: 0,

@@ -7,10 +7,10 @@ import 'package:scotch/view/screens/address_screen/model/get_address_model.dart'
 import 'package:scotch/view/screens/address_screen/model/create_address_model.dart';
 import 'package:scotch/view/screens/address_screen/service/address_service.dart';
 
-class AddressController extends GetxController {
-  AddressController() {
-    getAllAddress();
-  }
+mixin AddressController on GetxController {
+  // AddressController() {
+  //   getAllAddress();
+  // }
 
   final TextEditingController nameController = TextEditingController();
   final TextEditingController phoneController = TextEditingController();
@@ -20,7 +20,7 @@ class AddressController extends GetxController {
   final TextEditingController addressController = TextEditingController();
   final TextEditingController landmarkController = TextEditingController();
 
-  bool isLoading = false;
+  bool isLoadinga = false;
   bool isLoading2 = false;
   bool isSelected = true;
   bool isOfficeSelected = false;
@@ -30,17 +30,17 @@ class AddressController extends GetxController {
   String addressType = 'Home';
 
   Future<String?> getAllAddress() async {
-    isLoading = true;
+    isLoadinga = true;
     update();
     await AddressService().getAddress().then((value) {
       if (value != null) {
         log(value.toString());
         addressList = value;
         update();
-        isLoading = false;
+        isLoadinga = false;
         update();
       } else {
-        isLoading = false;
+        isLoadinga = false;
         update();
         return null;
       }

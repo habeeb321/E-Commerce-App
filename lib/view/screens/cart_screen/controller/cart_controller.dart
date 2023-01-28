@@ -1,6 +1,7 @@
 import 'dart:developer';
 import 'package:get/get.dart';
 import 'package:scotch/core/const.dart';
+import 'package:scotch/view/screens/address_screen/controller/address_controller.dart';
 import 'package:scotch/view/screens/bottom_nav_bar/controller/bottom_nav_controller.dart';
 import 'package:scotch/view/screens/cart_screen/model/add_cart_model.dart';
 import 'package:scotch/view/screens/cart_screen/model/get_cart_model.dart';
@@ -9,25 +10,28 @@ import 'package:scotch/view/screens/cart_screen/view/cart_screen.dart';
 import 'package:scotch/view/screens/order_screen/controller/order_controller.dart';
 import 'package:scotch/view/screens/product_screen/view/product_screen.dart';
 
-class CartController extends GetxController with OrdersController {
+class CartController extends GetxController
+    with OrdersController, AddressController {
   BottomNavController bottomNavController = Get.put(BottomNavController());
   CartController() {
     getCart();
+    getAllAddress();
     startLoading();
   }
 
   @override
-  bool isLoading = false;
+  bool isLoadingc = false;
   CartModel? cartList;
   List<String> cartItemsId = [];
   int quantity = 1;
   int totalproductCount = 1;
+
   @override
   int? totalSave;
   CartService service = CartService();
 
   void getCart() async {
-    isLoading = true;
+    isLoadingc = true;
     update();
     await service.getCart().then(
       (value) {
@@ -38,10 +42,10 @@ class CartController extends GetxController with OrdersController {
           totalSave = (cartList!.totalPrice - cartList!.totalDiscount).toInt();
           totalProductCount();
           update();
-          isLoading = false;
+          isLoadingc = false;
           update();
         } else {
-          isLoading = false;
+          isLoadingc = false;
           update();
         }
         return null;
@@ -50,7 +54,7 @@ class CartController extends GetxController with OrdersController {
   }
 
   void addToCart(String productId, String size) async {
-    isLoading = true;
+    isLoadingc = true;
     update();
     final AddToCartModel model = AddToCartModel(
       size: size.toString(),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:scotch/core/const.dart';
-import 'package:scotch/view/screens/address_screen/controller/address_controller.dart';
+import 'package:scotch/view/screens/cart_screen/controller/cart_controller.dart';
 
 class AddressAlertWidget extends StatelessWidget {
   const AddressAlertWidget({Key? key, required this.index}) : super(key: key);
@@ -9,8 +9,8 @@ class AddressAlertWidget extends StatelessWidget {
   final int index;
   @override
   Widget build(BuildContext context) {
-    AddressController addressController = Get.put(AddressController());
-    return GetBuilder<AddressController>(builder: (controller) {
+    CartController cartController = Get.put(CartController());
+    return GetBuilder<CartController>(builder: (controller) {
       return AlertDialog(
         title: const Text(
           'Remove Item',
@@ -47,8 +47,8 @@ class AddressAlertWidget extends StatelessWidget {
                 ),
                 TextButton(
                   onPressed: () {
-                    addressController.deleteAddress(
-                      addressController.addressList[index].id,
+                    cartController.deleteAddress(
+                      cartController.addressList[index].id,
                     );
                     Get.back();
                     Get.snackbar(
@@ -58,7 +58,7 @@ class AddressAlertWidget extends StatelessWidget {
                       backgroundColor: kBlackcolor,
                       snackPosition: SnackPosition.BOTTOM,
                     );
-                    addressController.getAllAddress();
+                    cartController.getAllAddress();
                   },
                   child: const Text(
                     'Yes',
