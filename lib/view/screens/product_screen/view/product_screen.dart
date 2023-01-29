@@ -85,7 +85,7 @@ class ProductScreen extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        AddToCartDesButton(homeCtr: homeCtr),
+                        AddToCartDesButton(productId: productId),
                         kWidth10,
                         WishlistButton(id: homeCtr.id, size: homeCtr.size),
                       ],

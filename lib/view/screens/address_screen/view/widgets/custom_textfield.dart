@@ -1,65 +1,51 @@
 import 'package:flutter/material.dart';
-import 'package:scotch/core/const.dart';
 
-class CustomTextField extends StatelessWidget {
-  const CustomTextField({
-    Key? key,
-    this.suffix,
+class TextFormFieldCustom extends StatelessWidget {
+  const TextFormFieldCustom({
+    super.key,
+    required this.labelText,
     required this.controller,
-    required this.validator,
-    this.obscureText,
-    required this.keyboard,
-    this.onChanged,
-    required this.text,
-    this.contentPadding,
-    this.preffix,
-    this.hintText,
-    this.colorFill,
-  }) : super(key: key);
-
-  final Widget? suffix;
-  final Widget? preffix;
-  final String? hintText;
-  final Color? colorFill;
+    required this.keyboardType,
+    this.obscureText = false,
+    this.suffix,
+    required this.prefixIcon,
+    this.validator,
+  });
+  final bool obscureText;
+  final String labelText;
+  final IconData prefixIcon;
+  final String? Function(String?)? validator;
   final TextEditingController controller;
-  final String? Function(String?) validator;
-  final bool? obscureText;
-  final String text;
-
-  final TextInputType keyboard;
-  final EdgeInsetsGeometry? contentPadding;
-  final void Function(String)? onChanged;
-
+  final TextInputType keyboardType;
+  final Widget? suffix;
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      onChanged: onChanged,
-      obscureText: obscureText ?? false,
-      keyboardType: keyboard,
-      controller: controller,
-      style: const TextStyle(color: kBlackcolor),
-      validator: validator,
-      decoration: InputDecoration(
-        fillColor: colorFill,
-        suffixIcon: suffix,
-        hintText: hintText,
-        prefixIcon: preffix,
-        label: Text(
-          text,
-          style: TextStyle(
-              color: Colors.black.withOpacity(0.6),
-              fontFamily: 'Montserrat',
-              fontWeight: FontWeight.bold),
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 10),
+      child: TextFormField(
+        controller: controller,
+        obscureText: obscureText,
+        keyboardType: keyboardType,
+        validator: validator,
+        decoration: InputDecoration(
+          prefixIcon: Icon(
+            prefixIcon,
+            size: 20,
+          ),
+          contentPadding:
+              const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+          suffixIcon: suffix,
+          label: Text(
+            labelText,
+          ),
+          border: const OutlineInputBorder(
+            borderRadius: BorderRadius.all(
+              Radius.circular(
+                10,
+              ),
+            ),
+          ),
         ),
-        contentPadding: contentPadding,
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(20),
-        ),
-        enabledBorder: OutlineInputBorder(
-          borderSide: const BorderSide(color: kBlackcolor),
-          borderRadius: BorderRadius.circular(20),
-        ),
-        enabled: true,
       ),
     );
   }
