@@ -118,39 +118,36 @@ class CoaController extends GetxController {
     update();
   }
 
-  Future<void> incrementDecrementQty(
-      int qty, String productId, int productQuantity, String size) async {
-    final AddToCartModel model = AddToCartModel(
-      size: size.toString(),
-      quantity: quantity,
+  Future<void> incrementOrDecrementQuantity(int qty, String productId,
+      String productSize, int productquantity, context) async {
+    final AddToCartModel addToCartModel = AddToCartModel(
       productId: productId,
+      quantity: qty,
+      size: productSize.toString(),
     );
-    if (qty == 1 && productQuantity >= 1 || qty == -1 && productQuantity > 1) {
-      await CartService().addToCart(model).then(
-        (value) async {
-          if (value != null) {
-            await CartService().getCart().then(
-              (value) {
-                if (value != null) {
-                  cartList = value;
-                  update();
-                  totalProductCount();
-                  cartItemsId =
-                      cartList!.products.map((e) => e.product.id).toList();
-                  update();
-                  totalSave =
-                      (cartList!.totalPrice - cartList!.totalDiscount).toInt();
-                  update();
-                } else {
-                  null;
-                }
-              },
-            );
-          } else {
-            null;
-          }
-        },
-      );
+    if (qty == 1 && productquantity >= 1 || qty == -1 && productquantity > 1) {
+      await CartService().addToCart(addToCartModel).then((value) async {
+        if (value != null) {
+          await CartService().getCart().then((value) {
+            if (value != null) {
+              cartList = value;
+              update();
+              totalProductCount();
+              update();
+              cartItemsId =
+                  cartList!.products.map((e) => e.product.id).toList();
+              update();
+              totalSave =
+                  (cartList!.totalPrice - cartList!.totalDiscount).toInt();
+              update();
+            } else {
+              null;
+            }
+          });
+        } else {
+          null;
+        }
+      });
     } else {
       null;
     }
@@ -531,7 +528,7 @@ class CoaController extends GetxController {
       'key': 'rzp_test_boWotLKxahxvUM',
       'amount': price * 100,
       'name': 'Scotch',
-      'description': 'Mobile Phones',
+      'description': 'Laptop',
       'prefill': {'contact': '9895709034', 'email': 'Scotch@razorpay.com'},
       'external': {
         'wallets': ['paytm']

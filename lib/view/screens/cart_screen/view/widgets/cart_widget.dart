@@ -6,6 +6,7 @@ import 'package:scotch/common/api/api_baseurl.dart';
 import 'package:scotch/core/const.dart';
 import 'package:scotch/view/screens/cart_and_order_address_payment_controller/cart_and_order_address_payment_controller.dart';
 import 'package:scotch/view/screens/cart_screen/view/widgets/cart_shimmer.dart';
+import 'package:scotch/view/screens/cart_screen/view/widgets/count_widget.dart';
 import 'package:scotch/view/screens/cart_screen/view/widgets/remove_buy_button.dart';
 
 class CartWidget extends StatelessWidget {
@@ -58,12 +59,15 @@ class CartWidget extends StatelessWidget {
                                                 ),
                                               )),
                                             ),
+                                            kHeight10,
                                             Row(
                                               children: [
-                                                IconButton(
-                                                  onPressed: () {
+                                                CountWidget(
+                                                  countNumber:
+                                                      '${coaController.cartList!.products[index].qty}',
+                                                  minusPressed: () {
                                                     coaController
-                                                        .incrementDecrementQty(
+                                                        .incrementOrDecrementQuantity(
                                                       -1,
                                                       coaController
                                                           .cartList!
@@ -71,34 +75,15 @@ class CartWidget extends StatelessWidget {
                                                           .product
                                                           .id,
                                                       coaController.cartList!
+                                                          .products[index].size,
+                                                      coaController.cartList!
                                                           .products[index].qty,
-                                                      coaController
-                                                          .cartList!
-                                                          .products[index]
-                                                          .product
-                                                          .size
-                                                          .toString(),
+                                                      context,
                                                     );
                                                   },
-                                                  icon: const Icon(Icons
-                                                      .remove_circle_outline),
-                                                ),
-                                                SizedBox(
-                                                  height: 25,
-                                                  width: 40,
-                                                  child: Text(
-                                                    "${coaController.cartList!.products[index].qty}",
-                                                    textAlign: TextAlign.center,
-                                                    style: const TextStyle(
-                                                        fontSize: 18,
-                                                        fontWeight:
-                                                            FontWeight.bold),
-                                                  ),
-                                                ),
-                                                IconButton(
-                                                  onPressed: () {
+                                                  plusPressed: () {
                                                     coaController
-                                                        .incrementDecrementQty(
+                                                        .incrementOrDecrementQuantity(
                                                       1,
                                                       coaController
                                                           .cartList!
@@ -106,17 +91,12 @@ class CartWidget extends StatelessWidget {
                                                           .product
                                                           .id,
                                                       coaController.cartList!
+                                                          .products[index].size,
+                                                      coaController.cartList!
                                                           .products[index].qty,
-                                                      coaController
-                                                          .cartList!
-                                                          .products[index]
-                                                          .product
-                                                          .size
-                                                          .toString(),
+                                                      context,
                                                     );
                                                   },
-                                                  icon: const Icon(
-                                                      Icons.add_circle_outline),
                                                 ),
                                               ],
                                             ),
