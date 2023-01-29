@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:scotch/core/const.dart';
-import 'package:scotch/view/screens/cart_and_order_controller/cart_and_order_controller.dart';
+import 'package:scotch/view/screens/cart_and_order_address_payment_controller/cart_and_order_address_payment_controller.dart';
 import 'package:scotch/view/screens/widgets/shimmer.dart';
 
 class CartShimmer extends StatelessWidget {
@@ -9,8 +9,7 @@ class CartShimmer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    CartAndOrderController cartAndOrderController =
-        Get.put(CartAndOrderController());
+    CoaController coaController = Get.put(CoaController());
     return ListView.separated(
       physics: const ScrollPhysics(),
       shrinkWrap: true,
@@ -62,7 +61,7 @@ class CartShimmer extends StatelessWidget {
           ],
         );
       },
-      itemCount: cartAndOrderController.cartList?.products.length ?? 10,
+      itemCount: coaController.cartList?.products.length ?? 10,
       separatorBuilder: (context, index) => const Divider(),
     );
   }

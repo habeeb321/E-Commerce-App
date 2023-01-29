@@ -8,9 +8,9 @@
 // import 'package:scotch/view/screens/cart_screen/view/cart_screen.dart';
 // import 'package:scotch/view/screens/product_screen/view/product_screen.dart';
 
-// class CartAndOrderController extends GetxController {
+// class CoaController extends GetxController {
 //   BottomNavController bottomNavController = Get.put(BottomNavController());
-//   CartAndOrderController() {
+//   CoaController() {
 //     getCart();
 //   }
 

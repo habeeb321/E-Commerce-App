@@ -4,8 +4,7 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
 import 'package:scotch/common/api/api_baseurl.dart';
 import 'package:scotch/core/const.dart';
-import 'package:scotch/view/screens/address_screen/controller/address_controller.dart';
-import 'package:scotch/view/screens/cart_and_order_controller/cart_and_order_controller.dart';
+import 'package:scotch/view/screens/cart_and_order_address_payment_controller/cart_and_order_address_payment_controller.dart';
 import 'package:scotch/view/screens/order_screen/model/order_arguments.dart';
 import 'package:scotch/view/screens/order_screen/view/widgets/order_address_widget.dart';
 
@@ -16,60 +15,50 @@ class OrderPlacedScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    CartAndOrderController cartAndOrderController =
-        Get.put(CartAndOrderController());
-    AddressController addressController = Get.put(AddressController());
+    CoaController coaController = Get.put(CoaController());
     return Scaffold(
       appBar: AppBar(
         title: const Text("Order Details"),
       ),
       body: SafeArea(
-        child: cartAndOrderController.isLoading == true
-            ? const Center(child: CircularProgressIndicator())
-            : SingleChildScrollView(
-                child: Column(
-                  children: [
-                    GetBuilder<AddressController>(
-                      builder: (controller) {
-                        return OrderAddressWidget(
-                          index: addressController.selectIndex,
-                          value: addressController,
-                        );
-                      },
-                    ),
-                    kHeight10,
-                    ListView.builder(
-                        physics: const ScrollPhysics(),
-                        shrinkWrap: true,
-                        itemBuilder: (context, index) {
-                          return Container(
-                            color: kWhitecolor,
-                            child: Column(
-                              children: [
-                                kHeight10,
-                                Row(
-                                  children: [
-                                    kWidth10,
-                                    GetBuilder<CartAndOrderController>(
-                                      builder: (controller) {
-                                        return Image(
-                                          height: 100,
-                                          width: 100,
-                                          image: NetworkImage(
-                                            '${ApiBaseUrl().baseUrl}/products/${cartAndOrderController.cartModel[0].product.image[0]}',
-                                          ),
-                                        );
-                                      },
-                                    ),
-                                    kWidth10,
-                                    GetBuilder<CartAndOrderController>(
-                                        builder: (controller) {
-                                      return Column(
+        child: GetBuilder<CoaController>(
+          builder: (controller) {
+            return coaController.isLoadingo == true
+                ? const Center(child: CircularProgressIndicator())
+                : SingleChildScrollView(
+                    child: Column(
+                    children: [
+                      OrderAddressWidget(
+                        index: coaController.selectIndex,
+                        value: coaController,
+                      ),
+                      kHeight10,
+                      ListView.builder(
+                          physics: const ScrollPhysics(),
+                          shrinkWrap: true,
+                          itemBuilder: (context, index) {
+                            return Container(
+                              color: kWhitecolor,
+                              child: Column(
+                                children: [
+                                  kHeight20,
+                                  Row(
+                                    children: [
+                                      kWidth10,
+                                      Image(
+                                        height: 100,
+                                        width: 100,
+                                        image: NetworkImage(
+                                          '${ApiBaseUrl().baseUrl}/products/${coaController.cartModel[0].product.image[0]}',
+                                        ),
+                                      ),
+                                      kWidth10,
+                                      Column(
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
                                         children: [
                                           Text(
-                                            cartAndOrderController.cartList!
+                                            coaController.cartList!
                                                 .products[index].product.name,
                                             style: const TextStyle(
                                                 fontSize: 18,
@@ -78,7 +67,7 @@ class OrderPlacedScreen extends StatelessWidget {
                                           ),
                                           RatingBar.builder(
                                             initialRating: double.parse(
-                                                cartAndOrderController
+                                                coaController
                                                     .cartList!
                                                     .products[index]
                                                     .product
@@ -100,7 +89,7 @@ class OrderPlacedScreen extends StatelessWidget {
                                           Row(
                                             children: [
                                               Text(
-                                                "${cartAndOrderController.cartList!.products[index].product.offer}%Off",
+                                                "${coaController.cartList!.products[index].product.offer}%Off",
                                                 style: const TextStyle(
                                                   color: Colors.green,
                                                   fontWeight: FontWeight.bold,
@@ -110,7 +99,7 @@ class OrderPlacedScreen extends StatelessWidget {
                                               ),
                                               kWidth10,
                                               Text(
-                                                "₹${cartAndOrderController.cartList!.products[index].product.price}",
+                                                "₹${coaController.cartList!.products[index].product.price}",
                                                 style: const TextStyle(
                                                   color: kGreyColor,
                                                   fontWeight: FontWeight.bold,
@@ -121,7 +110,7 @@ class OrderPlacedScreen extends StatelessWidget {
                                               ),
                                               kWidth10,
                                               Text(
-                                                "₹${(cartAndOrderController.cartList!.products[index].product.price - cartAndOrderController.cartList!.products[index].product.discountPrice).round()}",
+                                                "₹${(coaController.cartList!.products[index].product.price - coaController.cartList!.products[index].product.discountPrice).round()}",
                                                 style: const TextStyle(
                                                   color: kRedColor,
                                                   overflow:
@@ -134,25 +123,25 @@ class OrderPlacedScreen extends StatelessWidget {
                                             ],
                                           ),
                                         ],
-                                      );
-                                    }),
-                                  ],
-                                ),
-                                kHeight10,
-                                const Text(
-                                  'Order Placed Successfully',
-                                  style: TextStyle(
-                                      color: Colors.green, fontSize: 16),
-                                )
-                              ],
-                            ),
-                          );
-                        },
-                        itemCount: 1),
-                    kHeight10,
-                  ],
-                ),
-              ),
+                                      ),
+                                    ],
+                                  ),
+                                  kHeight20,
+                                  const Text(
+                                    'Order Placed Successfully',
+                                    style: TextStyle(
+                                        color: Colors.green, fontSize: 16),
+                                  )
+                                ],
+                              ),
+                            );
+                          },
+                          itemCount: 1),
+                      kHeight20,
+                    ],
+                  ));
+          },
+        ),
       ),
     );
   }

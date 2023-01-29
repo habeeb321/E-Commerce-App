@@ -1,28 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:scotch/core/const.dart';
-import 'package:scotch/view/screens/cart_and_order_controller/cart_and_order_controller.dart';
-import 'package:scotch/view/screens/home_screen/model/product_model.dart';
+import 'package:scotch/view/screens/cart_and_order_address_payment_controller/cart_and_order_address_payment_controller.dart';
 
 class AddToCartDesButton extends StatelessWidget {
   const AddToCartDesButton({
     Key? key,
-    required this.homeCtr,
+    required this.id,
+    required this.productId,
+    required this.size,
   }) : super(key: key);
 
-  final ProductModel homeCtr;
+  final String id;
+  final String productId;
+  final List<String> size;
 
   @override
   Widget build(BuildContext context) {
-    CartAndOrderController cartAndOrderController =
-        Get.put(CartAndOrderController());
-    return GetBuilder<CartAndOrderController>(
-      builder: (context) {
-        return cartAndOrderController.cartItemsId.contains(homeCtr.id)
+    CoaController coaController = Get.put(CoaController());
+    return GetBuilder<CoaController>(
+      builder: (controller) {
+        return coaController.cartItemsId.contains(id)
             ? Expanded(
                 child: InkWell(
                   onTap: () {
-                    cartAndOrderController.gotToCartFromProduct();
+                    coaController.gotToCartFromProduct();
                   },
                   child: Container(
                     height: 50,
@@ -68,8 +70,7 @@ class AddToCartDesButton extends StatelessWidget {
             : Expanded(
                 child: InkWell(
                   onTap: () {
-                    cartAndOrderController.addToCart(
-                        homeCtr.id, homeCtr.size.toString());
+                    coaController.addToCart(id, size.toString());
                   },
                   child: Container(
                     height: 50,

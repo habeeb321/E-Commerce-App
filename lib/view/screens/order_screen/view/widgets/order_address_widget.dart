@@ -1,22 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:scotch/core/const.dart';
-import 'package:scotch/view/screens/address_screen/controller/address_controller.dart';
 import 'package:scotch/view/screens/address_screen/model/enum_address.dart';
 import 'package:scotch/view/screens/address_screen/view/address_form_screen.dart';
 import 'package:scotch/view/screens/address_screen/view/widgets/popup_address_widget.dart';
+import 'package:scotch/view/screens/cart_and_order_address_payment_controller/cart_and_order_address_payment_controller.dart';
 
 class OrderAddressWidget extends StatelessWidget {
   const OrderAddressWidget({
     Key? key,
-    required this.index, required value,
+    required this.index,
+    required value,
   }) : super(key: key);
 
   final int index;
   @override
   Widget build(BuildContext context) {
-    AddressController addressController = Get.put(AddressController());
-    return GetBuilder<AddressController>(builder: (controller) {
+    CoaController coaController = Get.put(CoaController());
+    return GetBuilder<CoaController>(builder: (controller) {
       return Column(
         children: [
           Container(
@@ -45,7 +46,7 @@ class OrderAddressWidget extends StatelessWidget {
                         Get.to(
                           AddressFormScreen(
                             addressScreenCheck: EnumAddress.addAddressScreen,
-                            addressId: addressController.addressList[index].id,
+                            addressId: coaController.addressList[index].id,
                           ),
                         );
                       },
@@ -68,8 +69,7 @@ class OrderAddressWidget extends StatelessWidget {
                 Row(
                   children: [
                     Text(
-                      addressController.addressList[index].fullName
-                          .toUpperCase(),
+                      coaController.addressList[index].fullName.toUpperCase(),
                       style: const TextStyle(
                         fontFamily: "Montserrat",
                         fontSize: 18,
@@ -85,8 +85,7 @@ class OrderAddressWidget extends StatelessWidget {
                               AddressFormScreen(
                                 addressScreenCheck:
                                     EnumAddress.editAddressScreen,
-                                addressId:
-                                    addressController.addressList[index].id,
+                                addressId: coaController.addressList[index].id,
                               ),
                             );
                           },
@@ -114,7 +113,7 @@ class OrderAddressWidget extends StatelessWidget {
                   ],
                 ),
                 Text(
-                  addressController.addressList[index].address,
+                  coaController.addressList[index].address,
                   style: const TextStyle(
                     fontFamily: "Montserrat",
                     letterSpacing: 1,
@@ -124,7 +123,7 @@ class OrderAddressWidget extends StatelessWidget {
                 Row(
                   children: [
                     Text(
-                      "PIN :${addressController.addressList[index].pin}, ",
+                      "PIN :${coaController.addressList[index].pin}, ",
                       style: const TextStyle(
                         fontFamily: "Montserrat",
                         letterSpacing: 1,
@@ -132,7 +131,7 @@ class OrderAddressWidget extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      addressController.addressList[index].state,
+                      coaController.addressList[index].state,
                       style: const TextStyle(
                         fontFamily: "Montserrat",
                         letterSpacing: 1,
@@ -142,7 +141,7 @@ class OrderAddressWidget extends StatelessWidget {
                   ],
                 ),
                 Text(
-                  addressController.addressList[index].place,
+                  coaController.addressList[index].place,
                   style: const TextStyle(
                     fontFamily: "Montserrat",
                     fontWeight: FontWeight.bold,
@@ -151,7 +150,7 @@ class OrderAddressWidget extends StatelessWidget {
                 ),
                 kHeight10,
                 Text(
-                  addressController.addressList[index].phone,
+                  coaController.addressList[index].phone,
                   style: const TextStyle(
                     fontFamily: "Montserrat",
                     fontWeight: FontWeight.bold,
