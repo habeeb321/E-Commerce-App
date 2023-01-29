@@ -43,7 +43,7 @@ class ProductScreen extends StatelessWidget {
                               return Center(
                                 child: Image(
                                   image: NetworkImage(
-                                      'http://${ApiBaseUrl.ip}:5000/products/${homeCtr.image[index]}'),
+                                      '${ApiBaseUrl().baseUrl}/products/${homeCtr.image[index]}'),
                                   fit: BoxFit.cover,
                                 ),
                               );

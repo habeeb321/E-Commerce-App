@@ -96,9 +96,7 @@ class CartService {
       }
     } on DioError catch (e) {
       log(e.message);
-      DioException().dioError(
-        e,
-      );
+      DioException().dioError(e);
     }
     return null;
   }

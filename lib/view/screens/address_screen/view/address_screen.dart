@@ -80,20 +80,14 @@ class AddressScreen extends StatelessWidget {
                                             children: [
                                               IconButton(
                                                 onPressed: () {
-                                                  Navigator.of(context).push(
-                                                    MaterialPageRoute(
-                                                      builder: (context) {
-                                                        return AddressFormScreen(
-                                                          addressScreenCheck:
-                                                              EnumAddress
-                                                                  .editAddressScreen,
-                                                          addressId:
-                                                              coaController
-                                                                  .addressList[
-                                                                      index]
-                                                                  .id,
-                                                        );
-                                                      },
+                                                  Get.to(
+                                                    AddressFormScreen(
+                                                      addressScreenCheck:
+                                                          EnumAddress
+                                                              .editAddressScreen,
+                                                      addressId: coaController
+                                                          .addressList[index]
+                                                          .id,
                                                     ),
                                                   );
                                                 },
@@ -182,6 +176,7 @@ class AddressScreen extends StatelessWidget {
             ),
           ),
           floatingActionButton: FloatingActionButton(
+            backgroundColor: themeColor,
             onPressed: () {
               Get.to(
                 AddressFormScreen(

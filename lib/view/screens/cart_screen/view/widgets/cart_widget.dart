@@ -53,11 +53,12 @@ class CartWidget extends StatelessWidget {
                                               height: 100,
                                               width: 100,
                                               decoration: BoxDecoration(
-                                                  image: DecorationImage(
-                                                image: NetworkImage(
-                                                  '${ApiBaseUrl().baseUrl}/products/${coaController.cartList!.products[index].product.image[0]}',
+                                                image: DecorationImage(
+                                                  image: NetworkImage(
+                                                    '${ApiBaseUrl().baseUrl}/products/${coaController.cartList!.products[index].product.image[4]}',
+                                                  ),
                                                 ),
-                                              )),
+                                              ),
                                             ),
                                             kHeight10,
                                             Row(
@@ -78,7 +79,6 @@ class CartWidget extends StatelessWidget {
                                                           .products[index].size,
                                                       coaController.cartList!
                                                           .products[index].qty,
-                                                      context,
                                                     );
                                                   },
                                                   plusPressed: () {
@@ -94,7 +94,6 @@ class CartWidget extends StatelessWidget {
                                                           .products[index].size,
                                                       coaController.cartList!
                                                           .products[index].qty,
-                                                      context,
                                                     );
                                                   },
                                                 ),

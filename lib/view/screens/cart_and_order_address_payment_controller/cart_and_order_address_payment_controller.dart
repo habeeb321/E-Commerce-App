@@ -119,7 +119,7 @@ class CoaController extends GetxController {
   }
 
   Future<void> incrementOrDecrementQuantity(int qty, String productId,
-      String productSize, int productquantity, context) async {
+      String productSize, int productquantity) async {
     final AddToCartModel addToCartModel = AddToCartModel(
       productId: productId,
       quantity: qty,
@@ -156,6 +156,7 @@ class CoaController extends GetxController {
   void gotToCartFromProduct() {
     getCart();
     Get.to(const CartScreen());
+    update();
   }
 
   void toProductScreen(index) {
@@ -525,7 +526,7 @@ class CoaController extends GetxController {
 
   void openCheckout(price) async {
     var options = {
-      'key': 'rzp_test_boWotLKxahxvUM',
+      'key': 'rzp_test_K1qY31Ub3PKsMs',
       'amount': price * 100,
       'name': 'Scotch',
       'description': 'Laptop',
@@ -553,7 +554,7 @@ class CoaController extends GetxController {
   void handlePaymentSuccess(PaymentSuccessResponse response) {
     Get.snackbar('Payment', "SUCCESS:${response.paymentId}",
         snackPosition: SnackPosition.BOTTOM,
-        backgroundColor: kBlackcolor,
+        backgroundColor: Colors.green,
         colorText: kWhitecolor);
     update();
   }
@@ -561,7 +562,7 @@ class CoaController extends GetxController {
   void handlePaymentError(PaymentFailureResponse response) {
     Get.snackbar('Payment', "ERROR:${response.code} - ${response.message}",
         snackPosition: SnackPosition.BOTTOM,
-        backgroundColor: kBlackcolor,
+        backgroundColor: kRedColor,
         colorText: kWhitecolor);
     update();
   }

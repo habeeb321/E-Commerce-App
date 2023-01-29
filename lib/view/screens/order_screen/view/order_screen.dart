@@ -52,6 +52,7 @@ class _OrderPageScreenState extends State<OrderScreen> {
       coaController.getSingleCart(widget.productId, widget.cartId);
     });
     return Scaffold(
+      backgroundColor: Colors.grey.shade200,
       appBar: AppBar(
         title: const Text(
           "Order Summary",
@@ -70,59 +71,43 @@ class _OrderPageScreenState extends State<OrderScreen> {
             return coaController.isLoadingo == true
                 ? const Center(child: CircularProgressIndicator())
                 : SingleChildScrollView(
-                    child: Column(
-                      children: [
-                        OrderAddressWidget(
-                          index: coaController.selectIndex,
-                          value: coaController,
-                        ),
-                        kHeight10,
-                        ListView.builder(
-                          physics: const ScrollPhysics(),
-                          shrinkWrap: true,
-                          itemBuilder: (context, index) {
-                            return Container(
-                              color: kWhitecolor,
-                              child: Column(
-                                children: [
-                                  kHeight10,
-                                  Row(
-                                    children: [
-                                      kWidth10,
-                                      Image(
-                                        height: 100,
-                                        width: 100,
-                                        image: NetworkImage(
-                                          widget.screenCheck ==
-                                                  OrderScreenEnum
-                                                      .normalOrderScreen
-                                              ? '${ApiBaseUrl().baseUrl}/products/${coaController.cartList!.products[index].product.image[0]}'
-                                              : '${ApiBaseUrl().baseUrl}/products/${coaController.cartModel[0].product.image[0]}',
-                                        ),
-                                      ),
-                                      kWidth10,
-                                      Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Column(
+                        children: [
+                          OrderAddressWidget(
+                              index: coaController.selectIndex,
+                              value: coaController),
+                          kHeight10,
+                          ListView.builder(
+                            physics: const ScrollPhysics(),
+                            shrinkWrap: true,
+                            itemBuilder: (context, index) {
+                              return Container(
+                                color: kWhitecolor,
+                                child: Column(
+                                  children: [
+                                    kHeight10,
+                                    Row(
+                                      children: [
+                                        kWidth10,
+                                        Image(
+                                          height: 100,
+                                          width: 100,
+                                          image: NetworkImage(
                                             widget.screenCheck ==
                                                     OrderScreenEnum
                                                         .normalOrderScreen
-                                                ? coaController
-                                                    .cartList!
-                                                    .products[index]
-                                                    .product
-                                                    .name
-                                                : coaController
-                                                    .cartModel[0].product.name,
-                                            style: const TextStyle(
-                                                fontSize: 18,
-                                                fontFamily: 'Manrope',
-                                                fontWeight: FontWeight.bold),
+                                                ? '${ApiBaseUrl().baseUrl}/products/${coaController.cartList!.products[index].product.image[4]}'
+                                                : '${ApiBaseUrl().baseUrl}/products/${coaController.cartModel[0].product.image[4]}',
                                           ),
-                                          RatingBar.builder(
-                                            initialRating: double.parse(
+                                        ),
+                                        kWidth10,
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
                                               widget.screenCheck ==
                                                       OrderScreenEnum
                                                           .normalOrderScreen
@@ -130,169 +115,190 @@ class _OrderPageScreenState extends State<OrderScreen> {
                                                       .cartList!
                                                       .products[index]
                                                       .product
-                                                      .rating
+                                                      .name
                                                   : coaController.cartModel[0]
-                                                      .product.rating,
+                                                      .product.name,
+                                              style: const TextStyle(
+                                                  fontSize: 18,
+                                                  fontFamily: 'Manrope',
+                                                  fontWeight: FontWeight.bold),
                                             ),
-                                            itemSize: 15,
-                                            minRating: 1,
-                                            direction: Axis.horizontal,
-                                            allowHalfRating: true,
-                                            ignoreGestures: true,
-                                            itemBuilder: (context, _) =>
-                                                const Icon(
-                                              Icons.star,
-                                              color: Colors.amber,
+                                            RatingBar.builder(
+                                              initialRating: double.parse(
+                                                widget.screenCheck ==
+                                                        OrderScreenEnum
+                                                            .normalOrderScreen
+                                                    ? coaController
+                                                        .cartList!
+                                                        .products[index]
+                                                        .product
+                                                        .rating
+                                                    : coaController.cartModel[0]
+                                                        .product.rating,
+                                              ),
+                                              itemSize: 15,
+                                              minRating: 1,
+                                              direction: Axis.horizontal,
+                                              allowHalfRating: true,
+                                              ignoreGestures: true,
+                                              itemBuilder: (context, _) =>
+                                                  const Icon(
+                                                Icons.star,
+                                                color: Colors.amber,
+                                              ),
+                                              onRatingUpdate: (startRating) {
+                                                log(startRating.toString());
+                                              },
                                             ),
-                                            onRatingUpdate: (startRating) {
-                                              log(startRating.toString());
-                                            },
-                                          ),
-                                          Row(
-                                            children: [
-                                              Text(
-                                                widget.screenCheck ==
-                                                        OrderScreenEnum
-                                                            .normalOrderScreen
-                                                    ? "${coaController.cartList!.products[index].product.offer}%Off"
-                                                    : "${coaController.cartModel[0].product.offer}%Off",
-                                                style: const TextStyle(
-                                                  color: Colors.green,
-                                                  fontWeight: FontWeight.bold,
-                                                  fontSize: 16,
-                                                  fontFamily: "Manrope",
+                                            Row(
+                                              children: [
+                                                Text(
+                                                  widget.screenCheck ==
+                                                          OrderScreenEnum
+                                                              .normalOrderScreen
+                                                      ? "${coaController.cartList!.products[index].product.offer}%Off"
+                                                      : "${coaController.cartModel[0].product.offer}%Off",
+                                                  style: const TextStyle(
+                                                    color: Colors.green,
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 16,
+                                                    fontFamily: "Manrope",
+                                                  ),
                                                 ),
-                                              ),
-                                              kWidth10,
-                                              Text(
-                                                widget.screenCheck ==
-                                                        OrderScreenEnum
-                                                            .normalOrderScreen
-                                                    ? "₹${coaController.cartList!.products[index].product.price}"
-                                                    : "₹${coaController.cartModel[0].product.price}",
-                                                style: const TextStyle(
-                                                  color: kGreyColor,
-                                                  fontWeight: FontWeight.bold,
-                                                  decoration: TextDecoration
-                                                      .lineThrough,
-                                                  fontFamily: "Manrope",
+                                                kWidth10,
+                                                Text(
+                                                  widget.screenCheck ==
+                                                          OrderScreenEnum
+                                                              .normalOrderScreen
+                                                      ? "₹${coaController.cartList!.products[index].product.price}"
+                                                      : "₹${coaController.cartModel[0].product.price}",
+                                                  style: const TextStyle(
+                                                    color: kGreyColor,
+                                                    fontWeight: FontWeight.bold,
+                                                    decoration: TextDecoration
+                                                        .lineThrough,
+                                                    fontFamily: "Manrope",
+                                                  ),
                                                 ),
-                                              ),
-                                              kWidth10,
-                                              Text(
-                                                widget.screenCheck ==
-                                                        OrderScreenEnum
-                                                            .normalOrderScreen
-                                                    ? "₹${(coaController.cartList!.products[index].product.price - coaController.cartList!.products[index].product.discountPrice).round()}"
-                                                    : "₹${(coaController.cartModel[0].product.price - coaController.cartModel[0].product.discountPrice).round()}",
-                                                style: const TextStyle(
-                                                  color: kRedColor,
-                                                  overflow:
-                                                      TextOverflow.ellipsis,
-                                                  fontSize: 20,
-                                                  fontWeight: FontWeight.bold,
-                                                  fontFamily: "Manrope",
+                                                kWidth10,
+                                                Text(
+                                                  widget.screenCheck ==
+                                                          OrderScreenEnum
+                                                              .normalOrderScreen
+                                                      ? "₹${(coaController.cartList!.products[index].product.price - coaController.cartList!.products[index].product.discountPrice).round()}"
+                                                      : "₹${(coaController.cartModel[0].product.price - coaController.cartModel[0].product.discountPrice).round()}",
+                                                  style: const TextStyle(
+                                                    color: kRedColor,
+                                                    overflow:
+                                                        TextOverflow.ellipsis,
+                                                    fontSize: 20,
+                                                    fontWeight: FontWeight.bold,
+                                                    fontFamily: "Manrope",
+                                                  ),
                                                 ),
-                                              ),
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                  kHeight10,
-                                  Row(
-                                    children: [
-                                      const SizedBox(
-                                        width: 40,
-                                      ),
-                                      Container(
-                                        height: 25,
-                                        width: 40,
-                                        decoration: BoxDecoration(
-                                          border: Border.all(),
-                                          borderRadius:
-                                              BorderRadius.circular(5),
+                                              ],
+                                            ),
+                                          ],
                                         ),
-                                        child: Text(
-                                          "${coaController.cartList!.products[index].qty}",
-                                          textAlign: TextAlign.center,
-                                          style: const TextStyle(fontSize: 16),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  kHeight10
-                                ],
-                              ),
-                            );
-                          },
-                          itemCount: widget.screenCheck ==
-                                  OrderScreenEnum.normalOrderScreen
-                              ? coaController.cartList!.products.length
-                              : 1,
-                        ),
-                        kHeight10,
-                        Container(
-                          color: kWhitecolor,
-                          padding: const EdgeInsets.only(left: 20, right: 20),
-                          child: Column(
-                            children: [
-                              Row(
-                                children: const [
-                                  Text(
-                                    'Price Details',
-                                    style: TextStyle(
-                                      fontFamily: "Manrope",
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 18,
-                                      letterSpacing: 1,
+                                      ],
                                     ),
-                                  ),
-                                ],
-                              ),
-                              kHeight10,
-                              RowOrderWidget(
-                                text: 'Price',
-                                text2: widget.screenCheck ==
-                                        OrderScreenEnum.normalOrderScreen
-                                    ? "₹${(coaController.cartList!.totalPrice - coaController.cartList!.totalDiscount).round()}"
-                                    : "₹${(coaController.cartModel[0].product.price - coaController.cartModel[0].product.discountPrice).round()}",
-                                color: kRedColor,
-                              ),
-                              kHeight10,
-                              const RowOrderWidget(
-                                text: 'Delivery Charges',
-                                text2: "Free Delivery",
-                                color: Colors.green,
-                              ),
-                              const Text(
-                                '-------------------------------------------------------------------------------------',
-                              ),
-                              RowOrderWidget(
-                                text: 'Total Amout',
-                                text2: widget.screenCheck ==
-                                        OrderScreenEnum.normalOrderScreen
-                                    ? "₹${(coaController.cartList!.totalPrice - coaController.cartList!.totalDiscount).round()}"
-                                    : "₹${(coaController.cartModel[0].product.price - coaController.cartModel[0].product.discountPrice).round()}",
+                                    kHeight10,
+                                    Row(
+                                      children: [
+                                        const SizedBox(
+                                          width: 40,
+                                        ),
+                                        Container(
+                                          height: 25,
+                                          width: 40,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(),
+                                            borderRadius:
+                                                BorderRadius.circular(5),
+                                          ),
+                                          child: Text(
+                                            "${coaController.cartList!.products[index].qty}",
+                                            textAlign: TextAlign.center,
+                                            style:
+                                                const TextStyle(fontSize: 16),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    kHeight10
+                                  ],
+                                ),
+                              );
+                            },
+                            itemCount: widget.screenCheck ==
+                                    OrderScreenEnum.normalOrderScreen
+                                ? coaController.cartList!.products.length
+                                : 1,
+                          ),
+                          kHeight10,
+                          Container(
+                            color: kWhitecolor,
+                            padding: const EdgeInsets.only(left: 20, right: 20),
+                            child: Column(
+                              children: [
+                                Row(
+                                  children: const [
+                                    Text(
+                                      'Price Details',
+                                      style: TextStyle(
+                                        fontFamily: "Manrope",
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 18,
+                                        letterSpacing: 1,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                kHeight10,
+                                RowOrderWidget(
+                                  text: 'Price',
+                                  text2: widget.screenCheck ==
+                                          OrderScreenEnum.normalOrderScreen
+                                      ? "₹${(coaController.cartList!.totalPrice - coaController.cartList!.totalDiscount).round()}"
+                                      : "₹${(coaController.cartModel[0].product.price - coaController.cartModel[0].product.discountPrice).round()}",
+                                  color: kRedColor,
+                                ),
+                                kHeight10,
+                                const RowOrderWidget(
+                                  text: 'Delivery Charges',
+                                  text2: "Free Delivery",
+                                  color: Colors.green,
+                                ),
+                                const Text(
+                                  '--------------------------------------------------------------------------------',
+                                ),
+                                RowOrderWidget(
+                                  text: 'Total Amout',
+                                  text2: widget.screenCheck ==
+                                          OrderScreenEnum.normalOrderScreen
+                                      ? "₹${(coaController.cartList!.totalPrice - coaController.cartList!.totalDiscount).round()}"
+                                      : "₹${(coaController.cartModel[0].product.price - coaController.cartModel[0].product.discountPrice).round()}",
+                                ),
+                                kHeight10,
+                              ],
+                            ),
+                          ),
+                          kHeight20,
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: const [
+                              kWidth15,
+                              Icon(Icons.verified_user, color: Colors.grey),
+                              Text(
+                                'Safe and Secure Payments.Easy returns.100% \nAuthentic products',
+                                style: TextStyle(
+                                  color: kGreyColor,
+                                ),
                               ),
                             ],
                           ),
-                        ),
-                        kHeight20,
-                        Row(
-                          children: const [
-                            kWidth15,
-                            Icon(Icons.verified_user, color: Colors.grey),
-                            Text(
-                              'Safe and Secure Payments.Easy returns.100% \nAuthentic products',
-                              style: TextStyle(
-                                color: kGreyColor,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   );
           },

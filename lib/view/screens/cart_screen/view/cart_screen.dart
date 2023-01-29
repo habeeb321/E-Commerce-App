@@ -79,10 +79,10 @@ class CartScreen extends StatelessWidget {
                           onPressed: () {
                             Get.to(
                               const OrderScreen(
-                                  cartId: "",
-                                  productId: "",
-                                  screenCheck:
-                                      OrderScreenEnum.normalOrderScreen),
+                                cartId: "",
+                                productId: "",
+                                screenCheck: OrderScreenEnum.normalOrderScreen,
+                              ),
                             );
                             coaController.isLoadingo = false;
                           },
