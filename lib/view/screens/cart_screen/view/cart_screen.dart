@@ -30,11 +30,14 @@ class CartScreen extends StatelessWidget {
       ),
       body: SafeArea(
         child: SingleChildScrollView(
-          child: Column(
-            children: const [
-              kHeight20,
-              CartWidget(),
-            ],
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: Column(
+              children: const [
+                kHeight20,
+                CartWidget(),
+              ],
+            ),
           ),
         ),
       ),

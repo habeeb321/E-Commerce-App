@@ -59,28 +59,55 @@ class CartWidget extends StatelessWidget {
                                             child: Row(
                                               children: [
                                                 kWidth10,
-                                                Column(
-                                                  children: [
-                                                    Container(
-                                                      height: 100,
-                                                      width: 100,
-                                                      decoration: BoxDecoration(
-                                                        image: DecorationImage(
-                                                          image: NetworkImage(
-                                                            '${ApiBaseUrl().baseUrl}/products/${cartController.cartList!.products[index].product.image[4]}',
+                                                Padding(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          left: 15),
+                                                  child: Column(
+                                                    children: [
+                                                      Container(
+                                                        height: 100,
+                                                        width: 100,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          image:
+                                                              DecorationImage(
+                                                            image: NetworkImage(
+                                                              '${ApiBaseUrl().baseUrl}/products/${cartController.cartList!.products[index].product.image[4]}',
+                                                            ),
                                                           ),
                                                         ),
                                                       ),
-                                                    ),
-                                                    kHeight10,
-                                                    Row(
-                                                      children: [
-                                                        CountWidget(
-                                                          countNumber:
-                                                              '${cartController.cartList!.products[index].qty}',
-                                                          minusPressed: () {
-                                                            cartController.incrementOrDecrementQuantity(
-                                                                -1,
+                                                      kHeight10,
+                                                      Row(
+                                                        children: [
+                                                          CountWidget(
+                                                            countNumber:
+                                                                '${cartController.cartList!.products[index].qty}',
+                                                            minusPressed: () {
+                                                              cartController.incrementOrDecrementQuantity(
+                                                                  -1,
+                                                                  cartController
+                                                                      .cartList!
+                                                                      .products[
+                                                                          index]
+                                                                      .product
+                                                                      .id,
+                                                                  cartController
+                                                                      .cartList!
+                                                                      .products[
+                                                                          index]
+                                                                      .size,
+                                                                  cartController
+                                                                      .cartList!
+                                                                      .products[
+                                                                          index]
+                                                                      .qty);
+                                                            },
+                                                            plusPressed: () {
+                                                              cartController
+                                                                  .incrementOrDecrementQuantity(
+                                                                1,
                                                                 cartController
                                                                     .cartList!
                                                                     .products[
@@ -96,39 +123,19 @@ class CartWidget extends StatelessWidget {
                                                                     .cartList!
                                                                     .products[
                                                                         index]
-                                                                    .qty);
-                                                          },
-                                                          plusPressed: () {
-                                                            cartController
-                                                                .incrementOrDecrementQuantity(
-                                                              1,
-                                                              cartController
-                                                                  .cartList!
-                                                                  .products[
-                                                                      index]
-                                                                  .product
-                                                                  .id,
-                                                              cartController
-                                                                  .cartList!
-                                                                  .products[
-                                                                      index]
-                                                                  .size,
-                                                              cartController
-                                                                  .cartList!
-                                                                  .products[
-                                                                      index]
-                                                                  .qty,
-                                                            );
-                                                          },
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ],
+                                                                    .qty,
+                                                              );
+                                                            },
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ],
+                                                  ),
                                                 ),
                                                 Padding(
                                                   padding: EdgeInsets.only(
                                                       left: Get.size.width *
-                                                          0.05),
+                                                          0.14),
                                                   child: Column(
                                                     crossAxisAlignment:
                                                         CrossAxisAlignment
@@ -298,7 +305,7 @@ class CartWidget extends StatelessWidget {
                                               kWidth20,
                                               Expanded(
                                                 child: InkWell(
-                                                  onTap: () { 
+                                                  onTap: () {
                                                     ordersController
                                                         .toOrderScreen(
                                                             cartController
