@@ -40,8 +40,14 @@ class SearchScreen extends StatelessWidget {
                   ),
                   kHeight20,
                   homeController.seachResult.isEmpty
-                      ? const Center(
-                          child: Text('No Products'),
+                      ? SizedBox(
+                          height: Get.size.height * 0.7,
+                          child: const Center(
+                            child: Text(
+                              'No Products Available',
+                              style: TextStyle(fontSize: 20),
+                            ),
+                          ),
                         )
                       : homeController.isLoading == true
                           ? const NewlyLaunchedShimmer()
