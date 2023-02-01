@@ -8,11 +8,11 @@ import 'package:scotch/view/screens/address_screen/model/enum_address.dart';
 import 'package:scotch/view/screens/address_screen/model/get_address_model.dart';
 import 'package:scotch/view/screens/address_screen/service/address_service.dart';
 import 'package:scotch/view/screens/bottom_nav_bar/controller/bottom_nav_controller.dart';
+import 'package:scotch/view/screens/bottom_nav_bar/view/bottom_nav_bar.dart';
 import 'package:scotch/view/screens/cart_screen/model/add_cart_model.dart';
 import 'package:scotch/view/screens/cart_screen/model/get_cart_model.dart';
 import 'package:scotch/view/screens/cart_screen/model/get_single_cart_model.dart';
 import 'package:scotch/view/screens/cart_screen/services/cart_service.dart';
-import 'package:scotch/view/screens/cart_screen/view/cart_screen.dart';
 import 'package:scotch/view/screens/order_screen/model/get_order_model.dart';
 import 'package:scotch/view/screens/order_screen/model/order_enum.dart';
 import 'package:scotch/view/screens/order_screen/services/order_service.dart';
@@ -154,8 +154,9 @@ class CoaController extends GetxController {
   }
 
   void gotToCartFromProduct() {
-    getCart();
-    Get.to(const CartScreen());
+    // getCart();
+    Get.to(const BottomNavBar());
+    bottomNavController.currentIndex = 1;
     update();
   }
 
@@ -524,7 +525,7 @@ class CoaController extends GetxController {
 
   Razorpay razorpay = Razorpay();
 
-  void openCheckout(price) async {
+  openCheckout(price) async {
     var options = {
       'key': 'rzp_test_K1qY31Ub3PKsMs',
       'amount': price * 100,

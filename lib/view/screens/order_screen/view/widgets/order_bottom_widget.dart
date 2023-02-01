@@ -26,29 +26,31 @@ class OrderBottomWidget extends StatelessWidget {
               height: Get.size.height * 0.06,
               width: Get.size.width / 2,
               child: Center(
-                child: coaController.isLoadingo == true
-                    ? const CircularProgressIndicator()
-                    : Text(
-                        screenCheck == OrderScreenEnum.normalOrderScreen
-                            ? "₹${(coaController.cartList!.totalPrice - coaController.cartList!.totalDiscount).round()}"
-                            : "₹${(coaController.cartModel[0].product.price - coaController.cartModel[0].product.discountPrice).round()}",
-                        style: const TextStyle(
-                          color: kBlackcolor,
-                          fontFamily: "Manrope",
-                          fontWeight: FontWeight.bold,
-                          letterSpacing: 1,
-                          fontSize: 18,
-                        ),
-                      ),
+                child:
+                    // coaController.isLoadingo == true
+                    //     ? const CircularProgressIndicator()
+                    //     :
+                    Text(
+                  screenCheck == OrderScreenEnum.normalOrderScreen
+                      ? "₹${(coaController.cartList!.totalPrice - coaController.cartList!.totalDiscount).round()}"
+                      : "₹${(coaController.cartModel[0].product.price - coaController.cartModel[0].product.discountPrice).round()}",
+                  style: const TextStyle(
+                    color: kBlackcolor,
+                    fontFamily: "Manrope",
+                    fontWeight: FontWeight.bold,
+                    letterSpacing: 1,
+                    fontSize: 18,
+                  ),
+                ),
               ),
-            ),
+            ), 
             coaController.addressList.isNotEmpty
                 ? SizedBox(
                     height: Get.size.height * 0.06,
                     width: Get.size.width / 2,
                     child: ElevatedButton(
-                      onPressed: () {
-                        coaController.openCheckout(
+                      onPressed: () async {
+                        await coaController.openCheckout(
                           screenCheck == OrderScreenEnum.normalOrderScreen
                               ? int.parse((coaController.cartList!.totalPrice -
                                       coaController.cartList!.totalDiscount)

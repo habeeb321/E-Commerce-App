@@ -44,7 +44,6 @@ class MyApp extends StatelessWidget {
             name: ProductScreen.routeName, page: () => const ProductScreen()),
         GetPage(
             name: CategoryScreen.routeName, page: () => const CategoryScreen()),
-        //GetPage(name: OrderScreen.routeName, page: () =>  OrderScreen()),
       ],
     );
   }
