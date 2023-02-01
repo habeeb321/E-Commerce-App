@@ -4,200 +4,366 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
 import 'package:scotch/common/api/api_baseurl.dart';
 import 'package:scotch/core/const.dart';
-import 'package:scotch/view/screens/cart_and_order_address_payment_controller/cart_and_order_address_payment_controller.dart';
+import 'package:scotch/view/screens/cart_screen/controller/cart_controller.dart';
+import 'package:scotch/view/screens/cart_screen/view/widgets/cart_alert_widget.dart';
 import 'package:scotch/view/screens/cart_screen/view/widgets/cart_shimmer.dart';
 import 'package:scotch/view/screens/cart_screen/view/widgets/count_widget.dart';
-import 'package:scotch/view/screens/cart_screen/view/widgets/remove_buy_button.dart';
+import 'package:scotch/view/screens/home_screen/controller/home_controller.dart';
+import 'package:scotch/view/screens/order_screen/controller/order_controller.dart';
 
 class CartWidget extends StatelessWidget {
   const CartWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    CoaController coaController = Get.put(CoaController());
-    return GetBuilder<CoaController>(
+    HomeController homeController = Get.put(HomeController());
+    CartController cartController = Get.put(CartController());
+    OrdersController ordersController = Get.put(OrdersController());
+    return GetBuilder(
+      init: homeController,
       builder: (controller) {
-        return coaController.isLoadingc == true
-            ? const CartShimmer()
-            : ListView.separated(
-                physics: const ScrollPhysics(),
-                shrinkWrap: true,
-                itemBuilder: (context, index) {
-                  return coaController.cartList == null ||
-                          coaController.cartList!.products.isEmpty
-                      ? SizedBox(
-                          height: Get.size.height / 2,
-                          child: const Center(
-                            child: Text('Cart is Empty'),
-                          ),
-                        )
-                      : ClipRRect(
-                          borderRadius: BorderRadius.circular(20),
-                          child: Card(
-                            elevation: 4,
-                            shadowColor: Colors.black,
-                            child: Padding(
-                              padding: const EdgeInsets.all(10.0),
-                              child: Column(
-                                children: [
-                                  GestureDetector(
-                                    onTap: () {
-                                      coaController.toProductScreen(index);
-                                    },
-                                    child: Row(
-                                      children: [
-                                        kWidth10,
-                                        Column(
-                                          children: [
-                                            Container(
-                                              height: 100,
-                                              width: 100,
-                                              decoration: BoxDecoration(
-                                                image: DecorationImage(
-                                                  image: NetworkImage(
-                                                    '${ApiBaseUrl().baseUrl}/products/${coaController.cartList!.products[index].product.image[4]}',
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                            kHeight10,
-                                            Row(
+        return GetBuilder(
+          init: cartController,
+          builder: (controller) {
+            return GetBuilder(
+              init: ordersController,
+              builder: (controller) {
+                return cartController.isLoading == true
+                    ? const CartShimmer()
+                    : ListView.separated(
+                        physics: const ScrollPhysics(),
+                        shrinkWrap: true,
+                        itemBuilder: (context, index) {
+                          return cartController.cartList == null ||
+                                  cartController.cartList!.products.isEmpty
+                              ? SizedBox(
+                                  height: Get.size.height / 2,
+                                  child: const Center(
+                                    child: Text('Cart is Empty'),
+                                  ),
+                                )
+                              : ClipRRect(
+                                  borderRadius: BorderRadius.circular(20),
+                                  child: Card(
+                                    elevation: 4,
+                                    shadowColor: Colors.black,
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(10.0),
+                                      child: Column(
+                                        children: [
+                                          GestureDetector(
+                                            onTap: () {
+                                              cartController
+                                                  .toProductScreen(index);
+                                            },
+                                            child: Row(
                                               children: [
-                                                CountWidget(
-                                                  countNumber:
-                                                      '${coaController.cartList!.products[index].qty}',
-                                                  minusPressed: () {
-                                                    coaController
-                                                        .incrementOrDecrementQuantity(
-                                                      -1,
-                                                      coaController
-                                                          .cartList!
-                                                          .products[index]
-                                                          .product
-                                                          .id,
-                                                      coaController.cartList!
-                                                          .products[index].size,
-                                                      coaController.cartList!
-                                                          .products[index].qty,
-                                                    );
-                                                  },
-                                                  plusPressed: () {
-                                                    coaController
-                                                        .incrementOrDecrementQuantity(
-                                                      1,
-                                                      coaController
-                                                          .cartList!
-                                                          .products[index]
-                                                          .product
-                                                          .id,
-                                                      coaController.cartList!
-                                                          .products[index].size,
-                                                      coaController.cartList!
-                                                          .products[index].qty,
-                                                    );
-                                                  },
+                                                kWidth10,
+                                                Column(
+                                                  children: [
+                                                    Container(
+                                                      height: 100,
+                                                      width: 100,
+                                                      decoration: BoxDecoration(
+                                                        image: DecorationImage(
+                                                          image: NetworkImage(
+                                                            '${ApiBaseUrl().baseUrl}/products/${cartController.cartList!.products[index].product.image[4]}',
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    kHeight10,
+                                                    Row(
+                                                      children: [
+                                                        CountWidget(
+                                                          countNumber:
+                                                              '${cartController.cartList!.products[index].qty}',
+                                                          minusPressed: () {
+                                                            cartController.incrementOrDecrementQuantity(
+                                                                -1,
+                                                                cartController
+                                                                    .cartList!
+                                                                    .products[
+                                                                        index]
+                                                                    .product
+                                                                    .id,
+                                                                cartController
+                                                                    .cartList!
+                                                                    .products[
+                                                                        index]
+                                                                    .size,
+                                                                cartController
+                                                                    .cartList!
+                                                                    .products[
+                                                                        index]
+                                                                    .qty);
+                                                          },
+                                                          plusPressed: () {
+                                                            cartController
+                                                                .incrementOrDecrementQuantity(
+                                                              1,
+                                                              cartController
+                                                                  .cartList!
+                                                                  .products[
+                                                                      index]
+                                                                  .product
+                                                                  .id,
+                                                              cartController
+                                                                  .cartList!
+                                                                  .products[
+                                                                      index]
+                                                                  .size,
+                                                              cartController
+                                                                  .cartList!
+                                                                  .products[
+                                                                      index]
+                                                                  .qty,
+                                                            );
+                                                          },
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ],
+                                                ),
+                                                Padding(
+                                                  padding: EdgeInsets.only(
+                                                      left: Get.size.width *
+                                                          0.05),
+                                                  child: Column(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    children: [
+                                                      Text(
+                                                        cartController
+                                                            .cartList!
+                                                            .products[index]
+                                                            .product
+                                                            .name,
+                                                        style: const TextStyle(
+                                                            fontSize: 18,
+                                                            fontFamily:
+                                                                'Montserrat',
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .bold),
+                                                        softWrap: false,
+                                                        maxLines: 1,
+                                                        overflow: TextOverflow
+                                                            .ellipsis,
+                                                      ),
+                                                      kHeight10,
+                                                      RatingBar.builder(
+                                                        initialRating:
+                                                            double.parse(
+                                                                cartController
+                                                                    .cartList!
+                                                                    .products[
+                                                                        index]
+                                                                    .product
+                                                                    .rating),
+                                                        itemSize: 15,
+                                                        minRating: 1,
+                                                        direction:
+                                                            Axis.horizontal,
+                                                        allowHalfRating: true,
+                                                        ignoreGestures: true,
+                                                        itemBuilder:
+                                                            (context, _) =>
+                                                                const Icon(
+                                                          Icons.star,
+                                                          color: Colors.amber,
+                                                        ),
+                                                        onRatingUpdate:
+                                                            (startRating) {
+                                                          log(startRating
+                                                              .toString());
+                                                        },
+                                                      ),
+                                                      kHeight10,
+                                                      Text(
+                                                        "${cartController.cartList!.products[index].product.offer}%Off",
+                                                        style: const TextStyle(
+                                                          color: Colors.green,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          fontSize: 16,
+                                                          fontFamily:
+                                                              "Montserrat",
+                                                        ),
+                                                      ),
+                                                      kHeight10,
+                                                      Text(
+                                                        "₹${cartController.cartList!.products[index].product.price}",
+                                                        style: const TextStyle(
+                                                          color: kGreyColor,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          decoration:
+                                                              TextDecoration
+                                                                  .lineThrough,
+                                                          fontFamily:
+                                                              "Montserrat",
+                                                        ),
+                                                      ),
+                                                      kHeight10,
+                                                      Text(
+                                                        "₹${(cartController.cartList!.products[index].product.price - cartController.cartList!.products[index].product.discountPrice).round()}",
+                                                        style: const TextStyle(
+                                                          color: kRedColor,
+                                                          overflow: TextOverflow
+                                                              .ellipsis,
+                                                          fontSize: 20,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          fontFamily:
+                                                              "Montserrat",
+                                                        ),
+                                                      ),
+                                                      kHeight10,
+                                                    ],
+                                                  ),
                                                 ),
                                               ],
                                             ),
-                                          ],
-                                        ),
-                                        Padding(
-                                          padding: EdgeInsets.only(
-                                              left: Get.size.width * 0.05),
-                                          child: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
+                                          ),
+                                          kHeight10,
+                                          Row(
                                             children: [
-                                              Text(
-                                                coaController
-                                                    .cartList!
-                                                    .products[index]
-                                                    .product
-                                                    .name,
-                                                style: const TextStyle(
-                                                    fontSize: 18,
-                                                    fontFamily: 'Montserrat',
-                                                    fontWeight:
-                                                        FontWeight.bold),
-                                                softWrap: false,
-                                                maxLines: 1,
-                                                overflow: TextOverflow.ellipsis,
-                                              ),
-                                              kHeight10,
-                                              RatingBar.builder(
-                                                initialRating: double.parse(
-                                                    coaController
-                                                        .cartList!
-                                                        .products[index]
-                                                        .product
-                                                        .rating),
-                                                itemSize: 15,
-                                                minRating: 1,
-                                                direction: Axis.horizontal,
-                                                allowHalfRating: true,
-                                                ignoreGestures: true,
-                                                itemBuilder: (context, _) =>
-                                                    const Icon(
-                                                  Icons.star,
-                                                  color: Colors.amber,
-                                                ),
-                                                onRatingUpdate: (startRating) {
-                                                  log(startRating.toString());
-                                                },
-                                              ),
-                                              kHeight10,
-                                              Text(
-                                                "${coaController.cartList!.products[index].product.offer}%Off",
-                                                style: const TextStyle(
-                                                  color: Colors.green,
-                                                  fontWeight: FontWeight.bold,
-                                                  fontSize: 16,
-                                                  fontFamily: "Montserrat",
-                                                ),
-                                              ),
-                                              kHeight10,
-                                              Text(
-                                                "₹${coaController.cartList!.products[index].product.price}",
-                                                style: const TextStyle(
-                                                  color: kGreyColor,
-                                                  fontWeight: FontWeight.bold,
-                                                  decoration: TextDecoration
-                                                      .lineThrough,
-                                                  fontFamily: "Montserrat",
-                                                ),
-                                              ),
-                                              kHeight10,
-                                              Text(
-                                                "₹${(coaController.cartList!.products[index].product.price - coaController.cartList!.products[index].product.discountPrice).round()}",
-                                                style: const TextStyle(
-                                                  color: kRedColor,
-                                                  overflow:
-                                                      TextOverflow.ellipsis,
-                                                  fontSize: 20,
-                                                  fontWeight: FontWeight.bold,
-                                                  fontFamily: "Montserrat",
+                                              Expanded(
+                                                child: InkWell(
+                                                  onTap: () {
+                                                    showDialog(
+                                                      context: context,
+                                                      builder: (context) {
+                                                        return CartAlertWidget(
+                                                          index: index,
+                                                        );
+                                                      },
+                                                    );
+                                                  },
+                                                  child: Container(
+                                                    height: 40,
+                                                    decoration: BoxDecoration(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              5),
+                                                      gradient: LinearGradient(
+                                                        begin:
+                                                            const FractionalOffset(
+                                                                0, 0),
+                                                        end:
+                                                            const FractionalOffset(
+                                                                0.8, 0),
+                                                        stops: const [
+                                                          0,
+                                                          0.6,
+                                                        ],
+                                                        tileMode:
+                                                            TileMode.clamp,
+                                                        colors: [
+                                                          themeColor,
+                                                          Colors.blue.shade500,
+                                                        ],
+                                                      ),
+                                                    ),
+                                                    child: Row(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .spaceEvenly,
+                                                      children: const [
+                                                        Icon(
+                                                          Icons.delete,
+                                                          color: kWhitecolor,
+                                                          size: 23,
+                                                        ),
+                                                        Text(
+                                                          'Remove item',
+                                                          style: TextStyle(
+                                                              color:
+                                                                  kWhitecolor,
+                                                              fontFamily:
+                                                                  'Montserrat',
+                                                              letterSpacing: 1,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .bold),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
                                                 ),
                                               ),
-                                              kHeight10,
+                                              kWidth20,
+                                              Expanded(
+                                                child: InkWell(
+                                                  onTap: () {
+                                                    ordersController
+                                                        .toOrderScreen(
+                                                            cartController
+                                                                .cartList!
+                                                                .products[index]
+                                                                .product
+                                                                .id,
+                                                            cartController
+                                                                .cartList!.id);
+                                                    ordersController.isLoading =
+                                                        true;
+                                                  },
+                                                  child: Container(
+                                                    height: 40,
+                                                    decoration: BoxDecoration(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              5),
+                                                      gradient: LinearGradient(
+                                                        begin:
+                                                            const FractionalOffset(
+                                                                0, 0),
+                                                        end:
+                                                            const FractionalOffset(
+                                                                0.8, 0),
+                                                        stops: const [0.3, 0.9],
+                                                        tileMode:
+                                                            TileMode.clamp,
+                                                        colors: [
+                                                          Colors.blue.shade500,
+                                                          themeColor,
+                                                        ],
+                                                      ),
+                                                    ),
+                                                    child: const Center(
+                                                      child: Text(
+                                                        'Buy Now',
+                                                        style: TextStyle(
+                                                            color: kWhitecolor,
+                                                            fontFamily:
+                                                                'Montserrat',
+                                                            letterSpacing: 1,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .bold),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
                                             ],
                                           ),
-                                        ),
-                                      ],
+                                        ],
+                                      ),
                                     ),
                                   ),
-                                  kHeight10,
-                                  RemoveBuyButton(
-                                    index: index,
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        );
-                },
-                itemCount: coaController.cartList?.products.length ?? 0,
-                separatorBuilder: (context, index) => kHeight20,
-              );
+                                );
+                        },
+                        itemCount:
+                            cartController.cartList?.products.length ?? 0,
+                        separatorBuilder: (context, index) => kHeight20,
+                      );
+              },
+            );
+          },
+        );
       },
     );
   }

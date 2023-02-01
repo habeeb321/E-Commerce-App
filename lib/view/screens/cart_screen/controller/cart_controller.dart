@@ -1,152 +1,158 @@
-// import 'dart:developer';
-// import 'package:get/get.dart';
-// import 'package:scotch/core/const.dart';
-// import 'package:scotch/view/screens/bottom_nav_bar/controller/bottom_nav_controller.dart';
-// import 'package:scotch/view/screens/cart_screen/model/add_cart_model.dart';
-// import 'package:scotch/view/screens/cart_screen/model/get_cart_model.dart';
-// import 'package:scotch/view/screens/cart_screen/services/cart_service.dart';
-// import 'package:scotch/view/screens/cart_screen/view/cart_screen.dart';
-// import 'package:scotch/view/screens/product_screen/view/product_screen.dart';
+import 'dart:developer';
+import 'package:get/get.dart';
+import 'package:scotch/core/const.dart';
+import 'package:scotch/view/screens/bottom_nav_bar/controller/bottom_nav_controller.dart';
+import 'package:scotch/view/screens/bottom_nav_bar/view/bottom_nav_bar.dart';
+import 'package:scotch/view/screens/cart_screen/model/add_cart_model.dart';
+import 'package:scotch/view/screens/cart_screen/model/get_cart_model.dart';
+import 'package:scotch/view/screens/cart_screen/services/cart_service.dart';
+import 'package:scotch/view/screens/product_screen/view/product_screen.dart';
 
-// class CoaController extends GetxController {
-//   BottomNavController bottomNavController = Get.put(BottomNavController());
-//   CoaController() {
-//     getCart();
-//   }
+class CartController extends GetxController {
+  CartController() {
+    getCart();
+  }
 
-//   bool isLoading = false;
-//   CartModel? cartList;
-//   List<String> cartItemsId = [];
-//   int quantity = 1;
-//   int totalproductCount = 1;
-//   int? totalSave;
-//   CartService service = CartService();
+  BottomNavController bottomNavController = Get.put(BottomNavController());
 
-//   void getCart() async {
-//     isLoading = true;
-//     update();
-//     await service.getCart().then(
-//       (value) {
-//         if (value != null) {
-//           cartList = value;
-//           update();
-//           cartItemsId = cartList!.products.map((e) => e.product.id).toList();
-//           totalSave = (cartList!.totalPrice - cartList!.totalDiscount).toInt();
-//           totalProductCount();
-//           update();
-//           isLoading = false;
-//           update();
-//         } else {
-//           isLoading = false;
-//           update();
-//         }
-//         return null;
-//       },
-//     );
-//   }
+  bool isLoading = false;
+  CartModel? cartList;
+  List<String> cartItemsId = [];
+  int quantity = 1;
+  int totalproductCount = 1;
+  int? totalSave;
+  CartService service = CartService();
 
-//   void addToCart(String productId, String size) async {
-//     isLoading = true;
-//     update();
-//     final AddToCartModel model = AddToCartModel(
-//       size: size.toString(),
-//       quantity: quantity,
-//       productId: productId,
-//     );
-//     await service.addToCart(model).then((value) {
-//       if (value != null) {
-//         getCart();
-//         if (value == "product added to cart successfully") {
-//           Get.snackbar(
-//             'Cart',
-//             'Product Added To Cart Successfully',
-//             colorText: kWhitecolor,
-//             backgroundColor: kBlackcolor,
-//             snackPosition: SnackPosition.BOTTOM,
-//           );
-//         }
-//       } else {
-//         null;
-//       }
-//     });
-//   }
+  void getCart() async {
+    isLoading = true;
+    update();
+    await service.getCart().then(
+      (value) {
+        if (value != null) {
+          cartList = value;
+          update();
+          cartItemsId = cartList!.products.map((e) => e.product.id).toList();
+          totalSave = (cartList!.totalPrice - cartList!.totalDiscount).toInt();
+          totalProductCount();
+          update();
+          isLoading = false;
+          update();
+        } else {
+          isLoading = false;
+          update();
+        }
+        return null;
+      },
+    );
+  }
 
-//   void removeCart(productId) {
-//     service.removeFromCart(productId).then(
-//       (value) {
-//         if (value != null) {
-//           getCart();
-//           log(totalSave.toString());
-//           Get.back();
-//           update();
-//           Get.snackbar(
-//             'Cart',
-//             'Product removed from cart successfully',
-//             colorText: kWhitecolor,
-//             backgroundColor: kBlackcolor,
-//             snackPosition: SnackPosition.BOTTOM,
-//           );
-//           update();
-//         } else {
-//           return;
-//         }
-//       },
-//     );
-//   }
+  void addToCart(String productId, String size) async {
+    isLoading = true;
+    update();
+    final AddToCartModel model = AddToCartModel(
+      size: size.toString(),
+      quantity: quantity,
+      productId: productId,
+    );
+    await service.addToCart(model).then((value) {
+      if (value != null) {
+        getCart();
+        if (value == "product added to cart successfully") {
+          Get.snackbar(
+            'Cart',
+            'Product Added To Cart Successfully',
+            colorText: kWhitecolor,
+            backgroundColor: kBlackcolor,
+            snackPosition: SnackPosition.BOTTOM,
+          );
+        }
+      } else {
+        isLoading = false;
+        update();
+        null;
+      }
+    });
+  }
 
-//   void totalProductCount() {
-//     int count = 0;
-//     for (var i = 0; i < cartList!.products.length; i++) {
-//       count = count + cartList!.products[i].qty;
-//     }
-//     totalproductCount = count;
-//     update();
-//   }
+  void removeCart(productId) {
+    log('get in to remove controller');
+    service.removeFromCart(productId).then(
+      (value) {
+        if (value != null) {
+          getCart();
+          log(totalSave.toString());
+          pop();
+          Get.snackbar(
+            'Cart',
+            'Product removed from cart successfully',
+            colorText: kWhitecolor,
+            backgroundColor: kBlackcolor,
+            snackPosition: SnackPosition.BOTTOM,
+          );
+          update();
+        } else {
+          return;
+        }
+      },
+    );
+  }
 
-//   Future<void> incrementDecrementQty(
-//       int qty, String productId, int productQuantity, String size) async {
-//     final AddToCartModel model = AddToCartModel(
-//       size: size.toString(),
-//       quantity: quantity,
-//       productId: productId,
-//     );
-//     if (qty == 1 && productQuantity >= 1 || qty == -1 && productQuantity > 1) {
-//       await CartService().addToCart(model).then(
-//         (value) async {
-//           if (value != null) {
-//             await CartService().getCart().then(
-//               (value) {
-//                 if (value != null) {
-//                   cartList = value;
-//                   update();
-//                   totalProductCount();
-//                   cartItemsId =
-//                       cartList!.products.map((e) => e.product.id).toList();
-//                   update();
-//                   totalSave =
-//                       (cartList!.totalPrice - cartList!.totalDiscount).toInt();
-//                   update();
-//                 } else {
-//                   null;
-//                 }
-//               },
-//             );
-//           } else {
-//             null;
-//           }
-//         },
-//       );
-//     } else {
-//       null;
-//     }
-//   }
+  void totalProductCount() {
+    int count = 0;
+    for (var i = 0; i < cartList!.products.length; i++) {
+      count = count + cartList!.products[i].qty;
+    }
+    totalproductCount = count;
+    update();
+  }
 
-//   void gotToCartFromProduct() {
-//     getCart();
-//     Get.to(const CartScreen());
-//   }
+  Future<void> incrementOrDecrementQuantity(int qty, String productId,
+      String productSize, int productquantity) async {
+    final AddToCartModel addToCartModel = AddToCartModel(
+      productId: productId,
+      quantity: qty,
+      size: productSize.toString(),
+    );
+    if (qty == 1 && productquantity >= 1 || qty == -1 && productquantity > 1) {
+      await CartService().addToCart(addToCartModel).then((value) async {
+        if (value != null) {
+          await CartService().getCart().then((value) {
+            if (value != null) {
+              cartList = value;
+              update();
+              totalProductCount();
+              update();
+              cartItemsId =
+                  cartList!.products.map((e) => e.product.id).toList();
+              update();
+              totalSave =
+                  (cartList!.totalPrice - cartList!.totalDiscount).toInt();
+              update();
+            } else {
+              null;
+            }
+          });
+        } else {
+          null;
+        }
+      });
+    } else {
+      null;
+    }
+  }
 
-//   void toProductScreen(index) {
-//     Get.toNamed(ProductScreen.routeName, arguments: cartItemsId[index]);
-//   }
-// }
+  void gotToCartFromProduct() {
+    Get.to(const BottomNavBar());
+    bottomNavController.currentIndex = 1;
+    update();
+  }
+
+  void toProductScreen(index) {
+    Get.toNamed(ProductScreen.routeName, arguments: cartItemsId[index]);
+  }
+
+  void pop() {
+    Get.back();
+    update();
+  }
+}

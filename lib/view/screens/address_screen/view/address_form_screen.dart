@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:scotch/core/const.dart';
+import 'package:scotch/view/screens/address_screen/controller/address_controller.dart';
 import 'package:scotch/view/screens/address_screen/model/enum_address.dart';
 import 'package:scotch/view/screens/address_screen/view/widgets/custom_form.dart';
-import 'package:scotch/view/screens/cart_and_order_address_payment_controller/cart_and_order_address_payment_controller.dart';
 
 class AddressFormScreen extends StatelessWidget {
   AddressFormScreen(
@@ -14,11 +14,16 @@ class AddressFormScreen extends StatelessWidget {
   static const routeAddressName = '/address_form_screen';
   @override
   Widget build(BuildContext context) {
-    CoaController coaController = Get.put(CoaController());
+    AddressController addressController = Get.put(AddressController());
+    WidgetsBinding.instance.addPostFrameCallback(
+      (timeStamp) {
+        addressController.setAddressScreen(addressScreenCheck, addressId);
+      },
+    );
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          "Add Addresse",
+          "Add Address",
           style: TextStyle(
             fontFamily: "Montserrat",
             fontSize: 18,
@@ -28,8 +33,8 @@ class AddressFormScreen extends StatelessWidget {
         ),
       ),
       body: SafeArea(
-        child: GetBuilder<CoaController>(
-          init: coaController,
+        child: GetBuilder<AddressController>(
+          init: addressController,
           builder: (controller) {
             return SingleChildScrollView(
               child: Padding(
@@ -44,9 +49,9 @@ class AddressFormScreen extends StatelessWidget {
                       CustomFormWidget(
                         contentPadding:
                             const EdgeInsets.symmetric(horizontal: 20),
-                        controller: coaController.nameController,
+                        controller: addressController.nameController,
                         validator: (name) {
-                          return coaController.fullNameValidation(name);
+                          return addressController.fullNameValidation(name);
                         },
                         keyboard: TextInputType.name,
                         preffix: const Icon(Icons.person),
@@ -55,9 +60,9 @@ class AddressFormScreen extends StatelessWidget {
                       CustomFormWidget(
                         contentPadding:
                             const EdgeInsets.symmetric(horizontal: 20),
-                        controller: coaController.phoneController,
+                        controller: addressController.phoneController,
                         validator: (phone) {
-                          return coaController.mobileValdation(phone);
+                          return addressController.mobileValdation(phone);
                         },
                         keyboard: TextInputType.name,
                         preffix: const Icon(Icons.phone),
@@ -69,9 +74,9 @@ class AddressFormScreen extends StatelessWidget {
                             child: CustomFormWidget(
                               contentPadding:
                                   const EdgeInsets.symmetric(horizontal: 20),
-                              controller: coaController.pinController,
+                              controller: addressController.pinController,
                               validator: (pin) {
-                                return coaController.pincodeValdation(pin);
+                                return addressController.pincodeValdation(pin);
                               },
                               keyboard: TextInputType.name,
                               preffix: const Icon(Icons.pin),
@@ -82,9 +87,9 @@ class AddressFormScreen extends StatelessWidget {
                             child: CustomFormWidget(
                               contentPadding:
                                   const EdgeInsets.symmetric(horizontal: 20),
-                              controller: coaController.stateController,
+                              controller: addressController.stateController,
                               validator: (state) {
-                                return coaController.stateValidation(state);
+                                return addressController.stateValidation(state);
                               },
                               keyboard: TextInputType.name,
                               preffix: const Icon(Icons.public),
@@ -96,9 +101,9 @@ class AddressFormScreen extends StatelessWidget {
                       CustomFormWidget(
                         contentPadding:
                             const EdgeInsets.symmetric(horizontal: 20),
-                        controller: coaController.placeController,
+                        controller: addressController.placeController,
                         validator: (place) {
-                          return coaController.placeValidation(place);
+                          return addressController.placeValidation(place);
                         },
                         keyboard: TextInputType.name,
                         preffix: const Icon(Icons.location_on),
@@ -107,9 +112,9 @@ class AddressFormScreen extends StatelessWidget {
                       CustomFormWidget(
                         contentPadding:
                             const EdgeInsets.symmetric(horizontal: 20),
-                        controller: coaController.addressController,
+                        controller: addressController.addressController,
                         validator: (address) {
-                          return coaController.addressValidation(address);
+                          return addressController.addressValidation(address);
                         },
                         keyboard: TextInputType.name,
                         preffix: const Icon(
@@ -120,9 +125,9 @@ class AddressFormScreen extends StatelessWidget {
                       CustomFormWidget(
                         contentPadding:
                             const EdgeInsets.symmetric(horizontal: 20),
-                        controller: coaController.landmarkController,
+                        controller: addressController.landmarkController,
                         validator: (land) {
-                          return coaController.landmarkValidation(land);
+                          return addressController.landmarkValidation(land);
                         },
                         keyboard: TextInputType.name,
                         preffix: const Icon(Icons.emoji_flags),
@@ -133,7 +138,7 @@ class AddressFormScreen extends StatelessWidget {
                           onPressed: () {
                             if (formGlobalKey.currentState!.validate()) {
                               formGlobalKey.currentState!.save();
-                              coaController.saveAddress(
+                              addressController.saveAddress(
                                   addressScreenCheck, addressId);
                             }
                           },

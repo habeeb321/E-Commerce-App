@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:scotch/core/const.dart';
-import 'package:scotch/view/screens/cart_and_order_address_payment_controller/cart_and_order_address_payment_controller.dart';
+import 'package:scotch/view/screens/cart_screen/controller/cart_controller.dart';
 import 'package:scotch/view/screens/profile_screen/view/profile_screen.dart';
 import 'package:scotch/view/screens/bottom_nav_bar/controller/bottom_nav_controller.dart';
 import 'package:scotch/view/screens/cart_screen/view/cart_screen.dart';
@@ -15,7 +15,7 @@ class BottomNavBar extends GetView<BottomNavController> {
 
   @override
   Widget build(BuildContext context) {
-    CoaController coaController = Get.put(CoaController());
+    CartController cartController = Get.put(CartController());
     BottomNavController bottomNavController = Get.put(BottomNavController());
     int currentIndex = 0;
 
@@ -53,13 +53,13 @@ class BottomNavBar extends GetView<BottomNavController> {
                   ),
                   GButton(
                       icon: Icons.shopping_cart_outlined,
-                      leading: GetBuilder<CoaController>(
+                      leading: GetBuilder<CartController>(
                         builder: (controller) {
                           return badges.Badge(
                             position:
                                 badges.BadgePosition.topEnd(top: -17, end: -13),
                             badgeContent: Text(
-                              coaController.totalproductCount.toString(),
+                              cartController.totalproductCount.toString(),
                               style: const TextStyle(
                                 color: kWhitecolor,
                                 fontWeight: FontWeight.bold,
