@@ -294,6 +294,7 @@ class _OrderPageScreenState extends State<OrderScreen> {
                                             left: 20, right: 20),
                                         child: Column(
                                           children: [
+                                            kHeight10,
                                             Row(
                                               children: const [
                                                 Text(

@@ -16,94 +16,96 @@ class CartScreen extends StatelessWidget {
     OrdersController ordersController = Get.put(OrdersController());
     Size size = Get.size;
     return Scaffold(
-      backgroundColor: kGreyColor.shade200,
       appBar: AppBar(
-        title: const Text('My Cart'),
-        centerTitle: true,
-      ),
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              children: const [
-                CartWidget(),
-              ],
+        title: const Center(
+          child: Text(
+            'My Cart',
+            style: TextStyle(
+              fontSize: 20,
+              fontFamily: "Manrope",
+              fontWeight: FontWeight.bold,
             ),
           ),
         ),
       ),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Column(
+            children: const [
+              kHeight20,
+              CartWidget(),
+            ],
+          ),
+        ),
+      ),
       bottomNavigationBar: GetBuilder(
-        init: cartController,
-        builder: (controller) {
-          return GetBuilder(
-            init: ordersController,
-            builder: (controller) {
-              return cartController.cartList == null ||
-                      cartController.cartList!.products.isEmpty
-                  ? SizedBox(
-                      height: size.height * 0.78,
-                      child: const Center(
-                        child: Text('Cart is Empty'),
-                      ),
-                    )
-                  : Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+          init: ordersController,
+          builder: (controller) {
+            return GetBuilder(
+              init: cartController,
+              builder: (controller) {
+                return cartController.cartList == null ||
+                        cartController.cartList!.products.isEmpty
+                    ? const SizedBox()
+                    : Row(
                         children: [
-                          SizedBox(
-                              height: size.height * 0.07,
-                              width: size.width * 0.4,
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  const Text(
-                                    'Total Price',
-                                    style: TextStyle(
-                                      color: kBlackcolor,
-                                      fontSize: 15,
-                                      fontFamily: "Montserrat",
-                                      fontWeight: FontWeight.bold,
+                          Material(
+                            elevation: 10,
+                            child: SizedBox(
+                                height:
+                                    MediaQuery.of(context).size.height * 0.07,
+                                width: MediaQuery.of(context).size.width / 2,
+                                child: Column(
+                                  children: [
+                                    const Text(
+                                      'Total Price',
+                                      style: TextStyle(
+                                        color: kBlackcolor,
+                                        fontSize: 15,
+                                        fontFamily: "Manrope",
+                                        fontWeight: FontWeight.bold,
+                                      ),
                                     ),
-                                  ),
-                                  Text(
-                                    '${cartController.totalSave}',
-                                    style: const TextStyle(
-                                      color: kRedColor,
-                                      fontFamily: 'Montserrat',
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 18,
+                                    Text(
+                                      '${cartController.totalSave}',
+                                      style: const TextStyle(
+                                        color: kRedColor,
+                                        fontFamily: 'Manrope',
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 18,
+                                      ),
                                     ),
-                                  ),
-                                ],
-                              )),
+                                  ],
+                                )),
+                          ),
                           SizedBox(
-                            height: size.height * 0.07,
-                            width: size.width * 0.4,
+                            height: MediaQuery.of(context).size.height * 0.07,
+                            width: MediaQuery.of(context).size.width / 2,
                             child: ElevatedButton(
                               onPressed: () {
-                                Get.to(
-                                  const OrderScreen(
-                                    cartId: "",
-                                    productId: "",
-                                    screenCheck:
-                                        OrderScreenEnum.normalOrderScreen,
+                                Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                    builder: (context) {
+                                      return const OrderScreen(
+                                        cartId: "",
+                                        productId: "",
+                                        screenCheck:
+                                            OrderScreenEnum.normalOrderScreen,
+                                      );
+                                    },
                                   ),
                                 );
                                 ordersController.isLoading = false;
                               },
                               style: ElevatedButton.styleFrom(
                                   backgroundColor: Colors.blue,
-                                  elevation: 0,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10.0),
-                                  )),
+                                  elevation: 1,
+                                  shape: const RoundedRectangleBorder()),
                               child: const Text(
                                 'Place Order',
                                 style: TextStyle(
                                   color: kWhitecolor,
-                                  fontFamily: 'Montserrat',
+                                  fontFamily: 'Manrope',
                                   letterSpacing: 1,
                                   fontWeight: FontWeight.bold,
                                   fontSize: 18,
@@ -112,12 +114,10 @@ class CartScreen extends StatelessWidget {
                             ),
                           ),
                         ],
-                      ),
-                    );
-            },
-          );
-        },
-      ),
+                      );
+              },
+            );
+          }),
     );
   }
 }

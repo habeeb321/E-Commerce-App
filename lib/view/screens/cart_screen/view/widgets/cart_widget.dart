@@ -238,6 +238,7 @@ class CartWidget extends StatelessWidget {
                                                       builder: (context) {
                                                         return CartAlertWidget(
                                                           index: index,
+                                                          cart: cartController,
                                                         );
                                                       },
                                                     );
@@ -297,7 +298,7 @@ class CartWidget extends StatelessWidget {
                                               kWidth20,
                                               Expanded(
                                                 child: InkWell(
-                                                  onTap: () {
+                                                  onTap: () { 
                                                     ordersController
                                                         .toOrderScreen(
                                                             cartController
