@@ -5,6 +5,7 @@ import 'package:scotch/view/screens/home_screen/controller/home_controller.dart'
 import 'package:scotch/view/screens/home_screen/view/widgets/newly_launched_container.dart';
 import 'package:scotch/view/screens/home_screen/view/widgets/category_container.dart';
 import 'package:scotch/view/screens/home_screen/view/widgets/home_carousel.dart';
+import 'package:scotch/view/screens/search_screen/view/search_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -17,7 +18,11 @@ class HomeScreen extends StatelessWidget {
         title: const Text('Home'),
         centerTitle: true,
         actions: [
-          IconButton(onPressed: () {}, icon: const Icon(Icons.search)),
+          IconButton(
+              onPressed: () {
+                Get.to(const SearchScreen());
+              },
+              icon: const Icon(Icons.search)),
         ],
       ),
       body: GetBuilder<HomeController>(

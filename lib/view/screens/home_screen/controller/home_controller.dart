@@ -83,6 +83,7 @@ class HomeController extends GetxController {
   List<CategoryModel> categoryList = [];
   List<ProductModel> productList = [];
   List<CarousalModel> carousalList = [];
+  List<ProductModel> seachResult = [];
 
   CategoryServices category = CategoryServices();
   ProductServices product = ProductServices();
@@ -168,5 +169,24 @@ class HomeController extends GetxController {
 
   CategoryModel findByName(String id) {
     return categoryList.firstWhere((element) => element.id == id);
+  }
+
+  TextEditingController searchController = TextEditingController();
+  void search(String keyboard) {
+    List<ProductModel> results = [];
+    if (keyboard.isEmpty) {
+      results = productList;
+    } else {
+      results = productList
+          .where(
+            (element) => element.name.toLowerCase().contains(
+                  keyboard.toLowerCase(),
+                ),
+          )
+          .toList();
+    }
+
+    seachResult = results;
+    update();
   }
 }

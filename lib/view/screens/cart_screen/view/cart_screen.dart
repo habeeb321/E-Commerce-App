@@ -14,7 +14,6 @@ class CartScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     CartController cartController = Get.put(CartController());
     OrdersController ordersController = Get.put(OrdersController());
-    Size size = Get.size;
     return Scaffold(
       appBar: AppBar(
         title: const Center(
