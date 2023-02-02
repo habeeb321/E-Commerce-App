@@ -41,84 +41,81 @@ class CartScreen extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: GetBuilder(
-          init: ordersController,
-          builder: (controller) {
-            return GetBuilder(
-              init: cartController,
-              builder: (controller) {
-                return cartController.cartList == null ||
-                        cartController.cartList!.products.isEmpty
-                    ? const SizedBox()
-                    : Row(
-                        children: [
-                          Material(
-                            elevation: 10,
-                            child: SizedBox(
-                                height: Get.size.height * 0.07,
-                                width: Get.size.width / 2,
-                                child: Column(
-                                  children: [
-                                    const Text(
-                                      'Total Price',
-                                      style: TextStyle(
-                                        color: kBlackcolor,
-                                        fontSize: 15,
-                                        fontFamily: "Manrope",
-                                        fontWeight: FontWeight.bold,
-                                      ),
+        init: ordersController,
+        builder: (controller) {
+          return GetBuilder(
+            init: cartController,
+            builder: (controller) {
+              return cartController.cartList == null ||
+                      cartController.cartList!.products.isEmpty
+                  ? const SizedBox()
+                  : Row(
+                      children: [
+                        Material(
+                          elevation: 10,
+                          child: SizedBox(
+                              height: Get.size.height * 0.07,
+                              width: Get.size.width / 2,
+                              child: Column(
+                                children: [
+                                  const Text(
+                                    'Total Price',
+                                    style: TextStyle(
+                                      color: kBlackcolor,
+                                      fontSize: 15,
+                                      fontFamily: "Manrope",
+                                      fontWeight: FontWeight.bold,
                                     ),
-                                    Text(
-                                      '${cartController.totalSave}',
-                                      style: const TextStyle(
-                                        color: kRedColor,
-                                        fontFamily: 'Manrope',
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 18,
-                                      ),
-                                    ),
-                                  ],
-                                )),
-                          ),
-                          SizedBox(
-                            height: Get.size.height * 0.07,
-                            width: Get.size.width / 2,
-                            child: ElevatedButton(
-                              onPressed: () {
-                                Navigator.of(context).push(
-                                  MaterialPageRoute(
-                                    builder: (context) {
-                                      return const OrderScreen(
-                                        cartId: "",
-                                        productId: "",
-                                        screenCheck:
-                                            OrderScreenEnum.normalOrderScreen,
-                                      );
-                                    },
                                   ),
-                                );
-                                ordersController.isLoading = false;
-                              },
-                              style: ElevatedButton.styleFrom(
-                                  backgroundColor: Colors.blue,
-                                  elevation: 1,
-                                  shape: const RoundedRectangleBorder()),
-                              child: const Text(
-                                'Place Order',
-                                style: TextStyle(
-                                  color: kWhitecolor,
-                                  fontFamily: 'Manrope',
-                                  letterSpacing: 1,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 18,
+                                  Text(
+                                    '${cartController.totalSave}',
+                                    style: const TextStyle(
+                                      color: kRedColor,
+                                      fontFamily: 'Manrope',
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 18,
+                                    ),
+                                  ),
+                                ],
+                              )),
+                        ),
+                        SizedBox(
+                          height: Get.size.height * 0.07,
+                          width: Get.size.width / 2,
+                          child: ElevatedButton(
+                            onPressed: () {
+                              Get.to(
+                                const OrderScreen(
+                                  cartId: "",
+                                  productId: "",
+                                  screenCheck:
+                                      OrderScreenEnum.normalOrderScreen,
                                 ),
+                              );
+                              ordersController.isLoading = false;
+                            },
+                            style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.blue,
+                                elevation: 1,
+                                shape: const RoundedRectangleBorder()),
+                            child: const Text(
+                              'Place Order',
+                              style: TextStyle(
+                                color: kWhitecolor,
+                                fontFamily: 'Manrope',
+                                letterSpacing: 1,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18,
                               ),
                             ),
                           ),
-                        ],
-                      );
-              },
-            );
-          }),
+                        ),
+                      ],
+                    );
+            },
+          );
+        },
+      ),
     );
   }
 }

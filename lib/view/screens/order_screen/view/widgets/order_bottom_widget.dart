@@ -4,7 +4,6 @@ import 'package:scotch/core/const.dart';
 import 'package:scotch/view/screens/address_screen/controller/address_controller.dart';
 import 'package:scotch/view/screens/address_screen/view/address_screen.dart';
 import 'package:scotch/view/screens/cart_screen/controller/cart_controller.dart';
-import 'package:scotch/view/screens/order_placed_screen/view/order_placed_screen.dart';
 import 'package:scotch/view/screens/order_screen/controller/order_controller.dart';
 import 'package:scotch/view/screens/order_screen/model/order_enum.dart';
 import 'package:scotch/view/screens/payment/controller/payment_controller.dart';
@@ -84,7 +83,8 @@ class OrderBottomWidget extends StatelessWidget {
                                                 .round()
                                                 .toString()),
                                       );
-                                      Get.to(const OrderPlacedScreen());
+                                      paymentController
+                                          .toOrderPlacedScreen(screenCheck);
                                     },
                                     style: ElevatedButton.styleFrom(
                                       backgroundColor: Colors.blue,

@@ -3,9 +3,18 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
 import 'package:scotch/core/const.dart';
+import 'package:scotch/view/screens/order_placed_screen/view/all_order_placed_screen.dart';
+import 'package:scotch/view/screens/order_placed_screen/view/order_placed_screen.dart';
+import 'package:scotch/view/screens/order_screen/model/order_enum.dart';
 
 class PaymentController extends GetxController {
   Razorpay razorpay = Razorpay();
+
+  dynamic checkScreen;
+
+  toOrderPlacedScreen(OrderScreenEnum screenCheck) {
+    checkScreen = screenCheck;
+  }
 
   openCheckout(price) async {
     var options = {
@@ -24,6 +33,10 @@ class PaymentController extends GetxController {
       razorpay.on(Razorpay.EVENT_PAYMENT_SUCCESS,
           (PaymentSuccessResponse response) {
         handlePaymentSuccess(response);
+
+        checkScreen == OrderScreenEnum.normalOrderScreen
+            ? Get.to(const AllOrderPlacedScreen())
+            : Get.to(const OrderPlacedScreen());
       });
       razorpay.on(Razorpay.EVENT_PAYMENT_ERROR, (PaymentFailureResponse resp) {
         handlePaymentError(resp);

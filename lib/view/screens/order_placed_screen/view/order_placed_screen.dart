@@ -69,9 +69,8 @@ class OrderPlacedScreen extends StatelessWidget {
                                                       CrossAxisAlignment.start,
                                                   children: [
                                                     Text(
-                                                      cartController
-                                                          .cartList!
-                                                          .products[index]
+                                                      ordersController
+                                                          .cartModel[0]
                                                           .product
                                                           .name,
                                                       style: const TextStyle(
@@ -81,12 +80,12 @@ class OrderPlacedScreen extends StatelessWidget {
                                                               FontWeight.bold),
                                                     ),
                                                     RatingBar.builder(
-                                                      initialRating: double
-                                                          .parse(cartController
-                                                              .cartList!
-                                                              .products[index]
-                                                              .product
-                                                              .rating),
+                                                      initialRating:
+                                                          double.parse(
+                                                              ordersController
+                                                                  .cartModel[0]
+                                                                  .product
+                                                                  .rating),
                                                       itemSize: 15,
                                                       minRating: 1,
                                                       direction:
@@ -108,7 +107,7 @@ class OrderPlacedScreen extends StatelessWidget {
                                                     Row(
                                                       children: [
                                                         Text(
-                                                          "${cartController.cartList!.products[index].product.offer}%Off",
+                                                          "${ordersController.cartModel[0].product.offer}%Off",
                                                           style:
                                                               const TextStyle(
                                                             color: Colors.green,
@@ -121,7 +120,7 @@ class OrderPlacedScreen extends StatelessWidget {
                                                         ),
                                                         kWidth10,
                                                         Text(
-                                                          "₹${cartController.cartList!.products[index].product.price}",
+                                                          "₹${ordersController.cartModel[0].product.price}",
                                                           style:
                                                               const TextStyle(
                                                             color: kGreyColor,
@@ -136,7 +135,7 @@ class OrderPlacedScreen extends StatelessWidget {
                                                         ),
                                                         kWidth10,
                                                         Text(
-                                                          "₹${(cartController.cartList!.products[index].product.price - cartController.cartList!.products[index].product.discountPrice).round()}",
+                                                          "₹${(ordersController.cartModel[0].product.price - ordersController.cartModel[0].product.discountPrice).round()}",
                                                           style:
                                                               const TextStyle(
                                                             color: kRedColor,
@@ -157,12 +156,21 @@ class OrderPlacedScreen extends StatelessWidget {
                                               ],
                                             ),
                                             kHeight20,
-                                            const Text(
-                                              'Order Placed Successfully',
-                                              style: TextStyle(
+                                            Column(
+                                              children: const [
+                                                Text(
+                                                  'Order Placed Successfully',
+                                                  style: TextStyle(
+                                                      color: Colors.green,
+                                                      fontSize: 25),
+                                                ),
+                                                Icon(
+                                                  Icons.verified,
                                                   color: Colors.green,
-                                                  fontSize: 16),
-                                            )
+                                                  size: 60,
+                                                ),
+                                              ],
+                                            ),
                                           ],
                                         ),
                                       );
