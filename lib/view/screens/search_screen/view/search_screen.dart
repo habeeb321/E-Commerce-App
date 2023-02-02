@@ -44,7 +44,7 @@ class SearchScreen extends StatelessWidget {
                           height: Get.size.height * 0.7,
                           child: const Center(
                             child: Text(
-                              'No Products Available',
+                              'No Search Results Found',
                               style: TextStyle(fontSize: 20),
                             ),
                           ),

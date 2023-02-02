@@ -54,9 +54,8 @@ class CartScreen extends StatelessWidget {
                           Material(
                             elevation: 10,
                             child: SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.07,
-                                width: MediaQuery.of(context).size.width / 2,
+                                height: Get.size.height * 0.07,
+                                width: Get.size.width / 2,
                                 child: Column(
                                   children: [
                                     const Text(
@@ -81,8 +80,8 @@ class CartScreen extends StatelessWidget {
                                 )),
                           ),
                           SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.07,
-                            width: MediaQuery.of(context).size.width / 2,
+                            height: Get.size.height * 0.07,
+                            width: Get.size.width / 2,
                             child: ElevatedButton(
                               onPressed: () {
                                 Navigator.of(context).push(
