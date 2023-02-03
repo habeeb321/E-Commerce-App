@@ -83,8 +83,6 @@ class OrderBottomWidget extends StatelessWidget {
                                                 .round()
                                                 .toString()),
                                       );
-                                      paymentController
-                                          .toOrderPlacedScreen(screenCheck);
                                     },
                                     style: ElevatedButton.styleFrom(
                                       backgroundColor: Colors.blue,

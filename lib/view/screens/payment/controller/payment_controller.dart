@@ -3,23 +3,33 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
 import 'package:scotch/core/const.dart';
-import 'package:scotch/view/screens/order_placed_screen/view/all_order_placed_screen.dart';
-import 'package:scotch/view/screens/order_placed_screen/view/order_placed_screen.dart';
-import 'package:scotch/view/screens/order_screen/model/order_enum.dart';
+import 'package:scotch/view/screens/order_screen/model/order_model.dart';
+import 'package:scotch/view/screens/order_screen/services/order_service.dart';
 
 class PaymentController extends GetxController {
   Razorpay razorpay = Razorpay();
+  List<Product> products = [];
+  String? addressId;
+  Map<String, dynamic> options = {};
 
-  dynamic checkScreen;
-
-  toOrderPlacedScreen(OrderScreenEnum screenCheck) {
-    checkScreen = screenCheck;
+  void setAddressId(String addressid) {
+    addressId = addressid;
+    update();
   }
 
-  openCheckout(price) async {
-    var options = {
+  void setTotalAmount(amount, List<String> productIds, address) {
+    final total = "${amount * 100}";
+    final amountPayable = total.toString();
+    openCheckout(amountPayable);
+    products = productIds.map((e) => Product(id: e)).toList();
+    addressId = address;
+    update();
+  }
+
+  openCheckout(amountPayable) async {
+    options = {
       'key': 'rzp_test_K1qY31Ub3PKsMs',
-      'amount': price * 100,
+      'amount': amountPayable,
       'name': 'Scotch',
       'description': 'Laptop',
       'prefill': {'contact': '9895709034', 'email': 'Scotch@razorpay.com'},
@@ -33,13 +43,13 @@ class PaymentController extends GetxController {
       razorpay.on(Razorpay.EVENT_PAYMENT_SUCCESS,
           (PaymentSuccessResponse response) {
         handlePaymentSuccess(response);
-
-        checkScreen == OrderScreenEnum.normalOrderScreen
-            ? Get.to(const AllOrderPlacedScreen())
-            : Get.to(const OrderPlacedScreen());
       });
       razorpay.on(Razorpay.EVENT_PAYMENT_ERROR, (PaymentFailureResponse resp) {
         handlePaymentError(resp);
+      });
+      razorpay.on(Razorpay.EVENT_EXTERNAL_WALLET,
+          (ExternalWalletResponse response) {
+        handleExternalWallet(response);
       });
       update();
     } on PaymentFailureResponse catch (e) {
@@ -52,6 +62,7 @@ class PaymentController extends GetxController {
         snackPosition: SnackPosition.BOTTOM,
         backgroundColor: Colors.green,
         colorText: kWhitecolor);
+    orderProducts(addressId!, 'ONLINE_PAYMENT');
     update();
   }
 
@@ -69,5 +80,26 @@ class PaymentController extends GetxController {
         backgroundColor: kBlackcolor,
         colorText: kWhitecolor);
     update();
+  }
+
+  bool loading = false;
+  Future<void> orderProducts(String addressId, paymentType) async {
+    loading = true;
+    update();
+    final OrdersModel model = OrdersModel(
+      addressId: addressId,
+      paymentType: paymentType,
+      products: products,
+    );
+
+    await OrderService().placeOrder(model).then((value) {
+      if (value != null) {
+        loading = false;
+        update();
+      } else {
+        loading = false;
+        update();
+      }
+    });
   }
 }

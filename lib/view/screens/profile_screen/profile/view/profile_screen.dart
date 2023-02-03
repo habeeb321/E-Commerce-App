@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:scotch/core/const.dart';
+import 'package:scotch/view/screens/profile_screen/order_placed/view/order_placed_screen.dart';
 import 'package:scotch/view/screens/profile_screen/profile/controller/profile_controller.dart';
 import 'package:scotch/view/screens/profile_screen/profile/view/widgets/profile_widget.dart';
 
@@ -44,6 +45,22 @@ class ProfileScreen extends StatelessWidget {
                             text: 'Saved Address',
                             ontap: () {
                               profileController.goToAddressPage();
+                            },
+                            trailIcon: const Icon(
+                              Icons.arrow_forward,
+                              size: 25,
+                            ),
+                            size: 17,
+                          ),
+                          kHeight10,
+                          ProfileWidget(
+                            icon: const Icon(
+                              Icons.card_travel,
+                              size: 30,
+                            ),
+                            text: 'Orders',
+                            ontap: () {
+                              Get.to(const OrderPlacedScreen());
                             },
                             trailIcon: const Icon(
                               Icons.arrow_forward,

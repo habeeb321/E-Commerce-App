@@ -7,4 +7,9 @@ class BottomNavController extends GetxController {
     _currentIndex = index;
     update();
   }
+
+  void gotoHomescreen() {
+    currentIndex = 0;
+    update();
+  }
 }

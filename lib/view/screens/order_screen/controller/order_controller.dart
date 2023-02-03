@@ -8,29 +8,33 @@ import 'package:scotch/view/screens/order_screen/model/get_order_model.dart';
 import 'package:scotch/view/screens/order_screen/model/order_enum.dart';
 import 'package:scotch/view/screens/order_screen/services/order_service.dart';
 import 'package:scotch/view/screens/order_screen/view/order_screen.dart';
+import 'package:share_plus/share_plus.dart';
 
 class OrdersController extends GetxController {
   OrdersController() {
     startLoading();
+    getAllOrders();
   }
+
   bool isLoading = false;
   void startLoading() {
     isLoading = true;
     update();
   }
 
-  List<GetOrderModel> orderList = [];
-  GetOrderModel? getSingleOrder;
+  List<GetOrderModel>? ordersList = [];
+  GetOrderModel? singleModel;
   GetAddressModel? addressModel;
   List<GetSingelCartProduct> cartModel = [];
   int? totalSave;
+  String? deliveryDate;
 
   void getAllOrders() async {
     isLoading = true;
     update();
     await OrderService().getAllOrders().then((value) {
       if (value != null) {
-        orderList = value;
+        ordersList = value;
         update();
         isLoading = false;
         update();
@@ -42,12 +46,13 @@ class OrdersController extends GetxController {
     return null;
   }
 
-  void getSingleOrders(String orderId) async {
+  void getSingleOrder(String orderId) async {
     isLoading = true;
-    update();
     await OrderService().getSingleOrders(orderId).then((value) {
       if (value != null) {
-        getSingleOrder = value;
+        singleModel = value;
+        update();
+        deliveryDate = formatDate(singleModel!.deliveryDate.toString());
         update();
         isLoading = false;
         update();
@@ -56,12 +61,12 @@ class OrdersController extends GetxController {
         update();
       }
     });
-    return null;
   }
 
-  void cancelOrders(String orderId) async {
+  Future<void> cancelOrder(String orderId) async {
     isLoading = true;
     update();
+
     await OrderService().cancelOrder(orderId).then((value) {
       if (value != null) {
         isLoading = false;
@@ -71,7 +76,6 @@ class OrdersController extends GetxController {
         update();
       }
     });
-    return null;
   }
 
   void getSingleAddress(String addressId) async {
@@ -80,7 +84,6 @@ class OrdersController extends GetxController {
     await AddressService().getSingleAddress(addressId).then((value) {
       if (value != null) {
         log("message");
-
         addressModel = value;
         update();
         isLoading = false;
@@ -122,5 +125,24 @@ class OrdersController extends GetxController {
         screenCheck: OrderScreenEnum.buyOneProductOrderScreen,
       ),
     );
+  }
+
+  void sendOrderDetials(context) {
+    Share.share(
+        "ShoeCart Order -Order Id:${singleModel!.id},Total Products:${singleModel!.products.length},Total Price:${singleModel!.totalPrice},Delivery Date:$deliveryDate");
+  }
+
+  String? formatDate(String date) {
+    final a = date.split(' ');
+    return a[0];
+  }
+
+  String? formatCancelDate(String? date) {
+    if (date != null) {
+      final a = date.split('T');
+      return a[0];
+    } else {
+      return null;
+    }
   }
 }
