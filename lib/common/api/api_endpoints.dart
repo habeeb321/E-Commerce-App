@@ -21,4 +21,7 @@ class ApiEndPoints {
 
   // order
   static String orders = 'api/v1/orders';
+
+  // profile
+  static const user = 'api/v1/users?email=';
 }

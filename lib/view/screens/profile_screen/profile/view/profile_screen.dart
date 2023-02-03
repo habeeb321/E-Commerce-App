@@ -24,6 +24,24 @@ class ProfileScreen extends StatelessWidget {
               builder: (controller) {
                 return Column(
                   children: [
+                    // const Text(
+                    //   "User Details",
+                    //   style:
+                    //       TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    // ),
+                    // kHeight10,
+                    // UserDetialsText(
+                    //   title: "Name",
+                    //   result: profileController.userDetials?.fullname ?? '',
+                    // ),
+                    // UserDetialsText(
+                    //   title: "Email",
+                    //   result: profileController.userDetials?.email ?? "",
+                    // ),
+                    // UserDetialsText(
+                    //   title: "Phone Number",
+                    //   result: profileController.userDetials?.phone ?? "",
+                    // ),
                     kHeight10,
                     Row(
                       children: const [

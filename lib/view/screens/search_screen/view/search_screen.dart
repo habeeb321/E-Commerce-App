@@ -75,7 +75,7 @@ class SearchScreen extends StatelessWidget {
                                               decoration: BoxDecoration(
                                                   image: DecorationImage(
                                                 image: NetworkImage(
-                                                  '${ApiBaseUrl().baseUrl}/products/${homeController.productList[index].image[4]}',
+                                                  '${ApiBaseUrl().baseUrl}/products/${homeController.seachResult[index].image[4]}',
                                                 ),
                                               )),
                                             ),
@@ -88,7 +88,7 @@ class SearchScreen extends StatelessWidget {
                                                 children: [
                                                   Text(
                                                     homeController
-                                                        .productList[index]
+                                                        .seachResult[index]
                                                         .name,
                                                     style: const TextStyle(
                                                         fontSize: 18,
@@ -99,7 +99,7 @@ class SearchScreen extends StatelessWidget {
                                                   RatingBar.builder(
                                                     initialRating: double.parse(
                                                         homeController
-                                                            .productList[index]
+                                                            .seachResult[index]
                                                             .rating),
                                                     itemSize: 15,
                                                     minRating: 1,
@@ -120,7 +120,7 @@ class SearchScreen extends StatelessWidget {
                                                   Row(
                                                     children: [
                                                       Text(
-                                                        "${homeController.productList[index].offer}%Off",
+                                                        "${homeController.seachResult[index].offer}%Off",
                                                         style: const TextStyle(
                                                           color: Colors.green,
                                                           fontWeight:
@@ -131,7 +131,7 @@ class SearchScreen extends StatelessWidget {
                                                       ),
                                                       kWidth10,
                                                       Text(
-                                                        "₹${homeController.productList[index].price}",
+                                                        "₹${homeController.seachResult[index].price}",
                                                         style: const TextStyle(
                                                           color: kGreyColor,
                                                           fontWeight:
@@ -144,7 +144,7 @@ class SearchScreen extends StatelessWidget {
                                                       ),
                                                       kWidth10,
                                                       Text(
-                                                        "₹${(homeController.productList[index].price - homeController.productList[index].discountPrice).round()}",
+                                                        "₹${(homeController.seachResult[index].price - homeController.seachResult[index].discountPrice).round()}",
                                                         style: const TextStyle(
                                                           color: kRedColor,
                                                           fontSize: 20,
@@ -169,7 +169,7 @@ class SearchScreen extends StatelessWidget {
                               separatorBuilder: (context, index) {
                                 return const Divider();
                               },
-                              itemCount: homeController.productList.length,
+                              itemCount: homeController.seachResult.length,
                             ),
                 ],
               );

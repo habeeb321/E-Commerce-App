@@ -27,6 +27,7 @@ class OrderPlacedScreen extends StatelessWidget {
               return IconButton(
                 onPressed: () {
                   Get.offAll(const BottomNavBar());
+                  bottomNavController.currentIndex = 3;
                 },
                 icon: const Icon(
                   Icons.shopping_bag_outlined,

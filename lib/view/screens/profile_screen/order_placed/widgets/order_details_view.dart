@@ -131,7 +131,7 @@ class OrderDetialsView extends StatelessWidget {
                                               onPressed: () {
                                                 ordersController
                                                     .cancelOrder(orderId);
-                                                Navigator.pop(context);
+                                                Get.back();
                                               },
                                               child: const Text('Cancel'),
                                             ),
