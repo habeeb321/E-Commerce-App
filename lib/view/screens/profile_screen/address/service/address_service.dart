@@ -4,8 +4,8 @@ import 'package:scotch/common/api/api_baseurl.dart';
 import 'package:scotch/common/api/api_endpoints.dart';
 import 'package:scotch/util/dio_exception.dart';
 import 'package:scotch/util/dio_interceptor.dart';
-import 'package:scotch/view/screens/address_screen/model/get_address_model.dart';
-import 'package:scotch/view/screens/address_screen/model/create_address_model.dart';
+import 'package:scotch/view/screens/profile_screen/address/model/get_address_model.dart';
+import 'package:scotch/view/screens/profile_screen/address/model/create_address_model.dart';
 
 class AddressService {
   Future<String?> addAddress(CreateAddressModel model) async {

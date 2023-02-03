@@ -2,10 +2,10 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:scotch/core/const.dart';
-import 'package:scotch/view/screens/address_screen/model/create_address_model.dart';
-import 'package:scotch/view/screens/address_screen/model/enum_address.dart';
-import 'package:scotch/view/screens/address_screen/model/get_address_model.dart';
-import 'package:scotch/view/screens/address_screen/service/address_service.dart';
+import 'package:scotch/view/screens/profile_screen/address/model/create_address_model.dart';
+import 'package:scotch/view/screens/profile_screen/address/model/enum_address.dart';
+import 'package:scotch/view/screens/profile_screen/address/model/get_address_model.dart';
+import 'package:scotch/view/screens/profile_screen/address/service/address_service.dart';
 
 class AddressController extends GetxController {
   AddressController() {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:scotch/core/const.dart';
-import 'package:scotch/view/screens/address_screen/controller/address_controller.dart';
+import 'package:scotch/view/screens/profile_screen/address/controller/address_controller.dart';
 
 class AddressAlertWidget extends StatelessWidget {
   const AddressAlertWidget({Key? key, required this.index}) : super(key: key);

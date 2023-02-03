@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
 import 'package:scotch/common/api/api_baseurl.dart';
 import 'package:scotch/core/const.dart';
-import 'package:scotch/view/screens/address_screen/controller/address_controller.dart';
+import 'package:scotch/view/screens/profile_screen/address/controller/address_controller.dart';
 import 'package:scotch/view/screens/cart_screen/controller/cart_controller.dart';
 import 'package:scotch/view/screens/order_screen/controller/order_controller.dart';
 import 'package:scotch/view/screens/order_screen/model/order_enum.dart';

@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:scotch/view/auth/login_screen/view/login_screen.dart';
 import 'package:scotch/view/auth/signup_screen/model/signupmodel/signup_model.dart';
 import 'package:scotch/view/auth/signup_screen/service/signup_service/signup_service.dart';
-import 'package:scotch/view/screens/address_screen/view/address_screen.dart';
+import 'package:scotch/view/screens/profile_screen/address/view/address_screen.dart';
 import 'package:scotch/view/screens/bottom_nav_bar/controller/bottom_nav_controller.dart';
 
 class ProfileController extends GetxController {

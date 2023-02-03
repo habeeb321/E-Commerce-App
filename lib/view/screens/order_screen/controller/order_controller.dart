@@ -1,7 +1,7 @@
 import 'dart:developer';
 import 'package:get/get.dart';
-import 'package:scotch/view/screens/address_screen/model/get_address_model.dart';
-import 'package:scotch/view/screens/address_screen/service/address_service.dart';
+import 'package:scotch/view/screens/profile_screen/address/model/get_address_model.dart';
+import 'package:scotch/view/screens/profile_screen/address/service/address_service.dart';
 import 'package:scotch/view/screens/cart_screen/model/get_single_cart_model.dart';
 import 'package:scotch/view/screens/cart_screen/services/cart_service.dart';
 import 'package:scotch/view/screens/order_screen/model/get_order_model.dart';

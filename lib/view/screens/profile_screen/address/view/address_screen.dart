@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:scotch/core/const.dart';
-import 'package:scotch/view/screens/address_screen/controller/address_controller.dart';
-import 'package:scotch/view/screens/address_screen/model/enum_address.dart';
-import 'package:scotch/view/screens/address_screen/view/address_form_screen.dart';
-import 'package:scotch/view/screens/address_screen/view/widgets/popup_address_widget.dart';
-import 'package:scotch/view/screens/profile_screen/controller/profile_controller.dart';
+import 'package:scotch/view/screens/profile_screen/address/controller/address_controller.dart';
+import 'package:scotch/view/screens/profile_screen/address/model/enum_address.dart';
+import 'package:scotch/view/screens/profile_screen/address/view/address_form_screen.dart';
+import 'package:scotch/view/screens/profile_screen/address/view/widgets/popup_address_widget.dart';
+import 'package:scotch/view/screens/profile_screen/profile/controller/profile_controller.dart';
 
 class AddressScreen extends StatelessWidget {
   const AddressScreen({super.key});

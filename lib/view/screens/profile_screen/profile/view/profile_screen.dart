@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:scotch/core/const.dart';
-import 'package:scotch/view/screens/profile_screen/controller/profile_controller.dart';
-import 'package:scotch/view/screens/profile_screen/view/widgets/profile_widget.dart';
+import 'package:scotch/view/screens/profile_screen/profile/controller/profile_controller.dart';
+import 'package:scotch/view/screens/profile_screen/profile/view/widgets/profile_widget.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});

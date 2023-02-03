@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:scotch/core/const.dart';
-import 'package:scotch/view/screens/address_screen/controller/address_controller.dart';
-import 'package:scotch/view/screens/address_screen/view/address_screen.dart';
+import 'package:scotch/view/screens/profile_screen/address/controller/address_controller.dart';
+import 'package:scotch/view/screens/profile_screen/address/view/address_screen.dart';
 import 'package:scotch/view/screens/cart_screen/controller/cart_controller.dart';
 import 'package:scotch/view/screens/order_screen/controller/order_controller.dart';
 import 'package:scotch/view/screens/order_screen/model/order_enum.dart';
