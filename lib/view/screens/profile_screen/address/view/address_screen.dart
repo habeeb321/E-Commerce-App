@@ -49,142 +49,159 @@ class AddressScreen extends StatelessWidget {
                                     'Add Some Address',
                                   ),
                                 )
-                              : ListView.separated(
-                                  shrinkWrap: true,
-                                  padding: const EdgeInsets.all(10),
-                                  itemBuilder: (context, index) {
-                                    return Container(
-                                      decoration: BoxDecoration(
-                                        color: kWhitecolor,
-                                        borderRadius: BorderRadius.circular(15),
-                                        boxShadow: const [
-                                          BoxShadow(
-                                            color: Colors.black38,
-                                            blurRadius: 20.0,
-                                          )
-                                        ],
-                                      ),
-                                      child: Padding(
-                                        padding:
-                                            const EdgeInsets.only(left: 20),
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            kHeight10,
-                                            Row(
+                              : addressController.isLoading2 == true
+                                  ? const Center(
+                                      heightFactor: 20,
+                                      child: CircularProgressIndicator(),
+                                    )
+                                  : ListView.separated(
+                                      shrinkWrap: true,
+                                      padding: const EdgeInsets.all(10),
+                                      itemBuilder: (context, index) {
+                                        return Container(
+                                          decoration: BoxDecoration(
+                                            color: kWhitecolor,
+                                            borderRadius:
+                                                BorderRadius.circular(15),
+                                            boxShadow: const [
+                                              BoxShadow(
+                                                color: Colors.black38,
+                                                blurRadius: 20.0,
+                                              )
+                                            ],
+                                          ),
+                                          child: Padding(
+                                            padding:
+                                                const EdgeInsets.only(left: 20),
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
                                               children: [
+                                                kHeight10,
+                                                Row(
+                                                  children: [
+                                                    Text(
+                                                      addressController
+                                                          .addressList[index]
+                                                          .fullName
+                                                          .toUpperCase(),
+                                                      style: const TextStyle(
+                                                        fontFamily:
+                                                            "Montserrat",
+                                                        fontSize: 18,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                      ),
+                                                    ),
+                                                    const Spacer(),
+                                                    Row(
+                                                      children: [
+                                                        IconButton(
+                                                          onPressed: () {
+                                                            Get.to(
+                                                              AddressFormScreen(
+                                                                addressScreenCheck:
+                                                                    EnumAddress
+                                                                        .editAddressScreen,
+                                                                addressId:
+                                                                    addressController
+                                                                        .addressList[
+                                                                            index]
+                                                                        .id,
+                                                              ),
+                                                            );
+                                                          },
+                                                          icon: const Icon(
+                                                              Icons.edit),
+                                                        ),
+                                                        IconButton(
+                                                          onPressed: () {
+                                                            showDialog(
+                                                              context: context,
+                                                              builder:
+                                                                  (context) {
+                                                                return AddressAlertWidget(
+                                                                    index:
+                                                                        index);
+                                                              },
+                                                            );
+                                                          },
+                                                          icon: const Icon(
+                                                            Icons.delete,
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    )
+                                                  ],
+                                                ),
                                                 Text(
                                                   addressController
                                                       .addressList[index]
-                                                      .fullName
-                                                      .toUpperCase(),
+                                                      .address,
                                                   style: const TextStyle(
                                                     fontFamily: "Montserrat",
-                                                    fontSize: 18,
+                                                    letterSpacing: 1,
                                                     fontWeight: FontWeight.bold,
                                                   ),
                                                 ),
-                                                const Spacer(),
                                                 Row(
                                                   children: [
-                                                    IconButton(
-                                                      onPressed: () {
-                                                        Get.to(
-                                                          AddressFormScreen(
-                                                            addressScreenCheck:
-                                                                EnumAddress
-                                                                    .editAddressScreen,
-                                                            addressId:
-                                                                addressController
-                                                                    .addressList[
-                                                                        index]
-                                                                    .id,
-                                                          ),
-                                                        );
-                                                      },
-                                                      icon: const Icon(
-                                                          Icons.edit),
+                                                    Text(
+                                                      "PIN : ${addressController.addressList[index].pin}, ",
+                                                      style: const TextStyle(
+                                                        fontFamily:
+                                                            "Montserrat",
+                                                        letterSpacing: 1,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                      ),
                                                     ),
-                                                    IconButton(
-                                                      onPressed: () {
-                                                        showDialog(
-                                                          context: context,
-                                                          builder: (context) {
-                                                            return AddressAlertWidget(
-                                                                index: index);
-                                                          },
-                                                        );
-                                                      },
-                                                      icon: const Icon(
-                                                        Icons.delete,
+                                                    Text(
+                                                      addressController
+                                                          .addressList[index]
+                                                          .state,
+                                                      style: const TextStyle(
+                                                        fontFamily:
+                                                            "Montserrat",
+                                                        letterSpacing: 1,
+                                                        fontWeight:
+                                                            FontWeight.bold,
                                                       ),
                                                     ),
                                                   ],
-                                                )
-                                              ],
-                                            ),
-                                            Text(
-                                              addressController
-                                                  .addressList[index].address,
-                                              style: const TextStyle(
-                                                fontFamily: "Montserrat",
-                                                letterSpacing: 1,
-                                                fontWeight: FontWeight.bold,
-                                              ),
-                                            ),
-                                            Row(
-                                              children: [
-                                                Text(
-                                                  "PIN : ${addressController.addressList[index].pin}, ",
-                                                  style: const TextStyle(
-                                                    fontFamily: "Montserrat",
-                                                    letterSpacing: 1,
-                                                    fontWeight: FontWeight.bold,
-                                                  ),
                                                 ),
                                                 Text(
                                                   addressController
-                                                      .addressList[index].state,
+                                                      .addressList[index]
+                                                      .landMark,
                                                   style: const TextStyle(
                                                     fontFamily: "Montserrat",
-                                                    letterSpacing: 1,
                                                     fontWeight: FontWeight.bold,
+                                                    letterSpacing: 1,
                                                   ),
                                                 ),
+                                                kHeight10,
+                                                Text(
+                                                  addressController
+                                                      .addressList[index].phone,
+                                                  style: const TextStyle(
+                                                    fontFamily: "Montserrat",
+                                                    fontWeight: FontWeight.bold,
+                                                    letterSpacing: 1,
+                                                  ),
+                                                ),
+                                                kHeight10,
                                               ],
                                             ),
-                                            Text(
-                                              addressController
-                                                  .addressList[index].landMark,
-                                              style: const TextStyle(
-                                                fontFamily: "Montserrat",
-                                                fontWeight: FontWeight.bold,
-                                                letterSpacing: 1,
-                                              ),
-                                            ),
-                                            kHeight10,
-                                            Text(
-                                              addressController
-                                                  .addressList[index].phone,
-                                              style: const TextStyle(
-                                                fontFamily: "Montserrat",
-                                                fontWeight: FontWeight.bold,
-                                                letterSpacing: 1,
-                                              ),
-                                            ),
-                                            kHeight10,
-                                          ],
-                                        ),
-                                      ),
-                                    );
-                                  },
-                                  separatorBuilder: (context, index) {
-                                    return kHeight20;
-                                  },
-                                  itemCount:
-                                      addressController.addressList.length,
-                                ),
+                                          ),
+                                        );
+                                      },
+                                      separatorBuilder: (context, index) {
+                                        return kHeight20;
+                                      },
+                                      itemCount:
+                                          addressController.addressList.length,
+                                    ),
                         ],
                       ),
                     ),

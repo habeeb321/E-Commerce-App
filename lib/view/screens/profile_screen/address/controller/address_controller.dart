@@ -23,7 +23,13 @@ class AddressController extends GetxController {
   bool isLoading2 = false;
   bool isSelected = true;
   bool isOfficeSelected = false;
+
   int selectIndex = 0;
+
+  void selectDefault(int index) {
+    selectIndex = index;
+    update();
+  }
 
   List<GetAddressModel> addressList = [];
   String addressType = 'Home';
@@ -263,10 +269,5 @@ class AddressController extends GetxController {
 
   GetAddressModel findById(String id) {
     return addressList.firstWhere((element) => element.id == id);
-  }
-
-  void selectDefault(int index) {
-    selectIndex = index;
-    update();
   }
 }

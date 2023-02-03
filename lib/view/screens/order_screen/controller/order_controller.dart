@@ -17,17 +17,18 @@ class OrdersController extends GetxController {
   }
 
   bool isLoading = false;
-  void startLoading() {
-    isLoading = true;
-    update();
-  }
-
   List<GetOrderModel>? ordersList = [];
   GetOrderModel? singleModel;
   GetAddressModel? addressModel;
   List<GetSingelCartProduct> cartModel = [];
   int? totalSave;
   String? deliveryDate;
+  List<String> productIds = [];
+
+  void startLoading() {
+    isLoading = true;
+    update();
+  }
 
   void getAllOrders() async {
     isLoading = true;

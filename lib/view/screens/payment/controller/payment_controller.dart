@@ -5,6 +5,7 @@ import 'package:razorpay_flutter/razorpay_flutter.dart';
 import 'package:scotch/core/const.dart';
 import 'package:scotch/view/screens/order_screen/model/order_model.dart';
 import 'package:scotch/view/screens/order_screen/services/order_service.dart';
+import 'package:scotch/view/screens/profile_screen/order_placed/view/order_placed_screen.dart';
 
 class PaymentController extends GetxController {
   Razorpay razorpay = Razorpay();
@@ -96,6 +97,7 @@ class PaymentController extends GetxController {
       if (value != null) {
         loading = false;
         update();
+        Get.off(const OrderPlacedScreen());
       } else {
         loading = false;
         update();

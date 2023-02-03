@@ -9,12 +9,13 @@ import 'package:scotch/view/screens/order_screen/model/order_model.dart';
 
 class OrderService {
   Future<String?> placeOrder(OrdersModel model) async {
+    final Dio dios = await ApiInterceptor().getApiUser();
+
     try {
-      final Dio dios = await ApiInterceptor().getApiUser();
-      final Response response =
-          await dios.post(ApiBaseUrl().baseUrl + ApiEndPoints.orders, data: {
-        model.toJson(),
-      });
+      final Response response = await dios.post(
+        ApiBaseUrl().baseUrl + ApiEndPoints.orders,
+        data: model.toJson(),
+      );
       if (response.statusCode == 200 || response.statusCode == 201) {
         if (response.data == null) {
           return null;
@@ -27,8 +28,8 @@ class OrderService {
       } else {
         return null;
       }
-    } on DioError catch (e) {
-      log(e.message.toString());
+    } catch (e) {
+      log(e.toString());
       DioException().dioError(e);
     }
     return null;

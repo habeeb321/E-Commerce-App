@@ -46,8 +46,8 @@ class CartScreen extends StatelessWidget {
           return GetBuilder(
             init: cartController,
             builder: (controller) {
-              return cartController.cartList == null ||
-                      cartController.cartList!.products.isEmpty
+              return cartController.model == null ||
+                      cartController.model!.products.isEmpty
                   ? const SizedBox()
                   : Row(
                       children: [

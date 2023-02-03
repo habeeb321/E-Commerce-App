@@ -16,12 +16,14 @@ class CartController extends GetxController {
   BottomNavController bottomNavController = Get.put(BottomNavController());
 
   bool isLoading = false;
-  CartModel? cartList;
-  List<String> cartItemsId = [];
   int quantity = 1;
   int totalproductCount = 1;
   int? totalSave;
+  CartModel? model;
   CartService service = CartService();
+  List<String> cartList = [];
+  List<String> cartItemsId = [];
+  List<String> cartitemsPayId = [];
 
   void getCart() async {
     isLoading = true;
@@ -29,10 +31,12 @@ class CartController extends GetxController {
     await service.getCart().then(
       (value) {
         if (value != null) {
-          cartList = value;
+          model = value;
           update();
-          cartItemsId = cartList!.products.map((e) => e.product.id).toList();
-          totalSave = (cartList!.totalPrice - cartList!.totalDiscount).toInt();
+          cartItemsId = model!.products.map((e) => e.product.id).toList();
+          cartitemsPayId = model!.products.map((e) => e.id).toList();
+          cartList = model!.products.map((e) => e.product.id).toList();
+          totalSave = (model!.totalPrice - model!.totalDiscount).toInt();
           totalProductCount();
           update();
           isLoading = false;
@@ -98,9 +102,9 @@ class CartController extends GetxController {
   }
 
   void totalProductCount() {
-    int count = 0;
-    for (var i = 0; i < cartList!.products.length; i++) {
-      count = count + cartList!.products[i].qty;
+    dynamic count = 0;
+    for (var i = 0; i < model!.products.length; i++) {
+      count = count + model!.products[i].qty;
     }
     totalproductCount = count;
     update();
@@ -118,15 +122,13 @@ class CartController extends GetxController {
         if (value != null) {
           await CartService().getCart().then((value) {
             if (value != null) {
-              cartList = value;
+              model = value;
               update();
               totalProductCount();
               update();
-              cartItemsId =
-                  cartList!.products.map((e) => e.product.id).toList();
+              cartItemsId = model!.products.map((e) => e.product.id).toList();
               update();
-              totalSave =
-                  (cartList!.totalPrice - cartList!.totalDiscount).toInt();
+              totalSave = (model!.totalPrice - model!.totalDiscount).toInt();
               update();
             } else {
               null;

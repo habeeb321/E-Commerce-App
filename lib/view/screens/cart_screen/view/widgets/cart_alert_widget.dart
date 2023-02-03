@@ -46,7 +46,7 @@ class CartAlertWidget extends StatelessWidget {
               ),
               TextButton(
                 onPressed: () {
-                  cart.removeCart(cart.cartList!.products[index].product.id);
+                  cart.removeCart(cart.model!.products[index].product.id);
                 },
                 child: const Text(
                   'Yes',

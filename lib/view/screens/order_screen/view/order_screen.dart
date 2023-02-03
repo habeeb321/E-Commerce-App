@@ -10,9 +10,9 @@ import 'package:scotch/view/screens/cart_screen/controller/cart_controller.dart'
 import 'package:scotch/view/screens/order_screen/controller/order_controller.dart';
 import 'package:scotch/view/screens/order_screen/model/order_enum.dart';
 import 'package:scotch/view/screens/order_screen/view/widgets/order_address_widget.dart';
-import 'package:scotch/view/screens/order_screen/view/widgets/order_bottom_widget.dart';
 import 'package:scotch/view/screens/order_screen/view/widgets/row_order_widget.dart';
 import 'package:scotch/view/screens/payment/controller/payment_controller.dart';
+import 'package:scotch/view/screens/profile_screen/address/view/address_screen.dart';
 
 class OrderScreen extends StatefulWidget {
   const OrderScreen({
@@ -58,6 +58,13 @@ class _OrderPageScreenState extends State<OrderScreen> {
   Widget build(BuildContext context) {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       ordersController.getSingleCart(widget.productId, widget.cartId);
+
+      paymentController.setAddressId(
+          addressController.addressList[addressController.selectIndex].id);
+      ordersController.productIds.insert(
+          0,
+          cartController
+              .cartitemsPayId[cartController.cartitemsPayId.length - 1]);
     });
     return Scaffold(
       backgroundColor: Colors.grey.shade200,
@@ -90,10 +97,17 @@ class _OrderPageScreenState extends State<OrderScreen> {
                               padding: const EdgeInsets.all(10.0),
                               child: Column(
                                 children: [
-                                  OrderAddressWidget(
-                                    index: addressController.selectIndex,
-                                    value: addressController,
-                                  ),
+                                  addressController.addressList.isEmpty
+                                      ? const SizedBox(
+                                          height: 150,
+                                          child: Center(
+                                            child: Text('Add Address'),
+                                          ),
+                                        )
+                                      : OrderAddressWidget(
+                                          index: addressController.selectIndex,
+                                          value: addressController,
+                                        ),
                                   kHeight10,
                                   ListView.builder(
                                     physics: const ScrollPhysics(),
@@ -114,7 +128,7 @@ class _OrderPageScreenState extends State<OrderScreen> {
                                                     widget.screenCheck ==
                                                             OrderScreenEnum
                                                                 .normalOrderScreen
-                                                        ? '${ApiBaseUrl().baseUrl}/products/${cartController.cartList!.products[index].product.image[4]}'
+                                                        ? '${ApiBaseUrl().baseUrl}/products/${cartController.model!.products[index].product.image[4]}'
                                                         : '${ApiBaseUrl().baseUrl}/products/${ordersController.cartModel[0].product.image[4]}',
                                                   ),
                                                 ),
@@ -128,7 +142,7 @@ class _OrderPageScreenState extends State<OrderScreen> {
                                                               OrderScreenEnum
                                                                   .normalOrderScreen
                                                           ? cartController
-                                                              .cartList!
+                                                              .model!
                                                               .products[index]
                                                               .product
                                                               .name
@@ -149,7 +163,7 @@ class _OrderPageScreenState extends State<OrderScreen> {
                                                                 OrderScreenEnum
                                                                     .normalOrderScreen
                                                             ? cartController
-                                                                .cartList!
+                                                                .model!
                                                                 .products[index]
                                                                 .product
                                                                 .rating
@@ -182,7 +196,7 @@ class _OrderPageScreenState extends State<OrderScreen> {
                                                           widget.screenCheck ==
                                                                   OrderScreenEnum
                                                                       .normalOrderScreen
-                                                              ? "${cartController.cartList!.products[index].product.offer}%Off"
+                                                              ? "${cartController.model!.products[index].product.offer}%Off"
                                                               : "${ordersController.cartModel[0].product.offer}%Off",
                                                           style:
                                                               const TextStyle(
@@ -199,7 +213,7 @@ class _OrderPageScreenState extends State<OrderScreen> {
                                                           widget.screenCheck ==
                                                                   OrderScreenEnum
                                                                       .normalOrderScreen
-                                                              ? "₹${cartController.cartList!.products[index].product.price}"
+                                                              ? "₹${cartController.model!.products[index].product.price}"
                                                               : "₹${ordersController.cartModel[0].product.price}",
                                                           style:
                                                               const TextStyle(
@@ -218,7 +232,7 @@ class _OrderPageScreenState extends State<OrderScreen> {
                                                           widget.screenCheck ==
                                                                   OrderScreenEnum
                                                                       .normalOrderScreen
-                                                              ? "₹${(cartController.cartList!.products[index].product.price - cartController.cartList!.products[index].product.discountPrice).round()}"
+                                                              ? "₹${(cartController.model!.products[index].product.price - cartController.model!.products[index].product.discountPrice).round()}"
                                                               : "₹${(ordersController.cartModel[0].product.price - ordersController.cartModel[0].product.discountPrice).round()}",
                                                           style:
                                                               const TextStyle(
@@ -255,7 +269,7 @@ class _OrderPageScreenState extends State<OrderScreen> {
                                                             5),
                                                   ),
                                                   child: Text(
-                                                    "${cartController.cartList!.products[index].qty}",
+                                                    "${cartController.model!.products[index].qty}",
                                                     textAlign: TextAlign.center,
                                                     style: const TextStyle(
                                                         fontSize: 16),
@@ -270,8 +284,7 @@ class _OrderPageScreenState extends State<OrderScreen> {
                                     },
                                     itemCount: widget.screenCheck ==
                                             OrderScreenEnum.normalOrderScreen
-                                        ? cartController
-                                            .cartList!.products.length
+                                        ? cartController.model!.products.length
                                         : 1,
                                   ),
                                   kHeight10,
@@ -301,7 +314,7 @@ class _OrderPageScreenState extends State<OrderScreen> {
                                           text2: widget.screenCheck ==
                                                   OrderScreenEnum
                                                       .normalOrderScreen
-                                              ? "₹${(cartController.cartList!.totalPrice - cartController.cartList!.totalDiscount).round()}"
+                                              ? "₹${(cartController.model!.totalPrice - cartController.model!.totalDiscount).round()}"
                                               : "₹${(ordersController.cartModel[0].product.price - ordersController.cartModel[0].product.discountPrice).round()}",
                                           color: kRedColor,
                                         ),
@@ -319,7 +332,7 @@ class _OrderPageScreenState extends State<OrderScreen> {
                                           text2: widget.screenCheck ==
                                                   OrderScreenEnum
                                                       .normalOrderScreen
-                                              ? "₹${(cartController.cartList!.totalPrice - cartController.cartList!.totalDiscount).round()}"
+                                              ? "₹${(cartController.model!.totalPrice - cartController.model!.totalDiscount).round()}"
                                               : "₹${(ordersController.cartModel[0].product.price - ordersController.cartModel[0].product.discountPrice).round()}",
                                         ),
                                         kHeight10,
@@ -353,8 +366,129 @@ class _OrderPageScreenState extends State<OrderScreen> {
           },
         ),
       ),
-      bottomNavigationBar: OrderBottomWidget(
-        screenCheck: widget.screenCheck,
+      bottomNavigationBar: GetBuilder(
+        init: paymentController,
+        builder: (controller) {
+          return GetBuilder(
+            init: addressController,
+            builder: (controller) {
+              return GetBuilder(
+                init: ordersController,
+                builder: (controller) {
+                  return GetBuilder(
+                    init: cartController,
+                    builder: (controller) {
+                      return Material(
+                        elevation: 10,
+                        child: Row(
+                          children: [
+                            SizedBox(
+                              height: Get.size.height * 0.06,
+                              width: Get.size.width / 2,
+                              child: Center(
+                                child: ordersController.isLoading == true
+                                    ? const CircularProgressIndicator()
+                                    : Text(
+                                        widget.screenCheck ==
+                                                OrderScreenEnum
+                                                    .normalOrderScreen
+                                            ? "₹${(cartController.model!.totalPrice - cartController.model!.totalDiscount).round()}"
+                                            : "₹${(ordersController.cartModel[0].product.price - ordersController.cartModel[0].product.discountPrice).round()}",
+                                        style: const TextStyle(
+                                          color: kBlackcolor,
+                                          fontFamily: "Manrope",
+                                          fontWeight: FontWeight.bold,
+                                          letterSpacing: 1,
+                                          fontSize: 18,
+                                        ),
+                                      ),
+                              ),
+                            ),
+                            addressController.addressList.isNotEmpty
+                                ? SizedBox(
+                                    height: Get.size.height * 0.06,
+                                    width: Get.size.width / 2,
+                                    child: ElevatedButton(
+                                      onPressed: () async {
+                                        paymentController.setTotalAmount(
+                                          widget.screenCheck ==
+                                                  OrderScreenEnum
+                                                      .normalOrderScreen
+                                              ? int.parse((cartController
+                                                          .model!.totalPrice -
+                                                      cartController
+                                                          .model!.totalDiscount)
+                                                  .round()
+                                                  .toString())
+                                              : int.parse((ordersController
+                                                          .cartModel[0].price -
+                                                      ordersController
+                                                          .cartModel[0]
+                                                          .discountPrice)
+                                                  .round()
+                                                  .toString()),
+                                          widget.screenCheck ==
+                                                  OrderScreenEnum
+                                                      .normalOrderScreen
+                                              ? cartController.cartitemsPayId
+                                              : ordersController.productIds,
+                                          addressController
+                                              .addressList[
+                                                  addressController.selectIndex]
+                                              .id,
+                                        );
+                                      },
+                                      style: ElevatedButton.styleFrom(
+                                        backgroundColor: Colors.blue,
+                                        elevation: 0,
+                                        shape: const RoundedRectangleBorder(),
+                                      ),
+                                      child: const Text(
+                                        'Continue',
+                                        style: TextStyle(
+                                          color: kWhitecolor,
+                                          fontFamily: "Montserrat",
+                                          fontWeight: FontWeight.bold,
+                                          letterSpacing: 1,
+                                          fontSize: 18,
+                                        ),
+                                      ),
+                                    ),
+                                  )
+                                : SizedBox(
+                                    height: Get.size.height * 0.06,
+                                    width: Get.size.width / 2,
+                                    child: ElevatedButton(
+                                      onPressed: () {
+                                        Get.to(const AddressScreen());
+                                      },
+                                      style: ElevatedButton.styleFrom(
+                                        backgroundColor: Colors.blue,
+                                        elevation: 0,
+                                        shape: const RoundedRectangleBorder(),
+                                      ),
+                                      child: const Text(
+                                        'Add Adrress',
+                                        style: TextStyle(
+                                          color: kWhitecolor,
+                                          fontFamily: "Montserrat",
+                                          fontWeight: FontWeight.bold,
+                                          letterSpacing: 1,
+                                          fontSize: 18,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                          ],
+                        ),
+                      );
+                    },
+                  );
+                },
+              );
+            },
+          );
+        },
       ),
     );
   }

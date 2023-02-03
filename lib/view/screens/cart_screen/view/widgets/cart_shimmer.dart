@@ -61,7 +61,7 @@ class CartShimmer extends StatelessWidget {
           ],
         );
       },
-      itemCount: cartController.cartList?.products.length ?? 10,
+      itemCount: cartController.model?.products.length ?? 10,
       separatorBuilder: (context, index) => const Divider(),
     );
   }
