@@ -71,6 +71,7 @@ class _OrderPageScreenState extends State<OrderScreen> {
             letterSpacing: 1,
           ),
         ),
+        centerTitle: true,
       ),
       body: SafeArea(
         child: GetBuilder(
