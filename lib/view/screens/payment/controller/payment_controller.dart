@@ -1,8 +1,7 @@
 import 'dart:developer';
-import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
-import 'package:scotch/core/const.dart';
 import 'package:scotch/view/screens/order_screen/model/order_model.dart';
 import 'package:scotch/view/screens/order_screen/services/order_service.dart';
 import 'package:scotch/view/screens/profile_screen/order_placed/view/order_placed_screen.dart';
@@ -59,27 +58,22 @@ class PaymentController extends GetxController {
   }
 
   void handlePaymentSuccess(PaymentSuccessResponse response) {
-    Get.snackbar('Payment', "SUCCESS:${response.paymentId}",
-        snackPosition: SnackPosition.BOTTOM,
-        backgroundColor: Colors.green,
-        colorText: kWhitecolor);
+    Fluttertoast.showToast(
+        msg: "SUCCESS:${response.paymentId}", timeInSecForIosWeb: 4);
     orderProducts(addressId!, 'ONLINE_PAYMENT');
     update();
   }
 
   void handlePaymentError(PaymentFailureResponse response) {
-    Get.snackbar('Payment', "ERROR:${response.code} - ${response.message}",
-        snackPosition: SnackPosition.BOTTOM,
-        backgroundColor: kRedColor,
-        colorText: kWhitecolor);
+    Fluttertoast.showToast(
+        msg: "ERROR:${response.code} - ${response.message}",
+        timeInSecForIosWeb: 4);
     update();
   }
 
   void handleExternalWallet(ExternalWalletResponse response) {
-    Get.snackbar('Payment', "EXTERNAL_WALLET:${response.walletName}",
-        snackPosition: SnackPosition.BOTTOM,
-        backgroundColor: kBlackcolor,
-        colorText: kWhitecolor);
+    Fluttertoast.showToast(
+        msg: "EXTERNAL_WALLET:${response.walletName}", timeInSecForIosWeb: 4);
     update();
   }
 
