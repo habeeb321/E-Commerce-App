@@ -108,7 +108,7 @@ class OrderDetialsView extends StatelessWidget {
                                             ),
                                             onPressed: () {
                                               ordersController
-                                                  .sendOrderDetials(context);
+                                                  .sendOrderDetials();
                                             },
                                             icon: const Icon(
                                               Icons.share,
@@ -144,7 +144,7 @@ class OrderDetialsView extends StatelessWidget {
                                               ),
                                               onPressed: () {
                                                 ordersController
-                                                    .sendOrderDetials(context);
+                                                    .sendOrderDetials();
                                               },
                                               icon: const Icon(
                                                 Icons.share,
@@ -157,7 +157,7 @@ class OrderDetialsView extends StatelessWidget {
                                           ],
                                         );
                                 },
-                              )
+                              ),
                             ],
                           ),
                         ),

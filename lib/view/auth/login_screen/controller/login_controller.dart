@@ -21,10 +21,12 @@ class LoginController extends GetxController {
       password: passController.text,
     );
     loginService.loginUser(loginModel, context).then(
-      (value) {
+      (value) async {
         if (value != null) {
           storage.write(key: 'token', value: value.accessToken);
           storage.write(key: 'refreshToken', value: value.refreshToken);
+          await storage.write(
+              key: 'email', value: emailController.text.toString());
           Get.offAll(const BottomNavBar());
           disposeTextfield();
         } else {

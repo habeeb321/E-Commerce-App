@@ -11,6 +11,9 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ProfileController profileController = Get.put(ProfileController());
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      profileController.getUser();
+    });
     return Scaffold(
       appBar: AppBar(
         title: const Text('Profile'),
@@ -23,33 +26,69 @@ class ProfileScreen extends StatelessWidget {
             child: GetBuilder<ProfileController>(
               builder: (controller) {
                 return Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // const Text(
-                    //   "User Details",
-                    //   style:
-                    //       TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                    // ),
-                    // kHeight10,
-                    // UserDetialsText(
-                    //   title: "Name",
-                    //   result: profileController.userDetials?.fullname ?? '',
-                    // ),
-                    // UserDetialsText(
-                    //   title: "Email",
-                    //   result: profileController.userDetials?.email ?? "",
-                    // ),
-                    // UserDetialsText(
-                    //   title: "Phone Number",
-                    //   result: profileController.userDetials?.phone ?? "",
-                    // ),
                     kHeight10,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            RichText(
+                              text: TextSpan(
+                                text: 'Hello, ',
+                                style: const TextStyle(
+                                    fontSize: 25,
+                                    color: kBlackcolor,
+                                    fontWeight: FontWeight.w400),
+                                children: <TextSpan>[
+                                  TextSpan(
+                                      text: profileController
+                                              .userDetials?.fullname ??
+                                          '',
+                                      style: const TextStyle(
+                                          fontWeight: FontWeight.bold)),
+                                ],
+                              ),
+                            ),
+                            Text(
+                              profileController.userDetials?.email ?? "",
+                              style: const TextStyle(fontSize: 16),
+                            ),
+                            Text(
+                              profileController.userDetials?.phone ?? "",
+                              style: const TextStyle(fontSize: 16),
+                            ),
+                          ],
+                        ),
+                        CircleAvatar(
+                          radius: 30,
+                          backgroundColor: themeColor,
+                          child: CircleAvatar(
+                            radius: 27,
+                            backgroundColor: Colors.grey.shade300,
+                            child: const Icon(
+                              Icons.person_outline_outlined,
+                              size: 40,
+                              color: themeColor,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    kHeight5,
+                    divider,
+                    kHeight5,
                     Row(
                       children: const [
                         kWidth10,
                         Text('Account Settings', style: kTextstyle),
                       ],
                     ),
-                    kHeight10,
+                    kHeight5,
+                    divider,
+                    kHeight5,
                     Card(
                       elevation: 0.1,
                       color: kWhitecolor,
@@ -89,14 +128,18 @@ class ProfileScreen extends StatelessWidget {
                         ],
                       ),
                     ),
-                    kHeight10,
+                    kHeight5,
+                    divider,
+                    kHeight5,
                     Row(
                       children: const [
                         kWidth10,
                         Text('Information & Feedback', style: kTextstyle),
                       ],
                     ),
-                    kHeight10,
+                    kHeight5,
+                    divider,
+                    kHeight5,
                     Card(
                       elevation: 0.1,
                       child: Column(
@@ -159,19 +202,26 @@ class ProfileScreen extends StatelessWidget {
                       ),
                     ),
                     kHeight20,
-                    const Text(
-                      'Version',
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18,
-                          color: Color.fromARGB(255, 176, 175, 175)),
+                    Center(
+                      child: Column(
+                        children: const [
+                          Text(
+                            'Version',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18,
+                                color: Color.fromARGB(255, 176, 175, 175)),
+                          ),
+                          Text(
+                            '1.0.0',
+                            style: TextStyle(
+                                fontSize: 16,
+                                color: Color.fromARGB(255, 176, 175, 175)),
+                          ),
+                        ],
+                      ),
                     ),
-                    const Text(
-                      '1.0.0',
-                      style: TextStyle(
-                          fontSize: 16,
-                          color: Color.fromARGB(255, 176, 175, 175)),
-                    ),
+                    kHeight10,
                   ],
                 );
               },

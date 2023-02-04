@@ -128,7 +128,7 @@ class OrdersController extends GetxController {
     );
   }
 
-  void sendOrderDetials(context) {
+  void sendOrderDetials() {
     Share.share(
         "ShoeCart Order -Order Id:${singleModel!.id},Total Products:${singleModel!.products.length},Total Price:${singleModel!.totalPrice},Delivery Date:$deliveryDate");
   }

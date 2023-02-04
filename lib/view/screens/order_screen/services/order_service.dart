@@ -83,9 +83,7 @@ class OrderService {
     return null;
   }
 
-  Future<String?> cancelOrder(
-    orderId,
-  ) async {
+  Future<String?> cancelOrder(orderId) async {
     try {
       final Dio dios = await ApiInterceptor().getApiUser();
       final Response response = await dios.patch(
