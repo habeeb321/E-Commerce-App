@@ -87,15 +87,17 @@ class PaymentController extends GetxController {
       products: products,
     );
 
-    await OrderService().placeOrder(model).then((value) {
-      if (value != null) {
-        loading = false;
-        update();
-        Get.off(const OrderPlacedScreen());
-      } else {
-        loading = false;
-        update();
-      }
-    });
+    await OrderService().placeOrder(model).then(
+      (value) {
+        if (value != null) {
+          loading = false;
+          update();
+          Get.off(const OrderPlacedScreen());
+        } else {
+          loading = false;
+          update();
+        }
+      },
+    );
   }
 }

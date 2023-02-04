@@ -131,7 +131,8 @@ class WishlistScreen extends StatelessWidget {
                                 );
                               },
                               separatorBuilder: (context, index) => kHeight20,
-                              itemCount: wishlistController.wishList.length,
+                              itemCount:
+                                  wishlistController.model!.products.length,
                             ),
                     ],
                   );
