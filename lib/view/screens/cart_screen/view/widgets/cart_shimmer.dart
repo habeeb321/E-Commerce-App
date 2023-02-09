@@ -19,25 +19,11 @@ class CartShimmer extends StatelessWidget {
             Row(
               children: [
                 kWidth10,
-                const ShimmerWidget.rectangle(height: 100, width: 100),
                 Padding(
-                  padding: const EdgeInsets.only(left: 10),
+                  padding: const EdgeInsets.only(left: 30, top: 25),
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const ShimmerWidget.rectangle(height: 10, width: 50),
-                      kHeight10,
-                      const ShimmerWidget.rectangle(height: 10, width: 30),
-                      kHeight10,
-                      Row(
-                        children: const [
-                          ShimmerWidget.rectangle(height: 10, width: 30),
-                          kWidth10,
-                          ShimmerWidget.rectangle(height: 10, width: 30),
-                          kWidth10,
-                          ShimmerWidget.rectangle(height: 10, width: 30),
-                        ],
-                      ),
+                      const ShimmerWidget.rectangle(height: 100, width: 100),
                       kHeight10,
                       Row(
                         children: [
@@ -55,14 +41,39 @@ class CartShimmer extends StatelessWidget {
                     ],
                   ),
                 ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 50, top: 30),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: const [
+                      ShimmerWidget.rectangle(height: 10, width: 140),
+                      kHeight20,
+                      ShimmerWidget.rectangle(height: 10, width: 110),
+                      kHeight20,
+                      ShimmerWidget.rectangle(height: 10, width: 50),
+                      kHeight20,
+                      ShimmerWidget.rectangle(height: 10, width: 70),
+                      kHeight20,
+                      ShimmerWidget.rectangle(height: 10, width: 100),
+                      kHeight10,
+                    ],
+                  ),
+                ),
               ],
             ),
             kHeight10,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                ShimmerWidget.rectangle(height: 40, width: Get.width * 0.4),
+                ShimmerWidget.rectangle(height: 40, width: Get.width * 0.4),
+              ],
+            ),
           ],
         );
       },
       itemCount: cartController.model?.products.length ?? 10,
-      separatorBuilder: (context, index) => const Divider(),
+      separatorBuilder: (context, index) => kHeight5,
     );
   }
 }

@@ -19,16 +19,15 @@ class CartScreen extends StatelessWidget {
     });
     return Scaffold(
       appBar: AppBar(
-        title: const Center(
-          child: Text(
-            'My Cart',
-            style: TextStyle(
-              fontSize: 20,
-              fontFamily: "Manrope",
-              fontWeight: FontWeight.bold,
-            ),
+        title: const Text(
+          'My Cart',
+          style: TextStyle(
+            fontSize: 20,
+            fontFamily: "Manrope",
+            fontWeight: FontWeight.bold,
           ),
         ),
+        centerTitle: true,
       ),
       body: SafeArea(
         child: SingleChildScrollView(
