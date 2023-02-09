@@ -23,7 +23,26 @@ class ProductScreen extends StatelessWidget {
     final productId = ModalRoute.of(context)?.settings.arguments as String;
     final homeCtr = homeController.findById(productId);
     return Scaffold(
+      extendBodyBehindAppBar: true,
       backgroundColor: kGreyColor.shade200,
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+        leading: IconButton(
+          onPressed: () {
+            Get.back();
+          },
+          icon: const Icon(Icons.keyboard_backspace, color: kBlackcolor),
+        ),
+        title: Text(
+          homeCtr.name,
+          style: const TextStyle(
+              color: kBlackcolor,
+              fontFamily: 'Playfair Display',
+              fontWeight: FontWeight.bold),
+        ),
+        centerTitle: true,
+      ),
       body: SafeArea(
         child: SingleChildScrollView(
           child: GetBuilder<ProductController>(
