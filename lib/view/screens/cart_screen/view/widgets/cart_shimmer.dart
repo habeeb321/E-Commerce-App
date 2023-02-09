@@ -24,7 +24,7 @@ class CartShimmer extends StatelessWidget {
                   child: Column(
                     children: [
                       const ShimmerWidget.rectangle(height: 100, width: 100),
-                      kHeight10,
+                      kHeight20,
                       Row(
                         children: [
                           const ShimmerWidget.circle(height: 20, width: 20),
@@ -61,13 +61,15 @@ class CartShimmer extends StatelessWidget {
                 ),
               ],
             ),
-            kHeight10,
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                ShimmerWidget.rectangle(height: 40, width: Get.width * 0.4),
-                ShimmerWidget.rectangle(height: 40, width: Get.width * 0.4),
-              ],
+            Padding(
+              padding: const EdgeInsets.only(top: 30),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  ShimmerWidget.rectangle(height: 40, width: Get.width * 0.4),
+                  ShimmerWidget.rectangle(height: 40, width: Get.width * 0.4),
+                ],
+              ),
             ),
           ],
         );
