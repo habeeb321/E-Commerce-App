@@ -24,6 +24,7 @@ class OrderDetialsView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Order Details"),
+        centerTitle: true,
       ),
       body: SingleChildScrollView(
         child: GetBuilder<OrdersController>(

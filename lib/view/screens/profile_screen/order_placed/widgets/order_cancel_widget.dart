@@ -85,10 +85,10 @@ class OrderCanceldStatusWidget extends StatelessWidget {
                         style: const TextStyle(fontSize: 12),
                       )
                     ],
-                  )
+                  ),
                 ],
               ),
-            )
+            ),
           ],
         );
       },

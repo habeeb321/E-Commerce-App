@@ -140,7 +140,7 @@ class OrderPlacedScreen extends StatelessWidget {
                                                     color: Colors.grey.shade600,
                                                   ),
                                                 ),
-                                                Text(
+                                                Text( 
                                                   ordersController
                                                               .ordersList![
                                                                   index1]
