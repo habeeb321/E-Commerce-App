@@ -102,7 +102,6 @@ class OrdersController extends GetxController {
       if (value != null) {
         cartModel = value;
         update();
-        totalSave = (cartModel[0].price - cartModel[0].discountPrice).round();
         isLoading = false;
         update();
       } else {
@@ -110,7 +109,6 @@ class OrdersController extends GetxController {
         update();
       }
     });
-    return null;
   }
 
   void toOrderScreen(productId, cartId) {

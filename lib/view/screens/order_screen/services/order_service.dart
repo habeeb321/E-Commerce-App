@@ -16,7 +16,7 @@ class OrderService {
         ApiBaseUrl().baseUrl + ApiEndPoints.orders,
         data: model.toJson(),
       );
-      if (response.statusCode == 200 || response.statusCode == 201) {
+      if (response.statusCode == 201) {
         if (response.data == null) {
           return null;
         } else {

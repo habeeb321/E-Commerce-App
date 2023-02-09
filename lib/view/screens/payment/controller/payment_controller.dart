@@ -37,21 +37,23 @@ class PaymentController extends GetxController {
         'wallets': ['paytm']
       }
     };
-    update();
+
     try {
       razorpay.open(options);
       razorpay.on(Razorpay.EVENT_PAYMENT_SUCCESS,
           (PaymentSuccessResponse response) {
         handlePaymentSuccess(response);
+        orderProducts(addressId!, 'ONLINE_PAYMENT');
+        update();
       });
-      razorpay.on(Razorpay.EVENT_PAYMENT_ERROR, (PaymentFailureResponse resp) {
-        handlePaymentError(resp);
+      razorpay.on(Razorpay.EVENT_PAYMENT_ERROR,
+          (PaymentFailureResponse response) {
+        handlePaymentError(response);
       });
       razorpay.on(Razorpay.EVENT_EXTERNAL_WALLET,
           (ExternalWalletResponse response) {
         handleExternalWallet(response);
       });
-      update();
     } on PaymentFailureResponse catch (e) {
       log(e.error.toString());
     }
@@ -60,7 +62,6 @@ class PaymentController extends GetxController {
   void handlePaymentSuccess(PaymentSuccessResponse response) {
     Fluttertoast.showToast(
         msg: "SUCCESS:${response.paymentId}", timeInSecForIosWeb: 4);
-    orderProducts(addressId!, 'ONLINE_PAYMENT');
     update();
   }
 
@@ -87,17 +88,15 @@ class PaymentController extends GetxController {
       products: products,
     );
 
-    await OrderService().placeOrder(model).then(
-      (value) {
-        if (value != null) {
-          loading = false;
-          update();
-          Get.off(const OrderPlacedScreen());
-        } else {
-          loading = false;
-          update();
-        }
-      },
-    );
+    await OrderService().placeOrder(model).then((value) {
+      if (value != null) {
+        loading = false;
+        update();
+        Get.off(const OrderPlacedScreen());
+      } else {
+        loading = false;
+        update();
+      }
+    });
   }
 }

@@ -19,6 +19,7 @@ class CartController extends GetxController {
   int quantity = 1;
   int totalproductCount = 1;
   int? totalSave;
+  String size = "5 inch";
   CartModel? model;
   CartService service = CartService();
   List<String> cartList = [];
@@ -50,26 +51,26 @@ class CartController extends GetxController {
     );
   }
 
-  void addToCart(String productId, String size) async {
+  void addToCart(String productId) async {
     isLoading = true;
     update();
     final AddToCartModel model = AddToCartModel(
-      size: size.toString(),
+      size: size,
       quantity: quantity,
       productId: productId,
     );
     await service.addToCart(model).then((value) {
       if (value != null) {
         getCart();
-        if (value == "product added to cart successfully") {
-          Get.snackbar(
-            'Cart',
-            'Product Added To Cart Successfully',
-            colorText: kWhitecolor,
-            backgroundColor: kBlackcolor,
-            snackPosition: SnackPosition.BOTTOM,
-          );
-        }
+      }
+      if (value == "product added to cart successfully") {
+        Get.snackbar(
+          'Cart',
+          'Product Added To Cart Successfully',
+          colorText: kWhitecolor,
+          backgroundColor: kBlackcolor,
+          snackPosition: SnackPosition.BOTTOM,
+        );
       } else {
         isLoading = false;
         update();

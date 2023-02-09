@@ -76,7 +76,7 @@ class AddToCartDesButton extends StatelessWidget {
                   : Expanded(
                       child: InkWell(
                         onTap: () {
-                          cartController.addToCart(id, size.toString());
+                          cartController.addToCart(id);
                         },
                         child: Container(
                           height: 50,

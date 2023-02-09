@@ -1,4 +1,4 @@
-class GetSingelCartProduct {
+class     GetSingelCartProduct {
   GetSingelCartProduct({
     required this.product,
     required this.size,

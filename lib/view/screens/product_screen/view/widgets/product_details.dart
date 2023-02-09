@@ -88,7 +88,7 @@ class ProductDetailsWidget extends StatelessWidget {
               ),
               kWidth10,
               Text(
-                '₹${price.toString()}',
+                '₹${(price - discountPrice).round()}',
                 style: const TextStyle(
                   fontSize: 25,
                   fontWeight: FontWeight.bold,

@@ -14,6 +14,9 @@ class CartScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     CartController cartController = Get.put(CartController());
     OrdersController ordersController = Get.put(OrdersController());
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      cartController.getCart();
+    });
     return Scaffold(
       appBar: AppBar(
         title: const Center(
@@ -46,8 +49,8 @@ class CartScreen extends StatelessWidget {
           return GetBuilder(
             init: cartController,
             builder: (controller) {
-              return cartController.model == null ||
-                      cartController.model!.products.isEmpty
+              return cartController.totalSave == 0 ||
+                      cartController.totalSave == null
                   ? const SizedBox()
                   : Row(
                       children: [

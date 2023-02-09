@@ -409,7 +409,7 @@ class _OrderPageScreenState extends State<OrderScreen> {
                                     height: Get.size.height * 0.06,
                                     width: Get.size.width / 2,
                                     child: ElevatedButton(
-                                      onPressed: () async {
+                                      onPressed: () {
                                         paymentController.setTotalAmount(
                                           widget.screenCheck ==
                                                   OrderScreenEnum

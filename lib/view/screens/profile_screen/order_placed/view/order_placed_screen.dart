@@ -19,6 +19,12 @@ class OrderPlacedScreen extends StatelessWidget {
     });
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          onPressed: () {
+            Get.back();
+          },
+          icon: const Icon(Icons.keyboard_backspace),
+        ),
         title: const Text('My Orders'),
         centerTitle: true,
         actions: [

@@ -50,7 +50,7 @@ class NewlyLaunchedContainer extends StatelessWidget {
                                 textAlign: TextAlign.center,
                               ),
                               Text(
-                                "₹${homeController.productList[index].price}",
+                                "₹${(homeController.productList[index].price - homeController.productList[index].discountPrice).round()}",
                                 style: const TextStyle(
                                   color: kBlackcolor,
                                   fontWeight: FontWeight.bold,
