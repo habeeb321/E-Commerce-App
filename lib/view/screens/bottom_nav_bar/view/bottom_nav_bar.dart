@@ -49,40 +49,39 @@ class BottomNavBar extends GetView<BottomNavController> {
                   const GButton(
                     icon: Icons.home_outlined,
                     iconSize: 30,
-                    text: 'Home',
                   ),
                   GButton(
-                      icon: Icons.shopping_cart_outlined,
-                      leading: GetBuilder<CartController>(
-                        builder: (controller) {
-                          return badges.Badge(
-                            position:
-                                badges.BadgePosition.topEnd(top: -17, end: -13),
-                            badgeContent: Text(
-                              cartController.totalproductCount.toString(),
-                              style: const TextStyle(
-                                color: kWhitecolor,
-                                fontWeight: FontWeight.bold,
-                              ),
+                    icon: Icons.shopping_cart_outlined,
+                    leading: GetBuilder<CartController>(
+                      builder: (controller) {
+                        return badges.Badge(
+                          position:
+                              badges.BadgePosition.topEnd(top: -17, end: -13),
+                          badgeContent: Text(
+                            cartController.totalproductCount.toString(),
+                            style: const TextStyle(
+                              color: kWhitecolor,
+                              fontWeight: FontWeight.bold,
                             ),
-                            child: Icon(Icons.shopping_cart_outlined,
-                                color: bottomNavController.currentIndex == 1
-                                    ? lightThemeColor
-                                    : kWhitecolor,
-                                size: 30),
-                          );
-                        },
-                      ),
-                      iconSize: 30,
-                      text: 'Cart'),
+                          ),
+                          child: Icon(Icons.shopping_cart_outlined,
+                              color: bottomNavController.currentIndex == 1
+                                  ? lightThemeColor
+                                  : kWhitecolor,
+                              size: 30),
+                        );
+                      },
+                    ),
+                    iconSize: 30,
+                  ),
                   const GButton(
-                      icon: Icons.favorite_border_outlined,
-                      iconSize: 30,
-                      text: 'Wishlist'),
+                    icon: Icons.favorite_border_outlined,
+                    iconSize: 30,
+                  ),
                   const GButton(
-                      icon: Icons.person_outline,
-                      iconSize: 30,
-                      text: 'Account'),
+                    icon: Icons.person_outline,
+                    iconSize: 30,
+                  ),
                 ],
                 backgroundColor: themeColor,
                 color: kWhitecolor,

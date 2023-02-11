@@ -4,6 +4,7 @@ import 'package:scotch/core/const.dart';
 import 'package:scotch/view/screens/profile_screen/address/controller/address_controller.dart';
 import 'package:scotch/view/screens/profile_screen/address/model/enum_address.dart';
 import 'package:scotch/view/screens/profile_screen/address/view/address_form_screen.dart';
+import 'package:scotch/view/screens/profile_screen/address/view/address_screen.dart';
 import 'package:scotch/view/screens/profile_screen/address/view/widgets/popup_address_widget.dart';
 
 class OrderAddressWidget extends StatelessWidget {
@@ -43,12 +44,7 @@ class OrderAddressWidget extends StatelessWidget {
                   ),
                   ElevatedButton(
                     onPressed: () {
-                      Get.to(
-                        AddressFormScreen(
-                          addressScreenCheck: EnumAddress.addAddressScreen,
-                          addressId: value.addressList[index].id,
-                        ),
-                      );
+                      Get.to(const AddressScreen());
                     },
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all(kWhitecolor),

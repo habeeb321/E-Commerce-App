@@ -26,7 +26,7 @@ class AddressController extends GetxController {
 
   int selectIndex = 0;
 
-  void selectDefault(int index) {
+  void addressSelect(int index) {
     selectIndex = index;
     update();
   }

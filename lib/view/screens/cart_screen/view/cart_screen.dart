@@ -380,7 +380,7 @@ class CartScreen extends StatelessWidget {
                                     ),
                                   ),
                                   Text(
-                                    '${cartController.totalSave}',
+                                    '₹${cartController.totalSave}',
                                     style: const TextStyle(
                                       color: kRedColor,
                                       fontFamily: 'Manrope',
