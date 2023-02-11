@@ -3,11 +3,7 @@ import 'package:get/get.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:scotch/core/const.dart';
 import 'package:scotch/view/screens/cart_screen/controller/cart_controller.dart';
-import 'package:scotch/view/screens/profile_screen/profile/view/profile_screen.dart';
 import 'package:scotch/view/screens/bottom_nav_bar/controller/bottom_nav_controller.dart';
-import 'package:scotch/view/screens/cart_screen/view/cart_screen.dart';
-import 'package:scotch/view/screens/home_screen/view/home_screen.dart';
-import 'package:scotch/view/screens/wishlist_screen/view/wishlist_screen.dart';
 import 'package:badges/badges.dart' as badges;
 
 class BottomNavBar extends GetView<BottomNavController> {
@@ -17,18 +13,11 @@ class BottomNavBar extends GetView<BottomNavController> {
   Widget build(BuildContext context) {
     CartController cartController = Get.put(CartController());
     BottomNavController bottomNavController = Get.put(BottomNavController());
-    int currentIndex = 0;
 
-    List pages = [
-      const HomeScreen(),
-      const CartScreen(),
-      const WishlistScreen(),
-      const ProfileScreen(),
-    ];
     return Scaffold(
       body: GetBuilder<BottomNavController>(
         builder: (controller) {
-          return pages[controller.currentIndex];
+          return bottomNavController.pages[controller.currentIndex];
         },
       ),
       bottomNavigationBar: GetBuilder<BottomNavController>(
@@ -89,10 +78,9 @@ class BottomNavBar extends GetView<BottomNavController> {
                 tabBackgroundColor: kWhitecolor,
                 padding: const EdgeInsets.all(10),
                 curve: Curves.bounceIn,
-                selectedIndex: currentIndex,
+                selectedIndex: controller.currentIndex,
                 onTabChange: (index) {
-                  currentIndex = index;
-                  controller.currentIndex = index;
+                  controller.bottomNav(index);
                 },
               ),
             ),
