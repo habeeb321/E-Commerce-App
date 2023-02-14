@@ -86,7 +86,6 @@ class CartController extends GetxController {
         if (value != null) {
           getCart();
           log(totalSave.toString());
-          pop();
           Get.snackbar(
             'Cart',
             'Product removed from cart successfully',
@@ -94,6 +93,7 @@ class CartController extends GetxController {
             backgroundColor: kBlackcolor,
             snackPosition: SnackPosition.BOTTOM,
           );
+          pop();
           update();
         } else {
           return;

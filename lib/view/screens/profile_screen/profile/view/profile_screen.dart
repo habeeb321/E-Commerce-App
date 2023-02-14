@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 import 'package:scotch/core/const.dart';
 import 'package:scotch/view/screens/profile_screen/order_placed/view/order_placed_screen.dart';
 import 'package:scotch/view/screens/profile_screen/profile/controller/profile_controller.dart';
+import 'package:scotch/view/screens/profile_screen/profile/view/privacy_policy.dart';
+import 'package:scotch/view/screens/profile_screen/profile/view/terms_and_conditions.dart';
 import 'package:scotch/view/screens/profile_screen/profile/view/widgets/profile_widget.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -150,7 +152,9 @@ class ProfileScreen extends StatelessWidget {
                               size: 30,
                             ),
                             text: 'Terms & Condition',
-                            ontap: () {},
+                            ontap: () {
+                              Get.to(const TermsAndConditionScreen());
+                            },
                             size: 17,
                             trailIcon: const Icon(
                               Icons.arrow_forward,
@@ -165,7 +169,9 @@ class ProfileScreen extends StatelessWidget {
                             ),
                             text: 'Privacy Policy',
                             size: 17,
-                            ontap: () {},
+                            ontap: () {
+                              Get.to(const PrivacyPolicyScreen());
+                            },
                             trailIcon: const Icon(
                               Icons.arrow_forward,
                               size: 25,

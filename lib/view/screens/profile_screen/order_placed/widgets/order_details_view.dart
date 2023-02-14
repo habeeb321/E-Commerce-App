@@ -32,7 +32,7 @@ class OrderDetialsView extends StatelessWidget {
             return ordersController.isLoading == true ||
                     ordersController.singleModel == null
                 ? SizedBox(
-                    height: Get.size.height * 0.5,
+                    height: Get.size.height * 0.9,
                     child: const Center(child: CircularProgressIndicator()))
                 : Column(
                     children: [
