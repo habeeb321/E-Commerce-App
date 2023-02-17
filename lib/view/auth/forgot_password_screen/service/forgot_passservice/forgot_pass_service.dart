@@ -1,34 +1,23 @@
-import 'dart:convert';
 import 'dart:developer';
 import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
 import 'package:scotch/common/api/api_baseurl.dart';
 import 'package:scotch/common/api/api_endpoints.dart';
-import 'package:scotch/view/auth/signup_screen/model/signupmodel/signup_model.dart';
-import 'package:scotch/view/auth/signup_screen/model/signupmodel/signup_token.dart';
 import 'package:scotch/util/dio_exception.dart';
 
-class ForgotPassOtpService {
-  Dio dio = Dio();
-
-  Future<SignUpTokenModel?> signupUser(
-      SignUpModel value, BuildContext context) async {
+class ForgotPasswordService {
+  static Future<String?> getOtp(String email) async {
     try {
-      Response response = await dio.post(
-        ApiBaseUrl().baseUrl + ApiEndPoints.signUp,
-        data: jsonEncode(
-          value.toJson(),
-        ),
+      Dio dio = Dio();
+      Response response = await dio.get(
+        ApiBaseUrl().baseUrl + ApiEndPoints.verifyOtp,
+        queryParameters: {"email": email},
       );
-
-      if (response.statusCode == 200 || response.statusCode == 201) {
-        log(response.data.toString());
-        final signupResponse = SignUpTokenModel.fromJson(response.data);
-        log(response.data.toString());
-        return signupResponse;
+      log(response.statusCode.toString());
+      if (response.statusCode! >= 200 && response.statusCode! <= 299) {
+        return response.data["message"];
       }
     } on DioError catch (e) {
-      log(e.message);
+      log('catch');
       DioException().dioError(e);
     }
     return null;

@@ -6,7 +6,7 @@ import 'package:scotch/util/dio_exception.dart';
 
 class SendOtpServices {
   Dio dio = Dio();
-  Future<String?> sendOtp(email, context) async {
+  Future<String?> sendOtp(email) async {
     log('otp enabled');
     try {
       final Response response = await dio.get(

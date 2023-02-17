@@ -27,7 +27,7 @@ class SignUpController extends GetxController {
       fullName: fullNameController.text,
     );
 
-    SendOtpServices().sendOtp(model.email, context).then((value) async {
+    SendOtpServices().sendOtp(model.email).then((value) async {
       if (value != null) {
         Get.to(() => OtpVerifyScreen(model: model));
         await storage.write(
