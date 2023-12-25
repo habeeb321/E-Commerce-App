@@ -1,16 +1,44 @@
-# scotch
+# E-Commerce App
 
-A new Flutter project.
+## Overview
+
+E-Commerce App is a Flutter-based project designed to offer users a seamless online shopping experience. With a user-friendly interface and a variety of features, it provides a diverse range of products for an unparalleled shopping journey.
+
+## Features
+
+- Intuitive user interface for efficient browsing
+- Secure and streamlined checkout process
+- User accounts for personalized shopping
+- Responsive design ensuring a smooth mobile experience
+
+## Key Tools
+
+- Badges
+- Carousel Slider
+- Connectivity Plus
+- Cupertino Icons
+- Device Preview
+- Dio
+- Flutter OTP Text Field
+- Flutter Rating Bar
+- Flutter Secure Storage
+- Fluttertoast
+- Get
+- Google Nav Bar
+- Internet Connection Checker
+- Razorpay Flutter
+- Share Plus
+- Shimmer
+- Smooth Page Indicator
+
+## Project Structure
+
+- `lib/`: Contains the main Flutter application code
+- `assets/`: Include any necessary assets such as images or fonts
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+1. Clone the repository:
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```bash
+git clone https://github.com/habeeb321/E-Commerce-App.git
