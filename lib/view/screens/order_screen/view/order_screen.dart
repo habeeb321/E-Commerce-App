@@ -295,8 +295,8 @@ class _OrderPageScreenState extends State<OrderScreen> {
                                     child: Column(
                                       children: [
                                         kHeight10,
-                                        Row(
-                                          children: const [
+                                        const Row(
+                                          children: [
                                             Text(
                                               'Price Details',
                                               style: TextStyle(
@@ -340,10 +340,10 @@ class _OrderPageScreenState extends State<OrderScreen> {
                                     ),
                                   ),
                                   kHeight20,
-                                  Row(
+                                  const Row(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceEvenly,
-                                    children: const [
+                                    children: [
                                       kWidth15,
                                       Icon(Icons.verified_user,
                                           color: Colors.grey),

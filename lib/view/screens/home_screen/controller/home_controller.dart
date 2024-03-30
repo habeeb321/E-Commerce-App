@@ -31,16 +31,17 @@ class HomeController extends GetxController {
   var isDeviceConnected = false;
   bool isAlertSet = false;
 
-  getConnectivity() => subscription = Connectivity()
-          .onConnectivityChanged
-          .listen((ConnectivityResult result) async {
-        isDeviceConnected = await InternetConnectionChecker().hasConnection;
-        if (!isDeviceConnected && isAlertSet == false) {
-          showDialogBox();
-          isAlertSet = true;
-          update();
-        }
-      });
+  getConnectivity() =>
+      subscription = Connectivity().onConnectivityChanged.listen(
+        (ConnectivityResult result) async {
+          isDeviceConnected = await InternetConnectionChecker().hasConnection;
+          if (!isDeviceConnected && isAlertSet == false) {
+            showDialogBox();
+            isAlertSet = true;
+            update();
+          }
+        },
+      );
 
   @override
   void onClose() {

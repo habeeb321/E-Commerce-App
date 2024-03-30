@@ -7,8 +7,8 @@ class CarouselShimmer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: const [
+    return const Stack(
+      children: [
         SizedBox(
           width: double.infinity,
           child: ShimmerWidget.rectangle(height: 150, width: double.infinity),

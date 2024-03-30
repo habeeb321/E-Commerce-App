@@ -45,8 +45,8 @@ class SignUpScreen extends GetView<SignUpController> {
                         alignment: Alignment.center,
                       ),
                     ),
-                    Column(
-                      children: const [
+                    const Column(
+                      children: [
                         CircleAvatar(
                           radius: 50,
                           backgroundImage: AssetImage(logo),

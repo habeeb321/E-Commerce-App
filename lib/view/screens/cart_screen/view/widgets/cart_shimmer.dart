@@ -41,11 +41,11 @@ class CartShimmer extends StatelessWidget {
                     ],
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 50, top: 30),
+                const Padding(
+                  padding: EdgeInsets.only(left: 50, top: 30),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const [
+                    children: [
                       ShimmerWidget.rectangle(height: 10, width: 140),
                       kHeight20,
                       ShimmerWidget.rectangle(height: 10, width: 110),

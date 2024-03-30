@@ -46,9 +46,9 @@ class ScotchGetStarted extends StatelessWidget {
                 color: themeColor,
                 borderRadius: BorderRadius.circular(30),
               ),
-              child: Row(
+              child: const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: const [
+                children: [
                   Padding(
                     padding: EdgeInsets.only(left: 15),
                     child: Text(

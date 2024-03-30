@@ -82,8 +82,8 @@ class ProfileScreen extends StatelessWidget {
                     kHeight5,
                     divider,
                     kHeight5,
-                    Row(
-                      children: const [
+                    const Row(
+                      children: [
                         kWidth10,
                         Text('Account Settings', style: kTextstyle),
                       ],
@@ -133,8 +133,8 @@ class ProfileScreen extends StatelessWidget {
                     kHeight5,
                     divider,
                     kHeight5,
-                    Row(
-                      children: const [
+                    const Row(
+                      children: [
                         kWidth10,
                         Text('Information & Feedback', style: kTextstyle),
                       ],
@@ -208,9 +208,9 @@ class ProfileScreen extends StatelessWidget {
                       ),
                     ),
                     kHeight20,
-                    Center(
+                    const Center(
                       child: Column(
-                        children: const [
+                        children: [
                           Text(
                             'Version',
                             style: TextStyle(

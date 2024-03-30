@@ -28,12 +28,12 @@ class HomeScreen extends StatelessWidget {
       body: GetBuilder<HomeController>(
         init: homeController,
         builder: (controller) {
-          return Padding(
-            padding: const EdgeInsets.all(16.0),
+          return const Padding(
+            padding: EdgeInsets.all(16.0),
             child: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
+                children: [
                   Carousel(),
                   kHeight20,
                   Divider(thickness: 2),

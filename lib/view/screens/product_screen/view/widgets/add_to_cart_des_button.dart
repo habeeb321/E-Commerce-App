@@ -50,9 +50,9 @@ class AddToCartDesButton extends StatelessWidget {
                               ],
                             ),
                           ),
-                          child: Row(
+                          child: const Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: const [
+                            children: [
                               Icon(
                                 Icons.shopping_cart_outlined,
                                 color: kWhitecolor,
@@ -96,9 +96,9 @@ class AddToCartDesButton extends StatelessWidget {
                               ],
                             ),
                           ),
-                          child: Row(
+                          child: const Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: const [
+                            children: [
                               Icon(
                                 Icons.shopping_cart_outlined,
                                 color: kWhitecolor,

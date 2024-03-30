@@ -259,10 +259,10 @@ class CartScreen extends StatelessWidget {
                                                                             ),
                                                                           ),
                                                                           child:
-                                                                              Row(
+                                                                              const Row(
                                                                             mainAxisAlignment:
                                                                                 MainAxisAlignment.spaceEvenly,
-                                                                            children: const [
+                                                                            children: [
                                                                               Icon(
                                                                                 Icons.delete,
                                                                                 color: kWhitecolor,

@@ -17,27 +17,27 @@ class WishListShimmer extends StatelessWidget {
             physics: const ScrollPhysics(),
             shrinkWrap: true,
             itemBuilder: (context, index) {
-              return Column(
+              return const Column(
                 children: [
                   kHeight10,
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      const ShimmerWidget.rectangle(height: 100, width: 100),
+                      ShimmerWidget.rectangle(height: 100, width: 100),
                       Padding(
-                        padding: const EdgeInsets.only(left: 0),
+                        padding: EdgeInsets.only(left: 0),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             kHeight10,
-                            const ShimmerWidget.rectangle(
+                            ShimmerWidget.rectangle(
                                 height: 10, width: 50),
                             kHeight10,
-                            const ShimmerWidget.rectangle(
+                            ShimmerWidget.rectangle(
                                 height: 10, width: 50),
                             kHeight10,
                             Row(
-                              children: const [
+                              children: [
                                 ShimmerWidget.rectangle(height: 10, width: 20),
                                 kWidth10,
                                 ShimmerWidget.rectangle(height: 10, width: 30),
@@ -49,7 +49,7 @@ class WishListShimmer extends StatelessWidget {
                         ),
                       ),
                       kWidth20,
-                      const ShimmerWidget.circle(height: 30, width: 30),
+                      ShimmerWidget.circle(height: 30, width: 30),
                     ],
                   ),
                   kHeight10,
